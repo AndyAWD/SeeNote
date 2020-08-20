@@ -51,3 +51,4 @@ proguard/
 
 .externalNativeBuild
 .cxx
+/app/schemas/tw.com.andyawd.seenote.database.SeeNoteDatabase/1.json
