@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote
+package tw.com.andyawd.seenote.base
 
 import android.app.Application
 
