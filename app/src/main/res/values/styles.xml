@@ -1,10 +1,23 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorAccent">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryVariant">@color/primaryLightColor</item>
+        <item name="colorOnPrimary">@color/primaryTextColor</item>
+
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
+        <item name="colorOnSecondary">@color/secondaryTextColor</item>
+
+        <item name="colorError">#b00020</item>
+        <item name="colorOnError">@color/primaryTextColor</item>
+
+        <item name="colorSurface">@color/primaryLightColor</item>
+        <item name="colorOnSurface">@color/primaryTextColor</item>
+        <item name="android:colorBackground">@color/primaryColor</item>
+        <item name="colorOnBackground">#ffeb3b</item>
+    </style>
 </resources>

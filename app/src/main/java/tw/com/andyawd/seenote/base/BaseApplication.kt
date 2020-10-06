@@ -1,6 +1,8 @@
 package tw.com.andyawd.seenote.base
 
 import android.app.Application
+import tw.com.andyawd.andyawdlibrary.AWDConstants
+import tw.com.andyawd.andyawdlibrary.AWDLog
 
 class BaseApplication : Application() {
 
@@ -18,5 +20,8 @@ class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        AWDLog.setLogLevel(AWDConstants.LOG_VERBOSE)
+
     }
 }

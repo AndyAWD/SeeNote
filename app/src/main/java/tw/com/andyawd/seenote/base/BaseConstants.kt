@@ -10,5 +10,11 @@ class BaseConstants {
         const val EMPTY_STRING = "emptyString"
 
         const val ROOM_NOTE = "roomNote"
+
+        const val GLIDE_URI = "glideUri"
+        const val GLIDE_URL = "glideUrl"
+        const val RX_CLICK = "rxClick"
+
+        const val CLICK_MILLISECONDS_TIMER = 500L
     }
 }

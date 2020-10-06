@@ -3,16 +3,95 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/clAmGroup"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/tvAmInsertNoteObject"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/hexColor001_DimGray"
+        android:text="新增一筆"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAmDeleteNoteObject"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/hexColor002_Gray"
+        android:text="刪除物件"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmInsertNoteObject" />
+
+    <TextView
+        android:id="@+id/tvAmDeleteNoteById"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/hexColor003_DarkGray"
+        android:text="刪除編號物件"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmDeleteNoteObject" />
+
+
+    <TextView
+        android:id="@+id/tvAmGetNoteAllInventory"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/hexColor004_Silver"
+        android:text="取得清單"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmDeleteNoteById" />
+
+
+    <TextView
+        android:id="@+id/tvAmGetNoteObjectById"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/hexColor005_LightGrey"
+        android:text="取得編號物件"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmGetNoteAllInventory" />
+
+
+    <TextView
+        android:id="@+id/tvAmModifyNoteObject"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/hexColor006_Gainsboro"
+        android:text="修改物件"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmGetNoteObjectById" />
+
+
+    <TextView
+        android:id="@+id/tvAmModifyNoteTitleById"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/hexColor012_Linen"
+        android:text="修改編號物件標題"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmModifyNoteObject" />
+
+
+    <TextView
+        android:id="@+id/tvAmModifyNoteContentById"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/hexColor060_DarkOliveGreen"
+        android:text="修改編號物件內容"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
