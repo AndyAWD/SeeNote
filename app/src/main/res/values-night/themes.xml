@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.SeeNote" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/night_01579b</item>
+        <item name="colorPrimaryVariant">@color/night_4f83cc</item>
+        <item name="colorOnPrimary">@color/night_ffffff</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/night_4fc3f7</item>
+        <item name="colorSecondaryVariant">@color/night_8bf6ff</item>
+        <item name="colorOnSecondary">@color/night_222222</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
