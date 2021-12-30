@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote.notepage
+package tw.com.andyawd.seenote.writenote
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,28 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import tw.com.andyawd.seenote.R
-import tw.com.andyawd.seenote.databinding.FragmentNotePageBinding
+import tw.com.andyawd.seenote.databinding.FragmentWriteNoteBinding
 
-
-class NotePageFragment : Fragment() {
+class WriteNoteFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        val binding: FragmentNotePageBinding = DataBindingUtil.inflate(
+        val binding: FragmentWriteNoteBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_note_page,
+            R.layout.fragment_write_note,
             container,
             false
         )
 
-        binding.fnpMbWriteNote.setOnClickListener {
-            findNavController().navigate(R.id.action_notePageFragment_to_writeNoteFragment)
-        }
 
         return binding.root
     }
