@@ -6,7 +6,7 @@
     app:startDestination="@id/notePageFragment">
     <fragment
         android:id="@+id/notePageFragment"
-        android:name="tw.com.andyawd.seenote.NotePageFragment"
+        android:name="tw.com.andyawd.seenote.notepage.NotePageFragment"
         android:label="fragment_note_page"
         tools:layout="@layout/fragment_note_page" />
 </navigation>
