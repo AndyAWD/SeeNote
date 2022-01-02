@@ -10,20 +10,26 @@ import androidx.room.Update
 interface NoteDatabaseDao {
 
     @Insert
-    fun insert(note: Note)
+    suspend fun insert(note: Note)
 
     @Update
-    fun update(note: Note)
+    suspend fun update(note: Note)
 
-    @Query("SELECT * from note_table WHERE noteId = :key")
-    fun get(key: Long): Note?
+    @Query("SELECT * from note_table WHERE id = :key")
+    suspend fun get(key: Long): Note?
 
     @Query("DELETE FROM note_table")
-    fun clear()
+    suspend fun clear()
 
-    @Query("SELECT * FROM note_table ORDER BY noteId DESC")
+    @Query("SELECT * FROM note_table ORDER BY id DESC")
     fun getAll(): LiveData<List<Note>>
 
-    @Query("SELECT * FROM note_table ORDER BY noteId DESC LIMIT 1")
-    fun getFirst(): Note?
+    @Query("SELECT * FROM note_table ORDER BY id DESC LIMIT 1")
+    suspend fun getFirst(): Note?
+
+    @Query("UPDATE note_table SET title =:text WHERE id = :id")
+    suspend fun updateTitle(id: Long, text: String): Int
+
+    @Query("UPDATE note_table SET content =:text WHERE id = :id")
+    suspend fun updateContent(id: Long, text: String): Int
 }

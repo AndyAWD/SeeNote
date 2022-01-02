@@ -8,14 +8,14 @@ import tw.com.andyawd.seenote.BaseConstants
 @Entity(tableName = BaseConstants.NOTE_TABLE)
 data class Note(
     @PrimaryKey(autoGenerate = true)
-    var noteId: Long = 0L,
+    var id: Long = 0L,
 
-    @ColumnInfo(name = BaseConstants.NOTE_TITLE)
-    var noteTitle: String = "",
+    @ColumnInfo(name = BaseConstants.TITLE)
+    var title: String = "這是標題你懂的",
 
-    @ColumnInfo(name = BaseConstants.NOTE_CONTENT)
-    var noteContent: String = "",
+    @ColumnInfo(name = BaseConstants.CONTENT)
+    var content: String = "這是內容你懂的",
 
-    @ColumnInfo(name = BaseConstants.NOTE_CREATE_TIME)
-    var noteCreateTime: Long = System.currentTimeMillis(),
+    @ColumnInfo(name = BaseConstants.CREATE_TIME)
+    var createTime: Long = System.currentTimeMillis(),
 )
