@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/vnpMtvTitle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/magic_8dp"
+        android:layout_marginEnd="@dimen/magic_8dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/vnpMtvContent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@tools:sample/full_names" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/vnpMtvContent"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="@dimen/magic_8dp"
+        android:layout_marginEnd="@dimen/magic_8dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical|start"
+        android:lines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/vnpMtvCreateTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vnpMtvTitle"
+        tools:text="@tools:sample/lorem/random" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/vnpMtvCreateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/magic_8dp"
+        android:layout_marginEnd="@dimen/magic_8dp"
+        android:gravity="center_vertical|end"
+        app:layout_constraintBottom_toBottomOf="@+id/vnpMtvContent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/vnpMtvContent"
+        app:layout_constraintTop_toBottomOf="@+id/vnpMtvTitle"
+        tools:text="@tools:sample/date/ddmmyy" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/magic_1dp"
+        android:background="@color/hexColor002_Gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vnpMtvContent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
