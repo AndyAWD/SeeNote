@@ -1,31 +1,27 @@
 package tw.com.andyawd.seenote.notepage
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.Note
+import tw.com.andyawd.seenote.databinding.ViewholderNotePageBinding
 
-class NotePageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class NotePageViewHolder(private val binding: ViewholderNotePageBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
-    private val vnpMtvTitle: TextView = itemView.findViewById(R.id.vnpMtvTitle)
-    private val vnpMtvContent: TextView = itemView.findViewById(R.id.vnpMtvContent)
-    private val vnpMtvCreateTime: TextView = itemView.findViewById(R.id.vnpMtvCreateTime)
-
-    fun setData(note: Note) {
-        vnpMtvTitle.text = note.title
-        vnpMtvContent.text = note.content
-        vnpMtvCreateTime.text = note.createTime.toString()
+    fun bind(note: Note) {
+        binding.notePageListViewModel = note
+        binding.executePendingBindings()
     }
 
     companion object {
         fun from(parent: ViewGroup): NotePageViewHolder {
-            val view = LayoutInflater
-                .from(parent.context)
-                .inflate(R.layout.viewholder_note_page, parent, false)
-            return NotePageViewHolder(view)
+            val binding = ViewholderNotePageBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+            return NotePageViewHolder(binding)
         }
     }
 }

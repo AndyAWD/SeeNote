@@ -28,23 +28,26 @@ class NotePageFragment : Fragment() {
             false
         )
 
-        binding.fnpMbWriteNote.setOnClickListener {
-            findNavController().navigate(R.id.action_notePageFragment_to_writeNoteFragment)
-        }
-
         val application = requireNotNull(this.activity).application
         val dataSource = NoteDatabase.getInstance(application).noteDatabaseDao
-        val viewModelFactory =
-            NotePageViewModelFactory(dataSource, application)
+
+        val viewModelFactory = NotePageViewModelFactory(dataSource, application)
         val notePageViewModel =
             ViewModelProvider(this, viewModelFactory)[NotePageViewModel::class.java]
 
-        val adapter = NotePageAdapter(requireActivity())
+        binding.notePageViewModel = notePageViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        val adapter = NotePageAdapter()
         binding.fnpRvNoteList.adapter = adapter
 
         notePageViewModel.note.observe(viewLifecycleOwner, Observer {
-            adapter.data = it
+            adapter.submitList(it)
         })
+
+        binding.fnpMbWriteNote.setOnClickListener {
+            findNavController().navigate(R.id.action_notePageFragment_to_writeNoteFragment)
+        }
 
         return binding.root
     }
