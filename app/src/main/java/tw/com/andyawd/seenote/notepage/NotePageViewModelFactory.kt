@@ -14,6 +14,6 @@ class NotePageViewModelFactory(
             return NotePageViewModel(dataSource, application) as T
         }
 
-        throw IllegalArgumentException("找不到 ViewModel class")
+        throw IllegalArgumentException("找不到 ViewModel Class")
     }
 }

@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.database.Note
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 
@@ -24,13 +23,13 @@ class WriteNoteViewModel(
     private fun initNote() {
         viewModelScope.launch {
 
-            if (BaseConstants.CREATE_NOTE == dataPrimaryKey) {
-                val createNote = Note()
-                insert(createNote)
-                note.value = createNote
-            } else {
-                note.value = getNoteFromDatabase(dataPrimaryKey)
-            }
+//            if (BaseConstants.CREATE_NOTE == dataPrimaryKey) {
+//                val createNote = Note()
+//                insert(createNote)
+//                note.value = createNote
+//            } else {
+//                note.value = getNoteFromDatabase(dataPrimaryKey)
+//            }
         }
     }
 

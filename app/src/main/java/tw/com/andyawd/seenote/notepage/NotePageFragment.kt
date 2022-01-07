@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.NoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentNotePageBinding
@@ -40,13 +42,31 @@ class NotePageFragment : Fragment() {
 
         val adapter = NotePageAdapter()
         binding.fnpRvNoteList.adapter = adapter
+        binding.fnpRvNoteList.layoutManager = GridLayoutManager(application, 1)
+
+        adapter.setOnItemClickListener(NotePageListener { id ->
+            AWDLog.d("新的資料庫id: $id")
+            notePageViewModel.onItemClicked(id)
+        })
 
         notePageViewModel.note.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
 
+        notePageViewModel.notePageDetail.observe(viewLifecycleOwner, Observer { note ->
+            AWDLog.d("note: $note")
+            note?.let {
+                findNavController().navigate(
+                    NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
+                        note
+                    )
+                )
+                notePageViewModel.onNotePageNavigated()
+            }
+        })
+
         binding.fnpMbWriteNote.setOnClickListener {
-            findNavController().navigate(R.id.action_notePageFragment_to_writeNoteFragment)
+            //findNavController().navigate(NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment())
         }
 
         return binding.root
@@ -56,3 +76,4 @@ class NotePageFragment : Fragment() {
 
     }
 }
+

@@ -7,7 +7,9 @@ import java.text.DateFormat
 
 @BindingAdapter("changeCreateTime")
 fun TextView.setChangeCreateTime(item: Note) {
-    text = DateFormat.getInstance().format(item.createTime)
+    item.let {
+        text = DateFormat.getInstance().format(item.createTime)
+    }
 }
 
 @BindingAdapter("changeTitle")

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -36,13 +35,13 @@ class WriteNoteFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.writeNoteViewModel = writeNoteViewModel
 
-        binding.fwnTietNoteTitle.addTextChangedListener {
-            writeNoteViewModel.editNoteTitle(it.toString())
-        }
-
-        binding.fwnTietNoteContent.addTextChangedListener {
-            writeNoteViewModel.editNoteContent(it.toString())
-        }
+//        binding.fwnTietNoteTitle.addTextChangedListener {
+//            writeNoteViewModel.editNoteTitle(it.toString())
+//        }
+//
+//        binding.fwnTietNoteContent.addTextChangedListener {
+//            writeNoteViewModel.editNoteContent(it.toString())
+//        }
 
         return binding.root
     }

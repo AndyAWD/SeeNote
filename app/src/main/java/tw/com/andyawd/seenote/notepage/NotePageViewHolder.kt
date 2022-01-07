@@ -9,6 +9,12 @@ import tw.com.andyawd.seenote.databinding.ViewholderNotePageBinding
 class NotePageViewHolder(private val binding: ViewholderNotePageBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
+    fun bind(note: Note, notePageListener: NotePageListener) {
+        binding.notePageListViewModel = note
+        binding.executePendingBindings()
+        binding.notePageItemClickListener = notePageListener
+    }
+
     fun bind(note: Note) {
         binding.notePageListViewModel = note
         binding.executePendingBindings()

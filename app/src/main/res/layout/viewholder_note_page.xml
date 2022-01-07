@@ -8,11 +8,16 @@
         <variable
             name="notePageListViewModel"
             type="tw.com.andyawd.seenote.database.Note" />
+
+        <variable
+            name="notePageItemClickListener"
+            type="tw.com.andyawd.seenote.notepage.NotePageListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{()-> notePageItemClickListener.onItemClick(notePageListViewModel)}">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/vnpMtvTitle"
@@ -20,7 +25,6 @@
             android:layout_height="40dp"
             android:layout_marginStart="@dimen/magic_8dp"
             android:layout_marginEnd="@dimen/magic_8dp"
-            android:textColor="#333333"
             app:autoSizeTextType="uniform"
             app:changeTitle="@{notePageListViewModel}"
             app:layout_constraintBottom_toTopOf="@+id/vnpMtvContent"
@@ -40,7 +44,6 @@
             android:ellipsize="end"
             android:gravity="center_vertical|start"
             android:lines="1"
-            android:textColor="#333333"
             app:changeContent="@{notePageListViewModel}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/vnpMtvCreateTime"
@@ -55,7 +58,6 @@
             android:layout_marginStart="@dimen/magic_8dp"
             android:layout_marginEnd="@dimen/magic_8dp"
             android:gravity="center_vertical|end"
-            android:textColor="#333333"
             app:changeCreateTime="@{notePageListViewModel}"
             app:layout_constraintBottom_toBottomOf="@+id/vnpMtvContent"
             app:layout_constraintEnd_toEndOf="parent"

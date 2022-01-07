@@ -6,12 +6,23 @@ import tw.com.andyawd.seenote.database.Note
 
 class NotePageAdapter() : ListAdapter<Note, NotePageViewHolder>(NotePageDiffCallback()) {
 
-    override fun onBindViewHolder(holder: NotePageViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+    private var notePageListener: NotePageListener? = null
+
+    fun setOnItemClickListener(notePageListener: NotePageListener) {
+        this.notePageListener = notePageListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotePageViewHolder {
         return NotePageViewHolder.from(parent)
+    }
+
+    override fun onBindViewHolder(holder: NotePageViewHolder, position: Int) {
+        val item = getItem(position)
+
+        if (notePageListener == null) {
+            holder.bind(item)
+        } else {
+            holder.bind(item, notePageListener!!)
+        }
     }
 }

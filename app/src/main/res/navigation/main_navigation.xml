@@ -11,15 +11,15 @@
         tools:layout="@layout/fragment_note_page">
         <action
             android:id="@+id/action_notePageFragment_to_writeNoteFragment"
-            app:destination="@id/writeNoteFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:destination="@id/writeNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/writeNoteFragment"
         android:name="tw.com.andyawd.seenote.writenote.WriteNoteFragment"
         android:label="fragment_write_note"
-        tools:layout="@layout/fragment_write_note" />
+        tools:layout="@layout/fragment_write_note">
+        <argument
+            android:name="notePageKey"
+            app:argType="long" />
+    </fragment>
 </navigation>
