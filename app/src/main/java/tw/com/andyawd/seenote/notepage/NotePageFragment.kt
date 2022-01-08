@@ -50,7 +50,8 @@ class NotePageFragment : Fragment() {
         })
 
         notePageViewModel.note.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
+            //adapter.submitList(it)
+            adapter.addHeaderAndSubmitList(it)
         })
 
         notePageViewModel.notePageDetail.observe(viewLifecycleOwner, Observer { note ->
