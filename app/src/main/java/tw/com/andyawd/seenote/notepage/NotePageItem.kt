@@ -10,7 +10,7 @@ sealed class NotePageItem {
             get() = Long.MAX_VALUE
     }
 
-    data class NotePageBody(val note: Note) : NotePageItem() {
+    data class Body(val note: Note) : NotePageItem() {
         override val id: Long
             get() = note.id
     }

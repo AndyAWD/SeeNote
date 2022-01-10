@@ -17,7 +17,7 @@ class NotePageAdapter() :
     fun addHeaderAndSubmitList(list: List<Note>?) {
         val items = when (list) {
             null -> listOf(NotePageItem.Header)
-            else -> listOf(NotePageItem.Header) + list.map { NotePageItem.NotePageBody(it) }
+            else -> listOf(NotePageItem.Header) + list.map { NotePageItem.Body(it) }
         }
         submitList(items)
     }
@@ -33,7 +33,7 @@ class NotePageAdapter() :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is NotePageBodyViewHolder -> {
-                val item = getItem(position) as NotePageItem.NotePageBody
+                val item = getItem(position) as NotePageItem.Body
 
                 if (notePageListener == null) {
                     holder.bind(item.note)
@@ -47,7 +47,7 @@ class NotePageAdapter() :
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
             is NotePageItem.Header -> ITEM_VIEW_TYPE_HEADER
-            is NotePageItem.NotePageBody -> ITEM_VIEW_TYPE_ITEM
+            is NotePageItem.Body -> ITEM_VIEW_TYPE_ITEM
         }
     }
 
