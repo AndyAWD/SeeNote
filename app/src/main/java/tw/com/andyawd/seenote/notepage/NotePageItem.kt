@@ -2,15 +2,15 @@ package tw.com.andyawd.seenote.notepage
 
 import tw.com.andyawd.seenote.database.Note
 
-sealed class DataItem {
+sealed class NotePageItem {
     abstract val id: Long
 
-    object Header : DataItem() {
+    object Header : NotePageItem() {
         override val id: Long
             get() = Long.MAX_VALUE
     }
 
-    data class NotePageItem(val note: Note) : DataItem() {
+    data class NotePageBody(val note: Note) : NotePageItem() {
         override val id: Long
             get() = note.id
     }

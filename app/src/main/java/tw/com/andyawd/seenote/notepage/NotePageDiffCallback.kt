@@ -2,12 +2,12 @@ package tw.com.andyawd.seenote.notepage
 
 import androidx.recyclerview.widget.DiffUtil
 
-class NotePageDiffCallback : DiffUtil.ItemCallback<DataItem>() {
-    override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+class NotePageDiffCallback : DiffUtil.ItemCallback<NotePageItem>() {
+    override fun areItemsTheSame(oldItem: NotePageItem, newItem: NotePageItem): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+    override fun areContentsTheSame(oldItem: NotePageItem, newItem: NotePageItem): Boolean {
         return oldItem == newItem
     }
 }

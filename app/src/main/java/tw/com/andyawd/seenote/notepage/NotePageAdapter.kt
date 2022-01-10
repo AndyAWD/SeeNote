@@ -5,7 +5,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import tw.com.andyawd.seenote.database.Note
 
-class NotePageAdapter() : ListAdapter<DataItem, RecyclerView.ViewHolder>(NotePageDiffCallback()) {
+class NotePageAdapter() :
+    ListAdapter<NotePageItem, RecyclerView.ViewHolder>(NotePageDiffCallback()) {
 
     private var notePageListener: NotePageListener? = null
 
@@ -15,8 +16,8 @@ class NotePageAdapter() : ListAdapter<DataItem, RecyclerView.ViewHolder>(NotePag
 
     fun addHeaderAndSubmitList(list: List<Note>?) {
         val items = when (list) {
-            null -> listOf(DataItem.Header)
-            else -> listOf(DataItem.Header) + list.map { DataItem.NotePageItem(it) }
+            null -> listOf(NotePageItem.Header)
+            else -> listOf(NotePageItem.Header) + list.map { NotePageItem.NotePageBody(it) }
         }
         submitList(items)
     }
@@ -24,15 +25,15 @@ class NotePageAdapter() : ListAdapter<DataItem, RecyclerView.ViewHolder>(NotePag
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             ITEM_VIEW_TYPE_HEADER -> NotePageHeaderViewHolder.from(parent)
-            ITEM_VIEW_TYPE_ITEM -> NotePageViewHolder.from(parent)
+            ITEM_VIEW_TYPE_ITEM -> NotePageBodyViewHolder.from(parent)
             else -> throw ClassCastException("未知的 viewType: $viewType")
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is NotePageViewHolder -> {
-                val item = getItem(position) as DataItem.NotePageItem
+            is NotePageBodyViewHolder -> {
+                val item = getItem(position) as NotePageItem.NotePageBody
 
                 if (notePageListener == null) {
                     holder.bind(item.note)
@@ -45,8 +46,8 @@ class NotePageAdapter() : ListAdapter<DataItem, RecyclerView.ViewHolder>(NotePag
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            is DataItem.Header -> ITEM_VIEW_TYPE_HEADER
-            is DataItem.NotePageItem -> ITEM_VIEW_TYPE_ITEM
+            is NotePageItem.Header -> ITEM_VIEW_TYPE_HEADER
+            is NotePageItem.NotePageBody -> ITEM_VIEW_TYPE_ITEM
         }
     }
 
