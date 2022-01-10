@@ -3,23 +3,33 @@ package tw.com.andyawd.seenote.notepage
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import tw.com.andyawd.seenote.database.Note
 
 class NotePageAdapter() :
     ListAdapter<NotePageItem, RecyclerView.ViewHolder>(NotePageDiffCallback()) {
 
     private var notePageListener: NotePageListener? = null
+    private val adapterScope = CoroutineScope(Dispatchers.Default)
 
     fun setOnItemClickListener(notePageListener: NotePageListener) {
         this.notePageListener = notePageListener
     }
 
     fun addHeaderAndSubmitList(list: List<Note>?) {
-        val items = when (list) {
-            null -> listOf(NotePageItem.Header)
-            else -> listOf(NotePageItem.Header) + list.map { NotePageItem.Body(it) }
+        adapterScope.launch {
+            val items = when (list) {
+                null -> listOf(NotePageItem.Header)
+                else -> listOf(NotePageItem.Header) + list.map { NotePageItem.Body(it) }
+            }
+
+            withContext(Dispatchers.Main) {
+                submitList(items)
+            }
         }
-        submitList(items)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
