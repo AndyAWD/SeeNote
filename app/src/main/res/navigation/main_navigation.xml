@@ -21,5 +21,8 @@
         <argument
             android:name="notePageKey"
             app:argType="long" />
+        <action
+            android:id="@+id/action_writeNoteFragment_to_notePageFragment"
+            app:destination="@id/notePageFragment" />
     </fragment>
 </navigation>

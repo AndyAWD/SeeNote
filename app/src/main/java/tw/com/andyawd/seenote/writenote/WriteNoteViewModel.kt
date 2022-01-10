@@ -37,8 +37,29 @@ class WriteNoteViewModel(
         return database.get(primaryKey)
     }
 
-    private suspend fun insert(note: Note) {
-        database.insert(note)
+    private fun insertNote(note: Note) {
+        viewModelScope.launch {
+            database.insert(note)
+        }
+    }
+
+    private fun getNoteEntry(title: String, content: String): Note {
+        return Note(
+            title = title,
+            content = content,
+        )
+    }
+
+    fun addNote(title: String, content: String) {
+        val newNote = getNoteEntry(title, content)
+        insertNote(newNote)
+    }
+
+    fun isEntryValid(title: String, content: String): Boolean {
+        if (title.isNotEmpty() && content.isNotEmpty()) {
+            return true
+        }
+        return false
     }
 
     fun editNoteTitle(text: String) {

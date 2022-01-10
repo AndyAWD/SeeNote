@@ -67,7 +67,11 @@ class NotePageFragment : Fragment() {
         })
 
         binding.fnpMbWriteNote.setOnClickListener {
-            //findNavController().navigate(NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment())
+            findNavController().navigate(
+                NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
+                    0
+                )
+            )
         }
 
         return binding.root
