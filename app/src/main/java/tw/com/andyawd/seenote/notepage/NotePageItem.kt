@@ -7,7 +7,7 @@ sealed class NotePageItem {
 
     object Header : NotePageItem() {
         override val id: Long
-            get() = Long.MAX_VALUE
+            get() = Long.MIN_VALUE
     }
 
     data class Body(val note: Note) : NotePageItem() {
