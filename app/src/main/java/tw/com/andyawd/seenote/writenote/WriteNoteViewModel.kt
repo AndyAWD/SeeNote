@@ -1,9 +1,7 @@
 package tw.com.andyawd.seenote.writenote
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import tw.com.andyawd.seenote.database.Note
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
@@ -33,8 +31,8 @@ class WriteNoteViewModel(
         }
     }
 
-    private suspend fun getNoteFromDatabase(primaryKey: Long): Note? {
-        return database.get(primaryKey)
+    private suspend fun getNoteFromDatabase(primaryKey: Long): LiveData<Note> {
+        return database.get(primaryKey).asLiveData()
     }
 
     private fun insertNote(note: Note) {

@@ -2,6 +2,7 @@ package tw.com.andyawd.seenote.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDatabaseDao {
@@ -13,7 +14,7 @@ interface NoteDatabaseDao {
     suspend fun update(note: Note)
 
     @Query("SELECT * from note_table WHERE id = :key")
-    suspend fun get(key: Long): Note?
+    fun get(key: Long): Flow<Note>
 
     @Query("DELETE FROM note_table")
     suspend fun clear()

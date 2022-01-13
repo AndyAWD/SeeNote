@@ -14,10 +14,10 @@ fun TextView.setChangeCreateTime(item: Note) {
 
 @BindingAdapter("changeTitle")
 fun TextView.setChangeTitle(item: Note) {
-    text = "${item.title}_我額外加的標題"
+    text = "${item.title}"
 }
 
 @BindingAdapter("changeContent")
 fun TextView.setChangeContent(item: Note) {
-    text = "${item.content}_我額外加的內容"
+    text = "${item.content}"
 }
