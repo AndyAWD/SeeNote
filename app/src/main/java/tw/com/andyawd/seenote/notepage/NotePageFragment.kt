@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import tw.com.andyawd.andyawdlibrary.AWDLog
+import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.NoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentNotePageBinding
@@ -54,12 +55,11 @@ class NotePageFragment : Fragment() {
             adapter.addHeaderAndSubmitList(it)
         })
 
-        notePageViewModel.notePageDetail.observe(viewLifecycleOwner, Observer { note ->
-            AWDLog.d("note: $note")
-            note?.let {
+        notePageViewModel.notePageDetail.observe(viewLifecycleOwner, Observer { noteId ->
+            noteId?.let {
                 findNavController().navigate(
                     NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
-                        note
+                        noteId
                     )
                 )
                 notePageViewModel.onNotePageNavigated()
@@ -69,7 +69,7 @@ class NotePageFragment : Fragment() {
         binding.fnpMbWriteNote.setOnClickListener {
             findNavController().navigate(
                 NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
-                    0
+                    BaseConstants.CREATE_NOTE
                 )
             )
         }

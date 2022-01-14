@@ -2,19 +2,18 @@ package tw.com.andyawd.seenote.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDatabaseDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(note: Note)
+    suspend fun insert(note: Note): Long
 
     @Update
     suspend fun update(note: Note)
 
     @Query("SELECT * from note_table WHERE id = :key")
-    fun get(key: Long): Flow<Note>
+    suspend fun get(key: Long): Note
 
     @Query("DELETE FROM note_table")
     suspend fun clear()
