@@ -68,6 +68,28 @@ class WriteNoteFragment : Fragment() {
         binding.fwnAcetNoteContent.addTextChangedListener {
             updateItem()
         }
+
+        binding.fwnMtBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.tmITop -> {
+                    binding.fwnAcetNoteContent.setSelection(0)
+                    true
+                }
+                R.id.tmIBottom -> {
+                    binding.fwnAcetNoteContent.setSelection(
+                        binding.fwnAcetNoteContent.text?.length ?: 0
+                    )
+                    true
+                }
+                R.id.tmIDelete -> {
+                    true
+                }
+                R.id.tmIUpload -> {
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun updateItem() {

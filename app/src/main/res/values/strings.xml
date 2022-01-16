@@ -7,4 +7,8 @@
     <string name="content">內容</string>
     <string name="no_title">無標題</string>
     <string name="no_content">無內容</string>
+    <string name="delete">刪除</string>
+    <string name="move_top">移到第一行</string>
+    <string name="move_bottom">移到最後一行</string>
+    <string name="upload">上傳</string>
 </resources>
