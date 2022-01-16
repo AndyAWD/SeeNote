@@ -56,24 +56,24 @@ class WriteNoteFragment : Fragment() {
 
         writeNoteViewModel.note.observe(viewLifecycleOwner, Observer { note ->
             note?.let {
-                binding.fwnTietNoteTitle.setText(note.title)
-                binding.fwnTietNoteContent.setText(note.content)
+                binding.fwnAcetNoteTitle.setText(note.title)
+                binding.fwnAcetNoteContent.setText(note.content)
             }
         })
 
-        binding.fwnTietNoteTitle.addTextChangedListener {
+        binding.fwnAcetNoteTitle.addTextChangedListener {
             updateItem()
         }
 
-        binding.fwnTietNoteContent.addTextChangedListener {
+        binding.fwnAcetNoteContent.addTextChangedListener {
             updateItem()
         }
     }
 
     private fun updateItem() {
         writeNoteViewModel.updateNote(
-            binding.fwnTietNoteTitle.text.toString(),
-            binding.fwnTietNoteContent.text.toString()
+            binding.fwnAcetNoteTitle.text.toString(),
+            binding.fwnAcetNoteContent.text.toString()
         )
     }
 
