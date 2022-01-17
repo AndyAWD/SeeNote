@@ -47,4 +47,12 @@ class WriteNoteViewModel(
             }
         }
     }
+
+    fun deleteNote() {
+        viewModelScope.launch {
+            _note.value?.let {
+                database.delete(it)
+            }
+        }
+    }
 }

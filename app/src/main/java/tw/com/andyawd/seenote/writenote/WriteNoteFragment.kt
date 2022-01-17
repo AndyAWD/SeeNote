@@ -50,8 +50,7 @@ class WriteNoteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fwnMtBar.setNavigationOnClickListener {
-            val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToNotePageFragment()
-            findNavController().navigate(action)
+            goBackNotePage()
         }
 
         writeNoteViewModel.note.observe(viewLifecycleOwner, Observer { note ->
@@ -82,6 +81,8 @@ class WriteNoteFragment : Fragment() {
                     true
                 }
                 R.id.tmIDelete -> {
+                    writeNoteViewModel.deleteNote()
+                    goBackNotePage()
                     true
                 }
                 R.id.tmIUpload -> {
@@ -90,6 +91,11 @@ class WriteNoteFragment : Fragment() {
                 else -> false
             }
         }
+    }
+
+    private fun goBackNotePage() {
+        val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToNotePageFragment()
+        findNavController().navigate(action)
     }
 
     private fun updateItem() {
