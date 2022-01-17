@@ -57,13 +57,6 @@ class WriteNoteFragment : Fragment() {
             goBackNotePage()
         }
 
-        writeNoteViewModel.note.observe(viewLifecycleOwner, Observer { note ->
-            note?.let {
-                binding.fwnAcetNoteTitle.setText(note.title)
-                binding.fwnAcetNoteContent.setText(note.content)
-            }
-        })
-
         binding.fwnAcetNoteTitle.addTextChangedListener {
             updateItem()
         }
