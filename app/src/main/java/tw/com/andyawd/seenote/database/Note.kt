@@ -11,10 +11,10 @@ data class Note(
     var id: Long = 0L,
 
     @ColumnInfo(name = BaseConstants.TITLE)
-    var title: String = "這是標題你懂的",
+    var title: String = BaseConstants.EMPTY_STRING,
 
     @ColumnInfo(name = BaseConstants.CONTENT)
-    var content: String = "這是內容你懂的",
+    var content: String = BaseConstants.EMPTY_STRING,
 
     @ColumnInfo(name = BaseConstants.CREATE_TIME)
     var createTime: Long = System.currentTimeMillis(),

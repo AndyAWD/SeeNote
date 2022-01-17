@@ -8,5 +8,6 @@ class BaseConstants {
         const val CONTENT = "content"
         const val CREATE_TIME = "create_time"
         const val CREATE_NOTE = -1L
+        const val EMPTY_STRING = ""
     }
 }
