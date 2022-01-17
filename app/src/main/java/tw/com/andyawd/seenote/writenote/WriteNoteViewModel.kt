@@ -42,7 +42,7 @@ class WriteNoteViewModel(
     fun updateNote(title: String, content: String) {
         viewModelScope.launch {
             _note.value?.let {
-                val updateNote = Note(it.id, title, content)
+                val updateNote = it.copy(title = title, content = content)
                 database.update(updateNote)
             }
         }
