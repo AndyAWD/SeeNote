@@ -58,11 +58,11 @@ class WriteNoteFragment : Fragment() {
         }
 
         binding.fwnAcetNoteTitle.addTextChangedListener {
-            updateItem()
+            updateTitle()
         }
 
         binding.fwnAcetNoteContent.addTextChangedListener {
-            updateItem()
+            updateContent()
         }
 
         binding.fwnMtBar.setOnMenuItemClickListener { menuItem ->
@@ -95,11 +95,12 @@ class WriteNoteFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    private fun updateItem() {
-        writeNoteViewModel.updateNote(
-            binding.fwnAcetNoteTitle.text.toString(),
-            binding.fwnAcetNoteContent.text.toString()
-        )
+    private fun updateTitle() {
+        writeNoteViewModel.updateNoteTitle(binding.fwnAcetNoteTitle.text.toString())
+    }
+
+    private fun updateContent() {
+        writeNoteViewModel.updateNoteContent(binding.fwnAcetNoteContent.text.toString())
     }
 
     companion object {
