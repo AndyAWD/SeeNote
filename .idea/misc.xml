@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/layout/fragment_setting_note.xml" value="0.19635416666666666" />
         <entry key="app/src/main/res/layout/fragment_write_note.xml" value="0.19635416666666666" />
         <entry key="app/src/main/res/layout/viewholder_note_page.xml" value="0.15715579710144928" />
+        <entry key="app/src/main/res/menu/toolbar_setting_note.xml" value="0.19635416666666666" />
       </map>
     </option>
   </component>
