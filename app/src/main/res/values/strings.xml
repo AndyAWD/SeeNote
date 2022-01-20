@@ -5,4 +5,9 @@
     <string name="write_something">寫點什麼</string>
     <string name="title">標題</string>
     <string name="setting">設定</string>
+    <string name="setting_note_page">設定清單頁面</string>
+    <string name="setting_write_note">設定編輯頁面</string>
+    <string name="preview_title">預覽標題</string>
+    <string name="preview_content">預覽內容</string>
+    <string name="preview_time">2022/5/29 12:34</string>
 </resources>
