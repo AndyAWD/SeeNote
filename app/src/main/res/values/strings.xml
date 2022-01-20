@@ -11,4 +11,5 @@
     <string name="move_top">移到第一行</string>
     <string name="move_bottom">移到最後一行</string>
     <string name="upload">上傳</string>
+    <string name="setting">設定</string>
 </resources>
