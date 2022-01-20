@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,16 +15,13 @@ import tw.com.andyawd.seenote.databinding.FragmentSettingNoteBinding
 class SettingNoteFragment : Fragment() {
 
     private lateinit var viewModel: SettingNoteViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var binding: FragmentSettingNoteBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: FragmentSettingNoteBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_setting_note,
             container,
@@ -34,16 +32,24 @@ class SettingNoteFragment : Fragment() {
         binding.settingNoteViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.fenMtToolBar.setOnClickListener {
-            val action = SettingNoteFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
-            findNavController().navigate(action)
-        }
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback {
+            goBackNotePage()
+        }
+
+        binding.fenMtToolBar.setOnClickListener {
+            goBackNotePage()
+        }
+    }
+
+    private fun goBackNotePage() {
+        val action = SettingNoteFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
+        findNavController().navigate(action)
     }
 
     companion object {
