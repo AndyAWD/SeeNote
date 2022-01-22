@@ -50,7 +50,7 @@ class WriteNoteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         requireActivity().onBackPressedDispatcher.addCallback {
-            goBackNotePage()
+
         }
 
         binding.fwnMtBar.setNavigationOnClickListener {
