@@ -20,6 +20,10 @@ class WriteNoteViewModel(
     val note: LiveData<Note?>
         get() = _note
 
+    private var _isDatabaseDeleted = MutableLiveData<Boolean?>()
+    val isDatabaseDeleted: LiveData<Boolean?>
+        get() = _isDatabaseDeleted
+
     init {
         initNote()
     }
@@ -67,6 +71,7 @@ class WriteNoteViewModel(
         viewModelScope.launch {
             _note.value?.let {
                 database.delete(it)
+                _isDatabaseDeleted.value = true
             }
         }
     }

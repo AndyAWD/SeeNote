@@ -79,7 +79,6 @@ class WriteNoteFragment : Fragment() {
                 }
                 R.id.tmIDelete -> {
                     writeNoteViewModel.deleteNote()
-                    goBackNotePage()
                     true
                 }
                 R.id.tmIUpload -> {
@@ -88,6 +87,14 @@ class WriteNoteFragment : Fragment() {
                 else -> false
             }
         }
+
+        writeNoteViewModel.isDatabaseDeleted.observe(viewLifecycleOwner, { isDatabaseDeleted ->
+            isDatabaseDeleted?.let {
+                if (it) {
+                    goBackNotePage()
+                }
+            }
+        })
     }
 
     private fun goBackNotePage() {
