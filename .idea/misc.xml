@@ -16,6 +16,7 @@
         <entry key="..\:/AndroidProject/SeeNote/app/src/main/res/menu/write_note_toolbar_menu.xml" value="0.4041025641025641" />
         <entry key="..\:/AndroidProject/SeeNote/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4265625" />
         <entry key="..\:/AndroidProject/SeeNote/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.4265625" />
+        <entry key="app/src/main/res/drawable/oval_ff6599_size20.xml" value="0.2125" />
         <entry key="app/src/main/res/layout/fragment_note_page.xml" value="0.19635416666666666" />
         <entry key="app/src/main/res/layout/fragment_setting_note.xml" value="0.2762536584609809" />
         <entry key="app/src/main/res/layout/fragment_write_note.xml" value="0.19635416666666666" />
