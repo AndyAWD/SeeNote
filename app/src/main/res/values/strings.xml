@@ -17,4 +17,6 @@
     <string name="preview_title">預覽標題</string>
     <string name="preview_content">預覽內容</string>
     <string name="preview_time">2022/5/29 12:34</string>
+    <string name="sponsor_see_note">贊助看見筆記</string>
+    <string name="setting_note_text_size">設定頁面文字大小：%1$s</string>
 </resources>

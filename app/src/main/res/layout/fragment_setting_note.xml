@@ -22,80 +22,102 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:menu="@menu/toolbar_setting_note"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24"></com.google.android.material.appbar.MaterialToolbar>
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fenClNotePage"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/fenClWriteNote"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fenMtToolBar"
-            app:layout_constraintVertical_weight="2">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/fenMtvTitle"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="@dimen/magic_8dp"
-                android:layout_marginEnd="@dimen/magic_8dp"
-                android:text="@string/preview_title"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintBottom_toTopOf="@+id/fenMtvContent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/fenMtvContent"
-                android:layout_width="0dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="@dimen/magic_8dp"
-                android:layout_marginEnd="@dimen/magic_8dp"
-                android:ellipsize="end"
-                android:gravity="center_vertical|start"
-                android:lines="1"
-                android:text="@string/preview_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/fenMtvCreateTime"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fenMtvTitle" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/fenMtvCreateTime"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="@dimen/magic_8dp"
-                android:layout_marginEnd="@dimen/magic_8dp"
-                android:gravity="center_vertical|end"
-                android:text="@string/preview_time"
-                app:layout_constraintBottom_toBottomOf="@+id/fenMtvContent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/fenMtvContent"
-                app:layout_constraintTop_toBottomOf="@+id/fenMtvTitle" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/magic_1dp"
-                android:background="@color/hexColor002_Gray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fenMtvContent"
-                app:layout_constraintVertical_bias="0.0" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fenClWriteNote"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fenClNotePage"
-            app:layout_constraintVertical_weight="3" />
+            app:layout_constraintTop_toBottomOf="@+id/fenMtToolBar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fsnMtvTextSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/setting_note_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/fsnAcsbTextSize"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@+id/fsnAcsbTextSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/magic_8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:max="100"
+                    android:progress="0"
+                    app:layout_constraintBottom_toTopOf="@+id/fsnMbSettingNotePage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvTextSize"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fsnMbSettingNotePage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="@dimen/magic_8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/setting_note_page"
+                    app:icon="@drawable/ic_baseline_view_list_24"
+                    app:layout_constraintBottom_toTopOf="@+id/fsnMbSettingWriteNote"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnAcsbTextSize" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fsnMbSettingWriteNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/magic_8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="@dimen/magic_8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/setting_write_note"
+                    app:icon="@drawable/ic_baseline_note_24"
+                    app:layout_constraintBottom_toTopOf="@+id/fsnMbSponsorSeeNote"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMbSettingNotePage" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fsnMbSponsorSeeNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/magic_8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="@dimen/magic_8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/sponsor_see_note"
+                    app:icon="@drawable/ic_baseline_attach_money_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMbSettingWriteNote" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
