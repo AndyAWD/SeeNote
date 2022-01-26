@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="SettingNoteViewModel"
+            name="viewModel"
             type="tw.com.andyawd.seenote.settingnote.SettingNoteViewModel" />
     </data>
 
@@ -42,13 +43,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/setting_note_text_size"
+                    android:text="@{@string/setting_note_text_size(viewModel.buttonSize)}"
                     app:layout_constraintBottom_toTopOf="@+id/fsnAcsbTextSize"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0"
-                    app:layout_constraintVertical_chainStyle="packed" />
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="@string/setting_note_text_size" />
 
                 <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/fsnAcsbTextSize"
@@ -58,9 +60,8 @@
                     android:layout_marginTop="@dimen/magic_8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:max="100"
+                    android:max="400"
                     android:padding="@dimen/magic_8dp"
-                    android:progress="0"
                     android:thumb="@drawable/square_b22222_size40"
                     app:layout_constraintBottom_toTopOf="@+id/fsnMbSettingNotePage"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -80,6 +81,7 @@
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:text="@string/setting_note_page"
+                    android:textSize="@{viewModel.buttonSize}"
                     app:icon="@drawable/ic_baseline_view_list_24"
                     app:layout_constraintBottom_toTopOf="@+id/fsnMbSettingWriteNote"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -97,6 +99,7 @@
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:text="@string/setting_write_note"
+                    android:textSize="@{viewModel.buttonSize}"
                     app:icon="@drawable/ic_baseline_note_24"
                     app:layout_constraintBottom_toTopOf="@+id/fsnMbSponsorSeeNote"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -114,6 +117,7 @@
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:text="@string/sponsor_see_note"
+                    android:textSize="@{viewModel.buttonSize}"
                     app:icon="@drawable/ic_baseline_attach_money_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

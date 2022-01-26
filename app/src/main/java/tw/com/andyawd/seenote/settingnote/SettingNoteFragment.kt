@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import tw.com.andyawd.seenote.databinding.FragmentSettingNoteBinding
 class SettingNoteFragment : Fragment() {
 
     private lateinit var viewModel: SettingNoteViewModel
+    private lateinit var viewModelFactory: SettingNoteViewModelFactory
     private lateinit var binding: FragmentSettingNoteBinding
 
     override fun onCreateView(
@@ -28,8 +30,10 @@ class SettingNoteFragment : Fragment() {
             false
         )
 
-        viewModel = ViewModelProvider(this)[(SettingNoteViewModel::class.java)]
-        binding.settingNoteViewModel = viewModel
+        viewModelFactory = SettingNoteViewModelFactory()
+        viewModel = ViewModelProvider(this, viewModelFactory)[SettingNoteViewModel::class.java]
+
+        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
@@ -44,6 +48,29 @@ class SettingNoteFragment : Fragment() {
 
         binding.fenMtToolBar.setOnClickListener {
             goBackNotePage()
+        }
+
+        binding.fsnAcsbTextSize.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                viewModel.changeTextSize(progress.toFloat())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+        })
+
+        viewModel.buttonSize.observe(viewLifecycleOwner) { size ->
+            binding.fsnAcsbTextSize.progress = size.toInt()
+            binding.fsnMbSettingNotePage.iconSize = size.toInt()
+            binding.fsnMbSettingWriteNote.iconSize = size.toInt()
+            binding.fsnMbSponsorSeeNote.iconSize = size.toInt()
         }
     }
 
