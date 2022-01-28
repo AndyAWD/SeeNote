@@ -7,24 +7,28 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import tw.com.andyawd.seenote.database.NoteDatabase
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
+import tw.com.andyawd.seenote.database.SeeNoteDatabase
+import tw.com.andyawd.seenote.database.SettingDatabaseDao
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
 class NoteDatabaseTest {
 
     private lateinit var noteDao: NoteDatabaseDao
-    private lateinit var db: NoteDatabase
+    private lateinit var settingDao: SettingDatabaseDao
+    private lateinit var db: SeeNoteDatabase
 
     @Before
     fun createDb() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-        db = Room.inMemoryDatabaseBuilder(context, NoteDatabase::class.java)
+        db = Room.inMemoryDatabaseBuilder(context, SeeNoteDatabase::class.java)
             .allowMainThreadQueries()
             .build()
         noteDao = db.noteDatabaseDao
+        settingDao = db.settingDatabaseDao
+
     }
 
     @After
@@ -35,10 +39,19 @@ class NoteDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertAndGetFirst() {
+    fun noteInsertAndGetFirst() {
 //        val note = Note()
 //        noteDao.insert(note)
 //        val newNote = noteDao.getFirst()
 //        assertEquals(newNote?.title, "")
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun settingInsertAndGetFirst() {
+//        val setting = Setting()
+//        settingDao.insert(setting)
+//        val newSetting = settingDao.getFirst()
+//        assertEquals(newSetting?.pageContentBackgroundColor, "")
     }
 }

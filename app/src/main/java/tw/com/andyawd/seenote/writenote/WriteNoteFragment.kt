@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import tw.com.andyawd.seenote.R
-import tw.com.andyawd.seenote.database.NoteDatabase
+import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentWriteNoteBinding
 
 class WriteNoteFragment : Fragment() {
@@ -34,7 +34,7 @@ class WriteNoteFragment : Fragment() {
             false
         )
         val application = requireNotNull(this.activity).application
-        val dataSource = NoteDatabase.getInstance(application).noteDatabaseDao
+        val dataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
         val viewModelFactory =
             WriteNoteViewModelFactory(dataSource, application, args.notePageKey)
         writeNoteViewModel =

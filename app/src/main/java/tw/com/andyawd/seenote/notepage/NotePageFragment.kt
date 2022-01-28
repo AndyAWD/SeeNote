@@ -13,18 +13,22 @@ import androidx.recyclerview.widget.GridLayoutManager
 import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
-import tw.com.andyawd.seenote.database.NoteDatabase
+import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentNotePageBinding
 
 
 class NotePageFragment : Fragment() {
+
+    private lateinit var viewModel: NotePageViewModel
+    private lateinit var viewModelFactory: NotePageViewModelFactory
+    private lateinit var binding: FragmentNotePageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        val binding: FragmentNotePageBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_note_page,
             container,
@@ -32,13 +36,13 @@ class NotePageFragment : Fragment() {
         )
 
         val application = requireNotNull(this.activity).application
-        val dataSource = NoteDatabase.getInstance(application).noteDatabaseDao
+        val noteDataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
+        val settingDataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
 
-        val viewModelFactory = NotePageViewModelFactory(dataSource, application)
-        val notePageViewModel =
-            ViewModelProvider(this, viewModelFactory)[NotePageViewModel::class.java]
+        viewModelFactory = NotePageViewModelFactory(noteDataSource, settingDataSource, application)
+        viewModel = ViewModelProvider(this, viewModelFactory)[NotePageViewModel::class.java]
 
-        binding.notePageViewModel = notePageViewModel
+        binding.notePageViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         val adapter = NotePageAdapter()
@@ -47,22 +51,22 @@ class NotePageFragment : Fragment() {
 
         adapter.setOnItemClickListener(NotePageListener { id ->
             AWDLog.d("新的資料庫id: $id")
-            notePageViewModel.onItemClicked(id)
+            viewModel.onItemClicked(id)
         })
 
-        notePageViewModel.note.observe(viewLifecycleOwner, Observer {
+        viewModel.note.observe(viewLifecycleOwner, Observer {
             //adapter.submitList(it)
             adapter.addHeaderAndSubmitList(it)
         })
 
-        notePageViewModel.notePageDetail.observe(viewLifecycleOwner, Observer { noteId ->
+        viewModel.notePageDetail.observe(viewLifecycleOwner, Observer { noteId ->
             noteId?.let {
                 findNavController().navigate(
                     NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
                         noteId
                     )
                 )
-                notePageViewModel.onNotePageNavigated()
+                viewModel.onNotePageNavigated()
             }
         })
 
@@ -85,6 +89,11 @@ class NotePageFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.loadSetting()
     }
 
     companion object {

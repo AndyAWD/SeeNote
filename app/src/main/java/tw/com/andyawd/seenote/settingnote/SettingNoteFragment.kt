@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import tw.com.andyawd.seenote.R
+import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingNoteBinding
 
 class SettingNoteFragment : Fragment() {
@@ -30,7 +31,9 @@ class SettingNoteFragment : Fragment() {
             false
         )
 
-        viewModelFactory = SettingNoteViewModelFactory()
+        val application = requireNotNull(this.activity).application
+        val dataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
+        viewModelFactory = SettingNoteViewModelFactory(dataSource)
         viewModel = ViewModelProvider(this, viewModelFactory)[SettingNoteViewModel::class.java]
 
         binding.viewModel = viewModel

@@ -3,7 +3,7 @@ package tw.com.andyawd.seenote
 import android.app.Application
 import tw.com.andyawd.andyawdlibrary.AWDConstants
 import tw.com.andyawd.andyawdlibrary.AWDLog
-import tw.com.andyawd.seenote.database.NoteDatabase
+import tw.com.andyawd.seenote.database.SeeNoteDatabase
 
 class BaseApplication : Application() {
     init {
@@ -22,6 +22,6 @@ class BaseApplication : Application() {
         super.onCreate()
 
         AWDLog.setLogLevel(AWDConstants.LOG_VERBOSE)
-        NoteDatabase.getInstance(this).noteDatabaseDao
+        SeeNoteDatabase.getInstance(this).noteDatabaseDao
     }
 }
