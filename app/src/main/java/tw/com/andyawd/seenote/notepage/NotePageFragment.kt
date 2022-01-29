@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -22,6 +23,7 @@ class NotePageFragment : Fragment() {
     private lateinit var viewModel: NotePageViewModel
     private lateinit var viewModelFactory: NotePageViewModelFactory
     private lateinit var binding: FragmentNotePageBinding
+    private lateinit var adapter: NotePageAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,9 +47,21 @@ class NotePageFragment : Fragment() {
         binding.notePageViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val adapter = NotePageAdapter()
+        adapter = NotePageAdapter()
         binding.fnpRvNoteList.adapter = adapter
         binding.fnpRvNoteList.layoutManager = GridLayoutManager(application, 1)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.loadSetting()
+
+        requireActivity().onBackPressedDispatcher.addCallback {
+
+        }
 
         adapter.setOnItemClickListener(NotePageListener { id ->
             AWDLog.d("新的資料庫id: $id")
@@ -82,18 +96,6 @@ class NotePageFragment : Fragment() {
             val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
             findNavController().navigate(action)
         }
-
-        binding.fnpMbSettingNote.setOnClickListener {
-            val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
-            findNavController().navigate(action)
-        }
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.loadSetting()
     }
 
     companion object {
