@@ -46,17 +46,19 @@ class SettingNoteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         requireActivity().onBackPressedDispatcher.addCallback {
+            viewModel.updateSettingSize()
             goBackNotePage()
         }
 
         binding.fenMtToolBar.setOnClickListener {
+            viewModel.updateSettingSize()
             goBackNotePage()
         }
 
         binding.fsnAcsbTextSize.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                viewModel.changeTextSize(progress.toFloat())
+                viewModel.changeSettingSize(progress.toFloat())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -69,7 +71,7 @@ class SettingNoteFragment : Fragment() {
 
         })
 
-        viewModel.buttonSize.observe(viewLifecycleOwner) { size ->
+        viewModel.size.observe(viewLifecycleOwner) { size ->
             binding.fsnAcsbTextSize.progress = size.toInt()
             binding.fsnMbSettingNotePage.iconSize = size.toInt()
             binding.fsnMbSettingWriteNote.iconSize = size.toInt()
