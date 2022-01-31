@@ -19,6 +19,8 @@ class BaseConstants {
         const val PAGE_CONTENT_TEXT_COLOR = "page_content_text_color"
         const val PAGE_CONTENT_BACKGROUND_COLOR = "page_content_background_color"
         const val PAGE_HORIZONTAL_LINE_COLOR = "page_horizontal_line_color"
+        const val PAGE_CREATE_DATE_TEXT_COLOR = "page_create_date_text_color"
+        const val PAGE_CREATE_DATE_BACKGROUND_COLOR = "page_create_date_background_color"
         const val WRITE_SIZE = "write_size"
         const val WRITE_TITLE_TEXT_COLOR = "write_title_text_color"
         const val WRITE_TITLE_BACKGROUND_COLOR = "write_title_background_color"

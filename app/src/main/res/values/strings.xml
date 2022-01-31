@@ -19,4 +19,11 @@
     <string name="preview_time">2022/5/29 12:34</string>
     <string name="sponsor_see_note">贊助看見筆記</string>
     <string name="setting_note_text_size">設定按鈕大小：%1$s</string>
+    <string name="setting_title_text_color">設定標題文字顏色</string>
+    <string name="setting_title_text_background_color">設定標題文字背景顏色</string>
+    <string name="setting_content_text_color">設定內容文字顏色</string>
+    <string name="setting_content_text_background_color">設定內容文字背景顏色</string>
+    <string name="setting_create_date_text_color">設定建立日期文字顏色</string>
+    <string name="setting_create_date_background_color">設定建立日期文字背景顏色</string>
+    <string name="setting_horizontal_color">設定水平線顏色</string>
 </resources>

@@ -50,9 +50,13 @@ class SettingNoteFragment : Fragment() {
             goBackNotePage()
         }
 
-        binding.fenMtToolBar.setOnClickListener {
+        binding.fenMtToolBar.setNavigationOnClickListener {
             viewModel.updateSettingSize()
             goBackNotePage()
+        }
+
+        binding.fsnMbSettingNotePage.setOnClickListener {
+            settingNotePage()
         }
 
         binding.fsnAcsbTextSize.setOnSeekBarChangeListener(object :
@@ -81,6 +85,12 @@ class SettingNoteFragment : Fragment() {
 
     private fun goBackNotePage() {
         val action = SettingNoteFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun settingNotePage() {
+        val action =
+            SettingNoteFragmentDirections.actionSettingNoteFragmentToSettingNotePageFragment()
         findNavController().navigate(action)
     }
 

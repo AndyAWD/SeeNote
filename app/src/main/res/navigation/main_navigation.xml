@@ -99,7 +99,7 @@
             android:id="@+id/action_selectColorFragment_to_settingWriteNoteFragment"
             app:destination="@id/settingWriteNoteFragment" />
         <argument
-            android:name="settingFrom"
+            android:name="setting"
             app:argType="string" />
     </fragment>
 </navigation>
