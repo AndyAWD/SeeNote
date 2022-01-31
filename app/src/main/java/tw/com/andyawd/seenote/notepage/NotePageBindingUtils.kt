@@ -9,24 +9,23 @@ import java.text.DateFormat
 @BindingAdapter("changeCreateTime")
 fun TextView.setChangeCreateTime(item: Note) {
     item.let {
-        text = DateFormat.getInstance().format(item.createTime)
+        text = resources.getString(
+            R.string.edit_date,
+            DateFormat.getInstance().format(item.createTime)
+        )
     }
 }
 
 @BindingAdapter("changeTitle")
 fun TextView.setChangeTitle(item: Note) {
-    text = if (item.title.isNotEmpty()) {
-        item.title
-    } else {
+    text = item.title.ifEmpty {
         resources.getString(R.string.no_title)
     }
 }
 
 @BindingAdapter("changeContent")
 fun TextView.setChangeContent(item: Note) {
-    text = if (item.content.isNotEmpty()) {
-        item.content
-    } else {
+    text = item.content.ifEmpty {
         resources.getString(R.string.no_content)
     }
 }

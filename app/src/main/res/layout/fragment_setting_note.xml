@@ -69,19 +69,32 @@
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fsnMtvHorizontalLineTop"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/magic_1dp"
+                    android:background="@color/hexColor002_Gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnAcsbTextSize"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/fsnMtvTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/magic_8dp"
                     android:layout_marginEnd="@dimen/magic_8dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@string/title_demo"
                     android:textSize="@{viewModel.size}"
                     app:layout_constraintBottom_toTopOf="@+id/fsnMtvContent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnAcsbTextSize"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvHorizontalLineTop"
                     app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintVertical_chainStyle="packed"
-                    tools:text="@tools:sample/full_names" />
+                    app:layout_constraintVertical_chainStyle="packed" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/fsnMtvContent"
@@ -92,37 +105,37 @@
                     android:ellipsize="end"
                     android:gravity="center_vertical|start"
                     android:lines="1"
+                    android:text="@string/content_demo"
                     android:textSize="@{viewModel.size}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/fsnMtvCreateTime"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvTitle"
-                    tools:text="@tools:sample/lorem/random" />
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvTitle" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/fsnMtvCreateTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/magic_8dp"
                     android:layout_marginEnd="@dimen/magic_8dp"
-                    android:gravity="center_vertical|end"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|start"
+                    android:lines="1"
+                    android:text="@string/edit_date_demo"
                     android:textSize="@{viewModel.size}"
-                    app:layout_constraintBottom_toBottomOf="@+id/fsnMtvContent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/fsnMtvContent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvTitle"
-                    tools:text="@tools:sample/date/ddmmyy" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvContent" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnMtvHorizontalLine"
+                    android:id="@+id/fsnMtvHorizontalLineBottom"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/magic_1dp"
                     android:background="@color/hexColor002_Gray"
-                    android:textSize="@{viewModel.size}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvContent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvCreateTime"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <com.google.android.material.button.MaterialButton
@@ -139,7 +152,7 @@
                     android:textSize="@{viewModel.size}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvHorizontalLine" />
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvHorizontalLineBottom" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/fsnMbTitleBackgroundColor"

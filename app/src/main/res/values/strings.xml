@@ -5,6 +5,10 @@
     <string name="write_something">寫點什麼</string>
     <string name="title">標題</string>
     <string name="content">內容</string>
+    <string name="edit_date">%1$s 是最後編輯時間</string>
+    <string name="title_demo">標題預覽</string>
+    <string name="content_demo">內容預覽</string>
+    <string name="edit_date_demo">2022/2/1 12:34 是最後編輯時間</string>
     <string name="no_title">無標題</string>
     <string name="no_content">無內容</string>
     <string name="delete">刪除</string>
