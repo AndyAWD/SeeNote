@@ -8,7 +8,6 @@ import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.databinding.FragmentSettingNotePageBinding
@@ -53,40 +52,40 @@ class SettingNotePageFragment : Fragment() {
             goBackSettingNote()
         }
         binding.fsnpMbTitleTextColor.setOnClickListener {
-            selectColor(BaseConstants.PAGE_TITLE_TEXT_COLOR)
+            selectColor(BaseConstants.TITLE_TEXT_COLOR)
         }
         binding.fsnpMbTitleBackgroundColor.setOnClickListener {
-            selectColor(BaseConstants.PAGE_TITLE_BACKGROUND_COLOR)
+            selectColor(BaseConstants.TITLE_BACKGROUND_COLOR)
         }
         binding.fsnpMbContentTextColor.setOnClickListener {
-            selectColor(BaseConstants.PAGE_CONTENT_TEXT_COLOR)
+            selectColor(BaseConstants.CONTENT_TEXT_COLOR)
         }
         binding.fsnpMbContentBackgroundColor.setOnClickListener {
-            selectColor(BaseConstants.PAGE_CONTENT_BACKGROUND_COLOR)
+            selectColor(BaseConstants.CONTENT_BACKGROUND_COLOR)
         }
         binding.fsnpMbDateTextColor.setOnClickListener {
-            selectColor(BaseConstants.PAGE_CREATE_DATE_TEXT_COLOR)
+            selectColor(BaseConstants.CREATE_DATE_TEXT_COLOR)
         }
         binding.fsnpMbDateBackgroundColor.setOnClickListener {
-            selectColor(BaseConstants.PAGE_CREATE_DATE_BACKGROUND_COLOR)
+            selectColor(BaseConstants.CREATE_DATE_BACKGROUND_COLOR)
         }
         binding.fsnpMbHorizontalLineColor.setOnClickListener {
-            selectColor(BaseConstants.PAGE_HORIZONTAL_LINE_COLOR)
+            selectColor(BaseConstants.HORIZONTAL_LINE_COLOR)
         }
     }
 
     private fun goBackSettingNote() {
-        val action =
-            SettingNotePageFragmentDirections.actionSettingNotePageFragmentToSettingNoteFragment()
-        findNavController().navigate(action)
+//        val action =
+//            SettingNotePageFragmentDirections.actionSettingNotePageFragmentToSettingNoteFragment()
+//        findNavController().navigate(action)
     }
 
     private fun selectColor(setting: String) {
-        val action =
-            SettingNotePageFragmentDirections.actionSettingNotePageFragmentToSelectColorFragment(
-                setting
-            )
-        findNavController().navigate(action)
+//        val action =
+//            SettingNotePageFragmentDirections.actionSettingNotePageFragmentToSelectColorFragment(
+//                setting
+//            )
+//        findNavController().navigate(action)
     }
 
     companion object {

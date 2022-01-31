@@ -49,7 +49,7 @@ class SelectColorFragment : Fragment() {
 
     private fun goBackSettingNote() {
         val action =
-            SelectColorFragmentDirections.actionSelectColorFragmentToSettingNotePageFragment()
+            SelectColorFragmentDirections.actionSelectColorFragmentToSettingNoteFragment()
         findNavController().navigate(action)
     }
 

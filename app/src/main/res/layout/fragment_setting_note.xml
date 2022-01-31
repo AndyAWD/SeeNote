@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/fenMtToolBar"
+            android:id="@+id/fsnMtToolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fenMtToolBar">
+            app:layout_constraintTop_toBottomOf="@+id/fsnMtToolBar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -44,7 +44,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@{@string/setting_note_text_size(viewModel.size)}"
-                    app:layout_constraintBottom_toTopOf="@+id/fsnAcsbTextSize"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -63,66 +62,176 @@
                     android:max="400"
                     android:padding="@dimen/magic_8dp"
                     android:thumb="@drawable/square_b22222_size40"
-                    app:layout_constraintBottom_toTopOf="@+id/fsnMbSettingNotePage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMtvTextSize"
                     app:layout_constraintVertical_bias="0"
                     app:layout_constraintVertical_chainStyle="packed" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbSettingNotePage"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fsnMtvTitle"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_note_page"
+                    android:layout_marginStart="@dimen/magic_8dp"
+                    android:layout_marginEnd="@dimen/magic_8dp"
                     android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_view_list_24"
-                    app:layout_constraintBottom_toTopOf="@+id/fsnMbSettingWriteNote"
+                    app:layout_constraintBottom_toTopOf="@+id/fsnMtvContent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnAcsbTextSize" />
+                    app:layout_constraintTop_toBottomOf="@+id/fsnAcsbTextSize"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="@tools:sample/full_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fsnMtvContent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/magic_8dp"
+                    android:layout_marginEnd="@dimen/magic_8dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|start"
+                    android:lines="1"
+                    android:textSize="@{viewModel.size}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/fsnMtvCreateTime"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvTitle"
+                    tools:text="@tools:sample/lorem/random" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fsnMtvCreateTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/magic_8dp"
+                    android:layout_marginEnd="@dimen/magic_8dp"
+                    android:gravity="center_vertical|end"
+                    android:textSize="@{viewModel.size}"
+                    app:layout_constraintBottom_toBottomOf="@+id/fsnMtvContent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/fsnMtvContent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvTitle"
+                    tools:text="@tools:sample/date/ddmmyy" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fsnMtvHorizontalLine"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/magic_1dp"
+                    android:background="@color/hexColor002_Gray"
+                    android:textSize="@{viewModel.size}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvContent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbSettingWriteNote"
-                    android:layout_width="match_parent"
+                    android:id="@+id/fsnMbTitleTextColor"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="@dimen/magic_8dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="@dimen/magic_8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="@dimen/magic_8dp"
                     android:layout_marginBottom="@dimen/magic_8dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    android:text="@string/setting_write_note"
+                    android:text="@string/setting_title_text_color"
                     android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_note_24"
-                    app:layout_constraintBottom_toTopOf="@+id/fsnMbSponsorSeeNote"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMbSettingNotePage" />
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvHorizontalLine" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fsnMbTitleBackgroundColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/magic_8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/setting_title_text_background_color"
+                    android:textSize="@{viewModel.size}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMbTitleTextColor" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fsnMbContentTextColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/magic_8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/setting_content_text_color"
+                    android:textSize="@{viewModel.size}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMbTitleBackgroundColor" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fsnMbContentBackgroundColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/magic_8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/setting_content_text_background_color"
+                    android:textSize="@{viewModel.size}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMbContentTextColor" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fsnMbCreateDateTextColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/magic_8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/setting_create_date_text_color"
+                    android:textSize="@{viewModel.size}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMbContentBackgroundColor" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fsnMbCreateDateBackgroundColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/magic_8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/setting_create_date_background_color"
+                    android:textSize="@{viewModel.size}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMbCreateDateTextColor" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fsnMbHorizontalLineColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/magic_8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/setting_horizontal_color"
+                    android:textSize="@{viewModel.size}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMbCreateDateBackgroundColor" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/fsnMbSponsorSeeNote"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="@dimen/magic_8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="@dimen/magic_8dp"
+                    android:layout_margin="@dimen/magic_8dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:text="@string/sponsor_see_note"
                     android:textSize="@{viewModel.size}"
                     app:icon="@drawable/ic_baseline_attach_money_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMbSettingWriteNote" />
+                    app:layout_constraintTop_toBottomOf="@+id/fsnMbHorizontalLineColor" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

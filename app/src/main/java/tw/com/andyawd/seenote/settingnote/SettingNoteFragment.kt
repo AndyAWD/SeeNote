@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingNoteBinding
@@ -45,18 +46,20 @@ class SettingNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initObserve()
+        initListener(binding)
+        initClickListener(binding)
+    }
+
+    private fun initListener(binding: FragmentSettingNoteBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {
             viewModel.updateSettingSize()
             goBackNotePage()
         }
 
-        binding.fenMtToolBar.setNavigationOnClickListener {
+        binding.fsnMtToolBar.setNavigationOnClickListener {
             viewModel.updateSettingSize()
             goBackNotePage()
-        }
-
-        binding.fsnMbSettingNotePage.setOnClickListener {
-            settingNotePage()
         }
 
         binding.fsnAcsbTextSize.setOnSeekBarChangeListener(object :
@@ -72,25 +75,54 @@ class SettingNoteFragment : Fragment() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
 
             }
-
         })
+    }
 
+    private fun initObserve() {
         viewModel.size.observe(viewLifecycleOwner) { size ->
             binding.fsnAcsbTextSize.progress = size.toInt()
-            binding.fsnMbSettingNotePage.iconSize = size.toInt()
-            binding.fsnMbSettingWriteNote.iconSize = size.toInt()
             binding.fsnMbSponsorSeeNote.iconSize = size.toInt()
         }
     }
 
-    private fun goBackNotePage() {
-        val action = SettingNoteFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
+    private fun initClickListener(binding: FragmentSettingNoteBinding) {
+        binding.fsnMbTitleTextColor.setOnClickListener {
+            selectColor(BaseConstants.TITLE_TEXT_COLOR)
+        }
+
+        binding.fsnMbTitleBackgroundColor.setOnClickListener {
+            selectColor(BaseConstants.TITLE_BACKGROUND_COLOR)
+        }
+
+        binding.fsnMbContentTextColor.setOnClickListener {
+            selectColor(BaseConstants.CONTENT_TEXT_COLOR)
+        }
+
+        binding.fsnMbContentBackgroundColor.setOnClickListener {
+            selectColor(BaseConstants.CONTENT_BACKGROUND_COLOR)
+        }
+
+        binding.fsnMbCreateDateTextColor.setOnClickListener {
+            selectColor(BaseConstants.CREATE_DATE_TEXT_COLOR)
+        }
+
+        binding.fsnMbCreateDateBackgroundColor.setOnClickListener {
+            selectColor(BaseConstants.CREATE_DATE_BACKGROUND_COLOR)
+        }
+
+        binding.fsnMbHorizontalLineColor.setOnClickListener {
+            selectColor(BaseConstants.HORIZONTAL_LINE_COLOR)
+        }
+    }
+
+    private fun selectColor(setting: String) {
+        val action =
+            SettingNoteFragmentDirections.actionSettingNoteFragmentToSelectColorFragment(setting)
         findNavController().navigate(action)
     }
 
-    private fun settingNotePage() {
-        val action =
-            SettingNoteFragmentDirections.actionSettingNoteFragmentToSettingNotePageFragment()
+    private fun goBackNotePage() {
+        val action = SettingNoteFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
         findNavController().navigate(action)
     }
 

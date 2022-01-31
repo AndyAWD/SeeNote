@@ -13,42 +13,42 @@ data class Setting(
     @ColumnInfo(name = BaseConstants.SETTING_SIZE)
     var settingSize: Float = 80F,
 
-    @ColumnInfo(name = BaseConstants.SETTING_TEXT_COLOR)
-    var settingTextColor: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.SETTING_BACKGROUND_COLOR)
-    var settingBackgroundColor: String = BaseConstants.EMPTY_STRING,
-
     @ColumnInfo(name = BaseConstants.PAGE_SIZE)
     var pageSize: Float = 80F,
-
-    @ColumnInfo(name = BaseConstants.PAGE_TITLE_TEXT_COLOR)
-    var pageTitleTextColor: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.PAGE_TITLE_BACKGROUND_COLOR)
-    var pageTitleBackgroundColor: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.PAGE_CONTENT_TEXT_COLOR)
-    var pageContentTextColor: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.PAGE_CONTENT_BACKGROUND_COLOR)
-    var pageContentBackgroundColor: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.PAGE_HORIZONTAL_LINE_COLOR)
-    var pageHorizontalLineColor: String = BaseConstants.EMPTY_STRING,
 
     @ColumnInfo(name = BaseConstants.WRITE_SIZE)
     var writeSize: Float = 80F,
 
-    @ColumnInfo(name = BaseConstants.WRITE_TITLE_TEXT_COLOR)
-    var writeTitleTextColor: String = BaseConstants.EMPTY_STRING,
+    @ColumnInfo(name = BaseConstants.BUTTON_TEXT_COLOR)
+    var buttonTextColor: String = BaseConstants.EMPTY_STRING,
 
-    @ColumnInfo(name = BaseConstants.WRITE_TITLE_BACKGROUND_COLOR)
-    var writeTitleBackgroundColor: String = BaseConstants.EMPTY_STRING,
+    @ColumnInfo(name = BaseConstants.BUTTON_BACKGROUND_COLOR)
+    var buttonBackgroundColor: String = BaseConstants.EMPTY_STRING,
 
-    @ColumnInfo(name = BaseConstants.WRITE_CONTENT_TEXT_COLOR)
-    var writeContentTextColor: String = BaseConstants.EMPTY_STRING,
+    @ColumnInfo(name = BaseConstants.TITLE_TEXT_COLOR)
+    var titleTextColor: String = BaseConstants.EMPTY_STRING,
 
-    @ColumnInfo(name = BaseConstants.WRITE_CONTENT_BACKGROUND_COLOR)
-    var writeContentBackgroundColor: String = BaseConstants.EMPTY_STRING
+    @ColumnInfo(name = BaseConstants.TITLE_BACKGROUND_COLOR)
+    var titleBackgroundColor: String = BaseConstants.EMPTY_STRING,
+
+    @ColumnInfo(name = BaseConstants.CONTENT_TEXT_COLOR)
+    var contentTextColor: String = BaseConstants.EMPTY_STRING,
+
+    @ColumnInfo(name = BaseConstants.CONTENT_BACKGROUND_COLOR)
+    var contentBackgroundColor: String = BaseConstants.EMPTY_STRING,
+
+    @ColumnInfo(name = BaseConstants.CREATE_DATE_TEXT_COLOR)
+    var createDateTextColor: String = BaseConstants.EMPTY_STRING,
+
+    @ColumnInfo(name = BaseConstants.CREATE_DATE_BACKGROUND_COLOR)
+    var createDateBackgroundColor: String = BaseConstants.EMPTY_STRING,
+
+    @ColumnInfo(name = BaseConstants.EDIT_DATE_TEXT_COLOR)
+    var editDateTextColor: String = BaseConstants.EMPTY_STRING,
+
+    @ColumnInfo(name = BaseConstants.EDIT_DATE_BACKGROUND_COLOR)
+    var editDateBackgroundColor: String = BaseConstants.EMPTY_STRING,
+
+    @ColumnInfo(name = BaseConstants.HORIZONTAL_LINE_COLOR)
+    var horizontalLineColor: String = BaseConstants.EMPTY_STRING,
 )
