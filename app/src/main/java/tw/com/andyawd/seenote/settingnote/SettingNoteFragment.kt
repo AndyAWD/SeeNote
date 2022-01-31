@@ -82,6 +82,13 @@ class SettingNoteFragment : Fragment() {
         viewModel.size.observe(viewLifecycleOwner) { size ->
             binding.fsnAcsbTextSize.progress = size.toInt()
             binding.fsnMbSponsorSeeNote.iconSize = size.toInt()
+            binding.fsnMbTitleTextColor.iconSize = size.toInt()
+            binding.fsnMbTitleBackgroundColor.iconSize = size.toInt()
+            binding.fsnMbContentTextColor.iconSize = size.toInt()
+            binding.fsnMbContentBackgroundColor.iconSize = size.toInt()
+            binding.fsnMbCreateDateTextColor.iconSize = size.toInt()
+            binding.fsnMbCreateDateBackgroundColor.iconSize = size.toInt()
+            binding.fsnMbHorizontalLineColor.iconSize = size.toInt()
         }
     }
 

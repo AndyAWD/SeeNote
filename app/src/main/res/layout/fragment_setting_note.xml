@@ -58,7 +58,6 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="@dimen/magic_8dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
                     android:max="400"
                     android:padding="@dimen/magic_8dp"
                     android:thumb="@drawable/square_b22222_size40"
@@ -72,6 +71,7 @@
                     android:id="@+id/fsnMtvHorizontalLineTop"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/magic_1dp"
+                    android:layout_marginTop="16dp"
                     android:background="@color/hexColor002_Gray"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -150,6 +150,7 @@
                     android:insetBottom="0dp"
                     android:text="@string/setting_title_text_color"
                     android:textSize="@{viewModel.size}"
+                    app:icon="@drawable/ic_baseline_title_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMtvHorizontalLineBottom" />
@@ -163,6 +164,7 @@
                     android:insetBottom="0dp"
                     android:text="@string/setting_title_text_background_color"
                     android:textSize="@{viewModel.size}"
+                    app:icon="@drawable/ic_baseline_title_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbTitleTextColor" />
@@ -176,6 +178,7 @@
                     android:insetBottom="0dp"
                     android:text="@string/setting_content_text_color"
                     android:textSize="@{viewModel.size}"
+                    app:icon="@drawable/ic_baseline_short_text_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbTitleBackgroundColor" />
@@ -189,6 +192,7 @@
                     android:insetBottom="0dp"
                     android:text="@string/setting_content_text_background_color"
                     android:textSize="@{viewModel.size}"
+                    app:icon="@drawable/ic_baseline_short_text_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbContentTextColor" />
@@ -202,6 +206,7 @@
                     android:insetBottom="0dp"
                     android:text="@string/setting_create_date_text_color"
                     android:textSize="@{viewModel.size}"
+                    app:icon="@drawable/ic_baseline_date_range_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbContentBackgroundColor" />
@@ -215,6 +220,7 @@
                     android:insetBottom="0dp"
                     android:text="@string/setting_create_date_background_color"
                     android:textSize="@{viewModel.size}"
+                    app:icon="@drawable/ic_baseline_date_range_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbCreateDateTextColor" />
@@ -228,6 +234,7 @@
                     android:insetBottom="0dp"
                     android:text="@string/setting_horizontal_color"
                     android:textSize="@{viewModel.size}"
+                    app:icon="@drawable/ic_baseline_horizontal_rule_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbCreateDateBackgroundColor" />
