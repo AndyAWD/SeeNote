@@ -7,11 +7,11 @@ import tw.com.andyawd.seenote.database.Note
 import java.text.DateFormat
 
 @BindingAdapter("changeCreateTime")
-fun TextView.setChangeCreateTime(item: Note) {
+fun TextView.setChangeEditTime(item: Note) {
     item.let {
         text = resources.getString(
             R.string.edit_date,
-            DateFormat.getInstance().format(item.createDate)
+            DateFormat.getInstance().format(item.editDate)
         )
     }
 }

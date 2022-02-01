@@ -51,7 +51,7 @@ class WriteNoteViewModel(
 
     fun updateNoteTitle(title: String) {
         _note.value?.let {
-            val updatedNote = it.copy(title = title)
+            val updatedNote = it.copy(title = title, editDate = System.currentTimeMillis())
             it.title = title
 
             updateNote(updatedNote)
@@ -60,7 +60,7 @@ class WriteNoteViewModel(
 
     fun updateNoteContent(content: String) {
         _note.value?.let {
-            val updatedNote = it.copy(content = content)
+            val updatedNote = it.copy(content = content, editDate = System.currentTimeMillis())
             it.content = content
 
             updateNote(updatedNote)

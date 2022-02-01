@@ -181,7 +181,7 @@
                     android:layout_margin="@dimen/magic_8dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    android:text="@string/setting_create_date_text_color"
+                    android:text="@string/setting_edit_date_text_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnpMbContentBackgroundColor" />
@@ -193,7 +193,7 @@
                     android:layout_margin="@dimen/magic_8dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    android:text="@string/setting_create_date_background_color"
+                    android:text="@string/setting_edit_date_background_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnpMbDateTextColor" />

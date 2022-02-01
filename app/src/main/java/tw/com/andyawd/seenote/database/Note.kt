@@ -18,4 +18,7 @@ data class Note(
 
     @ColumnInfo(name = BaseConstants.CREATE_DATE)
     var createDate: Long = System.currentTimeMillis(),
+
+    @ColumnInfo(name = BaseConstants.EDIT_DATE)
+    var editDate: Long = System.currentTimeMillis()
 )
