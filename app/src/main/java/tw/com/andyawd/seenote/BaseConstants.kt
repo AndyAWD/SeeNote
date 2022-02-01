@@ -7,7 +7,7 @@ class BaseConstants {
         const val SETTING_TABLE = "setting_table"
         const val TITLE = "title"
         const val CONTENT = "content"
-        const val CREATE_TIME = "create_time"
+        const val CREATE_DATE = "create_date"
         const val CREATE_NOTE = -1L
         const val EMPTY_STRING = ""
         const val SETTING_SIZE = "setting_size"

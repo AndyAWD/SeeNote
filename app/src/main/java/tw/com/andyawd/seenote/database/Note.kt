@@ -16,6 +16,6 @@ data class Note(
     @ColumnInfo(name = BaseConstants.CONTENT)
     var content: String = BaseConstants.EMPTY_STRING,
 
-    @ColumnInfo(name = BaseConstants.CREATE_TIME)
-    var createTime: Long = System.currentTimeMillis(),
+    @ColumnInfo(name = BaseConstants.CREATE_DATE)
+    var createDate: Long = System.currentTimeMillis(),
 )

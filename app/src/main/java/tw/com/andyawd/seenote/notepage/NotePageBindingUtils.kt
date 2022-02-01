@@ -11,7 +11,7 @@ fun TextView.setChangeCreateTime(item: Note) {
     item.let {
         text = resources.getString(
             R.string.edit_date,
-            DateFormat.getInstance().format(item.createTime)
+            DateFormat.getInstance().format(item.createDate)
         )
     }
 }
