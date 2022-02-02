@@ -151,6 +151,7 @@
                     android:text="@string/setting_title_text_color"
                     android:textSize="@{viewModel.size}"
                     app:icon="@drawable/ic_baseline_title_24"
+                    app:iconGravity="top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMtvHorizontalLineBottom" />
@@ -165,6 +166,7 @@
                     android:text="@string/setting_title_text_background_color"
                     android:textSize="@{viewModel.size}"
                     app:icon="@drawable/ic_baseline_title_24"
+                    app:iconGravity="top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbTitleTextColor" />
@@ -179,6 +181,7 @@
                     android:text="@string/setting_content_text_color"
                     android:textSize="@{viewModel.size}"
                     app:icon="@drawable/ic_baseline_short_text_24"
+                    app:iconGravity="top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbTitleBackgroundColor" />
@@ -193,6 +196,7 @@
                     android:text="@string/setting_content_text_background_color"
                     android:textSize="@{viewModel.size}"
                     app:icon="@drawable/ic_baseline_short_text_24"
+                    app:iconGravity="top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbContentTextColor" />
@@ -207,6 +211,7 @@
                     android:text="@string/setting_edit_date_text_color"
                     android:textSize="@{viewModel.size}"
                     app:icon="@drawable/ic_baseline_date_range_24"
+                    app:iconGravity="top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbContentBackgroundColor" />
@@ -221,6 +226,7 @@
                     android:text="@string/setting_edit_date_background_color"
                     android:textSize="@{viewModel.size}"
                     app:icon="@drawable/ic_baseline_date_range_24"
+                    app:iconGravity="top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbCreateDateTextColor" />
@@ -235,6 +241,7 @@
                     android:text="@string/setting_horizontal_color"
                     android:textSize="@{viewModel.size}"
                     app:icon="@drawable/ic_baseline_horizontal_rule_24"
+                    app:iconGravity="top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbCreateDateBackgroundColor" />
@@ -249,6 +256,7 @@
                     android:text="@string/sponsor_see_note"
                     android:textSize="@{viewModel.size}"
                     app:icon="@drawable/ic_baseline_attach_money_24"
+                    app:iconGravity="top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fsnMbHorizontalLineColor" />
