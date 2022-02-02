@@ -25,5 +25,6 @@ class BaseConstants {
         const val EDIT_DATE_TEXT_COLOR = "edit_date_text_color"
         const val EDIT_DATE_BACKGROUND_COLOR = "edit_date_background_color"
         const val WRITE_SIZE = "write_size"
+        const val SELECT_SIZE = "select_size"
     }
 }

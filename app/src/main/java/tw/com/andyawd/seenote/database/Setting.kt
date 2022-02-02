@@ -19,6 +19,9 @@ data class Setting(
     @ColumnInfo(name = BaseConstants.WRITE_SIZE)
     var writeSize: Float = 80F,
 
+    @ColumnInfo(name = BaseConstants.SELECT_SIZE)
+    var selectSize: Float = 80F,
+
     @ColumnInfo(name = BaseConstants.BUTTON_TEXT_COLOR)
     var buttonTextColor: String = BaseConstants.EMPTY_STRING,
 
