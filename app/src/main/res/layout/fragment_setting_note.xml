@@ -25,6 +25,36 @@
             app:layout_constraintVertical_bias="0.0"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fsnMtvTextSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{@string/setting_note_text_size(viewModel.size)}"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fsnMtToolBar"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@string/setting_note_text_size" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/fsnAcsbTextSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="@dimen/magic_8dp"
+            android:layout_marginEnd="16dp"
+            android:max="400"
+            android:padding="@dimen/magic_8dp"
+            android:thumb="@drawable/square_b22222_size40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fsnMtvTextSize"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -32,235 +62,150 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fsnMtToolBar">
+            app:layout_constraintTop_toBottomOf="@+id/fsnAcsbTextSize">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fillViewport="true">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnMtvTextSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@{@string/setting_note_text_size(viewModel.size)}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
-                    app:layout_constraintVertical_chainStyle="packed"
-                    tools:text="@string/setting_note_text_size" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatSeekBar
-                    android:id="@+id/fsnAcsbTextSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="@dimen/magic_8dp"
-                    android:layout_marginEnd="16dp"
-                    android:max="400"
-                    android:padding="@dimen/magic_8dp"
-                    android:thumb="@drawable/square_b22222_size40"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvTextSize"
-                    app:layout_constraintVertical_bias="0"
-                    app:layout_constraintVertical_chainStyle="packed" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fsnMtvHorizontalLineTop"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/magic_1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/hexColor002_Gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnMtvHorizontalLineTop"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/magic_1dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/hexColor002_Gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnAcsbTextSize"
-                    app:layout_constraintVertical_bias="0.0" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fsnMtvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/magic_8dp"
+                        android:layout_marginEnd="@dimen/magic_8dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="@string/title_demo"
+                        android:textSize="@{viewModel.size}" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnMtvTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    android:ellipsize="end"
-                    android:lines="1"
-                    android:text="@string/title_demo"
-                    android:textSize="@{viewModel.size}"
-                    app:layout_constraintBottom_toTopOf="@+id/fsnMtvContent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvHorizontalLineTop"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintVertical_chainStyle="packed" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fsnMtvContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/magic_8dp"
+                        android:layout_marginEnd="@dimen/magic_8dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical|start"
+                        android:lines="1"
+                        android:text="@string/content_demo"
+                        android:textSize="@{viewModel.size}" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnMtvContent"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical|start"
-                    android:lines="1"
-                    android:text="@string/content_demo"
-                    android:textSize="@{viewModel.size}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvTitle" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fsnMtvCreateTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/magic_8dp"
+                        android:layout_marginEnd="@dimen/magic_8dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical|start"
+                        android:lines="1"
+                        android:text="@string/edit_date_demo"
+                        android:textSize="@{viewModel.size}" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnMtvCreateTime"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical|start"
-                    android:lines="1"
-                    android:text="@string/edit_date_demo"
-                    android:textSize="@{viewModel.size}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvContent" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fsnMtvHorizontalLineBottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/magic_1dp"
+                        android:background="@color/hexColor002_Gray" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnMtvHorizontalLineBottom"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/magic_1dp"
-                    android:background="@color/hexColor002_Gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvCreateTime"
-                    app:layout_constraintVertical_bias="0.0" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/fsnMbTitleColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/magic_8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="@dimen/magic_8dp"
+                        android:layout_marginBottom="@dimen/magic_8dp"
+                        android:gravity="center_vertical|start"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:lines="1"
+                        android:text="@string/setting_title_color"
+                        android:textSize="@{viewModel.size}"
+                        app:icon="@drawable/ic_baseline_title_24"
+                        app:iconGravity="start"
+                        app:iconPadding="16dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbTitleTextColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    android:layout_marginBottom="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_title_text_color"
-                    android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_title_24"
-                    app:iconGravity="top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMtvHorizontalLineBottom" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/fsnMbContentColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/magic_8dp"
+                        android:gravity="center_vertical|start"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:lines="1"
+                        android:text="@string/setting_content_text_color"
+                        android:textSize="@{viewModel.size}"
+                        app:icon="@drawable/ic_baseline_short_text_24"
+                        app:iconGravity="start"
+                        app:iconPadding="16dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbTitleBackgroundColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_title_text_background_color"
-                    android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_title_24"
-                    app:iconGravity="top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMbTitleTextColor" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/fsnMbEditDateColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/magic_8dp"
+                        android:gravity="center_vertical|start"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:lines="1"
+                        android:text="@string/setting_edit_date_text_color"
+                        android:textSize="@{viewModel.size}"
+                        app:icon="@drawable/ic_baseline_date_range_24"
+                        app:iconGravity="start"
+                        app:iconPadding="16dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbContentTextColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_content_text_color"
-                    android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_short_text_24"
-                    app:iconGravity="top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMbTitleBackgroundColor" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/fsnMbHorizontalLineColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/magic_8dp"
+                        android:gravity="center_vertical|start"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:lines="1"
+                        android:text="@string/setting_horizontal_color"
+                        android:textSize="@{viewModel.size}"
+                        app:icon="@drawable/ic_baseline_horizontal_rule_24"
+                        app:iconGravity="start"
+                        app:iconPadding="16dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbContentBackgroundColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_content_text_background_color"
-                    android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_short_text_24"
-                    app:iconGravity="top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMbContentTextColor" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbCreateDateTextColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_edit_date_text_color"
-                    android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_date_range_24"
-                    app:iconGravity="top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMbContentBackgroundColor" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbCreateDateBackgroundColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_edit_date_background_color"
-                    android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_date_range_24"
-                    app:iconGravity="top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMbCreateDateTextColor" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbHorizontalLineColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_horizontal_color"
-                    android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_horizontal_rule_24"
-                    app:iconGravity="top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMbCreateDateBackgroundColor" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnMbSponsorSeeNote"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/sponsor_see_note"
-                    android:textSize="@{viewModel.size}"
-                    app:icon="@drawable/ic_baseline_attach_money_24"
-                    app:iconGravity="top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnMbHorizontalLineColor" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/fsnMbSponsorSeeNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/magic_8dp"
+                        android:gravity="center_vertical|start"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:lines="1"
+                        android:text="@string/sponsor_see_note"
+                        android:textSize="@{viewModel.size}"
+                        app:icon="@drawable/ic_baseline_attach_money_24"
+                        app:iconGravity="start"
+                        app:iconPadding="16dp" />
+                </LinearLayout>
+            </HorizontalScrollView>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

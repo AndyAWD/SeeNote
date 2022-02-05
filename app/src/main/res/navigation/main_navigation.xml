@@ -39,8 +39,14 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
         <action
-            android:id="@+id/action_settingNoteFragment_to_selectColorFragment"
-            app:destination="@id/selectColorFragment" />
+            android:id="@+id/action_settingNoteFragment_to_settingNotePageFragment"
+            app:destination="@id/settingNotePageFragment" />
+        <action
+            android:id="@+id/action_settingNoteFragment_to_settingWriteNoteFragment"
+            app:destination="@id/settingWriteNoteFragment" />
+        <action
+            android:id="@+id/action_settingNoteFragment_to_settingEditDateFragment"
+            app:destination="@id/settingEditDateFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectColorFragment"
@@ -51,7 +57,50 @@
             android:name="setting"
             app:argType="string" />
         <action
-            android:id="@+id/action_selectColorFragment_to_settingNoteFragment"
+            android:id="@+id/action_selectColorFragment_to_settingNotePageFragment"
+            app:destination="@id/settingNotePageFragment" />
+        <action
+            android:id="@+id/action_selectColorFragment_to_settingWriteNoteFragment"
+            app:destination="@id/settingWriteNoteFragment" />
+        <action
+            android:id="@+id/action_selectColorFragment_to_settingEditDateFragment"
+            app:destination="@id/settingEditDateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingNotePageFragment"
+        android:name="tw.com.andyawd.seenote.settingnotepage.SettingNotePageFragment"
+        android:label="SettingNotePageFragment">
+        <action
+            android:id="@+id/action_settingNotePageFragment_to_settingNoteFragment"
             app:destination="@id/settingNoteFragment" />
+        <action
+            android:id="@+id/action_settingNotePageFragment_to_selectColorFragment"
+            app:destination="@id/selectColorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingWriteNoteFragment"
+        android:name="tw.com.andyawd.seenote.settingwritenote.SettingWriteNoteFragment"
+        android:label="SettingWriteNoteFragment">
+        <action
+            android:id="@+id/action_settingWriteNoteFragment_to_settingNoteFragment"
+            app:destination="@id/settingNoteFragment" />
+        <action
+            android:id="@+id/action_settingWriteNoteFragment_to_settingNoteFragment2"
+            app:destination="@id/settingNoteFragment" />
+        <action
+            android:id="@+id/action_settingWriteNoteFragment_to_selectColorFragment"
+            app:destination="@id/selectColorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingEditDateFragment"
+        android:name="tw.com.andyawd.seenote.SettingEditDateFragment"
+        android:label="fragment_setting_edit_date"
+        tools:layout="@layout/fragment_setting_edit_date">
+        <action
+            android:id="@+id/action_settingEditDateFragment_to_settingNoteFragment"
+            app:destination="@id/settingNoteFragment" />
+        <action
+            android:id="@+id/action_settingEditDateFragment_to_selectColorFragment"
+            app:destination="@id/selectColorFragment" />
     </fragment>
 </navigation>

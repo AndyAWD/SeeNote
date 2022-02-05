@@ -9,7 +9,6 @@ import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSelectColorBinding
@@ -82,9 +81,9 @@ class SelectColorFragment : Fragment() {
     }
 
     private fun goBackSettingNote() {
-        val action =
-            SelectColorFragmentDirections.actionSelectColorFragmentToSettingNoteFragment()
-        findNavController().navigate(action)
+//        val action =
+//            SelectColorFragmentDirections.actionSelectColorFragmentToSettingNoteFragment()
+//        findNavController().navigate(action)
     }
 
     companion object {
