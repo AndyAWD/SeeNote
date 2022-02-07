@@ -8,11 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import tw.com.andyawd.seenote.R
-import tw.com.andyawd.seenote.databinding.FragmentSettingNotePageBinding
+import tw.com.andyawd.seenote.databinding.FragmentSettingTitleBinding
 
 class SettingTitleFragment : Fragment() {
 
-    private lateinit var binding: FragmentSettingNotePageBinding
+    private lateinit var binding: FragmentSettingTitleBinding
     private lateinit var viewModel: SettingTitleViewModel
     private lateinit var viewModelFactory: SettingTitleViewModelFactory
 
@@ -42,7 +42,7 @@ class SettingTitleFragment : Fragment() {
         initClickListener(binding)
     }
 
-    private fun initClickListener(binding: FragmentSettingNotePageBinding) {
+    private fun initClickListener(binding: FragmentSettingTitleBinding) {
 
     }
 

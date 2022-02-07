@@ -12,13 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
-import tw.com.andyawd.seenote.databinding.FragmentSettingNoteBinding
+import tw.com.andyawd.seenote.databinding.FragmentSettingPageBinding
 
 class SettingPageFragment : Fragment() {
 
     private lateinit var viewModel: SettingPageViewModel
     private lateinit var viewModelFactory: SettingPageViewModelFactory
-    private lateinit var binding: FragmentSettingNoteBinding
+    private lateinit var binding: FragmentSettingPageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +50,7 @@ class SettingPageFragment : Fragment() {
         initClickListener(binding)
     }
 
-    private fun initListener(binding: FragmentSettingNoteBinding) {
+    private fun initListener(binding: FragmentSettingPageBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {
             viewModel.updateSettingSize()
             goBackNotePage()
@@ -88,7 +88,7 @@ class SettingPageFragment : Fragment() {
         }
     }
 
-    private fun initClickListener(binding: FragmentSettingNoteBinding) {
+    private fun initClickListener(binding: FragmentSettingPageBinding) {
         binding.fsnMbTitleColor.setOnClickListener {
 
         }
@@ -107,7 +107,7 @@ class SettingPageFragment : Fragment() {
     }
 
     private fun goBackNotePage() {
-        val action = SettingNoteFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
+        val action = SettingPageFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
         findNavController().navigate(action)
     }
 
