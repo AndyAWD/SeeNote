@@ -56,12 +56,12 @@ class SettingPageFragment : Fragment() {
             goBackNotePage()
         }
 
-        binding.fsnMtToolBar.setNavigationOnClickListener {
+        binding.fspMtToolBar.setNavigationOnClickListener {
             viewModel.updateSettingSize()
             goBackNotePage()
         }
 
-        binding.fsnAcsbTextSize.setOnSeekBarChangeListener(object :
+        binding.fspAcsbTextSize.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 viewModel.changeSettingSize(progress.toFloat())
@@ -79,29 +79,29 @@ class SettingPageFragment : Fragment() {
 
     private fun initObserve() {
         viewModel.size.observe(viewLifecycleOwner) { size ->
-            binding.fsnMbTitleColor.iconSize = size.toInt()
-            binding.fsnMbContentColor.iconSize = size.toInt()
-            binding.fsnMbEditDateColor.iconSize = size.toInt()
-            binding.fsnAcsbTextSize.progress = size.toInt()
-            binding.fsnMbSponsorSeeNote.iconSize = size.toInt()
-            binding.fsnMbHorizontalLineColor.iconSize = size.toInt()
+            binding.fspMbTitleColor.iconSize = size.toInt()
+            binding.fspMbContentColor.iconSize = size.toInt()
+            binding.fspMbDateColor.iconSize = size.toInt()
+            binding.fspAcsbTextSize.progress = size.toInt()
+            binding.fspMbSponsorSeeNote.iconSize = size.toInt()
+            binding.fspMbHorizontalLineColor.iconSize = size.toInt()
         }
     }
 
     private fun initClickListener(binding: FragmentSettingPageBinding) {
-        binding.fsnMbTitleColor.setOnClickListener {
+        binding.fspMbTitleColor.setOnClickListener {
 
         }
 
-        binding.fsnMbContentColor.setOnClickListener {
+        binding.fspMbContentColor.setOnClickListener {
 
         }
 
-        binding.fsnMbEditDateColor.setOnClickListener {
+        binding.fspMbDateColor.setOnClickListener {
 
         }
 
-        binding.fsnMbHorizontalLineColor.setOnClickListener {
+        binding.fspMbHorizontalLineColor.setOnClickListener {
 
         }
     }

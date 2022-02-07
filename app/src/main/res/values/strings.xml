@@ -35,4 +35,5 @@
     <string name="setting_edit_date_text_color">編輯日期文字顏色設定</string>
     <string name="setting_edit_date_background_color">編輯日期背景顏色設定</string>
     <string name="setting_horizontal_color">水平線顏色設定</string>
+    <string name="setting_date_color">日期顏色設定</string>
 </resources>

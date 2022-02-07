@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/fsnMtToolBar"
+            android:id="@+id/fspMtToolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
             app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fsnMtvTextSize"
+            android:id="@+id/fspMtvTextSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -34,13 +34,13 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fsnMtToolBar"
+            app:layout_constraintTop_toBottomOf="@+id/fspMtToolBar"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="@string/setting_note_text_size" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
-            android:id="@+id/fsnAcsbTextSize"
+            android:id="@+id/fspAcsbTextSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -51,7 +51,7 @@
             android:thumb="@drawable/square_b22222_size40"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fsnMtvTextSize"
+            app:layout_constraintTop_toBottomOf="@+id/fspMtvTextSize"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -62,7 +62,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fsnAcsbTextSize">
+            app:layout_constraintTop_toBottomOf="@+id/fspAcsbTextSize">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fsnMtvHorizontalLineTop"
+                        android:id="@+id/fspMtvHorizontalLineTop"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/magic_1dp"
                         android:layout_marginTop="16dp"
@@ -87,7 +87,7 @@
                         app:layout_constraintVertical_bias="0.0" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fsnMtvTitle"
+                        android:id="@+id/fspMtvTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -98,7 +98,7 @@
                         android:textSize="@{viewModel.size}" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fsnMtvContent"
+                        android:id="@+id/fspMtvContent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -110,7 +110,7 @@
                         android:textSize="@{viewModel.size}" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fsnMtvCreateTime"
+                        android:id="@+id/fspMtvCreateTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -122,13 +122,13 @@
                         android:textSize="@{viewModel.size}" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fsnMtvHorizontalLineBottom"
+                        android:id="@+id/fspMtvHorizontalLineBottom"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/magic_1dp"
                         android:background="@color/hexColor002_Gray" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fsnMbTitleColor"
+                        android:id="@+id/fspMbTitleColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -146,7 +146,7 @@
                         app:iconPadding="16dp" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fsnMbContentColor"
+                        android:id="@+id/fspMbContentColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
@@ -154,14 +154,14 @@
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:lines="1"
-                        android:text="@string/setting_content_text_color"
+                        android:text="@string/setting_content_color"
                         android:textSize="@{viewModel.size}"
                         app:icon="@drawable/ic_baseline_short_text_24"
                         app:iconGravity="start"
                         app:iconPadding="16dp" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fsnMbEditDateColor"
+                        android:id="@+id/fspMbDateColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
@@ -169,14 +169,14 @@
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:lines="1"
-                        android:text="@string/setting_edit_date_text_color"
+                        android:text="@string/setting_date_color"
                         android:textSize="@{viewModel.size}"
                         app:icon="@drawable/ic_baseline_date_range_24"
                         app:iconGravity="start"
                         app:iconPadding="16dp" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fsnMbHorizontalLineColor"
+                        android:id="@+id/fspMbHorizontalLineColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
@@ -191,7 +191,7 @@
                         app:iconPadding="16dp" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fsnMbSponsorSeeNote"
+                        android:id="@+id/fspMbSponsorSeeNote"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
