@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -15,7 +14,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/fsnpMtToolBar"
+            android:id="@+id/fstMtToolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,191 +24,5 @@
             app:layout_constraintVertical_bias="0.0"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24" />
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:fillViewport="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fsnpMtToolBar">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnpMtvTextSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    app:layout_constraintBottom_toTopOf="@+id/fsnpAcsbTextSize"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
-                    app:layout_constraintVertical_chainStyle="packed"
-                    tools:text="@string/setting_note_text_size" />
-
-                <androidx.appcompat.widget.AppCompatSeekBar
-                    android:id="@+id/fsnpAcsbTextSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="@dimen/magic_8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:max="400"
-                    android:padding="@dimen/magic_8dp"
-                    android:thumb="@drawable/square_b22222_size40"
-                    app:layout_constraintBottom_toTopOf="@+id/fsnpMtvTitle"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMtvTextSize"
-                    app:layout_constraintVertical_bias="0"
-                    app:layout_constraintVertical_chainStyle="packed" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnpMtvTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    app:autoSizeTextType="uniform"
-                    app:layout_constraintBottom_toTopOf="@+id/fsnpMtvContent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpAcsbTextSize"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintVertical_chainStyle="packed"
-                    tools:text="@tools:sample/full_names" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnpMtvContent"
-                    android:layout_width="0dp"
-                    android:layout_height="28dp"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical|start"
-                    android:lines="1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/fsnpMtvCreateTime"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMtvTitle"
-                    tools:text="@tools:sample/lorem/random" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnpMtvCreateTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    android:gravity="center_vertical|end"
-                    app:layout_constraintBottom_toBottomOf="@+id/fsnpMtvContent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/fsnpMtvContent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMtvTitle"
-                    tools:text="@tools:sample/date/ddmmyy" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fsnpMtvHorizontalLine"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/magic_1dp"
-                    android:background="@color/hexColor002_Gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMtvContent"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnpMbTitleTextColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    android:layout_marginBottom="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_title_text_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMtvHorizontalLine" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnpMbTitleBackgroundColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_title_text_background_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMbTitleTextColor" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnpMbContentTextColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_content_text_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMbTitleBackgroundColor" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnpMbContentBackgroundColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_content_text_background_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMbContentTextColor" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnpMbDateTextColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_edit_date_text_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMbContentBackgroundColor" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnpMbDateBackgroundColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_edit_date_background_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMbDateTextColor" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fsnpMbHorizontalLineColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/magic_8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/setting_horizontal_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fsnpMbDateBackgroundColor" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
