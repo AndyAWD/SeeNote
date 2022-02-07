@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote.settingnote
+package tw.com.andyawd.seenote.settingpage
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import tw.com.andyawd.seenote.database.Setting
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
-class SettingNoteViewModel(
+class SettingPageViewModel(
     private val dataSource: SettingDatabaseDao
 ) : ViewModel() {
 

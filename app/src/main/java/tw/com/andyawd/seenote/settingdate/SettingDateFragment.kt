@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote
+package tw.com.andyawd.seenote.settingdate
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SettingEditDateFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SettingEditDateFragment : Fragment() {
+class SettingDateFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +34,7 @@ class SettingEditDateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting_edit_date, container, false)
+        return inflater.inflate(R.layout.fragment_setting_date, container, false)
     }
 
     companion object {

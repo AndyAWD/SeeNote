@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote.settingnote
+package tw.com.andyawd.seenote.settingpage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,10 +14,10 @@ import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingNoteBinding
 
-class SettingNoteFragment : Fragment() {
+class SettingPageFragment : Fragment() {
 
-    private lateinit var viewModel: SettingNoteViewModel
-    private lateinit var viewModelFactory: SettingNoteViewModelFactory
+    private lateinit var viewModel: SettingPageViewModel
+    private lateinit var viewModelFactory: SettingPageViewModelFactory
     private lateinit var binding: FragmentSettingNoteBinding
 
     override fun onCreateView(
@@ -26,15 +26,15 @@ class SettingNoteFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_setting_note,
+            R.layout.fragment_setting_page,
             container,
             false
         )
 
         val application = requireNotNull(this.activity).application
         val dataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
-        viewModelFactory = SettingNoteViewModelFactory(dataSource)
-        viewModel = ViewModelProvider(this, viewModelFactory)[SettingNoteViewModel::class.java]
+        viewModelFactory = SettingPageViewModelFactory(dataSource)
+        viewModel = ViewModelProvider(this, viewModelFactory)[SettingPageViewModel::class.java]
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
