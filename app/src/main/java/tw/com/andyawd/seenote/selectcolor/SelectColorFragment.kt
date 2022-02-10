@@ -9,6 +9,9 @@ import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSelectColorBinding
@@ -18,6 +21,7 @@ class SelectColorFragment : Fragment() {
     private lateinit var binding: FragmentSelectColorBinding
     private lateinit var viewModelFactory: SelectColorViewModelFactory
     private lateinit var viewModel: SelectColorViewModel
+    private val args: SelectColorFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,12 +60,13 @@ class SelectColorFragment : Fragment() {
 
     private fun initListener(binding: FragmentSelectColorBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {
-            goBackSettingNote()
+            viewModel.updateSelectSize()
+            goBackSetting(args.page)
         }
 
         binding.fscMtToolBar.setNavigationOnClickListener {
             viewModel.updateSelectSize()
-            goBackSettingNote()
+            goBackSetting(args.page)
         }
 
         binding.fscAcsbTextSize.setOnSeekBarChangeListener(object :
@@ -80,10 +85,33 @@ class SelectColorFragment : Fragment() {
         })
     }
 
-    private fun goBackSettingNote() {
-//        val action =
-//            SelectColorFragmentDirections.actionSelectColorFragmentToSettingNoteFragment()
-//        findNavController().navigate(action)
+    private fun goBackSetting(page: String) {
+        when (page) {
+            BaseConstants.TITLE_TEXT_COLOR,
+            BaseConstants.TITLE_BACKGROUND_COLOR -> {
+                val action =
+                    SelectColorFragmentDirections.actionSelectColorFragmentToSettingTitleFragment(
+                        viewModel.size.value ?: BaseConstants.TEXT_SIZE
+                    )
+                findNavController().navigate(action)
+            }
+            BaseConstants.CONTENT_TEXT_COLOR,
+            BaseConstants.CONTENT_BACKGROUND_COLOR -> {
+                val action =
+                    SelectColorFragmentDirections.actionSelectColorFragmentToSettingContentFragment(
+                        viewModel.size.value ?: BaseConstants.TEXT_SIZE
+                    )
+                findNavController().navigate(action)
+            }
+            BaseConstants.DATE_TEXT_COLOR,
+            BaseConstants.DATE_BACKGROUND_COLOR -> {
+                val action =
+                    SelectColorFragmentDirections.actionSelectColorFragmentToSettingDateFragment(
+                        viewModel.size.value ?: BaseConstants.TEXT_SIZE
+                    )
+                findNavController().navigate(action)
+            }
+        }
     }
 
     companion object {

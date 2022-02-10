@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import tw.com.andyawd.andyawdlibrary.AWDLog
+import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingTitleBinding
@@ -56,15 +56,14 @@ class SettingTitleFragment : Fragment() {
     }
 
     private fun initComponent() {
-        AWDLog.d("args.size: ${args.size}")
         viewModel.changeSettingSize(args.size)
     }
 
     private fun initObserve() {
         viewModel.size.observe(viewLifecycleOwner) { size ->
             binding.fstAcsbTextSize.progress = size.toInt()
-            binding.fstMbTitleColor.iconSize = size.toInt()
-            binding.fstMbContentColor.iconSize = size.toInt()
+            binding.fstMbTitleTextColor.iconSize = size.toInt()
+            binding.fstMbTitleBackgroundColor.iconSize = size.toInt()
         }
     }
 
@@ -96,6 +95,14 @@ class SettingTitleFragment : Fragment() {
             viewModel.updateSettingSize()
             goBackSettingPage()
         }
+
+        binding.fstMbTitleTextColor.setOnClickListener {
+            goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
+        }
+
+        binding.fstMbTitleBackgroundColor.setOnClickListener {
+            goSelectColor(BaseConstants.TITLE_BACKGROUND_COLOR)
+        }
     }
 
     private fun goBackSettingPage() {
@@ -104,8 +111,10 @@ class SettingTitleFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    private fun selectColor(setting: String) {
-
+    private fun goSelectColor(page: String) {
+        val action =
+            SettingTitleFragmentDirections.actionSettingTitleFragmentToSelectColorFragment(page)
+        findNavController().navigate(action)
     }
 
     companion object {

@@ -127,7 +127,7 @@
                         android:background="@color/hexColor002_Gray" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fstMbTitleColor"
+                        android:id="@+id/fstMbTitleTextColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -145,7 +145,7 @@
                         app:iconPadding="16dp" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fstMbContentColor"
+                        android:id="@+id/fstMbTitleBackgroundColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
