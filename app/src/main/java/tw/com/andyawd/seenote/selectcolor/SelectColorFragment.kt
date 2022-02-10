@@ -36,7 +36,7 @@ class SelectColorFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
-        viewModelFactory = SelectColorViewModelFactory(dataSource)
+        viewModelFactory = SelectColorViewModelFactory(dataSource, args.page)
         viewModel = ViewModelProvider(this, viewModelFactory)[SelectColorViewModel::class.java]
 
         binding.viewModel = viewModel
@@ -51,6 +51,85 @@ class SelectColorFragment : Fragment() {
         initComponent()
         initObserve()
         initListener(binding)
+        initClickListener(binding)
+    }
+
+    private fun initClickListener(binding: FragmentSelectColorBinding) {
+        binding.fscMbBlack.setOnClickListener {
+            viewModel.selectColor(BaseConstants.BLACK)
+        }
+        binding.fscMbGray.setOnClickListener {
+            viewModel.selectColor(BaseConstants.GRAY)
+        }
+        binding.fscMbSilver.setOnClickListener {
+            viewModel.selectColor(BaseConstants.SILVER)
+        }
+        binding.fscMbGainsboro.setOnClickListener {
+            viewModel.selectColor(BaseConstants.GAINSBORO)
+        }
+        binding.fscMbWhite.setOnClickListener {
+            viewModel.selectColor(BaseConstants.WHITE)
+        }
+        binding.fscMbMidnightBlue.setOnClickListener {
+            viewModel.selectColor(BaseConstants.MIDNIGHTBLUE)
+        }
+        binding.fscMbMediumBlue.setOnClickListener {
+            viewModel.selectColor(BaseConstants.MEDIUMBLUE)
+        }
+        binding.fscMbDodgerBlue.setOnClickListener {
+            viewModel.selectColor(BaseConstants.DODGERBLUE)
+        }
+        binding.fscMbSkyBlue.setOnClickListener {
+            viewModel.selectColor(BaseConstants.SKYBLUE)
+        }
+        binding.fscMbLightCyan.setOnClickListener {
+            viewModel.selectColor(BaseConstants.LIGHTCYAN)
+        }
+        binding.fscMbDarkGreen.setOnClickListener {
+            viewModel.selectColor(BaseConstants.DARKGREEN)
+        }
+        binding.fscMbForestGreen.setOnClickListener {
+            viewModel.selectColor(BaseConstants.FORESTGREEN)
+        }
+        binding.fscMbLimeGreen.setOnClickListener {
+            viewModel.selectColor(BaseConstants.LIMEGREEN)
+        }
+        binding.fscMbLightGreen.setOnClickListener {
+            viewModel.selectColor(BaseConstants.LIGHTGREEN)
+        }
+        binding.fscMbGreenYellow.setOnClickListener {
+            viewModel.selectColor(BaseConstants.GREENYELLOW)
+        }
+        binding.fscMbMaroon.setOnClickListener {
+            viewModel.selectColor(BaseConstants.MAROON)
+        }
+        binding.fscMbFirebrick.setOnClickListener {
+            viewModel.selectColor(BaseConstants.FIREBRICK)
+        }
+        binding.fscMbRed.setOnClickListener {
+            viewModel.selectColor(BaseConstants.RED)
+        }
+        binding.fscMbLightSalmon.setOnClickListener {
+            viewModel.selectColor(BaseConstants.LIGHTSALMON)
+        }
+        binding.fscMbPink.setOnClickListener {
+            viewModel.selectColor(BaseConstants.PINK)
+        }
+        binding.fscMbSaddleBrown.setOnClickListener {
+            viewModel.selectColor(BaseConstants.SADDLEBROWN)
+        }
+        binding.fscMbChocolate.setOnClickListener {
+            viewModel.selectColor(BaseConstants.CHOCOLATE)
+        }
+        binding.fscMbOrange.setOnClickListener {
+            viewModel.selectColor(BaseConstants.ORANGE)
+        }
+        binding.fscMbGold.setOnClickListener {
+            viewModel.selectColor(BaseConstants.GOLD)
+        }
+        binding.fscMbLightYellow.setOnClickListener {
+            viewModel.selectColor(BaseConstants.LIGHTYELLOW)
+        }
     }
 
     private fun initComponent() {
@@ -61,17 +140,27 @@ class SelectColorFragment : Fragment() {
         viewModel.size.observe(viewLifecycleOwner) { size ->
             binding.fscAcsbTextSize.progress = size.toInt()
         }
+
+        viewModel.color.observe(viewLifecycleOwner) { color ->
+            color?.let {
+                onUpdateSelectColor()
+            }
+        }
+
+        viewModel.isUpdateFinish.observe(viewLifecycleOwner) { isUpdateSelectSize ->
+            if (isUpdateSelectSize) {
+                goBackSetting(args.page)
+            }
+        }
     }
 
     private fun initListener(binding: FragmentSelectColorBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {
-            viewModel.updateSelectSize()
-            goBackSetting(args.page)
+            onUpdateSelectSize()
         }
 
         binding.fscMtToolBar.setNavigationOnClickListener {
-            viewModel.updateSelectSize()
-            goBackSetting(args.page)
+            onUpdateSelectSize()
         }
 
         binding.fscAcsbTextSize.setOnSeekBarChangeListener(object :
@@ -117,6 +206,14 @@ class SelectColorFragment : Fragment() {
                 findNavController().navigate(action)
             }
         }
+    }
+
+    private fun onUpdateSelectColor() {
+        viewModel.updateSelectColor()
+    }
+
+    private fun onUpdateSelectSize() {
+        viewModel.updateSelectSize()
     }
 
     companion object {

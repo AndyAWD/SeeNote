@@ -5,11 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.database.Setting
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
 class SelectColorViewModel(
-    private val dataSource: SettingDatabaseDao
+    private val dataSource: SettingDatabaseDao,
+    private val page: String
 ) : ViewModel() {
 
     private var _setting = MutableLiveData<Setting?>()
@@ -20,11 +22,21 @@ class SelectColorViewModel(
     val size: LiveData<Float>
         get() = _size
 
+    private var _color = MutableLiveData<String?>()
+    val color: LiveData<String?>
+        get() = _color
+
+    private var _isUpdateFinish = MutableLiveData<Boolean>()
+    val isUpdateFinish: LiveData<Boolean>
+        get() = _isUpdateFinish
+
     init {
         viewModelScope.launch {
             _setting.value = dataSource.getFirst()
             _size.value = _setting.value?.selectSize
         }
+
+        _isUpdateFinish.value = false
     }
 
     fun changeSelectSize(size: Float) {
@@ -38,9 +50,51 @@ class SelectColorViewModel(
         }
     }
 
+    fun selectColor(color: String) {
+        _color.value = color
+    }
+
+    fun updateSelectColor() {
+        viewModelScope.launch {
+            _setting.value?.let {
+                val newSetting: Setting
+                when (page) {
+                    BaseConstants.TITLE_TEXT_COLOR -> {
+                        newSetting = it.copy(titleTextColor = _color.value ?: "")
+                    }
+                    BaseConstants.TITLE_BACKGROUND_COLOR -> {
+                        newSetting = it.copy(titleBackgroundColor = _color.value ?: "")
+                    }
+                    BaseConstants.CONTENT_TEXT_COLOR -> {
+                        newSetting = it.copy(contentTextColor = _color.value ?: "")
+                    }
+                    BaseConstants.CONTENT_BACKGROUND_COLOR -> {
+                        newSetting = it.copy(contentBackgroundColor = _color.value ?: "")
+                    }
+                    BaseConstants.DATE_TEXT_COLOR -> {
+                        newSetting = it.copy(dateTextColor = _color.value ?: "")
+                    }
+                    BaseConstants.DATE_BACKGROUND_COLOR -> {
+                        newSetting = it.copy(dateBackgroundColor = _color.value ?: "")
+                    }
+                    else -> {
+                        newSetting = it.copy()
+                    }
+                }
+
+                updateSelect(newSetting)
+            }
+        }
+    }
+
     private fun updateSelect(setting: Setting) {
         viewModelScope.launch {
             dataSource.update(setting)
+            onUpdateFinish()
         }
+    }
+
+    private fun onUpdateFinish() {
+        _isUpdateFinish.value = true
     }
 }

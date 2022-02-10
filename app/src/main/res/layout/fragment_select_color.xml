@@ -75,7 +75,7 @@
                     android:layout_height="match_parent">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor000_Black"
+                        android:id="@+id/fscMbBlack"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
@@ -89,7 +89,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor002_Gray"
+                        android:id="@+id/fscMbGray"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -98,13 +98,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor000_Black"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbBlack"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor000_Black"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor000_Black" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbBlack"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbBlack" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor004_Silver"
+                        android:id="@+id/fscMbSilver"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -113,13 +113,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor000_Black"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbBlack"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor002_Gray"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor000_Black" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbGray"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbBlack" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor006_Gainsboro"
+                        android:id="@+id/fscMbGainsboro"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -128,13 +128,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor000_Black"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbBlack"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor004_Silver"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor000_Black" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbSilver"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbBlack" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor007_White"
+                        android:id="@+id/fscMbWhite"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -143,13 +143,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor000_Black"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbBlack"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor006_Gainsboro"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor000_Black" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbGainsboro"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbBlack" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor036_MidnightBlue"
+                        android:id="@+id/fscMbMidnightBlue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/magic_8dp"
@@ -159,12 +159,12 @@
                         android:text=""
                         android:textSize="@{viewModel.size}"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toEndOf="@+id/hexColor000_Black"
-                        app:layout_constraintStart_toStartOf="@+id/hexColor000_Black"
-                        app:layout_constraintTop_toBottomOf="@+id/hexColor000_Black" />
+                        app:layout_constraintEnd_toEndOf="@+id/fscMbBlack"
+                        app:layout_constraintStart_toStartOf="@+id/fscMbBlack"
+                        app:layout_constraintTop_toBottomOf="@+id/fscMbBlack" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor039_MediumBlue"
+                        android:id="@+id/fscMbMediumBlue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -173,13 +173,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor036_MidnightBlue"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbMidnightBlue"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor036_MidnightBlue"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor036_MidnightBlue" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbMidnightBlue"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbMidnightBlue" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor041_DodgerBlue"
+                        android:id="@+id/fscMbDodgerBlue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -188,13 +188,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor036_MidnightBlue"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbMidnightBlue"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor039_MediumBlue"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor036_MidnightBlue" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbMediumBlue"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbMidnightBlue" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor045_SkyBlue"
+                        android:id="@+id/fscMbSkyBlue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -203,13 +203,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor036_MidnightBlue"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbMidnightBlue"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor041_DodgerBlue"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor036_MidnightBlue" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbDodgerBlue"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbMidnightBlue" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor049_LightCyan"
+                        android:id="@+id/fscMbLightCyan"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -218,13 +218,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor036_MidnightBlue"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbMidnightBlue"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor045_SkyBlue"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor036_MidnightBlue" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbSkyBlue"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbMidnightBlue" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor061_DarkGreen"
+                        android:id="@+id/fscMbDarkGreen"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/magic_8dp"
@@ -234,12 +234,12 @@
                         android:text=""
                         android:textSize="@{viewModel.size}"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toEndOf="@+id/hexColor000_Black"
-                        app:layout_constraintStart_toStartOf="@+id/hexColor000_Black"
-                        app:layout_constraintTop_toBottomOf="@+id/hexColor036_MidnightBlue" />
+                        app:layout_constraintEnd_toEndOf="@+id/fscMbBlack"
+                        app:layout_constraintStart_toStartOf="@+id/fscMbBlack"
+                        app:layout_constraintTop_toBottomOf="@+id/fscMbMidnightBlue" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor063_ForestGreen"
+                        android:id="@+id/fscMbForestGreen"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -248,13 +248,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor061_DarkGreen"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbDarkGreen"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor061_DarkGreen"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor061_DarkGreen" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbDarkGreen"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbDarkGreen" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor076_LimeGreen"
+                        android:id="@+id/fscMbLimeGreen"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -263,13 +263,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor061_DarkGreen"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbDarkGreen"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor063_ForestGreen"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor061_DarkGreen" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbForestGreen"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbDarkGreen" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor069_LightGreen"
+                        android:id="@+id/fscMbLightGreen"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -278,13 +278,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor061_DarkGreen"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbDarkGreen"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor076_LimeGreen"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor061_DarkGreen" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbLimeGreen"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbDarkGreen" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor074_GreenYellow"
+                        android:id="@+id/fscMbGreenYellow"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -293,13 +293,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor061_DarkGreen"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbDarkGreen"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor069_LightGreen"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor061_DarkGreen" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbLightGreen"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbDarkGreen" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor102_Maroon"
+                        android:id="@+id/fscMbMaroon"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/magic_8dp"
@@ -309,12 +309,12 @@
                         android:text=""
                         android:textSize="@{viewModel.size}"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toEndOf="@+id/hexColor000_Black"
-                        app:layout_constraintStart_toStartOf="@+id/hexColor000_Black"
-                        app:layout_constraintTop_toBottomOf="@+id/hexColor061_DarkGreen" />
+                        app:layout_constraintEnd_toEndOf="@+id/fscMbBlack"
+                        app:layout_constraintStart_toStartOf="@+id/fscMbBlack"
+                        app:layout_constraintTop_toBottomOf="@+id/fscMbDarkGreen" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor105_Firebrick"
+                        android:id="@+id/fscMbFirebrick"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -323,13 +323,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor102_Maroon"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbMaroon"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor102_Maroon"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor102_Maroon" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbMaroon"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbMaroon" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor115_Red"
+                        android:id="@+id/fscMbRed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -338,13 +338,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor102_Maroon"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbMaroon"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor105_Firebrick"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor102_Maroon" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbFirebrick"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbMaroon" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor111_LightSalmon"
+                        android:id="@+id/fscMbLightSalmon"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -353,13 +353,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor102_Maroon"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbMaroon"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor115_Red"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor102_Maroon" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbRed"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbMaroon" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor121_Pink"
+                        android:id="@+id/fscMbPink"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -368,13 +368,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor102_Maroon"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbMaroon"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor111_LightSalmon"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor102_Maroon" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbLightSalmon"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbMaroon" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor101_SaddleBrown"
+                        android:id="@+id/fscMbSaddleBrown"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/magic_8dp"
@@ -384,12 +384,12 @@
                         android:text=""
                         android:textSize="@{viewModel.size}"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toEndOf="@+id/hexColor000_Black"
-                        app:layout_constraintStart_toStartOf="@+id/hexColor000_Black"
-                        app:layout_constraintTop_toBottomOf="@+id/hexColor102_Maroon" />
+                        app:layout_constraintEnd_toEndOf="@+id/fscMbBlack"
+                        app:layout_constraintStart_toStartOf="@+id/fscMbBlack"
+                        app:layout_constraintTop_toBottomOf="@+id/fscMbMaroon" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor099_Chocolate"
+                        android:id="@+id/fscMbChocolate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -398,13 +398,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor101_SaddleBrown"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbSaddleBrown"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor101_SaddleBrown"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor101_SaddleBrown" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbSaddleBrown"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbSaddleBrown" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor093_Orange"
+                        android:id="@+id/fscMbOrange"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -413,13 +413,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor101_SaddleBrown"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbSaddleBrown"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor099_Chocolate"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor101_SaddleBrown" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbChocolate"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbSaddleBrown" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor092_Gold"
+                        android:id="@+id/fscMbGold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -428,13 +428,13 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor101_SaddleBrown"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbSaddleBrown"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor093_Orange"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor101_SaddleBrown" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbOrange"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbSaddleBrown" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hexColor084_LightYellow"
+                        android:id="@+id/fscMbLightYellow"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -443,10 +443,10 @@
                         android:insetBottom="0dp"
                         android:text=""
                         android:textSize="@{viewModel.size}"
-                        app:layout_constraintBottom_toBottomOf="@+id/hexColor101_SaddleBrown"
+                        app:layout_constraintBottom_toBottomOf="@+id/fscMbSaddleBrown"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintStart_toEndOf="@+id/hexColor092_Gold"
-                        app:layout_constraintTop_toTopOf="@+id/hexColor101_SaddleBrown" />
+                        app:layout_constraintStart_toEndOf="@+id/fscMbGold"
+                        app:layout_constraintTop_toTopOf="@+id/fscMbSaddleBrown" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
         </androidx.core.widget.NestedScrollView>

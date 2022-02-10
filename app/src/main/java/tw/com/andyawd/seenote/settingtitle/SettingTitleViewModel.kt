@@ -32,6 +32,8 @@ class SettingTitleViewModel(
         viewModelScope.launch {
             _setting.value = dataSource.getFirst()
             _size.value = _setting.value?.settingSize
+            _titleTextColor.value = _setting.value?.titleTextColor
+            _titleBackgroundColor.value = _setting.value?.titleBackgroundColor
         }
     }
 

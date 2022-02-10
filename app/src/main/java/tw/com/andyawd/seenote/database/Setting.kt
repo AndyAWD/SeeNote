@@ -17,16 +17,10 @@ data class Setting(
     var pageSize: Float = 80F,
 
     @ColumnInfo(name = BaseConstants.WRITE_SIZE)
-    var writeSize: Float = 80F,
+    var writeSize: Float = BaseConstants.TEXT_SIZE,
 
     @ColumnInfo(name = BaseConstants.SELECT_SIZE)
-    var selectSize: Float = 80F,
-
-    @ColumnInfo(name = BaseConstants.BUTTON_TEXT_COLOR)
-    var buttonTextColor: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.BUTTON_BACKGROUND_COLOR)
-    var buttonBackgroundColor: String = BaseConstants.EMPTY_STRING,
+    var selectSize: Float = BaseConstants.TEXT_SIZE,
 
     @ColumnInfo(name = BaseConstants.TITLE_TEXT_COLOR)
     var titleTextColor: String = BaseConstants.EMPTY_STRING,
@@ -41,17 +35,8 @@ data class Setting(
     var contentBackgroundColor: String = BaseConstants.EMPTY_STRING,
 
     @ColumnInfo(name = BaseConstants.CREATE_DATE_TEXT_COLOR)
-    var createDateTextColor: String = BaseConstants.EMPTY_STRING,
+    var dateTextColor: String = BaseConstants.EMPTY_STRING,
 
     @ColumnInfo(name = BaseConstants.CREATE_DATE_BACKGROUND_COLOR)
-    var createDateBackgroundColor: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.EDIT_DATE_TEXT_COLOR)
-    var editDateTextColor: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.EDIT_DATE_BACKGROUND_COLOR)
-    var editDateBackgroundColor: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.HORIZONTAL_LINE_COLOR)
-    var horizontalLineColor: String = BaseConstants.EMPTY_STRING,
+    var dateBackgroundColor: String = BaseConstants.EMPTY_STRING,
 )
