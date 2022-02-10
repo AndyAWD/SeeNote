@@ -29,6 +29,7 @@
             android:id="@+id/fstMtvTextSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:gravity="center"
             android:text="@{@string/setting_note_text_size(viewModel.size)}"
             app:layout_constraintEnd_toEndOf="parent"

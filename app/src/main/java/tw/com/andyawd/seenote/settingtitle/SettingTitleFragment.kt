@@ -113,7 +113,10 @@ class SettingTitleFragment : Fragment() {
 
     private fun goSelectColor(page: String) {
         val action =
-            SettingTitleFragmentDirections.actionSettingTitleFragmentToSelectColorFragment(page)
+            SettingTitleFragmentDirections.actionSettingTitleFragmentToSelectColorFragment(
+                page,
+                viewModel.setting.value?.selectSize ?: BaseConstants.COLOR_SIZE
+            )
         findNavController().navigate(action)
     }
 

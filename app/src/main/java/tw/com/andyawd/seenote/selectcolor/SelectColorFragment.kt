@@ -48,8 +48,13 @@ class SelectColorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initComponent()
         initObserve()
         initListener(binding)
+    }
+
+    private fun initComponent() {
+        viewModel.changeSelectSize(args.size)
     }
 
     private fun initObserve() {

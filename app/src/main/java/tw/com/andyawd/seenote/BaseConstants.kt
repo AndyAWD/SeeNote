@@ -3,6 +3,7 @@ package tw.com.andyawd.seenote
 class BaseConstants {
     companion object {
         const val TEXT_SIZE = 80F
+        const val COLOR_SIZE = 120F
         const val NOTE_DATABASE = "note_database"
         const val NOTE_TABLE = "note_table"
         const val SETTING_TABLE = "setting_table"
