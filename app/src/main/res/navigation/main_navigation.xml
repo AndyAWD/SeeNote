@@ -14,7 +14,7 @@
             app:destination="@id/writeNoteFragment" />
         <action
             android:id="@+id/action_notePageFragment_to_settingNoteFragment"
-            app:destination="@id/settingNoteFragment" />
+            app:destination="@id/settingPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/writeNoteFragment"
@@ -29,7 +29,7 @@
             app:destination="@id/notePageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingNoteFragment"
+        android:id="@+id/settingPageFragment"
         android:name="tw.com.andyawd.seenote.settingpage.SettingPageFragment"
         android:label="fragment_setting_note"
         tools:layout="@layout/fragment_setting_page">
@@ -39,17 +39,14 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
         <action
-            android:id="@+id/action_settingNoteFragment_to_settingTitleFragment"
+            android:id="@+id/action_settingPageFragment_to_settingTitleFragment"
             app:destination="@id/settingTitleFragment" />
         <action
-            android:id="@+id/action_settingNoteFragment_to_settingContentFragment"
+            android:id="@+id/action_settingPageFragment_to_settingContentFragment"
             app:destination="@id/settingContentFragment" />
         <action
-            android:id="@+id/action_settingNoteFragment_to_settingDateFragment"
+            android:id="@+id/action_settingPageFragment_to_settingDateFragment"
             app:destination="@id/settingDateFragment" />
-        <action
-            android:id="@+id/action_settingNoteFragment_to_sponsorSeeNoteFragment"
-            app:destination="@id/sponsorSeeNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectColorFragment"
@@ -74,40 +71,39 @@
         android:name="tw.com.andyawd.seenote.settingdate.SettingDateFragment"
         android:label="SettingDateFragment">
         <action
-            android:id="@+id/action_settingDateFragment_to_settingNoteFragment"
-            app:destination="@id/settingNoteFragment" />
-        <action
             android:id="@+id/action_settingDateFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment" />
+        <action
+            android:id="@+id/action_settingDateFragment_to_settingPageFragment"
+            app:destination="@id/settingPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingContentFragment"
         android:name="tw.com.andyawd.seenote.settingcontent.SettingContentFragment"
         android:label="SettingContentFragment">
         <action
-            android:id="@+id/action_settingContentFragment_to_settingNoteFragment"
-            app:destination="@id/settingNoteFragment" />
-        <action
             android:id="@+id/action_settingContentFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment" />
+        <action
+            android:id="@+id/action_settingContentFragment_to_settingPageFragment"
+            app:destination="@id/settingPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingTitleFragment"
         android:name="tw.com.andyawd.seenote.settingtitle.SettingTitleFragment"
         android:label="SettingTitleFragment">
         <action
-            android:id="@+id/action_settingTitleFragment_to_settingNoteFragment"
-            app:destination="@id/settingNoteFragment" />
-        <action
             android:id="@+id/action_settingTitleFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment" />
+        <argument
+            android:name="size"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_settingTitleFragment_to_settingPageFragment"
+            app:destination="@id/settingPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/sponsorSeeNoteFragment"
         android:name="tw.com.andyawd.seenote.sponsorseenote.SponsorSeeNoteFragment"
-        android:label="SponsorSeeNoteFragment">
-        <action
-            android:id="@+id/action_sponsorSeeNoteFragment_to_settingNoteFragment"
-            app:destination="@id/settingNoteFragment" />
-    </fragment>
+        android:label="SponsorSeeNoteFragment" />
 </navigation>

@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingPageBinding
@@ -56,11 +57,6 @@ class SettingPageFragment : Fragment() {
             goBackNotePage()
         }
 
-        binding.fspMtToolBar.setNavigationOnClickListener {
-            viewModel.updateSettingSize()
-            goBackNotePage()
-        }
-
         binding.fspAcsbTextSize.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -79,36 +75,65 @@ class SettingPageFragment : Fragment() {
 
     private fun initObserve() {
         viewModel.size.observe(viewLifecycleOwner) { size ->
+            binding.fspAcsbTextSize.progress = size.toInt()
             binding.fspMbTitleColor.iconSize = size.toInt()
             binding.fspMbContentColor.iconSize = size.toInt()
             binding.fspMbDateColor.iconSize = size.toInt()
-            binding.fspAcsbTextSize.progress = size.toInt()
             binding.fspMbSponsorSeeNote.iconSize = size.toInt()
             binding.fspMbHorizontalLineColor.iconSize = size.toInt()
         }
     }
 
     private fun initClickListener(binding: FragmentSettingPageBinding) {
-        binding.fspMbTitleColor.setOnClickListener {
+        binding.fspMtToolBar.setNavigationOnClickListener {
+            viewModel.updateSettingSize()
+            goBackNotePage()
+        }
 
+        binding.fspMbTitleColor.setOnClickListener {
+            viewModel.updateSettingSize()
+            goTitleSetting()
+        }
+
+        binding.fspMtvTitle.setOnClickListener {
+            viewModel.updateSettingSize()
+            goTitleSetting()
         }
 
         binding.fspMbContentColor.setOnClickListener {
+            viewModel.updateSettingSize()
+        }
 
+        binding.fspMtvContent.setOnClickListener {
+            viewModel.updateSettingSize()
         }
 
         binding.fspMbDateColor.setOnClickListener {
+            viewModel.updateSettingSize()
+        }
 
+        binding.fspMtvCreateTime.setOnClickListener {
+            viewModel.updateSettingSize()
         }
 
         binding.fspMbHorizontalLineColor.setOnClickListener {
-
+            viewModel.updateSettingSize()
         }
     }
 
     private fun goBackNotePage() {
         val action = SettingPageFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
         findNavController().navigate(action)
+    }
+
+    private fun goTitleSetting() {
+        viewModel.size.value?.let {
+            val action =
+                SettingPageFragmentDirections.actionSettingPageFragmentToSettingTitleFragment(it)
+
+            AWDLog.d("goTitleSetting: $it")
+            findNavController().navigate(action)
+        }
     }
 
     companion object {
