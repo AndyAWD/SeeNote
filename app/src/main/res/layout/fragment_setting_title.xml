@@ -141,7 +141,7 @@
                         android:lines="1"
                         android:text="@string/setting_title_text_color"
                         android:textSize="@{viewModel.size}"
-                        app:icon="@drawable/ic_baseline_title_24"
+                        app:icon="@drawable/ic_baseline_text_fields_24"
                         app:iconGravity="start"
                         app:iconPadding="16dp" />
 
@@ -156,7 +156,7 @@
                         android:lines="1"
                         android:text="@string/setting_title_text_background_color"
                         android:textSize="@{viewModel.size}"
-                        app:icon="@drawable/ic_baseline_title_24"
+                        app:icon="@drawable/ic_baseline_article_24"
                         app:iconGravity="start"
                         app:iconPadding="16dp" />
                 </LinearLayout>
