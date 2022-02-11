@@ -12,17 +12,17 @@
         <action
             android:id="@+id/action_notePageFragment_to_writeNoteFragment"
             app:destination="@id/writeNoteFragment"
-            app:enterAnim="@anim/slide_in_right_to_left"
-            app:exitAnim="@anim/slide_out_left_to_right"
-            app:popEnterAnim="@anim/slide_in_right_to_left"
-            app:popExitAnim="@anim/slide_out_left_to_right" />
+            app:enterAnim="@anim/slide_in_right_to_left_medium"
+            app:exitAnim="@anim/slide_out_left_to_right_medium"
+            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
+            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <action
             android:id="@+id/action_notePageFragment_to_settingNoteFragment"
             app:destination="@id/settingPageFragment"
-            app:enterAnim="@anim/slide_in_left_to_right"
-            app:exitAnim="@anim/slide_out_right_to_left"
-            app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_right_to_left" />
+            app:enterAnim="@anim/slide_in_left_to_right_medium"
+            app:exitAnim="@anim/slide_out_right_to_left_medium"
+            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
+            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
     </fragment>
     <fragment
         android:id="@+id/writeNoteFragment"
@@ -35,10 +35,10 @@
         <action
             android:id="@+id/action_writeNoteFragment_to_notePageFragment"
             app:destination="@id/notePageFragment"
-            app:enterAnim="@anim/slide_in_left_to_right"
-            app:exitAnim="@anim/slide_out_right_to_left"
-            app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_right_to_left" />
+            app:enterAnim="@anim/slide_in_left_to_right_medium"
+            app:exitAnim="@anim/slide_out_right_to_left_medium"
+            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
+            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
     </fragment>
     <fragment
         android:id="@+id/settingPageFragment"
@@ -48,10 +48,10 @@
         <action
             android:id="@+id/action_settingNoteFragment_to_notePageFragment"
             app:destination="@id/notePageFragment"
-            app:enterAnim="@anim/slide_in_right_to_left"
-            app:exitAnim="@anim/slide_out_left_to_right"
-            app:popEnterAnim="@anim/slide_in_right_to_left"
-            app:popExitAnim="@anim/slide_out_left_to_right" />
+            app:enterAnim="@anim/slide_in_right_to_left_medium"
+            app:exitAnim="@anim/slide_out_left_to_right_medium"
+            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
+            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <action
             android:id="@+id/action_settingPageFragment_to_settingTitleFragment"
             app:destination="@id/settingTitleFragment"
@@ -77,24 +77,24 @@
         <action
             android:id="@+id/action_selectColorFragment_to_settingTitleFragment"
             app:destination="@id/settingTitleFragment"
-            app:enterAnim="@anim/slide_in_right_to_left"
-            app:exitAnim="@anim/slide_out_left_to_right"
-            app:popEnterAnim="@anim/slide_in_right_to_left"
-            app:popExitAnim="@anim/slide_out_left_to_right" />
+            app:enterAnim="@anim/slide_in_right_to_left_medium"
+            app:exitAnim="@anim/slide_out_left_to_right_medium"
+            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
+            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <action
             android:id="@+id/action_selectColorFragment_to_settingContentFragment"
             app:destination="@id/settingContentFragment"
-            app:enterAnim="@anim/slide_in_right_to_left"
-            app:exitAnim="@anim/slide_out_left_to_right"
-            app:popEnterAnim="@anim/slide_in_right_to_left"
-            app:popExitAnim="@anim/slide_out_left_to_right" />
+            app:enterAnim="@anim/slide_in_right_to_left_medium"
+            app:exitAnim="@anim/slide_out_left_to_right_medium"
+            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
+            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <action
             android:id="@+id/action_selectColorFragment_to_settingDateFragment"
             app:destination="@id/settingDateFragment"
-            app:enterAnim="@anim/slide_in_right_to_left"
-            app:exitAnim="@anim/slide_out_left_to_right"
-            app:popEnterAnim="@anim/slide_in_right_to_left"
-            app:popExitAnim="@anim/slide_out_left_to_right" />
+            app:enterAnim="@anim/slide_in_right_to_left_medium"
+            app:exitAnim="@anim/slide_out_left_to_right_medium"
+            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
+            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <argument
             android:name="size"
             app:argType="float" />
@@ -107,10 +107,10 @@
         <action
             android:id="@+id/action_settingDateFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment"
-            app:enterAnim="@anim/slide_in_left_to_right"
-            app:exitAnim="@anim/slide_out_right_to_left"
-            app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_right_to_left" />
+            app:enterAnim="@anim/slide_in_left_to_right_medium"
+            app:exitAnim="@anim/slide_out_right_to_left_medium"
+            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
+            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
         <action
             android:id="@+id/action_settingDateFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment" />
@@ -126,10 +126,10 @@
         <action
             android:id="@+id/action_settingContentFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment"
-            app:enterAnim="@anim/slide_in_left_to_right"
-            app:exitAnim="@anim/slide_out_right_to_left"
-            app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_right_to_left" />
+            app:enterAnim="@anim/slide_in_left_to_right_medium"
+            app:exitAnim="@anim/slide_out_right_to_left_medium"
+            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
+            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
         <action
             android:id="@+id/action_settingContentFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment" />
@@ -145,10 +145,10 @@
         <action
             android:id="@+id/action_settingTitleFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment"
-            app:enterAnim="@anim/slide_in_left_to_right"
-            app:exitAnim="@anim/slide_out_right_to_left"
-            app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_right_to_left" />
+            app:enterAnim="@anim/slide_in_left_to_right_medium"
+            app:exitAnim="@anim/slide_out_right_to_left_medium"
+            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
+            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
         <argument
             android:name="size"
             app:argType="float" />
