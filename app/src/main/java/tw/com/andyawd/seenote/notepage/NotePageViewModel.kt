@@ -1,6 +1,7 @@
 package tw.com.andyawd.seenote.notepage
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,10 +18,26 @@ class NotePageViewModel(
 
     val note = noteDataSource.getAll()
 
+    private var _setting = MutableLiveData<Setting?>()
+    val setting: LiveData<Setting?>
+        get() = _setting
+
     private val _notePageDetail = MutableLiveData<Long?>()
 
     val notePageDetail
         get() = _notePageDetail
+
+    init {
+        viewModelScope.launch {
+            val settingList = settingDataSource.getAll()
+
+            if (settingList.isEmpty()) {
+                settingDataSource.insert(Setting())
+            } else {
+                _setting.value = settingDataSource.getFirst()
+            }
+        }
+    }
 
     fun onItemClicked(id: Long) {
         _notePageDetail.value = id
@@ -28,17 +45,5 @@ class NotePageViewModel(
 
     fun onNotePageNavigated() {
         _notePageDetail.value = null
-    }
-
-    fun loadSetting() {
-        viewModelScope.launch {
-            val settingList = settingDataSource.getAll()
-
-            if (settingList.isEmpty()) {
-                settingDataSource.insert(Setting())
-            } else {
-                settingDataSource.getFirst()
-            }
-        }
     }
 }

@@ -57,16 +57,43 @@ class NotePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.loadSetting()
+        initObserve()
+        initListener()
+        initClickListener(binding)
+    }
 
-        requireActivity().onBackPressedDispatcher.addCallback {
-
-        }
-
+    private fun initClickListener(binding: FragmentNotePageBinding) {
         adapter.setOnItemClickListener(NotePageListener { id ->
             AWDLog.d("新的資料庫id: $id")
             viewModel.onItemClicked(id)
         })
+
+        binding.fnpMbWriteNote.setOnClickListener {
+            findNavController().navigate(
+                NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
+                    BaseConstants.CREATE_NOTE
+                )
+            )
+        }
+
+        binding.fnpMbSettingNote.setOnClickListener {
+            val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun initListener() {
+        requireActivity().onBackPressedDispatcher.addCallback {
+
+        }
+    }
+
+    private fun initObserve() {
+        viewModel.setting.observe(viewLifecycleOwner) { setting ->
+            setting?.let {
+                adapter.addSetting(it)
+            }
+        }
 
         viewModel.note.observe(viewLifecycleOwner, Observer {
             //adapter.submitList(it)
@@ -83,19 +110,6 @@ class NotePageFragment : Fragment() {
                 viewModel.onNotePageNavigated()
             }
         })
-
-        binding.fnpMbWriteNote.setOnClickListener {
-            findNavController().navigate(
-                NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
-                    BaseConstants.CREATE_NOTE
-                )
-            )
-        }
-
-        binding.fnpMbSettingNote.setOnClickListener {
-            val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
-            findNavController().navigate(action)
-        }
     }
 
     companion object {

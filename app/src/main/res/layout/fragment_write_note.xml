@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="setting"
+            type="tw.com.andyawd.seenote.database.Setting" />
+
+        <variable
             name="writeNoteViewModel"
             type="tw.com.andyawd.seenote.writenote.WriteNoteViewModel" />
     </data>
@@ -41,6 +45,8 @@
             android:text="@{writeNoteViewModel.note.title}"
             android:typeface="sans"
             app:autoSizeMinTextSize="50sp"
+            app:changeHintTextColor="@{setting}"
+            app:changeTextColor="@{setting}"
             app:layout_constraintBottom_toTopOf="@+id/fwnAcetNoteContent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

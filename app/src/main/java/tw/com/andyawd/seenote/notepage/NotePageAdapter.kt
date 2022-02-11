@@ -8,15 +8,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import tw.com.andyawd.seenote.database.Note
+import tw.com.andyawd.seenote.database.Setting
 
 class NotePageAdapter() :
     ListAdapter<NotePageItem, RecyclerView.ViewHolder>(NotePageDiffCallback()) {
 
     private var notePageListener: NotePageListener? = null
+    private var setting: Setting? = null
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
     fun setOnItemClickListener(notePageListener: NotePageListener) {
         this.notePageListener = notePageListener
+    }
+
+    fun addSetting(setting: Setting) {
+        this.setting = setting
     }
 
     fun addHeaderAndSubmitList(list: List<Note>?) {
@@ -30,6 +36,10 @@ class NotePageAdapter() :
                 submitList(items)
             }
         }
+    }
+
+    fun addSettingBinding() {
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -46,9 +56,9 @@ class NotePageAdapter() :
                 val item = getItem(position) as NotePageItem.Body
 
                 if (notePageListener == null) {
-                    holder.bind(item.note)
+                    holder.bind(item.note, setting)
                 } else {
-                    holder.bind(item.note, notePageListener!!)
+                    holder.bind(item.note, setting, notePageListener!!)
                 }
             }
         }

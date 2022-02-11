@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="setting"
+            type="tw.com.andyawd.seenote.database.Setting" />
+
+        <variable
             name="viewModel"
             type="tw.com.andyawd.seenote.settingpage.SettingPageViewModel" />
     </data>
@@ -91,6 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
+                        app:changeTextColor="@{setting}"
                         android:layout_marginEnd="@dimen/magic_8dp"
                         android:ellipsize="end"
                         android:lines="1"

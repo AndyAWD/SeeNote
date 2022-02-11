@@ -9,9 +9,12 @@ import kotlinx.coroutines.launch
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.database.Note
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
+import tw.com.andyawd.seenote.database.Setting
+import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
 class WriteNoteViewModel(
-    private val database: NoteDatabaseDao,
+    private val noteDatabase: NoteDatabaseDao,
+    private val settingDataSource: SettingDatabaseDao,
     application: Application,
     private val dataPrimaryKey: Long
 ) : AndroidViewModel(application) {
@@ -20,18 +23,29 @@ class WriteNoteViewModel(
     val note: LiveData<Note?>
         get() = _note
 
+    private var _setting = MutableLiveData<Setting?>()
+    val setting: LiveData<Setting?>
+        get() = _setting
+
     private var _isDatabaseDeleted = MutableLiveData<Boolean?>()
     val isDatabaseDeleted: LiveData<Boolean?>
         get() = _isDatabaseDeleted
 
     init {
         initNote()
+        initSetting()
+    }
+
+    private fun initSetting() {
+        viewModelScope.launch {
+            _setting.value = settingDataSource.getFirst()
+        }
     }
 
     private fun initNote() {
         viewModelScope.launch {
             if (BaseConstants.CREATE_NOTE == dataPrimaryKey) {
-                val noteId = database.insert(Note())
+                val noteId = noteDatabase.insert(Note())
                 _note.value = getNoteFromDatabase(noteId)
             } else {
                 _note.value = getNoteFromDatabase(dataPrimaryKey)
@@ -40,12 +54,12 @@ class WriteNoteViewModel(
     }
 
     private suspend fun getNoteFromDatabase(primaryKey: Long): Note {
-        return database.get(primaryKey)
+        return noteDatabase.get(primaryKey)
     }
 
     private fun updateNote(note: Note) {
         viewModelScope.launch {
-            database.update(note)
+            noteDatabase.update(note)
         }
     }
 
@@ -70,7 +84,7 @@ class WriteNoteViewModel(
     fun deleteNote() {
         viewModelScope.launch {
             _note.value?.let {
-                database.delete(it)
+                noteDatabase.delete(it)
                 _isDatabaseDeleted.value = true
             }
         }

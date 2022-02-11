@@ -6,7 +6,11 @@
     <data>
 
         <variable
-            name="notePageListViewModel"
+            name="setting"
+            type="tw.com.andyawd.seenote.database.Setting" />
+
+        <variable
+            name="note"
             type="tw.com.andyawd.seenote.database.Note" />
 
         <variable
@@ -17,7 +21,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()-> notePageItemClickListener.onItemClick(notePageListViewModel)}">
+        android:onClick="@{()-> notePageItemClickListener.onItemClick(note)}">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/vnpMtvTitle"
@@ -28,7 +32,8 @@
             android:ellipsize="end"
             android:lines="1"
             app:autoSizeTextType="uniform"
-            app:changeTitle="@{notePageListViewModel}"
+            app:changeTextColor="@{setting}"
+            app:changeTitle="@{note}"
             app:layout_constraintBottom_toTopOf="@+id/vnpMtvContent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +51,7 @@
             android:ellipsize="end"
             android:gravity="center_vertical|start"
             android:lines="1"
-            app:changeContent="@{notePageListViewModel}"
+            app:changeContent="@{note}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vnpMtvTitle"
@@ -61,7 +66,7 @@
             android:ellipsize="end"
             android:gravity="center_vertical|start"
             android:lines="1"
-            app:changeCreateTime="@{notePageListViewModel}"
+            app:changeCreateTime="@{note}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vnpMtvContent"

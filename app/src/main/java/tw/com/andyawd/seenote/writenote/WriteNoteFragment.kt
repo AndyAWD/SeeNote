@@ -17,7 +17,7 @@ import tw.com.andyawd.seenote.databinding.FragmentWriteNoteBinding
 
 class WriteNoteFragment : Fragment() {
 
-    private lateinit var writeNoteViewModel: WriteNoteViewModel
+    private lateinit var viewModel: WriteNoteViewModel
     private lateinit var binding: FragmentWriteNoteBinding
 
     private val args: WriteNoteFragmentArgs by navArgs()
@@ -34,14 +34,20 @@ class WriteNoteFragment : Fragment() {
             false
         )
         val application = requireNotNull(this.activity).application
-        val dataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
+        val noteDataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
+        val settingDataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
         val viewModelFactory =
-            WriteNoteViewModelFactory(dataSource, application, args.notePageKey)
-        writeNoteViewModel =
+            WriteNoteViewModelFactory(
+                noteDataSource,
+                settingDataSource,
+                application,
+                args.notePageKey
+            )
+        viewModel =
             ViewModelProvider(this, viewModelFactory)[WriteNoteViewModel::class.java]
 
         binding.lifecycleOwner = this
-        binding.writeNoteViewModel = writeNoteViewModel
+        binding.writeNoteViewModel = viewModel
 
         return binding.root
     }
@@ -49,11 +55,29 @@ class WriteNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireActivity().onBackPressedDispatcher.addCallback {
-            goBackNotePage()
+        initObserve()
+        initListener(binding)
+        initClickListener(binding)
+    }
+
+    private fun initObserve() {
+        viewModel.isDatabaseDeleted.observe(viewLifecycleOwner) { isDatabaseDeleted ->
+            isDatabaseDeleted?.let {
+                if (it) {
+                    goBackNotePage()
+                }
+            }
         }
 
-        binding.fwnMtBar.setNavigationOnClickListener {
+        viewModel.setting.observe(viewLifecycleOwner) { setting ->
+            setting?.let {
+                binding.setting = it
+            }
+        }
+    }
+
+    private fun initListener(binding: FragmentWriteNoteBinding) {
+        requireActivity().onBackPressedDispatcher.addCallback {
             goBackNotePage()
         }
 
@@ -63,6 +87,12 @@ class WriteNoteFragment : Fragment() {
 
         binding.fwnAcetNoteContent.addTextChangedListener {
             updateContent()
+        }
+    }
+
+    private fun initClickListener(binding: FragmentWriteNoteBinding) {
+        binding.fwnMtBar.setNavigationOnClickListener {
+            goBackNotePage()
         }
 
         binding.fwnMtBar.setOnMenuItemClickListener { menuItem ->
@@ -78,7 +108,7 @@ class WriteNoteFragment : Fragment() {
                     true
                 }
                 R.id.tmIDelete -> {
-                    writeNoteViewModel.deleteNote()
+                    viewModel.deleteNote()
                     true
                 }
                 R.id.tmIUpload -> {
@@ -87,14 +117,6 @@ class WriteNoteFragment : Fragment() {
                 else -> false
             }
         }
-
-        writeNoteViewModel.isDatabaseDeleted.observe(viewLifecycleOwner, { isDatabaseDeleted ->
-            isDatabaseDeleted?.let {
-                if (it) {
-                    goBackNotePage()
-                }
-            }
-        })
     }
 
     private fun goBackNotePage() {
@@ -103,11 +125,11 @@ class WriteNoteFragment : Fragment() {
     }
 
     private fun updateTitle() {
-        writeNoteViewModel.updateNoteTitle(binding.fwnAcetNoteTitle.text.toString())
+        viewModel.updateNoteTitle(binding.fwnAcetNoteTitle.text.toString())
     }
 
     private fun updateContent() {
-        writeNoteViewModel.updateNoteContent(binding.fwnAcetNoteContent.text.toString())
+        viewModel.updateNoteContent(binding.fwnAcetNoteContent.text.toString())
     }
 
     companion object {

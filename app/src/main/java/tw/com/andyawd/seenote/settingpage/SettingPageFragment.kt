@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingPageBinding
@@ -36,6 +35,7 @@ class SettingPageFragment : Fragment() {
         val dataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
         viewModelFactory = SettingPageViewModelFactory(dataSource)
         viewModel = ViewModelProvider(this, viewModelFactory)[SettingPageViewModel::class.java]
+
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -81,6 +81,10 @@ class SettingPageFragment : Fragment() {
             binding.fspMbDateColor.iconSize = size.toInt()
             binding.fspMbSponsorSeeNote.iconSize = size.toInt()
             binding.fspMbHorizontalLineColor.iconSize = size.toInt()
+        }
+
+        viewModel.setting.observe(viewLifecycleOwner) { setting ->
+            binding.setting = setting
         }
     }
 
@@ -130,8 +134,6 @@ class SettingPageFragment : Fragment() {
         viewModel.size.value?.let {
             val action =
                 SettingPageFragmentDirections.actionSettingPageFragmentToSettingTitleFragment(it)
-
-            AWDLog.d("goTitleSetting: $it")
             findNavController().navigate(action)
         }
     }

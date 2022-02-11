@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface SettingDatabaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(setting: Setting)
+    suspend fun insert(setting: Setting): Long
 
     @Update
     suspend fun update(setting: Setting)
