@@ -54,7 +54,11 @@
             app:popExitAnim="@anim/slide_out_left_to_right" />
         <action
             android:id="@+id/action_settingPageFragment_to_settingTitleFragment"
-            app:destination="@id/settingTitleFragment" />
+            app:destination="@id/settingTitleFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
         <action
             android:id="@+id/action_settingPageFragment_to_settingContentFragment"
             app:destination="@id/settingContentFragment" />
@@ -98,7 +102,8 @@
     <fragment
         android:id="@+id/settingDateFragment"
         android:name="tw.com.andyawd.seenote.settingdate.SettingDateFragment"
-        android:label="SettingDateFragment">
+        android:label="SettingDateFragment"
+        tools:layout="@layout/fragment_setting_date">
         <action
             android:id="@+id/action_settingDateFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment"
@@ -116,7 +121,8 @@
     <fragment
         android:id="@+id/settingContentFragment"
         android:name="tw.com.andyawd.seenote.settingcontent.SettingContentFragment"
-        android:label="SettingContentFragment">
+        android:label="SettingContentFragment"
+        tools:layout="@layout/fragment_setting_content">
         <action
             android:id="@+id/action_settingContentFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment"
@@ -134,7 +140,8 @@
     <fragment
         android:id="@+id/settingTitleFragment"
         android:name="tw.com.andyawd.seenote.settingtitle.SettingTitleFragment"
-        android:label="SettingTitleFragment">
+        android:label="SettingTitleFragment"
+        tools:layout="@layout/fragment_setting_title">
         <action
             android:id="@+id/action_settingTitleFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment"
@@ -146,11 +153,16 @@
             android:name="size"
             app:argType="float" />
         <action
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium"
             android:id="@+id/action_settingTitleFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/sponsorSeeNoteFragment"
         android:name="tw.com.andyawd.seenote.sponsorseenote.SponsorSeeNoteFragment"
-        android:label="SponsorSeeNoteFragment" />
+        android:label="SponsorSeeNoteFragment"
+        tools:layout="@layout/fragment_sponsor_see_note" />
 </navigation>
