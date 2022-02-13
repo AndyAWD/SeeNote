@@ -100,8 +100,8 @@
                         android:lines="1"
                         android:text="@string/title_demo"
                         android:textSize="@{viewModel.size}"
-                        app:changeBackgroundColor="@{setting}"
-                        app:changeTextColor="@{setting}" />
+                        app:changeTitleBackgroundColor="@{setting}"
+                        app:changeTitleTextColor="@{setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fstMtvContent"

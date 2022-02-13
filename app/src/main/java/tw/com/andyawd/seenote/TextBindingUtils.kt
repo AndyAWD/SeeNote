@@ -33,8 +33,8 @@ fun TextView.setChangeContent(item: Note) {
     }
 }
 
-@BindingAdapter("changeTextColor")
-fun TextView.changeTextColor(item: Setting?) {
+@BindingAdapter("changeTitleTextColor")
+fun TextView.changeTitleTextColor(item: Setting?) {
     item?.let {
         setTextColor(
             ActivityCompat.getColor(
@@ -45,8 +45,8 @@ fun TextView.changeTextColor(item: Setting?) {
     }
 }
 
-@BindingAdapter("changeBackgroundColor")
-fun TextView.changeBackgroundColor(item: Setting?) {
+@BindingAdapter("changeTitleBackgroundColor")
+fun TextView.changeTitleBackgroundColor(item: Setting?) {
     item?.let {
         setBackgroundColor(
             ActivityCompat.getColor(
@@ -57,8 +57,8 @@ fun TextView.changeBackgroundColor(item: Setting?) {
     }
 }
 
-@BindingAdapter("changeHintTextColor")
-fun TextView.changeHintTextColor(item: Setting?) {
+@BindingAdapter("changeTitleHintTextColor")
+fun TextView.changeTitleHintTextColor(item: Setting?) {
     item?.let {
         setHintTextColor(
             ActivityCompat.getColor(
