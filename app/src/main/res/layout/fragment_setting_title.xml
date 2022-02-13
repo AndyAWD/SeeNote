@@ -100,6 +100,7 @@
                         android:lines="1"
                         android:text="@string/title_demo"
                         android:textSize="@{viewModel.size}"
+                        app:changeBackgroundColor="@{setting}"
                         app:changeTextColor="@{setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -112,7 +113,9 @@
                         android:gravity="center_vertical|start"
                         android:lines="1"
                         android:text="@string/content_demo"
-                        android:textSize="@{viewModel.size}" />
+                        android:textSize="@{viewModel.size}"
+                        app:changeContentBackgroundColor="@{setting}"
+                        app:changeContentTextColor="@{setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fstMtvCreateTime"

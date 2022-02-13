@@ -106,10 +106,12 @@ class SettingPageFragment : Fragment() {
 
         binding.fspMbContentColor.setOnClickListener {
             viewModel.updateSettingSize()
+            goContentSetting()
         }
 
         binding.fspMtvContent.setOnClickListener {
             viewModel.updateSettingSize()
+            goContentSetting()
         }
 
         binding.fspMbDateColor.setOnClickListener {
@@ -134,6 +136,14 @@ class SettingPageFragment : Fragment() {
         viewModel.size.value?.let {
             val action =
                 SettingPageFragmentDirections.actionSettingPageFragmentToSettingTitleFragment(it)
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun goContentSetting() {
+        viewModel.size.value?.let {
+            val action =
+                SettingPageFragmentDirections.actionSettingPageFragmentToSettingContentFragment(it)
             findNavController().navigate(action)
         }
     }

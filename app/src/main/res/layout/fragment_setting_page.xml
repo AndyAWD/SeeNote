@@ -95,12 +95,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
-                        app:changeTextColor="@{setting}"
                         android:layout_marginEnd="@dimen/magic_8dp"
                         android:ellipsize="end"
                         android:lines="1"
                         android:text="@string/title_demo"
-                        android:textSize="@{viewModel.size}" />
+                        android:textSize="@{viewModel.size}"
+                        app:changeBackgroundColor="@{setting}"
+                        app:changeTextColor="@{setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fspMtvContent"
@@ -112,7 +113,9 @@
                         android:gravity="center_vertical|start"
                         android:lines="1"
                         android:text="@string/content_demo"
-                        android:textSize="@{viewModel.size}" />
+                        android:textSize="@{viewModel.size}"
+                        app:changeContentBackgroundColor="@{setting}"
+                        app:changeContentTextColor="@{setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fspMtvCreateTime"

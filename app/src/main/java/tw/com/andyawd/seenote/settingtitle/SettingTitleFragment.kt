@@ -69,49 +69,7 @@ class SettingTitleFragment : Fragment() {
         viewModel.setting.observe(viewLifecycleOwner) { setting ->
             binding.setting = setting
         }
-
-//        viewModel.titleTextColor.observe(viewLifecycleOwner) { color ->
-//            color?.let {
-//                binding.fstMtvTitle.setTextColor(
-//                    ActivityCompat.getColor(
-//                        requireActivity(),
-//                        getColorResource(it)
-//                    )
-//                )
-//            }
-//        }
     }
-
-//    private fun getColorResource(color: String): Int {
-//        when (color) {
-//            BaseConstants.BLACK -> return R.color.hexColor000_Black
-//            BaseConstants.GRAY -> return R.color.hexColor002_Gray
-//            BaseConstants.SILVER -> return R.color.hexColor004_Silver
-//            BaseConstants.GAINSBORO -> return R.color.hexColor006_Gainsboro
-//            BaseConstants.WHITE -> return R.color.hexColor007_White
-//            BaseConstants.MIDNIGHTBLUE -> return R.color.hexColor036_MidnightBlue
-//            BaseConstants.MEDIUMBLUE -> return R.color.hexColor039_MediumBlue
-//            BaseConstants.DODGERBLUE -> return R.color.hexColor041_DodgerBlue
-//            BaseConstants.SKYBLUE -> return R.color.hexColor045_SkyBlue
-//            BaseConstants.LIGHTCYAN -> return R.color.hexColor049_LightCyan
-//            BaseConstants.DARKGREEN -> return R.color.hexColor061_DarkGreen
-//            BaseConstants.FORESTGREEN -> return R.color.hexColor063_ForestGreen
-//            BaseConstants.LIMEGREEN -> return R.color.hexColor076_LimeGreen
-//            BaseConstants.LIGHTGREEN -> return R.color.hexColor069_LightGreen
-//            BaseConstants.GREENYELLOW -> return R.color.hexColor074_GreenYellow
-//            BaseConstants.MAROON -> return R.color.hexColor102_Maroon
-//            BaseConstants.FIREBRICK -> return R.color.hexColor105_Firebrick
-//            BaseConstants.RED -> return R.color.hexColor115_Red
-//            BaseConstants.LIGHTSALMON -> return R.color.hexColor111_LightSalmon
-//            BaseConstants.PINK -> return R.color.hexColor121_Pink
-//            BaseConstants.SADDLEBROWN -> return R.color.hexColor101_SaddleBrown
-//            BaseConstants.CHOCOLATE -> return R.color.hexColor099_Chocolate
-//            BaseConstants.ORANGE -> return R.color.hexColor093_Orange
-//            BaseConstants.GOLD -> return R.color.hexColor092_Gold
-//            BaseConstants.LIGHTYELLOW -> return R.color.hexColor084_LightYellow
-//            else -> return R.color.hexColor000_Black
-//        }
-//    }
 
     private fun initListener(binding: FragmentSettingTitleBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {

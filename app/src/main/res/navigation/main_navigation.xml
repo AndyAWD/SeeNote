@@ -61,7 +61,11 @@
             app:popExitAnim="@anim/fade_out_medium" />
         <action
             android:id="@+id/action_settingPageFragment_to_settingContentFragment"
-            app:destination="@id/settingContentFragment" />
+            app:destination="@id/settingContentFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
         <action
             android:id="@+id/action_settingPageFragment_to_settingDateFragment"
             app:destination="@id/settingDateFragment" />
@@ -132,7 +136,11 @@
             app:popExitAnim="@anim/slide_out_right_to_left_medium" />
         <action
             android:id="@+id/action_settingContentFragment_to_settingPageFragment"
-            app:destination="@id/settingPageFragment" />
+            app:destination="@id/settingPageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
         <argument
             android:name="size"
             app:argType="float" />
@@ -153,12 +161,12 @@
             android:name="size"
             app:argType="float" />
         <action
+            android:id="@+id/action_settingTitleFragment_to_settingPageFragment"
+            app:destination="@id/settingPageFragment"
             app:enterAnim="@anim/fade_in_medium"
             app:exitAnim="@anim/fade_out_medium"
             app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium"
-            android:id="@+id/action_settingTitleFragment_to_settingPageFragment"
-            app:destination="@id/settingPageFragment" />
+            app:popExitAnim="@anim/fade_out_medium" />
     </fragment>
     <fragment
         android:id="@+id/sponsorSeeNoteFragment"

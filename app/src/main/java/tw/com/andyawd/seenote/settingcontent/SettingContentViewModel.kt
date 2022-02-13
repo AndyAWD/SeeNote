@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote.settingtitle
+package tw.com.andyawd.seenote.settingcontent
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import tw.com.andyawd.seenote.database.Setting
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
-class SettingTitleViewModel(
+class SettingContentViewModel(
     private val dataSource: SettingDatabaseDao
 ) : ViewModel() {
 
@@ -20,20 +20,20 @@ class SettingTitleViewModel(
     val size: LiveData<Float>
         get() = _size
 
-    private var _titleTextColor = MutableLiveData<String>()
-    val titleTextColor: LiveData<String?>
-        get() = _titleTextColor
+    private var _contentTextColor = MutableLiveData<String>()
+    val contentTextColor: LiveData<String?>
+        get() = _contentTextColor
 
-    private var _titleBackgroundColor = MutableLiveData<String>()
-    val titleBackgroundColor: LiveData<String?>
-        get() = _titleBackgroundColor
+    private var _contentBackgroundColor = MutableLiveData<String>()
+    val contentBackgroundColor: LiveData<String?>
+        get() = _contentBackgroundColor
 
     init {
         viewModelScope.launch {
             _setting.value = dataSource.getFirst()
             _size.value = _setting.value?.settingSize
-            _titleTextColor.value = _setting.value?.titleTextColor
-            _titleBackgroundColor.value = _setting.value?.titleBackgroundColor
+            _contentTextColor.value = _setting.value?.contentTextColor
+            _contentBackgroundColor.value = _setting.value?.contentBackgroundColor
         }
     }
 
