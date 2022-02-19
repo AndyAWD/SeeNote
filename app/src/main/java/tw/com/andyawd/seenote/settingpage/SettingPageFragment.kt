@@ -119,7 +119,7 @@ class SettingPageFragment : Fragment() {
             goDateSetting()
         }
 
-        binding.fspMtvCreateTime.setOnClickListener {
+        binding.fspMtvDate.setOnClickListener {
             viewModel.updateSettingSize()
             goDateSetting()
         }

@@ -116,7 +116,7 @@
                         app:changeContentTextColor="@{setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fspMtvCreateTime"
+                        android:id="@+id/fspMtvDate"
                         style="@style/setting_demo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
