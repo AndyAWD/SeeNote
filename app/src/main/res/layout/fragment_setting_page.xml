@@ -136,6 +136,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fspMbTitleColor"
+                        style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/magic_8dp"
@@ -154,6 +155,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fspMbContentColor"
+                        style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
@@ -169,6 +171,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fspMbDateColor"
+                        style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
@@ -184,6 +187,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fspMbHorizontalLineColor"
+                        style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
@@ -193,12 +197,14 @@
                         android:lines="1"
                         android:text="@string/setting_horizontal_color"
                         android:textSize="@{viewModel.size}"
+                        android:visibility="invisible"
                         app:icon="@drawable/ic_baseline_horizontal_rule_24"
                         app:iconGravity="start"
                         app:iconPadding="16dp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fspMbSponsorSeeNote"
+                        style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"

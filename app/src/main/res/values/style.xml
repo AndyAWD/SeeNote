@@ -7,4 +7,9 @@
         <item name="android:paddingTop">@dimen/magic_4dp</item>
         <item name="android:paddingBottom">@dimen/magic_4dp</item>
     </style>
+
+    <style name="setting_button">
+        <item name="strokeColor">@color/hexColor137_SlateBlue</item>
+        <item name="strokeWidth">@dimen/magic_4dp</item>
+    </style>
 </resources>
