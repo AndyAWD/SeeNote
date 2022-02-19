@@ -92,10 +92,9 @@
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fscMtvTitle"
-                        android:layout_width="wrap_content"
+                        style="@style/setting_demo"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
                         android:ellipsize="end"
                         android:lines="1"
                         android:text="@string/title_demo"
@@ -105,10 +104,9 @@
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fscMtvContent"
-                        android:layout_width="wrap_content"
+                        style="@style/setting_demo"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical|start"
                         android:lines="1"
@@ -119,10 +117,9 @@
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fscMtvCreateTime"
-                        android:layout_width="wrap_content"
+                        style="@style/setting_demo"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical|start"
                         android:lines="1"

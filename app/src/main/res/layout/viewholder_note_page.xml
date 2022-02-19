@@ -25,10 +25,9 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/vnpMtvTitle"
+            style="@style/setting_demo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/magic_8dp"
-            android:layout_marginEnd="@dimen/magic_8dp"
             android:ellipsize="end"
             android:lines="1"
             app:autoSizeTextType="uniform"
@@ -45,10 +44,9 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/vnpMtvContent"
+            style="@style/setting_demo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/magic_8dp"
-            android:layout_marginEnd="@dimen/magic_8dp"
             android:ellipsize="end"
             android:gravity="center_vertical|start"
             android:lines="1"
@@ -62,10 +60,9 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/vnpMtvEditDate"
+            style="@style/setting_demo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/magic_8dp"
-            android:layout_marginEnd="@dimen/magic_8dp"
             android:ellipsize="end"
             android:gravity="center_vertical|start"
             android:lines="1"

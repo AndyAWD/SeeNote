@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="setting_demo">
+        <item name="android:paddingStart">@dimen/magic_8dp</item>
+        <item name="android:paddingEnd">@dimen/magic_8dp</item>
+        <item name="android:paddingTop">@dimen/magic_4dp</item>
+        <item name="android:paddingBottom">@dimen/magic_4dp</item>
+    </style>
+</resources>
