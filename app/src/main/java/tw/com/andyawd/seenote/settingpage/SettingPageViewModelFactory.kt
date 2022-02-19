@@ -8,6 +8,7 @@ class SettingPageViewModelFactory(
     private val dataSource: SettingDatabaseDao
 ) : ViewModelProvider.Factory {
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingPageViewModel::class.java)) {
             return SettingPageViewModel(dataSource) as T

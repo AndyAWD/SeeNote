@@ -7,6 +7,8 @@ import tw.com.andyawd.seenote.database.SettingDatabaseDao
 class SettingTitleViewModelFactory(
     private val dataSource: SettingDatabaseDao
 ) : ViewModelProvider.Factory {
+
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingTitleViewModel::class.java)) {
             return SettingTitleViewModel(dataSource) as T

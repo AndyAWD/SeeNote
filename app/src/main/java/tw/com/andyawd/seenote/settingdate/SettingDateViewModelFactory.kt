@@ -8,6 +8,7 @@ class SettingDateViewModelFactory(
     private val dataSource: SettingDatabaseDao
 ) : ViewModelProvider.Factory {
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingDateViewModel::class.java)) {
             return SettingDateViewModel(dataSource) as T

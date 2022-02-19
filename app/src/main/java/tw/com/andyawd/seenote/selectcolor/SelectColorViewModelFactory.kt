@@ -8,6 +8,8 @@ class SelectColorViewModelFactory(
     private val dataSource: SettingDatabaseDao,
     private val page: String
 ) : ViewModelProvider.Factory {
+
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SelectColorViewModel::class.java)) {
             return SelectColorViewModel(dataSource, page) as T
