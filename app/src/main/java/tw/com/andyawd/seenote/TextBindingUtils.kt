@@ -39,7 +39,7 @@ fun TextView.changeTitleTextColor(item: Setting?) {
         setTextColor(
             ActivityCompat.getColor(
                 context,
-                colorResource(item.titleTextColor)
+                colorResource(item.titleTextColor, true)
             )
         )
     }
@@ -51,7 +51,7 @@ fun TextView.changeTitleBackgroundColor(item: Setting?) {
         setBackgroundColor(
             ActivityCompat.getColor(
                 context,
-                colorResource(item.titleBackgroundColor)
+                colorResource(item.titleBackgroundColor, false)
             )
         )
     }
@@ -63,7 +63,7 @@ fun TextView.changeTitleHintTextColor(item: Setting?) {
         setHintTextColor(
             ActivityCompat.getColor(
                 context,
-                colorResource(item.titleTextColor)
+                colorResource(item.titleTextColor, true)
             )
         )
     }
@@ -75,7 +75,7 @@ fun TextView.changeContentTextColor(item: Setting?) {
         setTextColor(
             ActivityCompat.getColor(
                 context,
-                colorResource(item.contentTextColor)
+                colorResource(item.contentTextColor, true)
             )
         )
     }
@@ -87,7 +87,7 @@ fun TextView.changeContentBackgroundColor(item: Setting?) {
         setBackgroundColor(
             ActivityCompat.getColor(
                 context,
-                colorResource(item.contentBackgroundColor)
+                colorResource(item.contentBackgroundColor, false)
             )
         )
     }
@@ -99,7 +99,7 @@ fun TextView.changeContentHintTextColor(item: Setting?) {
         setHintTextColor(
             ActivityCompat.getColor(
                 context,
-                colorResource(item.contentTextColor)
+                colorResource(item.contentTextColor, true)
             )
         )
     }
@@ -111,7 +111,7 @@ fun TextView.changeDateTextColor(item: Setting?) {
         setTextColor(
             ActivityCompat.getColor(
                 context,
-                colorResource(item.dateTextColor)
+                colorResource(item.dateTextColor, true)
             )
         )
     }
@@ -123,13 +123,13 @@ fun TextView.changeDateBackgroundColor(item: Setting?) {
         setBackgroundColor(
             ActivityCompat.getColor(
                 context,
-                colorResource(item.dateBackgroundColor)
+                colorResource(item.dateBackgroundColor, false)
             )
         )
     }
 }
 
-fun colorResource(color: String): Int {
+fun colorResource(color: String, isText: Boolean): Int {
     when (color) {
         BaseConstants.BLACK -> return R.color.hexColor000_Black
         BaseConstants.GRAY -> return R.color.hexColor002_Gray
@@ -156,6 +156,12 @@ fun colorResource(color: String): Int {
         BaseConstants.ORANGE -> return R.color.hexColor093_Orange
         BaseConstants.GOLD -> return R.color.hexColor092_Gold
         BaseConstants.LIGHTYELLOW -> return R.color.hexColor084_LightYellow
-        else -> return R.color.hexColor129_DarkOrchid
+        else -> {
+            return if (isText) {
+                R.color.hexColor000_Black
+            } else {
+                R.color.hexColor007_White
+            }
+        }
     }
 }
