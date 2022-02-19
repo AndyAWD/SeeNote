@@ -15,29 +15,16 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/fnpMtBar"
+            android:id="@+id/fnpMtToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/fnpMbWriteNote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/write_something"
-                app:icon="@drawable/ic_baseline_add_24" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/fnpMbSettingNote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/setting"
-                app:icon="@drawable/ic_baseline_add_24" />
-        </com.google.android.material.appbar.MaterialToolbar>
+            app:layout_constraintVertical_bias="0.0"
+            app:menu="@menu/toolbar_note_page"
+            app:navigationIcon="@drawable/ic_baseline_settings_24" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fnpRvNoteList"
@@ -46,7 +33,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fnpMtBar"
+            app:layout_constraintTop_toBottomOf="@+id/fnpMtToolbar"
             tools:itemCount="6"
             tools:layoutManager="GridLayoutManager"
             tools:listitem="@layout/viewholder_note_page"

@@ -68,17 +68,23 @@ class NotePageFragment : Fragment() {
             viewModel.onItemClicked(id)
         })
 
-        binding.fnpMbWriteNote.setOnClickListener {
-            findNavController().navigate(
-                NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
-                    BaseConstants.CREATE_NOTE
-                )
-            )
-        }
-
-        binding.fnpMbSettingNote.setOnClickListener {
+        binding.fnpMtToolbar.setNavigationOnClickListener {
             val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
             findNavController().navigate(action)
+        }
+
+        binding.fnpMtToolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.tnpIWriteNote -> {
+                    val action =
+                        NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
+                            BaseConstants.CREATE_NOTE
+                        )
+                    findNavController().navigate(action)
+                    true
+                }
+                else -> false
+            }
         }
     }
 
