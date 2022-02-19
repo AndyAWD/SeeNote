@@ -68,7 +68,11 @@
             app:popExitAnim="@anim/fade_out_medium" />
         <action
             android:id="@+id/action_settingPageFragment_to_settingDateFragment"
-            app:destination="@id/settingDateFragment" />
+            app:destination="@id/settingDateFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
     </fragment>
     <fragment
         android:id="@+id/selectColorFragment"
@@ -117,7 +121,11 @@
             app:popExitAnim="@anim/slide_out_right_to_left_medium" />
         <action
             android:id="@+id/action_settingDateFragment_to_settingPageFragment"
-            app:destination="@id/settingPageFragment" />
+            app:destination="@id/settingPageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
         <argument
             android:name="size"
             app:argType="float" />
