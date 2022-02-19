@@ -127,7 +127,9 @@
                         android:gravity="center_vertical|start"
                         android:lines="1"
                         android:text="@string/edit_date_demo"
-                        android:textSize="@{viewModel.size}" />
+                        android:textSize="@{viewModel.size}"
+                        app:changeDateBackgroundColor="@{setting}"
+                        app:changeDateTextColor="@{setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fspMtvHorizontalLineBottom"

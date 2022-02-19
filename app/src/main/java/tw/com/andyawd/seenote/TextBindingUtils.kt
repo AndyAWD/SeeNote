@@ -93,7 +93,6 @@ fun TextView.changeContentBackgroundColor(item: Setting?) {
     }
 }
 
-
 @BindingAdapter("changeContentHintTextColor")
 fun TextView.changeContentHintTextColor(item: Setting?) {
     item?.let {
@@ -101,6 +100,30 @@ fun TextView.changeContentHintTextColor(item: Setting?) {
             ActivityCompat.getColor(
                 context,
                 colorResource(item.contentTextColor)
+            )
+        )
+    }
+}
+
+@BindingAdapter("changeDateTextColor")
+fun TextView.changeDateTextColor(item: Setting?) {
+    item?.let {
+        setTextColor(
+            ActivityCompat.getColor(
+                context,
+                colorResource(item.dateTextColor)
+            )
+        )
+    }
+}
+
+@BindingAdapter("changeDateBackgroundColor")
+fun TextView.changeDateBackgroundColor(item: Setting?) {
+    item?.let {
+        setBackgroundColor(
+            ActivityCompat.getColor(
+                context,
+                colorResource(item.dateBackgroundColor)
             )
         )
     }
