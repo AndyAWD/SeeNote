@@ -22,6 +22,10 @@ class NotePageViewModel(
     val setting: LiveData<Setting?>
         get() = _setting
 
+    private var _size = MutableLiveData<Float>()
+    val size: LiveData<Float>
+        get() = _size
+
     private val _notePageDetail = MutableLiveData<Long?>()
 
     val notePageDetail
@@ -37,6 +41,8 @@ class NotePageViewModel(
                 _setting.value = settingDataSource.getFirst()
             }
         }
+
+        _size.value = _setting.value?.settingSize
     }
 
     fun onItemClicked(id: Long) {
@@ -45,5 +51,23 @@ class NotePageViewModel(
 
     fun onNotePageNavigated() {
         _notePageDetail.value = null
+    }
+
+    fun changeSettingSize(size: Float) {
+        _size.value = size
+    }
+
+
+    fun updateSettingSize() {
+        _setting.value?.let {
+            val newSetting = it.copy(settingSize = _size.value ?: 80F)
+            updateSetting(newSetting)
+        }
+    }
+
+    private fun updateSetting(setting: Setting) {
+        viewModelScope.launch {
+            settingDataSource.update(setting)
+        }
     }
 }

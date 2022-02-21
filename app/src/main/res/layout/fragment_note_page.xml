@@ -26,14 +26,31 @@
             app:menu="@menu/toolbar_note_page"
             app:navigationIcon="@drawable/ic_baseline_settings_24" />
 
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/fnpAcsbTextSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="@dimen/magic_8dp"
+            android:layout_marginEnd="16dp"
+            android:max="400"
+            android:padding="@dimen/magic_8dp"
+            android:thumb="@drawable/square_b22222_size40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fnpMtToolbar"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fnpRvNoteList"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fnpMtToolbar"
+            app:layout_constraintTop_toBottomOf="@+id/fnpAcsbTextSize"
             tools:itemCount="6"
             tools:layoutManager="GridLayoutManager"
             tools:listitem="@layout/viewholder_note_page"

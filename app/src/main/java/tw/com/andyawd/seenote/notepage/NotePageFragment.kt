@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -11,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
@@ -57,30 +57,29 @@ class NotePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initComponent()
         initObserve()
         initListener()
         initClickListener(binding)
     }
 
+    private fun initComponent() {
+
+    }
+
     private fun initClickListener(binding: FragmentNotePageBinding) {
         adapter.setOnItemClickListener(NotePageListener { id ->
-            AWDLog.d("新的資料庫id: $id")
             viewModel.onItemClicked(id)
         })
 
         binding.fnpMtToolbar.setNavigationOnClickListener {
-            val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
-            findNavController().navigate(action)
+            goSettingPage()
         }
 
         binding.fnpMtToolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.tnpIWriteNote -> {
-                    val action =
-                        NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
-                            BaseConstants.CREATE_NOTE
-                        )
-                    findNavController().navigate(action)
+                    goWriteNote(BaseConstants.CREATE_NOTE)
                     true
                 }
                 else -> false
@@ -92,6 +91,22 @@ class NotePageFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback {
 
         }
+
+        binding.fnpAcsbTextSize.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                viewModel.changeSettingSize(progress.toFloat())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+        })
     }
 
     private fun initObserve() {
@@ -108,14 +123,25 @@ class NotePageFragment : Fragment() {
 
         viewModel.notePageDetail.observe(viewLifecycleOwner, Observer { noteId ->
             noteId?.let {
-                findNavController().navigate(
-                    NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
-                        noteId
-                    )
-                )
-                viewModel.onNotePageNavigated()
+                goWriteNote(noteId)
             }
         })
+//
+//        viewModel.size.observe(viewLifecycleOwner, { size ->
+//
+//        })
+    }
+
+    private fun goSettingPage() {
+        val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
+        findNavController().navigate(action)
+        viewModel.onNotePageNavigated()
+    }
+
+    private fun goWriteNote(id: Long) {
+        val action = NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(id)
+        findNavController().navigate(action)
+        viewModel.onNotePageNavigated()
     }
 
     companion object {
