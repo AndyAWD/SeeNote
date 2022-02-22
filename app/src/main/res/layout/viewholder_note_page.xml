@@ -18,72 +18,80 @@
             type="tw.com.andyawd.seenote.notepage.NotePageListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()-> notePageItemClickListener.onItemClick(note)}">
+        android:fillViewport="true">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/vnpMtvTitle"
-            style="@style/setting_demo"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="1"
-            android:textSize="@{setting.pageSize}"
-            app:changeTitle="@{note}"
-            app:changeTitleBackgroundColor="@{setting}"
-            app:changeTitleTextColor="@{setting}"
-            app:layout_constraintBottom_toTopOf="@+id/vnpMtvContent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="@tools:sample/full_names" />
+            android:onClick="@{()-> notePageItemClickListener.onItemClick(note)}">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/vnpMtvContent"
-            style="@style/setting_demo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="center_vertical|start"
-            android:lines="1"
-            app:changeContent="@{note}"
-            app:changeContentBackgroundColor="@{setting}"
-            app:changeContentTextColor="@{setting}"
-            android:textSize="@{setting.pageSize}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vnpMtvTitle"
-            tools:text="@tools:sample/lorem/random" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/vnpMtvTitle"
+                style="@style/setting_demo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textSize="@{setting.pageSize}"
+                app:changeTitle="@{note}"
+                app:changeTitleBackgroundColor="@{setting}"
+                app:changeTitleTextColor="@{setting}"
+                app:layout_constraintBottom_toTopOf="@+id/vnpMtvContent"
+                app:layout_constraintEnd_toEndOf="@+id/vnpMtvDate"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/vnpMtvDate"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="@tools:sample/full_names" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/vnpMtvDate"
-            style="@style/setting_demo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="center_vertical|start"
-            android:lines="1"
-            app:changeCreateTime="@{note}"
-            app:changeDateBackgroundColor="@{setting}"
-            android:textSize="@{setting.pageSize}"
-            app:changeDateTextColor="@{setting}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vnpMtvContent"
-            tools:text="@string/edit_date_demo" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/vnpMtvContent"
+                style="@style/setting_demo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="middle"
+                android:gravity="center_vertical|start"
+                android:lines="1"
+                android:textSize="@{setting.pageSize}"
+                app:changeContent="@{note}"
+                app:changeContentBackgroundColor="@{setting}"
+                app:changeContentTextColor="@{setting}"
+                app:layout_constraintEnd_toEndOf="@+id/vnpMtvDate"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/vnpMtvDate"
+                app:layout_constraintTop_toBottomOf="@+id/vnpMtvTitle"
+                tools:text="@tools:sample/lorem/random" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/vnpMtvHorizontalLine"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/magic_1dp"
-            android:background="@color/hexColor002_Gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vnpMtvDate" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/vnpMtvDate"
+                style="@style/setting_demo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|start"
+                android:lines="1"
+                android:textSize="@{setting.pageSize}"
+                app:changeCreateTime="@{note}"
+                app:changeDateBackgroundColor="@{setting}"
+                app:changeDateTextColor="@{setting}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vnpMtvContent"
+                tools:text="@string/edit_date_demo" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/vnpMtvHorizontalLine"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/magic_1dp"
+                android:background="@color/hexColor002_Gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vnpMtvDate" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
 </layout>
