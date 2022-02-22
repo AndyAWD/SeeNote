@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.Setting
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
@@ -22,12 +23,7 @@ class NotePageViewModel(
     val setting: LiveData<Setting?>
         get() = _setting
 
-    private var _size = MutableLiveData<Float>()
-    val size: LiveData<Float>
-        get() = _size
-
     private val _notePageDetail = MutableLiveData<Long?>()
-
     val notePageDetail
         get() = _notePageDetail
 
@@ -41,8 +37,6 @@ class NotePageViewModel(
                 _setting.value = settingDataSource.getFirst()
             }
         }
-
-        _size.value = _setting.value?.settingSize
     }
 
     fun onItemClicked(id: Long) {
@@ -53,14 +47,17 @@ class NotePageViewModel(
         _notePageDetail.value = null
     }
 
-    fun changeSettingSize(size: Float) {
-        _size.value = size
+    fun changeNotePageSize(size: Float) {
+        _setting.value?.let {
+            val newSetting = it.copy(pageSize = size)
+            _setting.value = newSetting
+        }
     }
 
 
     fun updateSettingSize() {
         _setting.value?.let {
-            val newSetting = it.copy(settingSize = _size.value ?: 80F)
+            val newSetting = it.copy(pageSize = _setting.value?.pageSize ?: BaseConstants.TEXT_SIZE)
             updateSetting(newSetting)
         }
     }

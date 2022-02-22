@@ -95,7 +95,7 @@ class NotePageFragment : Fragment() {
         binding.fnpAcsbTextSize.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                viewModel.changeSettingSize(progress.toFloat())
+                viewModel.changeNotePageSize(progress.toFloat())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -112,7 +112,8 @@ class NotePageFragment : Fragment() {
     private fun initObserve() {
         viewModel.setting.observe(viewLifecycleOwner) { setting ->
             setting?.let {
-                adapter.addSetting(it)
+                adapter.changeSetting(it)
+                binding.fnpAcsbTextSize.progress = it.pageSize.toInt()
             }
         }
 
@@ -126,22 +127,20 @@ class NotePageFragment : Fragment() {
                 goWriteNote(noteId)
             }
         })
-//
-//        viewModel.size.observe(viewLifecycleOwner, { size ->
-//
-//        })
     }
 
     private fun goSettingPage() {
         val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
         findNavController().navigate(action)
         viewModel.onNotePageNavigated()
+        viewModel.updateSettingSize()
     }
 
     private fun goWriteNote(id: Long) {
         val action = NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(id)
         findNavController().navigate(action)
         viewModel.onNotePageNavigated()
+        viewModel.updateSettingSize()
     }
 
     companion object {

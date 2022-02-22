@@ -21,8 +21,9 @@ class NotePageAdapter() :
         this.notePageListener = notePageListener
     }
 
-    fun addSetting(setting: Setting) {
+    fun changeSetting(setting: Setting) {
         this.setting = setting
+        notifyDataSetChanged()
     }
 
     fun addHeaderAndSubmitList(list: List<Note>?) {
@@ -36,10 +37,6 @@ class NotePageAdapter() :
                 submitList(items)
             }
         }
-    }
-
-    fun addSettingBinding() {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

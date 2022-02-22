@@ -13,9 +13,6 @@ class NotePageBodyViewHolder(private val binding: ViewholderNotePageBinding) :
     fun bind(note: Note, setting: Setting?, notePageListener: NotePageListener) {
         setting?.let {
             binding.setting = setting
-            binding.vnpMtvTitle.textSize = setting.settingSize
-            binding.vnpMtvContent.textSize = setting.settingSize
-            binding.vnpMtvDate.textSize = setting.settingSize
         }
 
         binding.note = note
