@@ -16,7 +16,7 @@
                 android:topRightRadius="0dp" />
             <stroke
                 android:width="4dp"
-                android:color="@color/hexColor137_SlateBlue" />
+                android:color="?attr/colorPrimary" />
         </shape>
     </item>
 </layer-list>

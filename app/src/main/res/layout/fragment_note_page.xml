@@ -94,14 +94,16 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginEnd="@dimen/magic_8dp"
-                    android:background="@drawable/fillet_br_tr_radius100_width2"
+                    android:background="@drawable/ripple_6a5acd_fillet_br_tr_radius100_width2"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:padding="@dimen/magic_8dp"
-                    android:src="@drawable/ic_baseline_cancel_24"
                     app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchText"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/acetFnpSearchText"
-                    app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText" />
+                    app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText"
+                    app:srcCompat="@drawable/ic_baseline_cancel_24" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>
 
