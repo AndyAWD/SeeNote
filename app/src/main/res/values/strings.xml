@@ -38,5 +38,5 @@
     <string name="setting_date_color">日期顏色設定</string>
     <string name="setting_date_text_color">日期文字顏色設定</string>
     <string name="setting_date_background_color">日期背景顏色設定</string>
-    <string name="search_note">搜尋筆記</string>
+    <string name="search_note_title_content">搜尋筆記標題和內容</string>
 </resources>

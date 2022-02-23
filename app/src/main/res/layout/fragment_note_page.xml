@@ -58,26 +58,26 @@
                 android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/acivFnpSearchLeftIcon"
+                    android:id="@+id/acivFnpSearchIcon"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="@dimen/magic_8dp"
                     android:background="@drawable/fillet_bl_tl_radius100_width2"
                     android:padding="@dimen/magic_8dp"
                     android:src="@drawable/ic_baseline_search_24"
-                    app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchNote"
+                    app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchText"
                     app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@+id/acetFnpSearchNote"
+                    app:layout_constraintEnd_toStartOf="@+id/acetFnpSearchText"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/acetFnpSearchNote" />
+                    app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/acetFnpSearchNote"
+                    android:id="@+id/acetFnpSearchText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/square_l_r_width2"
-                    android:hint="@string/search_note"
+                    android:hint="@string/search_note_title_content"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:lines="1"
@@ -85,23 +85,23 @@
                     android:text=""
                     android:textSize="@{notePageViewModel.setting.pageSize}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/acivFnpSearchRightIcon"
-                    app:layout_constraintStart_toEndOf="@+id/acivFnpSearchLeftIcon"
+                    app:layout_constraintEnd_toStartOf="@+id/acivFnpSearchCancel"
+                    app:layout_constraintStart_toEndOf="@+id/acivFnpSearchIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/acivFnpSearchRightIcon"
+                    android:id="@+id/acivFnpSearchCancel"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginEnd="@dimen/magic_8dp"
                     android:background="@drawable/fillet_br_tr_radius100_width2"
                     android:padding="@dimen/magic_8dp"
                     android:src="@drawable/ic_baseline_cancel_24"
-                    app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchNote"
+                    app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchText"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/acetFnpSearchNote"
-                    app:layout_constraintTop_toTopOf="@+id/acetFnpSearchNote" />
+                    app:layout_constraintStart_toEndOf="@+id/acetFnpSearchText"
+                    app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>
 

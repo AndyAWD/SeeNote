@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.activity.addCallback
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -85,6 +85,10 @@ class NotePageFragment : Fragment() {
                 else -> false
             }
         }
+
+        binding.acivFnpSearchCancel.setOnClickListener {
+            viewModel.inputSearchText(BaseConstants.EMPTY_STRING)
+        }
     }
 
     private fun initListener() {
@@ -105,8 +109,11 @@ class NotePageFragment : Fragment() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
 
             }
-
         })
+
+        binding.acetFnpSearchText.addTextChangedListener { text ->
+            viewModel.inputSearchText(text.toString())
+        }
     }
 
     private fun initObserve() {
@@ -117,15 +124,25 @@ class NotePageFragment : Fragment() {
             }
         }
 
-        viewModel.note.observe(viewLifecycleOwner, Observer {
+        viewModel.note.observe(viewLifecycleOwner) {
             adapter.submitList(it)
-        })
+        }
 
-        viewModel.notePageDetail.observe(viewLifecycleOwner, Observer { noteId ->
-            noteId?.let {
-                goWriteNote(noteId)
+        viewModel.notePageDetail.observe(viewLifecycleOwner) { id ->
+            id?.let {
+                goWriteNote(id)
             }
-        })
+        }
+
+        viewModel.searchText.observe(viewLifecycleOwner) { text ->
+            text?.let {
+                if (text.isEmpty()) {
+                    binding.acetFnpSearchText.text?.clear()
+                }
+
+                viewModel.queryNote()
+            }
+        }
     }
 
     private fun goSettingPage() {

@@ -1,6 +1,5 @@
 package tw.com.andyawd.seenote.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -22,10 +21,10 @@ interface NoteDatabaseDao {
     suspend fun clear()
 
     @Query("SELECT * FROM note_table ORDER BY id ASC")
-    fun getAll(): LiveData<List<Note>>
+    suspend fun getAll(): List<Note>
 
     @Query("SELECT * FROM note_table WHERE title LIKE '%' || :text || '%' OR content LIKE '%' || :text || '%'  ORDER BY id ASC")
-    fun getSearchNote(text: String): LiveData<List<Note>>
+    suspend fun getSearchText(text: String): List<Note>
 
     @Query("SELECT * FROM note_table ORDER BY id DESC LIMIT 1")
     suspend fun getFirst(): Note?
