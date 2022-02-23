@@ -24,6 +24,9 @@ interface NoteDatabaseDao {
     @Query("SELECT * FROM note_table ORDER BY id ASC")
     fun getAll(): LiveData<List<Note>>
 
+    @Query("SELECT * FROM note_table WHERE title LIKE '%' || :text || '%' OR content LIKE '%' || :text || '%'  ORDER BY id ASC")
+    fun getSearchNote(text: String): LiveData<List<Note>>
+
     @Query("SELECT * FROM note_table ORDER BY id DESC LIMIT 1")
     suspend fun getFirst(): Note?
 
