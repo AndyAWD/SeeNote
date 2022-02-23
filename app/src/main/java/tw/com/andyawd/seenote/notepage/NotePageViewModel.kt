@@ -54,7 +54,6 @@ class NotePageViewModel(
         }
     }
 
-
     fun updateSettingSize() {
         _setting.value?.let {
             val newSetting = it.copy(pageSize = _setting.value?.pageSize ?: BaseConstants.TEXT_SIZE)
