@@ -62,7 +62,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/fwnAcetNoteTitle"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/magic_8dp"
                     android:layout_marginEnd="@dimen/magic_8dp"
@@ -73,6 +73,7 @@
                     android:lines="1"
                     android:padding="@dimen/magic_8dp"
                     android:text="@{writeNoteViewModel.note.title}"
+                    android:textSize="@{writeNoteViewModel.size}"
                     android:typeface="sans"
                     app:changeTitleBackgroundColor="@{setting}"
                     app:changeTitleHintTextColor="@{setting}"
@@ -85,7 +86,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/fwnAcetNoteContent"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginStart="@dimen/magic_8dp"
                     android:layout_marginTop="16dp"
@@ -100,6 +101,7 @@
                     android:padding="@dimen/magic_8dp"
                     android:scrollbars="vertical"
                     android:text="@{writeNoteViewModel.note.content}"
+                    android:textSize="@{writeNoteViewModel.size}"
                     android:typeface="serif"
                     app:changeContentBackgroundColor="@{setting}"
                     app:changeContentHintTextColor="@{setting}"
