@@ -91,11 +91,11 @@ class WriteNoteFragment : Fragment() {
     }
 
     private fun initClickListener(binding: FragmentWriteNoteBinding) {
-        binding.fwnMtBar.setNavigationOnClickListener {
+        binding.fwnMtToolbar.setNavigationOnClickListener {
             goBackNotePage()
         }
 
-        binding.fwnMtBar.setOnMenuItemClickListener { menuItem ->
+        binding.fwnMtToolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.tmITop -> {
                     binding.fwnAcetNoteContent.setSelection(0)
