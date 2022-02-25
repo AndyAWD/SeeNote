@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.activity.addCallback
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentWriteNoteBinding
@@ -71,7 +73,14 @@ class WriteNoteFragment : Fragment() {
 
         viewModel.setting.observe(viewLifecycleOwner) { setting ->
             setting?.let {
+                AWDLog.d("setting: $setting / it.pageSize.toInt(): ${it.pageSize.toInt()}")
                 binding.setting = it
+            }
+        }
+
+        viewModel.size.observe(viewLifecycleOwner) { size ->
+            size?.let {
+                binding.fwnAcsbTextSize.progress = it.toInt()
             }
         }
     }
@@ -88,6 +97,21 @@ class WriteNoteFragment : Fragment() {
         binding.fwnAcetNoteContent.addTextChangedListener {
             updateContent()
         }
+
+        binding.fwnAcsbTextSize.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                viewModel.changeSettingSize(progress.toFloat())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                viewModel.updateSetting()
+            }
+        })
     }
 
     private fun initClickListener(binding: FragmentWriteNoteBinding) {

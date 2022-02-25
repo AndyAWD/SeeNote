@@ -27,6 +27,10 @@ class WriteNoteViewModel(
     val setting: LiveData<Setting?>
         get() = _setting
 
+    private var _size = MutableLiveData<Float>()
+    val size: LiveData<Float>
+        get() = _size
+
     private var _isDatabaseDeleted = MutableLiveData<Boolean?>()
     val isDatabaseDeleted: LiveData<Boolean?>
         get() = _isDatabaseDeleted
@@ -39,6 +43,7 @@ class WriteNoteViewModel(
     private fun initSetting() {
         viewModelScope.launch {
             _setting.value = settingDataSource.getFirst()
+            _size.value = setting.value?.writeSize
         }
     }
 
@@ -86,6 +91,18 @@ class WriteNoteViewModel(
             _note.value?.let {
                 noteDatabase.delete(it)
                 _isDatabaseDeleted.value = true
+            }
+        }
+    }
+
+    fun changeSettingSize(size: Float) {
+        _size.value = size
+    }
+
+    fun updateSetting() {
+        viewModelScope.launch {
+            _setting.value?.let {
+                settingDataSource.update(it)
             }
         }
     }
