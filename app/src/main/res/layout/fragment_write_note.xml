@@ -46,25 +46,27 @@
             app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <HorizontalScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
             android:fillViewport="true"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fwnAcsbTextSize">
+            app:layout_constraintTop_toBottomOf="@+id/fwnAcsbTextSize"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/fwnAcetNoteTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/magic_8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="@dimen/magic_8dp"
                     android:background="@null"
                     android:hint="@string/title"
@@ -87,7 +89,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/fwnAcetNoteContent"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/magic_8dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="@dimen/magic_8dp"
@@ -111,7 +113,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/fwnAcetNoteTitle"
                     tools:text="@tools:sample/lorem/random" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </HorizontalScrollView>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
