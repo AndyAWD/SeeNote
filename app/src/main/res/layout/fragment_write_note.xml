@@ -57,62 +57,70 @@
             app:layout_constraintTop_toBottomOf="@+id/fwnAcsbTextSize"
             app:layout_constraintVertical_bias="0.0">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/fwnAcetNoteTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    android:background="@null"
-                    android:hint="@string/title"
-                    android:imeOptions="actionNext|flagNoExtractUi"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:padding="@dimen/magic_8dp"
-                    android:text="@{writeNoteViewModel.note.title}"
-                    android:textSize="@{writeNoteViewModel.size}"
-                    android:typeface="sans"
-                    app:changeTitleBackgroundColor="@{setting}"
-                    app:changeTitleHintTextColor="@{setting}"
-                    app:changeTitleTextColor="@{setting}"
-                    app:layout_constraintBottom_toTopOf="@+id/fwnAcetNoteContent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="@tools:sample/lorem/random" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/fwnAcetNoteContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/magic_8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="@dimen/magic_8dp"
-                    android:layout_marginBottom="@dimen/magic_8dp"
-                    android:background="@null"
-                    android:fadeScrollbars="false"
-                    android:gravity="top|start"
-                    android:hint="@string/write_something"
-                    android:imeOptions="actionDone|flagNoExtractUi"
-                    android:inputType="textMultiLine"
-                    android:padding="@dimen/magic_8dp"
-                    android:text="@{writeNoteViewModel.note.content}"
-                    android:textSize="@{writeNoteViewModel.size}"
-                    android:typeface="serif"
-                    app:changeContentBackgroundColor="@{setting}"
-                    app:changeContentHintTextColor="@{setting}"
-                    app:changeContentTextColor="@{setting}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fwnAcetNoteTitle"
-                    tools:text="@tools:sample/lorem/random" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/fwnAcetNoteTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/magic_8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="@dimen/magic_8dp"
+                        android:background="@null"
+                        android:hint="@string/title"
+                        android:imeOptions="actionNext|flagNoExtractUi"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:padding="@dimen/magic_8dp"
+                        android:text="@{writeNoteViewModel.note.title}"
+                        android:textSize="@{writeNoteViewModel.size}"
+                        android:typeface="sans"
+                        app:changeTitleBackgroundColor="@{setting}"
+                        app:changeTitleHintTextColor="@{setting}"
+                        app:changeTitleTextColor="@{setting}"
+                        app:layout_constraintBottom_toTopOf="@+id/fwnAcetNoteContent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        tools:text="@tools:sample/lorem/random" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/fwnAcetNoteContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/magic_8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="@dimen/magic_8dp"
+                        android:layout_marginBottom="@dimen/magic_8dp"
+                        android:background="@null"
+                        android:fadeScrollbars="false"
+                        android:gravity="top|start"
+                        android:hint="@string/write_something"
+                        android:imeOptions="actionDone|flagNoExtractUi"
+                        android:inputType="textMultiLine"
+                        android:padding="@dimen/magic_8dp"
+                        android:text="@{writeNoteViewModel.note.content}"
+                        android:textSize="@{writeNoteViewModel.size}"
+                        android:typeface="serif"
+                        app:changeContentBackgroundColor="@{setting}"
+                        app:changeContentHintTextColor="@{setting}"
+                        app:changeContentTextColor="@{setting}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fwnAcetNoteTitle"
+                        tools:text="@tools:sample/lorem/random" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
