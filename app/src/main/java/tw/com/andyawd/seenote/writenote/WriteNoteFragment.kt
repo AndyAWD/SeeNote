@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentWriteNoteBinding
@@ -73,7 +72,6 @@ class WriteNoteFragment : Fragment() {
 
         viewModel.setting.observe(viewLifecycleOwner) { setting ->
             setting?.let {
-                AWDLog.d("setting: $setting / it.pageSize.toInt(): ${it.pageSize.toInt()}")
                 binding.setting = it
             }
         }

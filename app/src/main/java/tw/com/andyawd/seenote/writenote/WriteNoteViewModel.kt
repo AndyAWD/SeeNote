@@ -102,7 +102,8 @@ class WriteNoteViewModel(
     fun updateSetting() {
         viewModelScope.launch {
             _setting.value?.let {
-                settingDataSource.update(it)
+                val newSetting = it.copy(writeSize = _size.value ?: 80F)
+                settingDataSource.update(newSetting)
             }
         }
     }
