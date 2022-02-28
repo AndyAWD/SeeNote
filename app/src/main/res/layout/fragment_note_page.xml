@@ -102,7 +102,7 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginEnd="@dimen/magic_8dp"
-                        android:background="@drawable/ripple_6a5acd_fillet_br_tr_radius100_width2"
+                        android:background="@drawable/ripple_secondary_fillet_br_tr_radius100_width2"
                         android:clickable="true"
                         android:focusable="true"
                         android:padding="@dimen/magic_8dp"
