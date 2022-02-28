@@ -83,7 +83,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/magic_1dp"
                         android:layout_marginTop="16dp"
-                        android:background="@color/hexColor002_Gray"
+                        android:background="?attr/colorPrimaryVariant"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -132,13 +132,13 @@
                         android:id="@+id/fscMtvHorizontalLineBottom"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/magic_1dp"
-                        android:background="@color/hexColor002_Gray" />
+                        android:background="?attr/colorPrimaryVariant" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fscMbContentTextColor"
+                        style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/setting_button"
                         android:layout_marginStart="@dimen/magic_8dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="@dimen/magic_8dp"
@@ -155,12 +155,12 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fscMbContentBackgroundColor"
+                        style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/magic_8dp"
                         android:gravity="center_vertical|start"
                         android:insetTop="0dp"
-                        style="@style/setting_button"
                         android:insetBottom="0dp"
                         android:lines="1"
                         android:text="@string/setting_content_text_background_color"
