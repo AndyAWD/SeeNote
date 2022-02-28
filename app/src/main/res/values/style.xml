@@ -9,7 +9,7 @@
     </style>
 
     <style name="setting_button">
-        <item name="strokeColor">@color/hexColor137_SlateBlue</item>
+        <item name="strokeColor">?attr/colorSecondary</item>
         <item name="strokeWidth">@dimen/magic_4dp</item>
     </style>
 </resources>
