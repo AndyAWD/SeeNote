@@ -1,8 +1,10 @@
 package tw.com.andyawd.seenote.notepage
 
+import android.graphics.Color
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.databinding.BindingAdapter
+import com.google.android.material.color.MaterialColors
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.Note
@@ -36,100 +38,133 @@ fun TextView.setChangeContent(item: Note) {
 @BindingAdapter("changeTitleTextColor")
 fun TextView.changeTitleTextColor(item: Setting?) {
     item?.let {
-        setTextColor(
-            ActivityCompat.getColor(
-                context,
-                colorResource(item.titleTextColor, true)
+        if (it.titleTextColor.isEmpty()) {
+            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        } else {
+            setTextColor(
+                ActivityCompat.getColor(
+                    context,
+                    colorResource(item.titleTextColor)
+                )
             )
-        )
+        }
     }
 }
 
 @BindingAdapter("changeTitleBackgroundColor")
 fun TextView.changeTitleBackgroundColor(item: Setting?) {
     item?.let {
-        setBackgroundColor(
-            ActivityCompat.getColor(
-                context,
-                colorResource(item.titleBackgroundColor, false)
+        if (it.titleBackgroundColor.isEmpty()) {
+            MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
+        } else {
+            setBackgroundColor(
+                ActivityCompat.getColor(
+                    context,
+                    colorResource(item.titleBackgroundColor)
+                )
             )
-        )
+
+        }
     }
 }
 
 @BindingAdapter("changeTitleHintTextColor")
 fun TextView.changeTitleHintTextColor(item: Setting?) {
     item?.let {
-        setHintTextColor(
-            ActivityCompat.getColor(
-                context,
-                colorResource(item.titleTextColor, true)
+        if (it.titleTextColor.isEmpty()) {
+            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        } else {
+            setHintTextColor(
+                ActivityCompat.getColor(
+                    context,
+                    colorResource(item.titleTextColor)
+                )
             )
-        )
+        }
     }
 }
 
 @BindingAdapter("changeContentTextColor")
 fun TextView.changeContentTextColor(item: Setting?) {
     item?.let {
-        setTextColor(
-            ActivityCompat.getColor(
-                context,
-                colorResource(item.contentTextColor, true)
+        if (it.contentTextColor.isEmpty()) {
+            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        } else {
+            setTextColor(
+                ActivityCompat.getColor(
+                    context,
+                    colorResource(item.contentTextColor)
+                )
             )
-        )
+        }
     }
 }
 
 @BindingAdapter("changeContentBackgroundColor")
 fun TextView.changeContentBackgroundColor(item: Setting?) {
     item?.let {
-        setBackgroundColor(
-            ActivityCompat.getColor(
-                context,
-                colorResource(item.contentBackgroundColor, false)
+        if (it.contentBackgroundColor.isEmpty()) {
+            MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
+        } else {
+            setBackgroundColor(
+                ActivityCompat.getColor(
+                    context,
+                    colorResource(item.contentBackgroundColor)
+                )
             )
-        )
+        }
     }
 }
 
 @BindingAdapter("changeContentHintTextColor")
 fun TextView.changeContentHintTextColor(item: Setting?) {
     item?.let {
-        setHintTextColor(
-            ActivityCompat.getColor(
-                context,
-                colorResource(item.contentTextColor, true)
+        if (it.contentTextColor.isEmpty()) {
+            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        } else {
+            setHintTextColor(
+                ActivityCompat.getColor(
+                    context,
+                    colorResource(item.contentTextColor)
+                )
             )
-        )
+        }
     }
 }
 
 @BindingAdapter("changeDateTextColor")
 fun TextView.changeDateTextColor(item: Setting?) {
     item?.let {
-        setTextColor(
-            ActivityCompat.getColor(
-                context,
-                colorResource(item.dateTextColor, true)
+        if (it.dateTextColor.isEmpty()) {
+            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        } else {
+            setTextColor(
+                ActivityCompat.getColor(
+                    context,
+                    colorResource(item.dateTextColor)
+                )
             )
-        )
+        }
     }
 }
 
 @BindingAdapter("changeDateBackgroundColor")
 fun TextView.changeDateBackgroundColor(item: Setting?) {
     item?.let {
-        setBackgroundColor(
-            ActivityCompat.getColor(
-                context,
-                colorResource(item.dateBackgroundColor, false)
+        if (it.dateBackgroundColor.isEmpty()) {
+            MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
+        } else {
+            setBackgroundColor(
+                ActivityCompat.getColor(
+                    context,
+                    colorResource(item.dateBackgroundColor)
+                )
             )
-        )
+        }
     }
 }
 
-fun colorResource(color: String, isText: Boolean): Int {
+fun colorResource(color: String): Int {
     when (color) {
         BaseConstants.BLACK -> return R.color.hexColor000_Black
         BaseConstants.GRAY -> return R.color.hexColor002_Gray
@@ -156,12 +191,6 @@ fun colorResource(color: String, isText: Boolean): Int {
         BaseConstants.ORANGE -> return R.color.hexColor093_Orange
         BaseConstants.GOLD -> return R.color.hexColor092_Gold
         BaseConstants.LIGHTYELLOW -> return R.color.hexColor084_LightYellow
-        else -> {
-            return if (isText) {
-                R.color.hexColor000_Black
-            } else {
-                R.color.hexColor007_White
-            }
-        }
+        else -> return R.color.hexColor115_Red
     }
 }
