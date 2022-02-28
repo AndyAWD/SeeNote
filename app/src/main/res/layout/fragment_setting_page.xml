@@ -83,7 +83,7 @@
                         android:id="@+id/fspMtvHorizontalLineTop"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/magic_1dp"
-                        android:background="@color/hexColor002_Gray"
+                        android:background="?attr/colorPrimaryVariant"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -132,7 +132,7 @@
                         android:id="@+id/fspMtvHorizontalLineBottom"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/magic_1dp"
-                        android:background="@color/hexColor002_Gray" />
+                        android:background="?attr/colorPrimaryVariant" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fspMbTitleColor"
