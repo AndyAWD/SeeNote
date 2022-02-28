@@ -40,6 +40,7 @@ class NotePageViewModel(
 
             if (settingList.isEmpty()) {
                 settingDataSource.insert(Setting())
+                _setting.value = settingDataSource.getFirst()
             } else {
                 _setting.value = settingDataSource.getFirst()
             }
