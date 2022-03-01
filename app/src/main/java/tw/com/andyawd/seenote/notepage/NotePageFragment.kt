@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.activity.addCallback
+import androidx.core.app.ActivityCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
@@ -47,9 +49,16 @@ class NotePageFragment : Fragment() {
         binding.notePageViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        val xmlColor =
+            ActivityCompat.getDrawable(requireNotNull(this.activity), R.drawable.line_height4)
+        val dividerItemDecoration =
+            DividerItemDecoration(requireNotNull(this.activity), DividerItemDecoration.VERTICAL)
+        xmlColor?.let { dividerItemDecoration.setDrawable(it) }
+
         adapter = NotePageAdapter()
         binding.fnpRvNoteList.adapter = adapter
         binding.fnpRvNoteList.layoutManager = GridLayoutManager(application, 1)
+        binding.fnpRvNoteList.addItemDecoration(dividerItemDecoration)
 
         return binding.root
     }

@@ -82,16 +82,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/vnpMtvContent"
                 tools:text="@string/edit_date_demo" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/vnpMtvHorizontalLine"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/magic_1dp"
-                android:background="?attr/colorPrimaryVariant"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vnpMtvDate" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
 </layout>
