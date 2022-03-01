@@ -91,7 +91,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/square_l_r_width2"
-                            android:hint="@string/search_note_title_content"
+                            android:hint="@string/search_title_content"
                             android:imeOptions="actionSearch"
                             android:inputType="text"
                             android:lines="1"
