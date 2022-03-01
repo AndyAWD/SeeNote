@@ -42,94 +42,102 @@
             app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <HorizontalScrollView
-            android:id="@+id/hsvFnpSearch"
-            android:layout_width="match_parent"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
             android:fillViewport="true"
-            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fnpAcsbTextSize">
 
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:fillViewport="true">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <HorizontalScrollView
+                    android:id="@+id/hsvFnpSearch"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:fillViewport="true"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fnpRvNoteList"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/acivFnpSearchIcon"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:background="@drawable/fillet_bl_tl_radius100_width2"
-                        android:padding="@dimen/magic_8dp"
-                        android:src="@drawable/ic_baseline_search_24"
-                        app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchText"
-                        app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toStartOf="@+id/acetFnpSearchText"
-                        app:layout_constraintHorizontal_chainStyle="packed"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText" />
-
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/acetFnpSearchText"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/square_l_r_width2"
-                        android:hint="@string/search_note_title_content"
-                        android:imeOptions="actionSearch"
-                        android:inputType="text"
-                        android:lines="1"
-                        android:padding="@dimen/magic_8dp"
-                        android:text=""
-                        android:textSize="@{notePageViewModel.setting.pageSize}"
-                        app:layout_constraintBottom_toTopOf="@+id/fnpRvNoteList"
-                        app:layout_constraintEnd_toStartOf="@+id/acivFnpSearchCancel"
-                        app:layout_constraintStart_toEndOf="@+id/acivFnpSearchIcon"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:layout_constraintVertical_chainStyle="packed" />
+                        android:layout_height="wrap_content">
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/acivFnpSearchCancel"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
-                        android:background="@drawable/ripple_6a5acd_fillet_br_tr_radius100_width2"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:padding="@dimen/magic_8dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchText"
-                        app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/acetFnpSearchText"
-                        app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText"
-                        app:srcCompat="@drawable/ic_baseline_cancel_24" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/acivFnpSearchIcon"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="@dimen/magic_8dp"
+                            android:background="@drawable/fillet_bl_tl_radius100_width2"
+                            android:padding="@dimen/magic_8dp"
+                            android:src="@drawable/ic_baseline_search_24"
+                            app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchText"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toStartOf="@+id/acetFnpSearchText"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/fnpRvNoteList"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/acetFnpSearchText"
-                        app:layout_constraintVertical_bias="0.0"
-                        tools:itemCount="8"
-                        tools:layoutManager="GridLayoutManager"
-                        tools:listitem="@layout/viewholder_note_page"
-                        tools:spanCount="1" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/acetFnpSearchText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/square_l_r_width2"
+                            android:hint="@string/search_note_title_content"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"
+                            android:lines="1"
+                            android:padding="@dimen/magic_8dp"
+                            android:text=""
+                            android:textSize="@{notePageViewModel.setting.pageSize}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/acivFnpSearchCancel"
+                            app:layout_constraintStart_toEndOf="@+id/acivFnpSearchIcon"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:layout_constraintVertical_chainStyle="packed" />
 
-            </androidx.core.widget.NestedScrollView>
-        </HorizontalScrollView>
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/acivFnpSearchCancel"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginEnd="@dimen/magic_8dp"
+                            android:background="@drawable/ripple_6a5acd_fillet_br_tr_radius100_width2"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:padding="@dimen/magic_8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchText"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/acetFnpSearchText"
+                            app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText"
+                            app:srcCompat="@drawable/ic_baseline_cancel_24" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fnpRvNoteList"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hsvFnpSearch"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:itemCount="8"
+                    tools:layoutManager="GridLayoutManager"
+                    tools:listitem="@layout/viewholder_note_page"
+                    tools:spanCount="1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
