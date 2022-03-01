@@ -60,22 +60,31 @@ class SelectColorViewModel(
                 val newSetting: Setting
                 when (page) {
                     BaseConstants.TITLE_TEXT_COLOR -> {
-                        newSetting = it.copy(titleTextColor = _color.value ?: "")
+                        newSetting =
+                            it.copy(titleTextColor = _color.value ?: BaseConstants.EMPTY_STRING)
                     }
                     BaseConstants.TITLE_BACKGROUND_COLOR -> {
-                        newSetting = it.copy(titleBackgroundColor = _color.value ?: "")
+                        newSetting = it.copy(
+                            titleBackgroundColor = _color.value ?: BaseConstants.EMPTY_STRING
+                        )
                     }
                     BaseConstants.CONTENT_TEXT_COLOR -> {
-                        newSetting = it.copy(contentTextColor = _color.value ?: "")
+                        newSetting =
+                            it.copy(contentTextColor = _color.value ?: BaseConstants.EMPTY_STRING)
                     }
                     BaseConstants.CONTENT_BACKGROUND_COLOR -> {
-                        newSetting = it.copy(contentBackgroundColor = _color.value ?: "")
+                        newSetting = it.copy(
+                            contentBackgroundColor = _color.value ?: BaseConstants.EMPTY_STRING
+                        )
                     }
                     BaseConstants.DATE_TEXT_COLOR -> {
-                        newSetting = it.copy(dateTextColor = _color.value ?: "")
+                        newSetting =
+                            it.copy(dateTextColor = _color.value ?: BaseConstants.EMPTY_STRING)
                     }
                     BaseConstants.DATE_BACKGROUND_COLOR -> {
-                        newSetting = it.copy(dateBackgroundColor = _color.value ?: "")
+                        newSetting = it.copy(
+                            dateBackgroundColor = _color.value ?: BaseConstants.EMPTY_STRING
+                        )
                     }
                     else -> {
                         newSetting = it.copy()
