@@ -130,6 +130,9 @@ class SelectColorFragment : Fragment() {
         binding.fscMbLightYellow.setOnClickListener {
             viewModel.selectColor(BaseConstants.LIGHTYELLOW)
         }
+        binding.fscMbDefault.setOnClickListener {
+            viewModel.selectColor(BaseConstants.EMPTY_STRING)
+        }
     }
 
     private fun initComponent() {

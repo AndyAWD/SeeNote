@@ -191,6 +191,7 @@ fun colorResource(color: String): Int {
         BaseConstants.ORANGE -> return R.color.hexColor093_Orange
         BaseConstants.GOLD -> return R.color.hexColor092_Gold
         BaseConstants.LIGHTYELLOW -> return R.color.hexColor084_LightYellow
+        BaseConstants.DEFAULT -> return R.color.hexColor084_LightYellow
         else -> return R.color.hexColor115_Red
     }
 }

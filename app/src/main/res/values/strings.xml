@@ -39,4 +39,5 @@
     <string name="setting_date_text_color">日期文字顏色設定</string>
     <string name="setting_date_background_color">日期背景顏色設定</string>
     <string name="search_title_content">搜尋標題和內容</string>
+    <string name="system_primary">系統預設</string>
 </resources>

@@ -30,8 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:visibility="gone"
             android:text="@{@string/setting_note_text_size(viewModel.size)}"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fscMtToolBar"
@@ -447,6 +447,21 @@
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintStart_toEndOf="@+id/fscMbGold"
                         app:layout_constraintTop_toTopOf="@+id/fscMbSaddleBrown" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/fscMbDefault"
+                        style="@style/setting_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/magic_8dp"
+                        android:backgroundTint="?attr/colorPrimary"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/system_primary"
+                        android:textSize="@{viewModel.size}"
+                        app:layout_constraintEnd_toEndOf="@+id/fscMbLightYellow"
+                        app:layout_constraintStart_toStartOf="@+id/fscMbBlack"
+                        app:layout_constraintTop_toBottomOf="@+id/fscMbSaddleBrown" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
         </androidx.core.widget.NestedScrollView>

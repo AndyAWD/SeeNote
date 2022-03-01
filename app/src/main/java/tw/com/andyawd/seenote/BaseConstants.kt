@@ -57,5 +57,6 @@ class BaseConstants {
         const val ORANGE = "#ffa500"
         const val GOLD = "#ffd700"
         const val LIGHTYELLOW = "#ffffe0"
+        const val DEFAULT = "default"
     }
 }
