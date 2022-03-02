@@ -6,11 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import tw.com.andyawd.seenote.BaseConstants
-import tw.com.andyawd.seenote.database.Note
-import tw.com.andyawd.seenote.database.NoteDatabaseDao
-import tw.com.andyawd.seenote.database.Setting
-import tw.com.andyawd.seenote.database.SettingDatabaseDao
+import tw.com.andyawd.seenote.database.*
 
 class NotePageViewModel(
     private val noteDataSource: NoteDatabaseDao,
@@ -39,7 +35,16 @@ class NotePageViewModel(
             val settingList = settingDataSource.getAll()
 
             if (settingList.isEmpty()) {
-                settingDataSource.insert(Setting())
+                val color = Color()
+                settingDataSource.insert(
+                    Setting(
+                        textSize = TextSize(),
+                        title = color,
+                        content = color,
+                        date = color,
+                        label = color
+                    )
+                )
                 _setting.value = settingDataSource.getFirst()
             } else {
                 _setting.value = settingDataSource.getFirst()
@@ -57,28 +62,24 @@ class NotePageViewModel(
         _notePageDetail.value = null
     }
 
-    fun changeNotePageSize(size: Float) {
+    fun changeNotePageSize(size: Int) {
         _setting.value?.let {
-            val newSetting = it.copy(pageSize = size)
+            val newTextSize = it.textSize?.copy(notePage = size)
+            val newSetting = it.copy(textSize = newTextSize)
             _setting.value = newSetting
         }
     }
 
-    fun updateSettingSize() {
+    fun updateSetting() {
         _setting.value?.let {
-            val newSetting = it.copy(pageSize = _setting.value?.pageSize ?: BaseConstants.TEXT_SIZE)
-            updateSetting(newSetting)
+            viewModelScope.launch {
+                settingDataSource.update(it)
+            }
         }
     }
 
     fun inputSearchText(text: String) {
         _searchText.value = text
-    }
-
-    private fun updateSetting(setting: Setting) {
-        viewModelScope.launch {
-            settingDataSource.update(setting)
-        }
     }
 
     fun queryNote() {

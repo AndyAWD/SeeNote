@@ -2,15 +2,20 @@ package tw.com.andyawd.seenote
 
 class BaseConstants {
     companion object {
-        const val TEXT_SIZE = 80F
-        const val COLOR_SIZE = 120F
+        const val TEXT_SIZE = 80
+        const val COLOR_SIZE = 120
         const val NOTE_DATABASE = "note_database"
         const val NOTE_TABLE = "note_table"
         const val SETTING_TABLE = "setting_table"
+        const val COLOR_TABLE = "color_table"
+        const val DATE_TABLE = "date_table"
+        const val TEXT_SIZE_TABLE = "text_size_table"
         const val TITLE = "title"
         const val CONTENT = "content"
         const val CREATE_DATE = "create_date"
+        const val CREATE = "create"
         const val EDIT_DATE = "edit_date"
+        const val EDIT = "edit"
         const val CREATE_NOTE = -1L
         const val EMPTY_STRING = ""
         const val SETTING_SIZE = "setting_size"
@@ -30,6 +35,14 @@ class BaseConstants {
         const val DATE_BACKGROUND_COLOR = "date_background_color"
         const val WRITE_SIZE = "write_size"
         const val SELECT_SIZE = "select_size"
+        const val LABEL = "label"
+        const val TEXT_COLOR = "text_color"
+        const val BACKGROUND_COLOR = "background_color"
+        const val DATE = "date"
+        const val NOTE_PAGE = "note_page"
+        const val SELECT_COLOR = "select_color"
+        const val SETTING_PAGE = "setting_page"
+        const val WRITER_NOTE = "writer_note"
 
 
         const val BLACK = "#000000"

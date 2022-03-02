@@ -50,7 +50,10 @@ class NotePageFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         val xmlColor =
-            ActivityCompat.getDrawable(requireNotNull(this.activity), R.drawable.line_height4)
+            ActivityCompat.getDrawable(
+                requireNotNull(this.activity),
+                R.drawable.line_horizontal_line_height
+            )
         val dividerItemDecoration =
             DividerItemDecoration(requireNotNull(this.activity), DividerItemDecoration.VERTICAL)
         xmlColor?.let { dividerItemDecoration.setDrawable(it) }
@@ -66,14 +69,68 @@ class NotePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initComponent()
+        initComponent(binding)
         initObserve()
         initListener()
         initClickListener(binding)
     }
 
-    private fun initComponent() {
+    private fun initComponent(binding: FragmentNotePageBinding) {
 
+    }
+
+    private fun initObserve() {
+        viewModel.setting.observe(viewLifecycleOwner) { setting ->
+            setting?.let {
+                adapter.changeSetting(it)
+                binding.fnpAcsbTextSize.progress = it.textSize?.notePage ?: BaseConstants.TEXT_SIZE
+            }
+        }
+
+        viewModel.note.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
+
+        viewModel.notePageDetail.observe(viewLifecycleOwner) { id ->
+            id?.let {
+                goWriteNote(id)
+            }
+        }
+
+        viewModel.searchText.observe(viewLifecycleOwner) { text ->
+            text?.let {
+                if (text.isEmpty()) {
+                    binding.fnpAcetSearchText.text?.clear()
+                }
+
+                viewModel.queryNote()
+            }
+        }
+    }
+
+    private fun initListener() {
+        requireActivity().onBackPressedDispatcher.addCallback {
+
+        }
+
+        binding.fnpAcsbTextSize.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                viewModel.changeNotePageSize(progress)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                viewModel.updateSetting()
+            }
+        })
+
+        binding.fnpAcetSearchText.addTextChangedListener { text ->
+            viewModel.inputSearchText(text.toString())
+        }
     }
 
     private fun initClickListener(binding: FragmentNotePageBinding) {
@@ -95,62 +152,8 @@ class NotePageFragment : Fragment() {
             }
         }
 
-        binding.acivFnpSearchCancel.setOnClickListener {
+        binding.fnpAcivSearchCancel.setOnClickListener {
             viewModel.inputSearchText(BaseConstants.EMPTY_STRING)
-        }
-    }
-
-    private fun initListener() {
-        requireActivity().onBackPressedDispatcher.addCallback {
-
-        }
-
-        binding.fnpAcsbTextSize.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                viewModel.changeNotePageSize(progress.toFloat())
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
-            }
-        })
-
-        binding.acetFnpSearchText.addTextChangedListener { text ->
-            viewModel.inputSearchText(text.toString())
-        }
-    }
-
-    private fun initObserve() {
-        viewModel.setting.observe(viewLifecycleOwner) { setting ->
-            setting?.let {
-                adapter.changeSetting(it)
-                binding.fnpAcsbTextSize.progress = it.pageSize.toInt()
-            }
-        }
-
-        viewModel.note.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-        }
-
-        viewModel.notePageDetail.observe(viewLifecycleOwner) { id ->
-            id?.let {
-                goWriteNote(id)
-            }
-        }
-
-        viewModel.searchText.observe(viewLifecycleOwner) { text ->
-            text?.let {
-                if (text.isEmpty()) {
-                    binding.acetFnpSearchText.text?.clear()
-                }
-
-                viewModel.queryNote()
-            }
         }
     }
 
@@ -158,14 +161,12 @@ class NotePageFragment : Fragment() {
         val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
         findNavController().navigate(action)
         viewModel.onNotePageNavigated()
-        viewModel.updateSettingSize()
     }
 
     private fun goWriteNote(id: Long) {
         val action = NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(id)
         findNavController().navigate(action)
         viewModel.onNotePageNavigated()
-        viewModel.updateSettingSize()
     }
 
     companion object {

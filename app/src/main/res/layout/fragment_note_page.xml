@@ -72,22 +72,22 @@
                         android:layout_height="wrap_content">
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/acivFnpSearchIcon"
+                            android:id="@+id/fnpAcivSearchIcon"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginStart="@dimen/magic_8dp"
                             android:background="@drawable/fillet_bl_tl_radius100_width2"
                             android:padding="@dimen/magic_8dp"
                             android:src="@drawable/ic_baseline_search_24"
-                            app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchText"
+                            app:layout_constraintBottom_toBottomOf="@+id/fnpAcetSearchText"
                             app:layout_constraintDimensionRatio="1:1"
-                            app:layout_constraintEnd_toStartOf="@+id/acetFnpSearchText"
+                            app:layout_constraintEnd_toStartOf="@+id/fnpAcetSearchText"
                             app:layout_constraintHorizontal_chainStyle="packed"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText" />
+                            app:layout_constraintTop_toTopOf="@+id/fnpAcetSearchText" />
 
                         <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/acetFnpSearchText"
+                            android:id="@+id/fnpAcetSearchText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/square_l_r_width2"
@@ -97,16 +97,16 @@
                             android:lines="1"
                             android:padding="@dimen/magic_8dp"
                             android:text=""
-                            android:textSize="@{notePageViewModel.setting.pageSize}"
+                            android:textSize="@{notePageViewModel.setting.textSize.notePageToFloat}"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/acivFnpSearchCancel"
-                            app:layout_constraintStart_toEndOf="@+id/acivFnpSearchIcon"
+                            app:layout_constraintEnd_toStartOf="@+id/fnpAcivSearchCancel"
+                            app:layout_constraintStart_toEndOf="@+id/fnpAcivSearchIcon"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0"
                             app:layout_constraintVertical_chainStyle="packed" />
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/acivFnpSearchCancel"
+                            android:id="@+id/fnpAcivSearchCancel"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginEnd="@dimen/magic_8dp"
@@ -114,11 +114,11 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:padding="@dimen/magic_8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/acetFnpSearchText"
+                            app:layout_constraintBottom_toBottomOf="@+id/fnpAcetSearchText"
                             app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/acetFnpSearchText"
-                            app:layout_constraintTop_toTopOf="@+id/acetFnpSearchText"
+                            app:layout_constraintStart_toEndOf="@+id/fnpAcetSearchText"
+                            app:layout_constraintTop_toTopOf="@+id/fnpAcetSearchText"
                             app:srcCompat="@drawable/ic_baseline_cancel_24" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>

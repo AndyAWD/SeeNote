@@ -105,7 +105,7 @@
             app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <argument
             android:name="size"
-            app:argType="float" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/settingDateFragment"
@@ -128,7 +128,7 @@
             app:popExitAnim="@anim/fade_out_medium" />
         <argument
             android:name="size"
-            app:argType="float" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/settingContentFragment"
@@ -151,7 +151,7 @@
             app:popExitAnim="@anim/fade_out_medium" />
         <argument
             android:name="size"
-            app:argType="float" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/settingTitleFragment"
@@ -167,7 +167,7 @@
             app:popExitAnim="@anim/slide_out_right_to_left_medium" />
         <argument
             android:name="size"
-            app:argType="float" />
+            app:argType="integer" />
         <action
             android:id="@+id/action_settingTitleFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment"

@@ -1,6 +1,7 @@
 package tw.com.andyawd.seenote.database
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import tw.com.andyawd.seenote.BaseConstants
@@ -16,9 +17,21 @@ data class Note(
     @ColumnInfo(name = BaseConstants.CONTENT)
     var content: String = BaseConstants.EMPTY_STRING,
 
-    @ColumnInfo(name = BaseConstants.CREATE_DATE)
-    var createDate: Long = System.currentTimeMillis(),
+    @ColumnInfo(name = BaseConstants.LABEL)
+    var label: String = BaseConstants.EMPTY_STRING,
 
-    @ColumnInfo(name = BaseConstants.EDIT_DATE)
-    var editDate: Long = System.currentTimeMillis()
+    @Embedded(prefix = "date_")
+    var date: Date?,
+
+    @Embedded(prefix = "titleColor_")
+    var titleColor: Color?,
+
+    @Embedded(prefix = "contentColor_")
+    var contentColor: Color?,
+
+    @Embedded(prefix = "labelColor_")
+    var labelColor: Color?,
+
+    @Embedded(prefix = "dateColor_")
+    var dateColor: Color?
 )

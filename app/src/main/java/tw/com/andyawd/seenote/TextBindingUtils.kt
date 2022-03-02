@@ -1,5 +1,6 @@
 package tw.com.andyawd.seenote.notepage
 
+import android.content.Context
 import android.graphics.Color
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
@@ -11,12 +12,12 @@ import tw.com.andyawd.seenote.database.Note
 import tw.com.andyawd.seenote.database.Setting
 import java.text.DateFormat
 
-@BindingAdapter("changeCreateTime")
+@BindingAdapter("changeEditTime")
 fun TextView.setChangeEditTime(item: Note) {
     item.let {
         text = resources.getString(
             R.string.edit_date,
-            DateFormat.getInstance().format(item.editDate)
+            DateFormat.getInstance().format(item.date?.edit)
         )
     }
 }
@@ -35,134 +36,176 @@ fun TextView.setChangeContent(item: Note) {
     }
 }
 
-@BindingAdapter("changeTitleTextColor")
-fun TextView.changeTitleTextColor(item: Setting?) {
-    item?.let {
-        if (it.titleTextColor.isEmpty()) {
-            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
-        } else {
-            setTextColor(
-                ActivityCompat.getColor(
-                    context,
-                    colorResource(item.titleTextColor)
-                )
-            )
-        }
+@BindingAdapter("noteTitleTextColor", "settingTitleTextColor", requireAll = false)
+fun TextView.changeTitleTextColor(note: Note?, setting: Setting?) {
+    val noteTextColor = note?.titleColor?.textColor
+    val settingTextColor = setting?.title?.textColor
+
+    if (noteTextColor.isNullOrEmpty() && settingTextColor.isNullOrEmpty()) {
+        MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        return
+    }
+
+    if (noteTextColor.isNullOrEmpty()) {
+        val hexColor = settingTextColor.toString()
+        val color = getColor(context, hexColor)
+        setTextColor(color)
+    } else {
+        val hexColor = noteTextColor.toString()
+        val color = getColor(context, hexColor)
+        setTextColor(color)
     }
 }
 
-@BindingAdapter("changeTitleBackgroundColor")
-fun TextView.changeTitleBackgroundColor(item: Setting?) {
-    item?.let {
-        if (it.titleBackgroundColor.isEmpty()) {
-            MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
-        } else {
-            setBackgroundColor(
-                ActivityCompat.getColor(
-                    context,
-                    colorResource(item.titleBackgroundColor)
-                )
-            )
+@BindingAdapter("noteContentTextColor", "settingContentTextColor", requireAll = false)
+fun TextView.changeContentTextColor(note: Note?, setting: Setting?) {
+    val noteTextColor = note?.contentColor?.textColor
+    val settingTextColor = setting?.content?.textColor
 
-        }
+    if (noteTextColor.isNullOrEmpty() && settingTextColor.isNullOrEmpty()) {
+        MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        return
+    }
+
+    if (noteTextColor.isNullOrEmpty()) {
+        val hexColor = settingTextColor.toString()
+        val color = getColor(context, hexColor)
+        setTextColor(color)
+    } else {
+        val hexColor = noteTextColor.toString()
+        val color = getColor(context, hexColor)
+        setTextColor(color)
     }
 }
 
-@BindingAdapter("changeTitleHintTextColor")
-fun TextView.changeTitleHintTextColor(item: Setting?) {
-    item?.let {
-        if (it.titleTextColor.isEmpty()) {
-            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
-        } else {
-            setHintTextColor(
-                ActivityCompat.getColor(
-                    context,
-                    colorResource(item.titleTextColor)
-                )
-            )
-        }
+@BindingAdapter("noteDateTextColor", "settingDateTextColor", requireAll = false)
+fun TextView.changeDateTextColor(note: Note?, setting: Setting?) {
+    val noteTextColor = note?.dateColor?.textColor
+    val settingTextColor = setting?.date?.textColor
+
+    if (noteTextColor.isNullOrEmpty() && settingTextColor.isNullOrEmpty()) {
+        MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        return
+    }
+
+    if (noteTextColor.isNullOrEmpty()) {
+        val hexColor = settingTextColor.toString()
+        val color = getColor(context, hexColor)
+        setTextColor(color)
+    } else {
+        val hexColor = noteTextColor.toString()
+        val color = getColor(context, hexColor)
+        setTextColor(color)
     }
 }
 
-@BindingAdapter("changeContentTextColor")
-fun TextView.changeContentTextColor(item: Setting?) {
-    item?.let {
-        if (it.contentTextColor.isEmpty()) {
-            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
-        } else {
-            setTextColor(
-                ActivityCompat.getColor(
-                    context,
-                    colorResource(item.contentTextColor)
-                )
-            )
-        }
+@BindingAdapter("noteTitleBackgroundColor", "settingTitleBackgroundColor", requireAll = false)
+fun TextView.changeTitleBackgroundColor(note: Note?, setting: Setting?) {
+    val noteBackgroundColor = note?.titleColor?.backgroundColor
+    val settingBackgroundColor = setting?.title?.backgroundColor
+
+    if (noteBackgroundColor.isNullOrEmpty() && settingBackgroundColor.isNullOrEmpty()) {
+        MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
+        return
+    }
+
+    if (noteBackgroundColor.isNullOrEmpty()) {
+        val hexColor = settingBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setBackgroundColor(color)
+    } else {
+        val hexColor = noteBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setBackgroundColor(color)
     }
 }
 
-@BindingAdapter("changeContentBackgroundColor")
-fun TextView.changeContentBackgroundColor(item: Setting?) {
-    item?.let {
-        if (it.contentBackgroundColor.isEmpty()) {
-            MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
-        } else {
-            setBackgroundColor(
-                ActivityCompat.getColor(
-                    context,
-                    colorResource(item.contentBackgroundColor)
-                )
-            )
-        }
+@BindingAdapter("noteContentBackgroundColor", "settingContentBackgroundColor", requireAll = false)
+fun TextView.changeContentBackgroundColor(note: Note?, setting: Setting?) {
+    val noteBackgroundColor = note?.contentColor?.backgroundColor
+    val settingBackgroundColor = setting?.content?.backgroundColor
+
+    if (noteBackgroundColor.isNullOrEmpty() && settingBackgroundColor.isNullOrEmpty()) {
+        MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
+        return
+    }
+
+    if (noteBackgroundColor.isNullOrEmpty()) {
+        val hexColor = settingBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setBackgroundColor(color)
+    } else {
+        val hexColor = noteBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setBackgroundColor(color)
     }
 }
 
-@BindingAdapter("changeContentHintTextColor")
-fun TextView.changeContentHintTextColor(item: Setting?) {
-    item?.let {
-        if (it.contentTextColor.isEmpty()) {
-            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
-        } else {
-            setHintTextColor(
-                ActivityCompat.getColor(
-                    context,
-                    colorResource(item.contentTextColor)
-                )
-            )
-        }
+@BindingAdapter("noteDateBackgroundColor", "settingDateBackgroundColor", requireAll = false)
+fun TextView.changeDateBackgroundColor(note: Note?, setting: Setting?) {
+    val noteBackgroundColor = note?.dateColor?.backgroundColor
+    val settingBackgroundColor = setting?.date?.backgroundColor
+
+    if (noteBackgroundColor.isNullOrEmpty() && settingBackgroundColor.isNullOrEmpty()) {
+        MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
+        return
+    }
+
+    if (noteBackgroundColor.isNullOrEmpty()) {
+        val hexColor = settingBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setBackgroundColor(color)
+    } else {
+        val hexColor = noteBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setBackgroundColor(color)
     }
 }
 
-@BindingAdapter("changeDateTextColor")
-fun TextView.changeDateTextColor(item: Setting?) {
-    item?.let {
-        if (it.dateTextColor.isEmpty()) {
-            MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
-        } else {
-            setTextColor(
-                ActivityCompat.getColor(
-                    context,
-                    colorResource(item.dateTextColor)
-                )
-            )
-        }
+@BindingAdapter("noteTitleHintTextColor", "settingTitleHintTextColor", requireAll = false)
+fun TextView.changeTitleHintTextColor(note: Note?, setting: Setting?) {
+    val noteBackgroundColor = note?.titleColor?.textColor
+    val settingBackgroundColor = setting?.title?.textColor
+
+    if (noteBackgroundColor.isNullOrEmpty() && settingBackgroundColor.isNullOrEmpty()) {
+        MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        return
+    }
+
+    if (noteBackgroundColor.isNullOrEmpty()) {
+        val hexColor = settingBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setHintTextColor(color)
+    } else {
+        val hexColor = noteBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setHintTextColor(color)
     }
 }
 
-@BindingAdapter("changeDateBackgroundColor")
-fun TextView.changeDateBackgroundColor(item: Setting?) {
-    item?.let {
-        if (it.dateBackgroundColor.isEmpty()) {
-            MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
-        } else {
-            setBackgroundColor(
-                ActivityCompat.getColor(
-                    context,
-                    colorResource(item.dateBackgroundColor)
-                )
-            )
-        }
+@BindingAdapter("noteContentHintTextColor", "settingContentHintTextColor", requireAll = false)
+fun TextView.changeContentHintTextColor(note: Note?, setting: Setting?) {
+    val noteBackgroundColor = note?.contentColor?.textColor
+    val settingBackgroundColor = setting?.content?.textColor
+
+    if (noteBackgroundColor.isNullOrEmpty() && settingBackgroundColor.isNullOrEmpty()) {
+        MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
+        return
+    }
+
+    if (noteBackgroundColor.isNullOrEmpty()) {
+        val hexColor = settingBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setHintTextColor(color)
+    } else {
+        val hexColor = noteBackgroundColor.toString()
+        val color = getColor(context, hexColor)
+        setHintTextColor(color)
     }
 }
+
+fun getColor(context: Context, hexColor: String): Int =
+    ActivityCompat.getColor(context, colorResource(hexColor))
 
 fun colorResource(color: String): Int {
     when (color) {
@@ -192,6 +235,6 @@ fun colorResource(color: String): Int {
         BaseConstants.GOLD -> return R.color.hexColor092_Gold
         BaseConstants.LIGHTYELLOW -> return R.color.hexColor084_LightYellow
         BaseConstants.DEFAULT -> return R.color.hexColor084_LightYellow
-        else -> return R.color.hexColor115_Red
+        else -> return R.color.hexColor138_MediumSlateBlue
     }
 }

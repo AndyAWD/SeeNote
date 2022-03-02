@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
-        <variable
-            name="setting"
-            type="tw.com.andyawd.seenote.database.Setting" />
 
         <variable
             name="viewModel"
@@ -29,20 +24,6 @@
             app:layout_constraintVertical_bias="0.0"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fsdMtvTextSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@{@string/setting_note_text_size(viewModel.size)}"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fsdMtToolBar"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="@string/setting_note_text_size" />
-
         <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/fsdAcsbTextSize"
             android:layout_width="match_parent"
@@ -55,7 +36,7 @@
             android:thumb="@drawable/square_primary_secondary_size40_rounded8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fsdMtvTextSize"
+            app:layout_constraintTop_toBottomOf="@+id/fsdMtToolBar"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -80,10 +61,8 @@
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fsdMtvHorizontalLineTop"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/magic_1dp"
+                        style="@style/setting_horizontal_line"
                         android:layout_marginTop="16dp"
-                        android:background="?attr/colorPrimaryVariant"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -92,82 +71,57 @@
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fsdMtvTitle"
-                        style="@style/setting_demo"
+                        style="@style/setting_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:lines="1"
                         android:text="@string/title_demo"
-                        android:textSize="@{viewModel.size}"
-                        app:changeTitleBackgroundColor="@{setting}"
-                        app:changeTitleTextColor="@{setting}" />
+                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                        app:settingTitleBackgroundColor="@{viewModel.setting}"
+                        app:settingTitleTextColor="@{viewModel.setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fsdMtvContent"
-                        style="@style/setting_demo"
+                        style="@style/setting_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical|start"
-                        android:lines="1"
                         android:text="@string/content_demo"
-                        android:textSize="@{viewModel.size}"
-                        app:changeContentBackgroundColor="@{setting}"
-                        app:changeContentTextColor="@{setting}" />
+                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                        app:settingContentBackgroundColor="@{viewModel.setting}"
+                        app:settingContentTextColor="@{viewModel.setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fsdMtvDate"
-                        style="@style/setting_demo"
+                        style="@style/setting_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical|start"
-                        android:lines="1"
                         android:text="@string/edit_date_demo"
-                        android:textSize="@{viewModel.size}"
-                        app:changeDateBackgroundColor="@{setting}"
-                        app:changeDateTextColor="@{setting}" />
+                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                        app:settingDateBackgroundColor="@{viewModel.setting}"
+                        app:settingDateTextColor="@{viewModel.setting}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/fsdMtvHorizontalLineBottom"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/magic_1dp"
-                        android:background="?attr/colorPrimaryVariant" />
+                        style="@style/setting_horizontal_line" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fsdMbDateTextColor"
+                        style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
-                        android:layout_marginBottom="@dimen/magic_8dp"
-                        android:gravity="center_vertical|start"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:lines="1"
-                        style="@style/setting_button"
                         android:text="@string/setting_date_text_color"
-                        android:textSize="@{viewModel.size}"
+                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                         app:icon="@drawable/ic_baseline_text_fields_24"
-                        app:iconGravity="start"
-                        app:iconPadding="16dp" />
+                        app:iconSize="@{viewModel.setting.textSize.settingPage}" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fsdMbDateBackgroundColor"
+                        style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/magic_8dp"
-                        android:gravity="center_vertical|start"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        style="@style/setting_button"
-                        android:lines="1"
                         android:text="@string/setting_date_background_color"
-                        android:textSize="@{viewModel.size}"
+                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                         app:icon="@drawable/ic_baseline_article_24"
-                        app:iconGravity="start"
-                        app:iconPadding="16dp" />
+                        app:iconSize="@{viewModel.setting.textSize.settingPage}" />
                 </LinearLayout>
             </HorizontalScrollView>
         </androidx.core.widget.NestedScrollView>

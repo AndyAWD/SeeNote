@@ -6,11 +6,7 @@
     <data>
 
         <variable
-            name="setting"
-            type="tw.com.andyawd.seenote.database.Setting" />
-
-        <variable
-            name="writeNoteViewModel"
+            name="viewModel"
             type="tw.com.andyawd.seenote.writenote.WriteNoteViewModel" />
     </data>
 
@@ -79,18 +75,21 @@
                         android:inputType="text"
                         android:lines="1"
                         android:padding="@dimen/magic_8dp"
-                        android:text="@{writeNoteViewModel.note.title}"
-                        android:textSize="@{writeNoteViewModel.size}"
+                        android:text="@{viewModel.note.title}"
+                        android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
                         android:typeface="sans"
-                        app:changeTitleBackgroundColor="@{setting}"
-                        app:changeTitleHintTextColor="@{setting}"
-                        app:changeTitleTextColor="@{setting}"
                         app:layout_constraintBottom_toTopOf="@+id/fwnAcetNoteContent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0"
                         app:layout_constraintVertical_chainStyle="packed"
+                        app:noteTitleBackgroundColor="@{viewModel.note}"
+                        app:noteTitleHintTextColor="@{viewModel.note}"
+                        app:noteTitleTextColor="@{viewModel.note}"
+                        app:settingTitleBackgroundColor="@{viewModel.setting}"
+                        app:settingTitleHintTextColor="@{viewModel.setting}"
+                        app:settingTitleTextColor="@{viewModel.setting}"
                         tools:text="@tools:sample/lorem/random" />
 
                     <androidx.appcompat.widget.AppCompatEditText
@@ -108,16 +107,19 @@
                         android:imeOptions="actionDone|flagNoExtractUi"
                         android:inputType="textMultiLine"
                         android:padding="@dimen/magic_8dp"
-                        android:text="@{writeNoteViewModel.note.content}"
-                        android:textSize="@{writeNoteViewModel.size}"
+                        android:text="@{viewModel.note.content}"
+                        android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
                         android:typeface="sans"
-                        app:changeContentBackgroundColor="@{setting}"
-                        app:changeContentHintTextColor="@{setting}"
-                        app:changeContentTextColor="@{setting}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fwnAcetNoteTitle"
+                        app:noteContentBackgroundColor="@{viewModel.note}"
+                        app:noteContentHintTextColor="@{viewModel.note}"
+                        app:noteContentTextColor="@{viewModel.note}"
+                        app:settingContentBackgroundColor="@{viewModel.setting}"
+                        app:settingContentHintTextColor="@{viewModel.setting}"
+                        app:settingContentTextColor="@{viewModel.setting}"
                         tools:text="@tools:sample/lorem/random" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>

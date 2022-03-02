@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingPageBinding
@@ -53,14 +54,13 @@ class SettingPageFragment : Fragment() {
 
     private fun initListener(binding: FragmentSettingPageBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {
-            viewModel.updateSettingSize()
             goBackNotePage()
         }
 
         binding.fspAcsbTextSize.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                viewModel.changeSettingSize(progress.toFloat())
+                viewModel.changeSettingSize(progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -68,64 +68,51 @@ class SettingPageFragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
+                viewModel.updateSetting()
             }
         })
     }
 
     private fun initObserve() {
-        viewModel.size.observe(viewLifecycleOwner) { size ->
-            binding.fspAcsbTextSize.progress = size.toInt()
-            binding.fspMbTitleColor.iconSize = size.toInt()
-            binding.fspMbContentColor.iconSize = size.toInt()
-            binding.fspMbDateColor.iconSize = size.toInt()
-            binding.fspMbSponsorSeeNote.iconSize = size.toInt()
-            binding.fspMbHorizontalLineColor.iconSize = size.toInt()
-        }
-
         viewModel.setting.observe(viewLifecycleOwner) { setting ->
-            binding.setting = setting
+            setting?.let {
+                binding.fspAcsbTextSize.progress =
+                    it.textSize?.settingPage ?: BaseConstants.TEXT_SIZE
+            }
         }
     }
 
     private fun initClickListener(binding: FragmentSettingPageBinding) {
         binding.fspMtToolBar.setNavigationOnClickListener {
-            viewModel.updateSettingSize()
             goBackNotePage()
         }
 
         binding.fspMbTitleColor.setOnClickListener {
-            viewModel.updateSettingSize()
             goTitleSetting()
         }
 
         binding.fspMtvTitle.setOnClickListener {
-            viewModel.updateSettingSize()
             goTitleSetting()
         }
 
         binding.fspMbContentColor.setOnClickListener {
-            viewModel.updateSettingSize()
             goContentSetting()
         }
 
         binding.fspMtvContent.setOnClickListener {
-            viewModel.updateSettingSize()
             goContentSetting()
         }
 
         binding.fspMbDateColor.setOnClickListener {
-            viewModel.updateSettingSize()
             goDateSetting()
         }
 
         binding.fspMtvDate.setOnClickListener {
-            viewModel.updateSettingSize()
             goDateSetting()
         }
 
         binding.fspMbHorizontalLineColor.setOnClickListener {
-            viewModel.updateSettingSize()
+
         }
     }
 
@@ -135,7 +122,7 @@ class SettingPageFragment : Fragment() {
     }
 
     private fun goTitleSetting() {
-        viewModel.size.value?.let {
+        viewModel.setting.value?.textSize?.settingPage?.let {
             val action =
                 SettingPageFragmentDirections.actionSettingPageFragmentToSettingTitleFragment(it)
             findNavController().navigate(action)
@@ -143,7 +130,7 @@ class SettingPageFragment : Fragment() {
     }
 
     private fun goContentSetting() {
-        viewModel.size.value?.let {
+        viewModel.setting.value?.textSize?.settingPage?.let {
             val action =
                 SettingPageFragmentDirections.actionSettingPageFragmentToSettingContentFragment(it)
             findNavController().navigate(action)
@@ -151,7 +138,7 @@ class SettingPageFragment : Fragment() {
     }
 
     private fun goDateSetting() {
-        viewModel.size.value?.let {
+        viewModel.setting.value?.textSize?.settingPage?.let {
             val action =
                 SettingPageFragmentDirections.actionSettingPageFragmentToSettingDateFragment(it)
             findNavController().navigate(action)

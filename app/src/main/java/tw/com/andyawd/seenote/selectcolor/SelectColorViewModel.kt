@@ -18,14 +18,6 @@ class SelectColorViewModel(
     val setting: LiveData<Setting?>
         get() = _setting
 
-    private var _size = MutableLiveData<Float>()
-    val size: LiveData<Float>
-        get() = _size
-
-    private var _color = MutableLiveData<String?>()
-    val color: LiveData<String?>
-        get() = _color
-
     private var _isUpdateFinish = MutableLiveData<Boolean>()
     val isUpdateFinish: LiveData<Boolean>
         get() = _isUpdateFinish
@@ -33,73 +25,79 @@ class SelectColorViewModel(
     init {
         viewModelScope.launch {
             _setting.value = dataSource.getFirst()
-            _size.value = _setting.value?.selectSize
         }
 
         _isUpdateFinish.value = false
     }
 
-    fun changeSelectSize(size: Float) {
-        _size.value = size
-    }
-
-    fun updateSelectSize() {
+    fun changeSettingSize(size: Int) {
         _setting.value?.let {
-            val newSetting = it.copy(selectSize = _size.value!!)
-            updateSelect(newSetting)
+            val newTextSize = it.textSize?.copy(selectColor = size)
+            val newSetting = it.copy(textSize = newTextSize)
+            _setting.value = newSetting
         }
     }
 
-    fun selectColor(color: String) {
-        _color.value = color
+    fun updateTextSize() {
+        viewModelScope.launch {
+            _setting.value?.let {
+                dataSource.update(it)
+            }
+        }
     }
 
-    fun updateSelectColor() {
+    fun updateSelectColor(color: String) {
         viewModelScope.launch {
             _setting.value?.let {
                 val newSetting: Setting
                 when (page) {
                     BaseConstants.TITLE_TEXT_COLOR -> {
-                        newSetting =
-                            it.copy(titleTextColor = _color.value ?: BaseConstants.EMPTY_STRING)
+                        val newColor = it.title?.copy(textColor = color)
+                        newSetting = it.copy(title = newColor)
+                        _setting.value = newSetting
                     }
                     BaseConstants.TITLE_BACKGROUND_COLOR -> {
-                        newSetting = it.copy(
-                            titleBackgroundColor = _color.value ?: BaseConstants.EMPTY_STRING
-                        )
+                        val newColor = it.title?.copy(backgroundColor = color)
+                        newSetting = it.copy(title = newColor)
+                        _setting.value = newSetting
                     }
                     BaseConstants.CONTENT_TEXT_COLOR -> {
-                        newSetting =
-                            it.copy(contentTextColor = _color.value ?: BaseConstants.EMPTY_STRING)
+                        val newColor = it.content?.copy(textColor = color)
+                        newSetting = it.copy(content = newColor)
+                        _setting.value = newSetting
                     }
                     BaseConstants.CONTENT_BACKGROUND_COLOR -> {
-                        newSetting = it.copy(
-                            contentBackgroundColor = _color.value ?: BaseConstants.EMPTY_STRING
-                        )
+                        val newColor = it.content?.copy(backgroundColor = color)
+                        newSetting = it.copy(content = newColor)
+                        _setting.value = newSetting
                     }
                     BaseConstants.DATE_TEXT_COLOR -> {
-                        newSetting =
-                            it.copy(dateTextColor = _color.value ?: BaseConstants.EMPTY_STRING)
+                        val newColor = it.date?.copy(textColor = color)
+                        newSetting = it.copy(date = newColor)
+                        _setting.value = newSetting
                     }
                     BaseConstants.DATE_BACKGROUND_COLOR -> {
-                        newSetting = it.copy(
-                            dateBackgroundColor = _color.value ?: BaseConstants.EMPTY_STRING
-                        )
+                        val newColor = it.date?.copy(backgroundColor = color)
+                        newSetting = it.copy(date = newColor)
+                        _setting.value = newSetting
                     }
                     else -> {
                         newSetting = it.copy()
+                        _setting.value = newSetting
                     }
                 }
 
-                updateSelect(newSetting)
+                updateColor()
             }
         }
     }
 
-    private fun updateSelect(setting: Setting) {
+    private fun updateColor() {
         viewModelScope.launch {
-            dataSource.update(setting)
-            onUpdateFinish()
+            _setting.value?.let {
+                dataSource.update(it)
+                onUpdateFinish()
+            }
         }
     }
 

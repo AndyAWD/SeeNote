@@ -60,27 +60,23 @@ class SettingDateFragment : Fragment() {
     }
 
     private fun initObserve() {
-        viewModel.size.observe(viewLifecycleOwner) { size ->
-            binding.fsdAcsbTextSize.progress = size.toInt()
-            binding.fsdMbDateTextColor.iconSize = size.toInt()
-            binding.fsdMbDateBackgroundColor.iconSize = size.toInt()
-        }
-
         viewModel.setting.observe(viewLifecycleOwner) { setting ->
-            binding.setting = setting
+            setting?.let {
+                binding.fsdAcsbTextSize.progress =
+                    it.textSize?.settingPage ?: BaseConstants.TEXT_SIZE
+            }
         }
     }
 
     private fun initListener(binding: FragmentSettingDateBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {
-            viewModel.updateSettingSize()
             goBackSettingPage()
         }
 
         binding.fsdAcsbTextSize.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                viewModel.changeSettingSize(progress.toFloat())
+                viewModel.changeSettingSize(progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -88,14 +84,13 @@ class SettingDateFragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
+                viewModel.updateSetting()
             }
         })
     }
 
     private fun initClickListener(binding: FragmentSettingDateBinding) {
         binding.fsdMtToolBar.setNavigationOnClickListener {
-            viewModel.updateSettingSize()
             goBackSettingPage()
         }
 
@@ -116,7 +111,7 @@ class SettingDateFragment : Fragment() {
     private fun goSelectColor(page: String) {
         val action = SettingDateFragmentDirections.actionSettingDateFragmentToSelectColorFragment(
             page,
-            viewModel.setting.value?.selectSize ?: BaseConstants.COLOR_SIZE
+            viewModel.setting.value?.textSize?.selectColor ?: BaseConstants.COLOR_SIZE
         )
         findNavController().navigate(action)
     }

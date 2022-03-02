@@ -16,41 +16,25 @@ class SettingContentViewModel(
     val setting: LiveData<Setting?>
         get() = _setting
 
-    private var _size = MutableLiveData<Float>()
-    val size: LiveData<Float>
-        get() = _size
-
-    private var _contentTextColor = MutableLiveData<String>()
-    val contentTextColor: LiveData<String?>
-        get() = _contentTextColor
-
-    private var _contentBackgroundColor = MutableLiveData<String>()
-    val contentBackgroundColor: LiveData<String?>
-        get() = _contentBackgroundColor
-
     init {
         viewModelScope.launch {
             _setting.value = dataSource.getFirst()
-            _size.value = _setting.value?.settingSize
-            _contentTextColor.value = _setting.value?.contentTextColor
-            _contentBackgroundColor.value = _setting.value?.contentBackgroundColor
         }
     }
 
-    fun changeSettingSize(size: Float) {
-        _size.value = size
-    }
-
-    fun updateSettingSize() {
+    fun changeSettingSize(size: Int) {
         _setting.value?.let {
-            val newSetting = it.copy(settingSize = _size.value ?: 80F)
-            updateSetting(newSetting)
+            val newTextSize = it.textSize?.copy(settingPage = size)
+            val newSetting = it.copy(textSize = newTextSize)
+            _setting.value = newSetting
         }
     }
 
-    private fun updateSetting(setting: Setting) {
+    fun updateSetting() {
         viewModelScope.launch {
-            dataSource.update(setting)
+            _setting.value?.let {
+                dataSource.update(it)
+            }
         }
     }
 }

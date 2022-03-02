@@ -7,10 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import tw.com.andyawd.seenote.BaseConstants
-import tw.com.andyawd.seenote.database.Note
-import tw.com.andyawd.seenote.database.NoteDatabaseDao
-import tw.com.andyawd.seenote.database.Setting
-import tw.com.andyawd.seenote.database.SettingDatabaseDao
+import tw.com.andyawd.seenote.database.*
 
 class WriteNoteViewModel(
     private val noteDatabase: NoteDatabaseDao,
@@ -27,10 +24,6 @@ class WriteNoteViewModel(
     val setting: LiveData<Setting?>
         get() = _setting
 
-    private var _size = MutableLiveData<Float>()
-    val size: LiveData<Float>
-        get() = _size
-
     private var _isDatabaseDeleted = MutableLiveData<Boolean?>()
     val isDatabaseDeleted: LiveData<Boolean?>
         get() = _isDatabaseDeleted
@@ -43,14 +36,23 @@ class WriteNoteViewModel(
     private fun initSetting() {
         viewModelScope.launch {
             _setting.value = settingDataSource.getFirst()
-            _size.value = setting.value?.writeSize
         }
     }
 
     private fun initNote() {
         viewModelScope.launch {
             if (BaseConstants.CREATE_NOTE == dataPrimaryKey) {
-                val noteId = noteDatabase.insert(Note())
+                val timeMillis = System.currentTimeMillis()
+                val color = Color()
+                val noteId = noteDatabase.insert(
+                    Note(
+                        date = Date(create = timeMillis, edit = timeMillis),
+                        titleColor = color,
+                        contentColor = color,
+                        dateColor = color,
+                        labelColor = color
+                    )
+                )
                 _note.value = getNoteFromDatabase(noteId)
             } else {
                 _note.value = getNoteFromDatabase(dataPrimaryKey)
@@ -70,19 +72,21 @@ class WriteNoteViewModel(
 
     fun updateNoteTitle(title: String) {
         _note.value?.let {
-            val updatedNote = it.copy(title = title, editDate = System.currentTimeMillis())
+            val newDate = it.date?.copy(edit = System.currentTimeMillis())
+            val newNote = it.copy(title = title, date = newDate)
             it.title = title
 
-            updateNote(updatedNote)
+            updateNote(newNote)
         }
     }
 
     fun updateNoteContent(content: String) {
         _note.value?.let {
-            val updatedNote = it.copy(content = content, editDate = System.currentTimeMillis())
+            val newDate = it.date?.copy(edit = System.currentTimeMillis())
+            val newNote = it.copy(content = content, date = newDate)
             it.content = content
 
-            updateNote(updatedNote)
+            updateNote(newNote)
         }
     }
 
@@ -95,15 +99,18 @@ class WriteNoteViewModel(
         }
     }
 
-    fun changeSettingSize(size: Float) {
-        _size.value = size
+    fun changeSettingSize(size: Int) {
+        _setting.value?.let {
+            val newTextSize = it.textSize?.copy(writerNote = size)
+            val newSetting = it.copy(textSize = newTextSize)
+            _setting.value = newSetting
+        }
     }
 
     fun updateSetting() {
         viewModelScope.launch {
             _setting.value?.let {
-                val newSetting = it.copy(writeSize = _size.value ?: 80F)
-                settingDataSource.update(newSetting)
+                settingDataSource.update(it)
             }
         }
     }

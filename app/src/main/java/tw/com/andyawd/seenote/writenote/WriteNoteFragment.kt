@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentWriteNoteBinding
@@ -48,7 +49,7 @@ class WriteNoteFragment : Fragment() {
             ViewModelProvider(this, viewModelFactory)[WriteNoteViewModel::class.java]
 
         binding.lifecycleOwner = this
-        binding.writeNoteViewModel = viewModel
+        binding.viewModel = viewModel
 
         return binding.root
     }
@@ -72,13 +73,8 @@ class WriteNoteFragment : Fragment() {
 
         viewModel.setting.observe(viewLifecycleOwner) { setting ->
             setting?.let {
-                binding.setting = it
-            }
-        }
-
-        viewModel.size.observe(viewLifecycleOwner) { size ->
-            size?.let {
-                binding.fwnAcsbTextSize.progress = it.toInt()
+                binding.fwnAcsbTextSize.progress =
+                    it.textSize?.writerNote ?: BaseConstants.TEXT_SIZE
             }
         }
     }
@@ -99,7 +95,7 @@ class WriteNoteFragment : Fragment() {
         binding.fwnAcsbTextSize.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                viewModel.changeSettingSize(progress.toFloat())
+                viewModel.changeSettingSize(progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
