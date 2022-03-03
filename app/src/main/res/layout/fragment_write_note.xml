@@ -42,87 +42,175 @@
             app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/fwnClGroup"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:fillViewport="true"
-            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fwnAcsbTextSize"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@+id/fwnAcsbTextSize">
 
-            <HorizontalScrollView
+            <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true">
+                android:layout_height="wrap_content">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:contentScrim="?attr/colorOnSecondary"
+                    app:layout_scrollFlags="scroll|enterAlways">
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/fwnAcetNoteTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
-                        android:background="@null"
-                        android:hint="@string/title"
-                        android:imeOptions="actionNext|flagNoExtractUi"
-                        android:inputType="text"
-                        android:lines="1"
-                        android:padding="@dimen/magic_8dp"
-                        android:text="@{viewModel.note.title}"
-                        android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
-                        android:typeface="sans"
-                        app:layout_constraintBottom_toTopOf="@+id/fwnAcetNoteContent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:layout_constraintVertical_chainStyle="packed"
-                        app:noteTitleBackgroundColor="@{viewModel.note}"
-                        app:noteTitleHintTextColor="@{viewModel.note}"
-                        app:noteTitleTextColor="@{viewModel.note}"
-                        app:settingTitleBackgroundColor="@{viewModel.setting}"
-                        app:settingTitleHintTextColor="@{viewModel.setting}"
-                        app:settingTitleTextColor="@{viewModel.setting}"
-                        tools:text="@tools:sample/lorem/random" />
+                    <!--滑動消失區-->
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/fwnAcetNoteContent"
+                    <HorizontalScrollView
+                        android:id="@+id/fwnHsvControlBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
-                        android:layout_marginBottom="@dimen/magic_8dp"
-                        android:background="@null"
-                        android:fadeScrollbars="false"
-                        android:gravity="top|start"
-                        android:hint="@string/write_something"
-                        android:imeOptions="actionDone|flagNoExtractUi"
-                        android:inputType="textMultiLine"
-                        android:padding="@dimen/magic_8dp"
-                        android:text="@{viewModel.note.content}"
-                        android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
-                        android:typeface="sans"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/fwnNsvWriteNote"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fwnAcetNoteTitle"
-                        app:noteContentBackgroundColor="@{viewModel.note}"
-                        app:noteContentHintTextColor="@{viewModel.note}"
-                        app:noteContentTextColor="@{viewModel.note}"
-                        app:settingContentBackgroundColor="@{viewModel.setting}"
-                        app:settingContentHintTextColor="@{viewModel.setting}"
-                        app:settingContentTextColor="@{viewModel.setting}"
-                        tools:text="@tools:sample/lorem/random" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </HorizontalScrollView>
-        </androidx.core.widget.NestedScrollView>
+                        app:layout_constraintTop_toBottomOf="@+id/fwnAcsbTextSize">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fwnMbInvertColor"
+                                style="@style/write_note_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/invert_color"
+                                android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                                app:icon="@drawable/ic_baseline_invert_colors_24"
+                                app:iconSize="@{viewModel.setting.textSize.writerNote}" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fwnMbVoiceTitle"
+                                style="@style/write_note_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/voice_title"
+                                android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                                app:icon="@drawable/ic_baseline_title_24"
+                                app:iconSize="@{viewModel.setting.textSize.writerNote}" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fwnMbVoiceContent"
+                                style="@style/write_note_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/voice_content"
+                                android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                                app:icon="@drawable/ic_baseline_article_24"
+                                app:iconSize="@{viewModel.setting.textSize.writerNote}" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fwnMbEditColor"
+                                style="@style/write_note_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/edit_color"
+                                android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                                app:icon="@drawable/ic_baseline_settings_24"
+                                app:iconSize="@{viewModel.setting.textSize.writerNote}" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </HorizontalScrollView>
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <!--固定顯示區-->
+
+                </LinearLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:scrollbars="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <!--上下卷動區-->
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/fwnAcetNoteTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/magic_8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="@dimen/magic_8dp"
+                            android:background="@null"
+                            android:hint="@string/title"
+                            android:imeOptions="actionNext|flagNoExtractUi"
+                            android:inputType="text"
+                            android:lines="1"
+                            android:padding="@dimen/magic_8dp"
+                            android:text="@{viewModel.note.title}"
+                            android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                            android:typeface="sans"
+                            app:layout_constraintBottom_toTopOf="@+id/fwnAcetNoteContent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            app:noteTitleBackgroundColor="@{viewModel.note}"
+                            app:noteTitleHintTextColor="@{viewModel.note}"
+                            app:noteTitleTextColor="@{viewModel.note}"
+                            app:settingTitleBackgroundColor="@{viewModel.setting}"
+                            app:settingTitleHintTextColor="@{viewModel.setting}"
+                            app:settingTitleTextColor="@{viewModel.setting}"
+                            tools:text="@tools:sample/lorem/random" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/fwnAcetNoteContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/magic_8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="@dimen/magic_8dp"
+                            android:layout_marginBottom="@dimen/magic_8dp"
+                            android:background="@null"
+                            android:fadeScrollbars="false"
+                            android:gravity="top|start"
+                            android:hint="@string/write_something"
+                            android:imeOptions="actionDone|flagNoExtractUi"
+                            android:inputType="textMultiLine"
+                            android:padding="@dimen/magic_8dp"
+                            android:text="@{viewModel.note.content}"
+                            android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                            android:typeface="sans"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fwnAcetNoteTitle"
+                            app:noteContentBackgroundColor="@{viewModel.note}"
+                            app:noteContentHintTextColor="@{viewModel.note}"
+                            app:noteContentTextColor="@{viewModel.note}"
+                            app:settingContentBackgroundColor="@{viewModel.setting}"
+                            app:settingContentHintTextColor="@{viewModel.setting}"
+                            app:settingContentTextColor="@{viewModel.setting}"
+                            tools:text="@tools:sample/lorem/random" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

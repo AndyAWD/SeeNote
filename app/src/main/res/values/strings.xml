@@ -40,4 +40,8 @@
     <string name="setting_date_background_color">日期背景顏色設定</string>
     <string name="search_title_content">搜尋標題和內容</string>
     <string name="system_primary">系統預設</string>
+    <string name="invert_color">顏色反轉</string>
+    <string name="voice_title">朗讀標題</string>
+    <string name="voice_content">朗讀內容</string>
+    <string name="edit_color">修改顏色</string>
 </resources>
