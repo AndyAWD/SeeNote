@@ -35,8 +35,10 @@ class SettingTitleFragment : Fragment() {
         )
 
         val application = requireNotNull(this.activity).application
-        val dataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
-        viewModelFactory = SettingTitleViewModelFactory(dataSource)
+        val settingDataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
+        val noteDataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
+        viewModelFactory =
+            SettingTitleViewModelFactory(settingDataSource, noteDataSource, args.page, args.noteId)
         viewModel =
             ViewModelProvider(this, viewModelFactory)[(SettingTitleViewModel::class.java)]
 

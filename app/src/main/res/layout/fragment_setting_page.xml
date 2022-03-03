@@ -80,6 +80,8 @@
                         android:lines="1"
                         android:text="@string/title_demo"
                         android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                        app:noteTitleBackgroundColor="@{viewModel.note}"
+                        app:noteTitleTextColor="@{viewModel.note}"
                         app:settingTitleBackgroundColor="@{viewModel.setting}"
                         app:settingTitleTextColor="@{viewModel.setting}" />
 
@@ -93,6 +95,8 @@
                         android:lines="1"
                         android:text="@string/content_demo"
                         android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                        app:noteContentBackgroundColor="@{viewModel.note}"
+                        app:noteContentTextColor="@{viewModel.note}"
                         app:settingContentBackgroundColor="@{viewModel.setting}"
                         app:settingContentTextColor="@{viewModel.setting}" />
 
@@ -106,6 +110,8 @@
                         android:lines="1"
                         android:text="@string/edit_date_demo"
                         android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                        app:noteDateBackgroundColor="@{viewModel.note}"
+                        app:noteDateTextColor="@{viewModel.note}"
                         app:settingDateBackgroundColor="@{viewModel.setting}"
                         app:settingDateTextColor="@{viewModel.setting}" />
 

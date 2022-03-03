@@ -5,20 +5,34 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import tw.com.andyawd.seenote.BaseConstants
+import tw.com.andyawd.seenote.database.Note
+import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.Setting
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
 class SettingPageViewModel(
-    private val dataSource: SettingDatabaseDao
+    private val settingDataSource: SettingDatabaseDao,
+    private val noteDataSource: NoteDatabaseDao,
+    private val page: String,
+    private val noteId: Long
 ) : ViewModel() {
 
     private var _setting = MutableLiveData<Setting?>()
     val setting: LiveData<Setting?>
         get() = _setting
 
+    private var _note = MutableLiveData<Note?>()
+    val note: LiveData<Note?>
+        get() = _note
+
     init {
         viewModelScope.launch {
-            _setting.value = dataSource.getFirst()
+            _setting.value = settingDataSource.getFirst()
+
+            if (BaseConstants.WRITER_NOTE == page) {
+                _note.value = noteDataSource.get(noteId)
+            }
         }
     }
 
@@ -33,7 +47,7 @@ class SettingPageViewModel(
     fun updateSetting() {
         viewModelScope.launch {
             _setting.value?.let {
-                dataSource.update(it)
+                settingDataSource.update(it)
             }
         }
     }

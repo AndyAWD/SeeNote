@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.color.MaterialColors
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.Note
@@ -68,10 +69,12 @@ fun TextView.changeContentTextColor(note: Note?, setting: Setting?) {
     }
 
     if (noteTextColor.isNullOrEmpty()) {
+        AWDLog.d("noteTextColor.isNullOrEmpty(): ${noteTextColor.isNullOrEmpty()}")
         val hexColor = settingTextColor.toString()
         val color = getColor(context, hexColor)
         setTextColor(color)
     } else {
+        AWDLog.d("noteTextColor.isNullOrEmpty(): ${noteTextColor.isNullOrEmpty()}")
         val hexColor = noteTextColor.toString()
         val color = getColor(context, hexColor)
         setTextColor(color)

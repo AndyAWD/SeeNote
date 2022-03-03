@@ -35,8 +35,10 @@ class SettingPageFragment : Fragment() {
         )
 
         val application = requireNotNull(this.activity).application
-        val dataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
-        viewModelFactory = SettingPageViewModelFactory(dataSource)
+        val settingDataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
+        val noteDataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
+        viewModelFactory =
+            SettingPageViewModelFactory(settingDataSource, noteDataSource, args.page, args.noteId)
         viewModel = ViewModelProvider(this, viewModelFactory)[SettingPageViewModel::class.java]
 
 

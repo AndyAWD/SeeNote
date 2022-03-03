@@ -43,7 +43,6 @@
                 app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed"
                 app:noteTitleBackgroundColor="@{note}"
-                app:noteTitleHintTextColor="@{note}"
                 app:noteTitleTextColor="@{note}"
                 app:settingTitleBackgroundColor="@{setting}"
                 app:settingTitleTextColor="@{setting}"
@@ -62,8 +61,7 @@
                 app:layout_constraintStart_toStartOf="@+id/vnpMtvDate"
                 app:layout_constraintTop_toBottomOf="@+id/vnpMtvTitle"
                 app:noteContentBackgroundColor="@{note}"
-                app:noteContentHintTextColor="@{note}"
-                app:noteTitleTextColor="@{note}"
+                app:noteContentTextColor="@{note}"
                 app:settingContentBackgroundColor="@{setting}"
                 app:settingContentTextColor="@{setting}"
                 tools:text="@tools:sample/lorem/random" />
