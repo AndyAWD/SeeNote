@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
@@ -20,6 +21,7 @@ class SettingPageFragment : Fragment() {
     private lateinit var viewModel: SettingPageViewModel
     private lateinit var viewModelFactory: SettingPageViewModelFactory
     private lateinit var binding: FragmentSettingPageBinding
+    private val args: SettingPageFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +56,7 @@ class SettingPageFragment : Fragment() {
 
     private fun initListener(binding: FragmentSettingPageBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {
-            goBackNotePage()
+            goBackPage()
         }
 
         binding.fspAcsbTextSize.setOnSeekBarChangeListener(object :
@@ -84,7 +86,7 @@ class SettingPageFragment : Fragment() {
 
     private fun initClickListener(binding: FragmentSettingPageBinding) {
         binding.fspMtToolBar.setNavigationOnClickListener {
-            goBackNotePage()
+            goBackPage()
         }
 
         binding.fspMbTitleColor.setOnClickListener {
@@ -116,15 +118,29 @@ class SettingPageFragment : Fragment() {
         }
     }
 
-    private fun goBackNotePage() {
-        val action = SettingPageFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
-        findNavController().navigate(action)
+    private fun goBackPage() {
+        when (args.page) {
+            BaseConstants.NOTE_PAGE -> {
+                val action =
+                    SettingPageFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
+                findNavController().navigate(action)
+            }
+            BaseConstants.WRITER_NOTE -> {
+                val action =
+                    SettingPageFragmentDirections.actionSettingPageFragmentToWriteNoteFragment(args.noteId)
+                findNavController().navigate(action)
+            }
+        }
     }
 
     private fun goTitleSetting() {
         viewModel.setting.value?.textSize?.settingPage?.let {
             val action =
-                SettingPageFragmentDirections.actionSettingPageFragmentToSettingTitleFragment(it)
+                SettingPageFragmentDirections.actionSettingPageFragmentToSettingTitleFragment(
+                    it,
+                    args.page,
+                    args.noteId
+                )
             findNavController().navigate(action)
         }
     }
@@ -132,7 +148,11 @@ class SettingPageFragment : Fragment() {
     private fun goContentSetting() {
         viewModel.setting.value?.textSize?.settingPage?.let {
             val action =
-                SettingPageFragmentDirections.actionSettingPageFragmentToSettingContentFragment(it)
+                SettingPageFragmentDirections.actionSettingPageFragmentToSettingContentFragment(
+                    it,
+                    args.page,
+                    args.noteId
+                )
             findNavController().navigate(action)
         }
     }
@@ -140,7 +160,11 @@ class SettingPageFragment : Fragment() {
     private fun goDateSetting() {
         viewModel.setting.value?.textSize?.settingPage?.let {
             val action =
-                SettingPageFragmentDirections.actionSettingPageFragmentToSettingDateFragment(it)
+                SettingPageFragmentDirections.actionSettingPageFragmentToSettingDateFragment(
+                    it,
+                    args.page,
+                    args.noteId
+                )
             findNavController().navigate(action)
         }
     }

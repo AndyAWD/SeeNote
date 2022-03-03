@@ -30,7 +30,7 @@
         android:label="fragment_write_note"
         tools:layout="@layout/fragment_write_note">
         <argument
-            android:name="notePageKey"
+            android:name="noteId"
             app:argType="long" />
         <action
             android:id="@+id/action_writeNoteFragment_to_notePageFragment"
@@ -39,6 +39,13 @@
             app:exitAnim="@anim/slide_out_right_to_left_medium"
             app:popEnterAnim="@anim/slide_in_left_to_right_medium"
             app:popExitAnim="@anim/slide_out_right_to_left_medium" />
+        <action
+            android:id="@+id/action_writeNoteFragment_to_settingPageFragment"
+            app:destination="@id/settingPageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
     </fragment>
     <fragment
         android:id="@+id/settingPageFragment"
@@ -73,6 +80,20 @@
             app:exitAnim="@anim/fade_out_medium"
             app:popEnterAnim="@anim/fade_in_medium"
             app:popExitAnim="@anim/fade_out_medium" />
+        <argument
+            android:name="page"
+            app:argType="string" />
+        <argument
+            android:name="noteId"
+            android:defaultValue="-1L"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_settingPageFragment_to_writeNoteFragment"
+            app:destination="@id/writeNoteFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
     </fragment>
     <fragment
         android:id="@+id/selectColorFragment"
@@ -80,7 +101,13 @@
         android:label="fragment_select_color"
         tools:layout="@layout/fragment_select_color">
         <argument
+            android:name="size"
+            app:argType="integer" />
+        <argument
             android:name="page"
+            app:argType="string" />
+        <argument
+            android:name="type"
             app:argType="string" />
         <action
             android:id="@+id/action_selectColorFragment_to_settingTitleFragment"
@@ -104,8 +131,9 @@
             app:popEnterAnim="@anim/slide_in_right_to_left_medium"
             app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <argument
-            android:name="size"
-            app:argType="integer" />
+            android:name="noteId"
+            android:defaultValue="-1L"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/settingDateFragment"
@@ -129,6 +157,13 @@
         <argument
             android:name="size"
             app:argType="integer" />
+        <argument
+            android:name="page"
+            app:argType="string" />
+        <argument
+            android:name="noteId"
+            android:defaultValue="-1L"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/settingContentFragment"
@@ -152,6 +187,13 @@
         <argument
             android:name="size"
             app:argType="integer" />
+        <argument
+            android:name="page"
+            app:argType="string" />
+        <argument
+            android:name="noteId"
+            android:defaultValue="-1L"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/settingTitleFragment"
@@ -168,6 +210,9 @@
         <argument
             android:name="size"
             app:argType="integer" />
+        <argument
+            android:name="page"
+            app:argType="string" />
         <action
             android:id="@+id/action_settingTitleFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment"
@@ -175,6 +220,10 @@
             app:exitAnim="@anim/fade_out_medium"
             app:popEnterAnim="@anim/fade_in_medium"
             app:popExitAnim="@anim/fade_out_medium" />
+        <argument
+            android:name="noteId"
+            android:defaultValue="-1L"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/sponsorSeeNoteFragment"

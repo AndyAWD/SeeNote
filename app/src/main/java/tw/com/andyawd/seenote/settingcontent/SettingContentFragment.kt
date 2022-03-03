@@ -105,15 +105,20 @@ class SettingContentFragment : Fragment() {
 
     private fun goBackSettingPage() {
         val action =
-            SettingContentFragmentDirections.actionSettingContentFragmentToSettingPageFragment()
+            SettingContentFragmentDirections.actionSettingContentFragmentToSettingPageFragment(
+                args.page,
+                args.noteId
+            )
         findNavController().navigate(action)
     }
 
-    private fun goSelectColor(page: String) {
+    private fun goSelectColor(type: String) {
         val action =
             SettingContentFragmentDirections.actionSettingContentFragmentToSelectColorFragment(
-                page,
-                viewModel.setting.value?.textSize?.selectColor ?: BaseConstants.COLOR_SIZE
+                viewModel.setting.value?.textSize?.selectColor ?: BaseConstants.COLOR_SIZE,
+                args.page,
+                type,
+                args.noteId
             )
         findNavController().navigate(action)
     }

@@ -43,7 +43,7 @@ class WriteNoteFragment : Fragment() {
                 noteDataSource,
                 settingDataSource,
                 application,
-                args.notePageKey
+                args.noteId
             )
         viewModel =
             ViewModelProvider(this, viewModelFactory)[WriteNoteViewModel::class.java]
@@ -135,10 +135,22 @@ class WriteNoteFragment : Fragment() {
                 else -> false
             }
         }
+
+        binding.fwnMbEditColor.setOnClickListener {
+            goSettingPage()
+        }
     }
 
     private fun goBackNotePage() {
         val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToNotePageFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun goSettingPage() {
+        val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToSettingPageFragment(
+            BaseConstants.WRITER_NOTE,
+            args.noteId
+        )
         findNavController().navigate(action)
     }
 

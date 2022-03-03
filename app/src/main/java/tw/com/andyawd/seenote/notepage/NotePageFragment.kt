@@ -158,7 +158,8 @@ class NotePageFragment : Fragment() {
     }
 
     private fun goSettingPage() {
-        val action = NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment()
+        val action =
+            NotePageFragmentDirections.actionNotePageFragmentToSettingNoteFragment(BaseConstants.NOTE_PAGE)
         findNavController().navigate(action)
         viewModel.onNotePageNavigated()
     }

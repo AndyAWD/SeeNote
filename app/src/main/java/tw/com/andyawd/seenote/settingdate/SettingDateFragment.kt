@@ -104,14 +104,20 @@ class SettingDateFragment : Fragment() {
     }
 
     private fun goBackSettingPage() {
-        val action = SettingDateFragmentDirections.actionSettingDateFragmentToSettingPageFragment()
+        val action =
+            SettingDateFragmentDirections.actionSettingDateFragmentToSettingPageFragment(
+                args.page,
+                args.noteId
+            )
         findNavController().navigate(action)
     }
 
-    private fun goSelectColor(page: String) {
+    private fun goSelectColor(type: String) {
         val action = SettingDateFragmentDirections.actionSettingDateFragmentToSelectColorFragment(
-            page,
-            viewModel.setting.value?.textSize?.selectColor ?: BaseConstants.COLOR_SIZE
+            viewModel.setting.value?.textSize?.selectColor ?: BaseConstants.COLOR_SIZE,
+            args.page,
+            type,
+            args.noteId
         )
         findNavController().navigate(action)
     }

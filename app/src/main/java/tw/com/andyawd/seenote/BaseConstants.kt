@@ -4,6 +4,7 @@ class BaseConstants {
     companion object {
         const val TEXT_SIZE = 80
         const val COLOR_SIZE = 120
+        const val NOT_FROM_WRITE_NOTE = -1L
         const val NOTE_DATABASE = "note_database"
         const val NOTE_TABLE = "note_table"
         const val SETTING_TABLE = "setting_table"

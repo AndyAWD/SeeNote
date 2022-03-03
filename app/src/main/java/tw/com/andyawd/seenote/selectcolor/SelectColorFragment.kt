@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
@@ -35,8 +36,16 @@ class SelectColorFragment : Fragment() {
         )
 
         val application = requireNotNull(this.activity).application
-        val dataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
-        viewModelFactory = SelectColorViewModelFactory(dataSource, args.page)
+        val settingDataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
+        val noteDataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
+        viewModelFactory =
+            SelectColorViewModelFactory(
+                settingDataSource,
+                noteDataSource,
+                args.page,
+                args.type,
+                args.noteId
+            )
         viewModel = ViewModelProvider(this, viewModelFactory)[SelectColorViewModel::class.java]
 
         binding.viewModel = viewModel
@@ -62,7 +71,8 @@ class SelectColorFragment : Fragment() {
         viewModel.isUpdateFinish.observe(viewLifecycleOwner) { isUpdateFinish ->
             isUpdateFinish?.let {
                 if (it) {
-                    goBackSetting(args.page)
+                    AWDLog.d("page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
+                    goBackPage()
                 }
             }
         }
@@ -77,11 +87,11 @@ class SelectColorFragment : Fragment() {
 
     private fun initListener(binding: FragmentSelectColorBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {
-            goBackSetting(args.page)
+            goBackPage()
         }
 
         binding.fscMtToolBar.setNavigationOnClickListener {
-            goBackSetting(args.page)
+            goBackPage()
         }
 
         binding.fscAcsbTextSize.setOnSeekBarChangeListener(object :
@@ -181,29 +191,42 @@ class SelectColorFragment : Fragment() {
         }
     }
 
-    private fun goBackSetting(page: String) {
-        when (page) {
+    private fun goBackPage() {
+        AWDLog.d("page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
+        when (args.type) {
             BaseConstants.TITLE_TEXT_COLOR,
             BaseConstants.TITLE_BACKGROUND_COLOR -> {
+                AWDLog.d("TITLE page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
                 val action =
                     SelectColorFragmentDirections.actionSelectColorFragmentToSettingTitleFragment(
-                        viewModel.setting.value?.textSize?.settingPage ?: BaseConstants.TEXT_SIZE
+                        viewModel.setting.value?.textSize?.settingPage
+                            ?: BaseConstants.TEXT_SIZE,
+                        args.page,
+                        args.noteId
                     )
                 findNavController().navigate(action)
             }
             BaseConstants.CONTENT_TEXT_COLOR,
             BaseConstants.CONTENT_BACKGROUND_COLOR -> {
+                AWDLog.d("CONTENT page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
                 val action =
                     SelectColorFragmentDirections.actionSelectColorFragmentToSettingContentFragment(
-                        viewModel.setting.value?.textSize?.settingPage ?: BaseConstants.TEXT_SIZE
+                        viewModel.setting.value?.textSize?.settingPage
+                            ?: BaseConstants.TEXT_SIZE,
+                        args.page,
+                        args.noteId
                     )
                 findNavController().navigate(action)
             }
-            BaseConstants.DATE_TEXT_COLOR,
+            "date_text_color",
             BaseConstants.DATE_BACKGROUND_COLOR -> {
+                AWDLog.d("DATE page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
                 val action =
                     SelectColorFragmentDirections.actionSelectColorFragmentToSettingDateFragment(
-                        viewModel.setting.value?.textSize?.settingPage ?: BaseConstants.TEXT_SIZE
+                        viewModel.setting.value?.textSize?.settingPage
+                            ?: BaseConstants.TEXT_SIZE,
+                        args.page,
+                        args.noteId
                     )
                 findNavController().navigate(action)
             }
