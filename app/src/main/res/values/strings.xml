@@ -44,4 +44,6 @@
     <string name="voice_title">朗讀標題</string>
     <string name="voice_content">朗讀內容</string>
     <string name="edit_color">修改顏色</string>
+    <string name="title_empty">標題沒有輸入</string>
+    <string name="content_empty">內容沒有輸入</string>
 </resources>

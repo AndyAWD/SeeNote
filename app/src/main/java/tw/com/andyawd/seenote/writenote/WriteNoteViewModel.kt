@@ -32,9 +32,14 @@ class WriteNoteViewModel(
     val isUpdateFinished: LiveData<Boolean?>
         get() = _isUpdateFinished
 
+    private var _speakStatus = MutableLiveData<String?>()
+    val speakStatus: LiveData<String?>
+        get() = _speakStatus
+
     init {
         initNote()
         initSetting()
+        _speakStatus.value = SPOKEN
     }
 
     private fun initSetting() {
@@ -120,6 +125,58 @@ class WriteNoteViewModel(
         }
     }
 
+    fun speaking() {
+        viewModelScope.launch {
+            _speakStatus.value = SPEAKING
+        }
+    }
+
+    fun spoken() {
+        viewModelScope.launch {
+            _speakStatus.value = SPOKEN
+        }
+    }
+
+//    fun readyPlay() {
+//        viewModelScope.launch {
+//            _speakStatus.value = READY_PLAY
+//        }
+//    }
+
+    fun readyPlayTitle() {
+        viewModelScope.launch {
+            _speakStatus.value = READY_PLAY_TITLE
+        }
+    }
+
+    fun readyPlayContent() {
+        viewModelScope.launch {
+            _speakStatus.value = READY_PLAY_CONTENT
+        }
+    }
+
+    fun playError() {
+        viewModelScope.launch {
+            _speakStatus.value = PLAY_ERROR
+        }
+    }
+
+    fun enabled(isEnable: Boolean) {
+        viewModelScope.launch {
+            if (isEnable) {
+                _speakStatus.value = ENABLE_TRUE
+            } else {
+                _speakStatus.value = ENABLE_FALSE
+            }
+        }
+    }
+
+    fun shutdown() {
+        viewModelScope.launch {
+            _speakStatus.value = SHUTDOWN
+        }
+    }
+
     fun invertColor() {
         _note.value?.let { note ->
             _setting.value?.let { setting ->
@@ -190,5 +247,18 @@ class WriteNoteViewModel(
                 updateNote(newNote)
             }
         }
+    }
+
+    companion object {
+        const val SPEAKING = "speaking"
+        const val SPOKEN = "spoken"
+
+        //        const val READY_PLAY = "ready_play"
+        const val READY_PLAY_TITLE = "ready_play_title"
+        const val READY_PLAY_CONTENT = "ready_play_content"
+        const val PLAY_ERROR = "play_error"
+        const val ENABLE_TRUE = "enable_true"
+        const val ENABLE_FALSE = "enable_false"
+        const val SHUTDOWN = "shutdown"
     }
 }

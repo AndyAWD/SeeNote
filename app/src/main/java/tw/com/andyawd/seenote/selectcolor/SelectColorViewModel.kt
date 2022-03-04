@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.database.Note
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
@@ -154,7 +153,6 @@ class SelectColorViewModel(
         viewModelScope.launch {
             _setting.value?.let {
                 settingDataSource.update(it)
-                AWDLog.d("updateSettingColor")
                 onUpdateFinish()
             }
         }
@@ -163,7 +161,6 @@ class SelectColorViewModel(
     private fun updateNoteColor() {
         viewModelScope.launch {
             _note.value?.let {
-                AWDLog.d("updateNoteColor")
                 noteDataSource.update(it)
                 onUpdateFinish()
             }

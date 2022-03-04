@@ -79,7 +79,7 @@
                             android:orientation="horizontal">
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/fwnMbInvertColor"
+                                android:id="@+id/fwnActvInvertColor"
                                 style="@style/write_note_button"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -87,41 +87,43 @@
                                 android:clickable="true"
                                 android:focusable="true"
                                 android:text=""
-                                android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                                app:writeNoteButtonSize="@{viewModel.setting}"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/fwnMbVoiceTitle"
+                                android:id="@+id/fwnActvVoiceTitle"
                                 style="@style/write_note_button"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:background="@drawable/ripple_ic_voice_title"
                                 android:clickable="true"
+                                android:enabled="false"
                                 android:focusable="true"
                                 android:text=""
-                                android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                                app:layout_constraintStart_toEndOf="@+id/fwnActvInvertColor"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/fwnMbInvertColor"
+                                app:writeNoteButtonSize="@{viewModel.setting}"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/fwnMbVoiceContent"
+                                android:id="@+id/fwnActvVoiceContent"
                                 style="@style/write_note_button"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:background="@drawable/ripple_ic_voice_content"
                                 android:clickable="true"
+                                android:enabled="false"
                                 android:focusable="true"
                                 android:text=""
-                                android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                                app:layout_constraintStart_toEndOf="@+id/fwnActvVoiceTitle"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/fwnMbVoiceTitle"
+                                app:writeNoteButtonSize="@{viewModel.setting}"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/fwnMbEditColor"
+                                android:id="@+id/fwnActvEditColor"
                                 style="@style/write_note_button"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
@@ -129,9 +131,9 @@
                                 android:clickable="true"
                                 android:focusable="true"
                                 android:text=""
-                                android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                                app:layout_constraintStart_toEndOf="@+id/fwnActvVoiceContent"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/fwnMbVoiceContent"
+                                app:writeNoteButtonSize="@{viewModel.setting}"
                                 app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </HorizontalScrollView>
@@ -174,7 +176,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="@dimen/magic_8dp"
                             android:background="@null"
-                            android:hint="@string/title"
+                            android:hint="@string/title_empty"
                             android:imeOptions="actionNext|flagNoExtractUi"
                             android:inputType="text"
                             android:lines="1"
@@ -207,7 +209,7 @@
                             android:background="@null"
                             android:fadeScrollbars="false"
                             android:gravity="top|start"
-                            android:hint="@string/write_something"
+                            android:hint="@string/content_empty"
                             android:imeOptions="actionDone|flagNoExtractUi"
                             android:inputType="textMultiLine"
                             android:padding="@dimen/magic_8dp"

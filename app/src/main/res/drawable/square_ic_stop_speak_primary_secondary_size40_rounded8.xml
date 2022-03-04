@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="4dp"
+                android:color="?attr/colorSecondary" />
+            <size
+                android:width="40dp"
+                android:height="40dp" />
+            <solid android:color="?attr/colorPrimary" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <item
+        android:bottom="6dp"
+        android:drawable="@drawable/ic_baseline_spatial_audio_off_24"
+        android:end="6dp"
+        android:start="6dp"
+        android:top="6dp" />
+</layer-list>

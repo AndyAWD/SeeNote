@@ -204,6 +204,15 @@ fun TextView.changeContentHintTextColor(note: Note?, setting: Setting?) {
     }
 }
 
+@BindingAdapter("writeNoteButtonSize")
+fun TextView.writeNoteButtonSize(setting: Setting?) {
+    setting?.let {
+        val writerNote = setting.textSize?.writerNote
+        val newSize = writerNote?.div(6)?.toFloat()
+        textSize = newSize ?: 80F
+    }
+}
+
 fun getColor(context: Context, hexColor: String): Int =
     ActivityCompat.getColor(context, colorResource(hexColor))
 

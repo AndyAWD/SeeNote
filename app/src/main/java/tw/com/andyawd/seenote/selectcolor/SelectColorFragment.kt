@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
@@ -71,7 +70,6 @@ class SelectColorFragment : Fragment() {
         viewModel.isUpdateFinish.observe(viewLifecycleOwner) { isUpdateFinish ->
             isUpdateFinish?.let {
                 if (it) {
-                    AWDLog.d("page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
                     goBackPage()
                 }
             }
@@ -192,11 +190,9 @@ class SelectColorFragment : Fragment() {
     }
 
     private fun goBackPage() {
-        AWDLog.d("page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
         when (args.type) {
             BaseConstants.TITLE_TEXT_COLOR,
             BaseConstants.TITLE_BACKGROUND_COLOR -> {
-                AWDLog.d("TITLE page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
                 val action =
                     SelectColorFragmentDirections.actionSelectColorFragmentToSettingTitleFragment(
                         viewModel.setting.value?.textSize?.settingPage
@@ -208,7 +204,6 @@ class SelectColorFragment : Fragment() {
             }
             BaseConstants.CONTENT_TEXT_COLOR,
             BaseConstants.CONTENT_BACKGROUND_COLOR -> {
-                AWDLog.d("CONTENT page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
                 val action =
                     SelectColorFragmentDirections.actionSelectColorFragmentToSettingContentFragment(
                         viewModel.setting.value?.textSize?.settingPage
@@ -218,9 +213,8 @@ class SelectColorFragment : Fragment() {
                     )
                 findNavController().navigate(action)
             }
-            "date_text_color",
+            BaseConstants.DATE_TEXT_COLOR,
             BaseConstants.DATE_BACKGROUND_COLOR -> {
-                AWDLog.d("DATE page: ${args.page} / type: ${args.type} / noteId: ${args.noteId}")
                 val action =
                     SelectColorFragmentDirections.actionSelectColorFragmentToSettingDateFragment(
                         viewModel.setting.value?.textSize?.settingPage
