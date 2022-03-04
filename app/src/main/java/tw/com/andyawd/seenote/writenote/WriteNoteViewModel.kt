@@ -28,6 +28,10 @@ class WriteNoteViewModel(
     val isDatabaseDeleted: LiveData<Boolean?>
         get() = _isDatabaseDeleted
 
+    private var _isUpdateFinished = MutableLiveData<Boolean?>()
+    val isUpdateFinished: LiveData<Boolean?>
+        get() = _isUpdateFinished
+
     init {
         initNote()
         initSetting()
@@ -67,6 +71,7 @@ class WriteNoteViewModel(
     private fun updateNote(note: Note) {
         viewModelScope.launch {
             noteDatabase.update(note)
+            _note.value = getNoteFromDatabase(dataPrimaryKey)
         }
     }
 
@@ -111,6 +116,78 @@ class WriteNoteViewModel(
         viewModelScope.launch {
             _setting.value?.let {
                 settingDataSource.update(it)
+            }
+        }
+    }
+
+    fun invertColor() {
+        _note.value?.let { note ->
+            _setting.value?.let { setting ->
+                var noteTitleTextColor = note.titleColor?.textColor
+                var noteTitleBackgroundColor = note.titleColor?.backgroundColor
+                var noteContentTextColor = note.contentColor?.textColor
+                var noteContentBackgroundColor = note.contentColor?.backgroundColor
+                var noteDateTextColor = note.dateColor?.textColor
+                var noteDateBackgroundColor = note.dateColor?.backgroundColor
+
+                val settingTitleTextColor = setting.title?.textColor ?: BaseConstants.EMPTY_STRING
+                val settingTitleBackgroundColor =
+                    setting.title?.backgroundColor ?: BaseConstants.EMPTY_STRING
+                val settingContentTextColor =
+                    setting.content?.textColor ?: BaseConstants.EMPTY_STRING
+                val settingContentBackgroundColor =
+                    setting.content?.backgroundColor ?: BaseConstants.EMPTY_STRING
+                val settingDateTextColor = setting.date?.textColor ?: BaseConstants.EMPTY_STRING
+                val settingDateBackgroundColor =
+                    setting.date?.backgroundColor ?: BaseConstants.EMPTY_STRING
+
+                if (noteTitleTextColor.isNullOrEmpty()) {
+                    noteTitleTextColor = settingTitleTextColor
+                }
+
+                if (noteTitleBackgroundColor.isNullOrEmpty()) {
+                    noteTitleBackgroundColor = settingTitleBackgroundColor
+                }
+
+                val newTitleColor = note.titleColor?.copy(
+                    textColor = noteTitleBackgroundColor,
+                    backgroundColor = noteTitleTextColor
+                )
+
+                if (noteContentTextColor.isNullOrEmpty()) {
+                    noteContentTextColor = settingContentTextColor
+                }
+
+                if (noteContentBackgroundColor.isNullOrEmpty()) {
+                    noteContentBackgroundColor = settingContentBackgroundColor
+                }
+
+                val newBackgroundColor = note.contentColor?.copy(
+                    textColor = noteContentBackgroundColor,
+                    backgroundColor = noteContentTextColor
+                )
+
+                if (noteDateTextColor.isNullOrEmpty()) {
+                    noteDateTextColor = settingDateTextColor
+                }
+
+                if (noteDateBackgroundColor.isNullOrEmpty()) {
+                    noteDateBackgroundColor = settingDateBackgroundColor
+                }
+
+
+                val newDateColor = note.dateColor?.copy(
+                    textColor = noteDateBackgroundColor,
+                    backgroundColor = noteDateTextColor
+                )
+
+                val newNote = note.copy(
+                    titleColor = newTitleColor,
+                    contentColor = newBackgroundColor,
+                    dateColor = newDateColor
+                )
+
+                updateNote(newNote)
             }
         }
     }

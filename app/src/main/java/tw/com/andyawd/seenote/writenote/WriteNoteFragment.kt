@@ -139,6 +139,10 @@ class WriteNoteFragment : Fragment() {
         binding.fwnMbEditColor.setOnClickListener {
             goSettingPage()
         }
+
+        binding.fwnMbInvertColor.setOnClickListener {
+            viewModel.invertColor()
+        }
     }
 
     private fun goBackNotePage() {
