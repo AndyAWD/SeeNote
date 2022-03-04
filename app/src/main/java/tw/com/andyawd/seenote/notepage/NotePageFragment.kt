@@ -61,7 +61,7 @@ class NotePageFragment : Fragment() {
         adapter = NotePageAdapter()
         binding.fnpRvNoteList.adapter = adapter
         binding.fnpRvNoteList.layoutManager = GridLayoutManager(application, 1)
-        binding.fnpRvNoteList.addItemDecoration(dividerItemDecoration)
+        //binding.fnpRvNoteList.addItemDecoration(dividerItemDecoration)
 
         return binding.root
     }
