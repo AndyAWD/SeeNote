@@ -166,14 +166,17 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/magic_4dp"
+                        android:background="@drawable/rounded_hollow_secondary_width4_radius4"
+                        android:padding="@dimen/magic_2dp">
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/fwnAcetNoteTitle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/magic_8dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="@dimen/magic_8dp"
                             android:layout_marginEnd="@dimen/magic_8dp"
                             android:background="@null"
                             android:hint="@string/title_empty"
@@ -203,7 +206,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/magic_8dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="@dimen/magic_8dp"
                             android:layout_marginEnd="@dimen/magic_8dp"
                             android:layout_marginBottom="@dimen/magic_8dp"
                             android:background="@null"
