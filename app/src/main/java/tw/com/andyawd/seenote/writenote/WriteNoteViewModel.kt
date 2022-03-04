@@ -13,7 +13,7 @@ class WriteNoteViewModel(
     private val noteDatabase: NoteDatabaseDao,
     private val settingDataSource: SettingDatabaseDao,
     application: Application,
-    private val dataPrimaryKey: Long
+    private val noteId: Long
 ) : AndroidViewModel(application) {
 
     private var _note = MutableLiveData<Note?>()
@@ -27,10 +27,6 @@ class WriteNoteViewModel(
     private var _isDatabaseDeleted = MutableLiveData<Boolean?>()
     val isDatabaseDeleted: LiveData<Boolean?>
         get() = _isDatabaseDeleted
-
-    private var _isUpdateFinished = MutableLiveData<Boolean?>()
-    val isUpdateFinished: LiveData<Boolean?>
-        get() = _isUpdateFinished
 
     private var _speakStatus = MutableLiveData<String?>()
     val speakStatus: LiveData<String?>
@@ -50,7 +46,7 @@ class WriteNoteViewModel(
 
     private fun initNote() {
         viewModelScope.launch {
-            if (BaseConstants.CREATE_NOTE == dataPrimaryKey) {
+            if (BaseConstants.CREATE_NOTE == noteId) {
                 val timeMillis = System.currentTimeMillis()
                 val color = Color()
                 val noteId = noteDatabase.insert(
@@ -64,7 +60,7 @@ class WriteNoteViewModel(
                 )
                 _note.value = getNoteFromDatabase(noteId)
             } else {
-                _note.value = getNoteFromDatabase(dataPrimaryKey)
+                _note.value = getNoteFromDatabase(noteId)
             }
         }
     }
@@ -76,7 +72,6 @@ class WriteNoteViewModel(
     private fun updateNote(note: Note) {
         viewModelScope.launch {
             noteDatabase.update(note)
-            _note.value = getNoteFromDatabase(dataPrimaryKey)
         }
     }
 
@@ -245,6 +240,7 @@ class WriteNoteViewModel(
                 )
 
                 updateNote(newNote)
+                _note.value = newNote
             }
         }
     }
