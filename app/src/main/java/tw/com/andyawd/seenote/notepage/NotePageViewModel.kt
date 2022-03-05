@@ -42,7 +42,8 @@ class NotePageViewModel(
                         title = color,
                         content = color,
                         date = color,
-                        label = color
+                        label = color,
+                        user = User()
                     )
                 )
                 _setting.value = settingDataSource.getFirst()

@@ -10,6 +10,7 @@ class BaseConstants {
         const val SETTING_TABLE = "setting_table"
         const val COLOR_TABLE = "color_table"
         const val DATE_TABLE = "date_table"
+        const val USER_TABLE = "user_table"
         const val TEXT_SIZE_TABLE = "text_size_table"
         const val TITLE = "title"
         const val CONTENT = "content"
@@ -44,6 +45,10 @@ class BaseConstants {
         const val SELECT_COLOR = "select_color"
         const val SETTING_PAGE = "setting_page"
         const val WRITER_NOTE = "writer_note"
+        const val ACCOUNT = "account"
+        const val NICKNAME = "nickname"
+        const val HACKMD_TOKEN = "hackmd_token"
+        const val GOOGLE_TOKEN = "google_token"
 
 
         const val BLACK = "#000000"
