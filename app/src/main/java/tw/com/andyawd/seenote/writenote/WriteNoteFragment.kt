@@ -319,11 +319,13 @@ class WriteNoteFragment : Fragment() {
     }
 
     private fun goSettingPage() {
-        val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToSettingPageFragment(
-            BaseConstants.WRITER_NOTE,
-            args.noteId
-        )
-        findNavController().navigate(action)
+        viewModel.note.value?.let {
+            val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToSettingPageFragment(
+                BaseConstants.WRITER_NOTE,
+                it.id
+            )
+            findNavController().navigate(action)
+        }
     }
 
     private fun updateTitle() {

@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.database.*
 
@@ -13,7 +14,7 @@ class WriteNoteViewModel(
     private val noteDatabase: NoteDatabaseDao,
     private val settingDataSource: SettingDatabaseDao,
     application: Application,
-    private val noteId: Long
+    private var noteId: Long
 ) : AndroidViewModel(application) {
 
     private var _note = MutableLiveData<Note?>()
@@ -46,10 +47,11 @@ class WriteNoteViewModel(
 
     private fun initNote() {
         viewModelScope.launch {
+            AWDLog.d("noteId: $noteId")
             if (BaseConstants.CREATE_NOTE == noteId) {
                 val timeMillis = System.currentTimeMillis()
                 val color = Color()
-                val noteId = noteDatabase.insert(
+                noteId = noteDatabase.insert(
                     Note(
                         date = Date(create = timeMillis, edit = timeMillis),
                         titleColor = color,
@@ -62,6 +64,7 @@ class WriteNoteViewModel(
             } else {
                 _note.value = getNoteFromDatabase(noteId)
             }
+            AWDLog.d("noteId: $noteId / _note.value: ${_note.value}")
         }
     }
 
