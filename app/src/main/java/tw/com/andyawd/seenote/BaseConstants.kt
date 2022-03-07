@@ -49,6 +49,13 @@ class BaseConstants {
         const val NICKNAME = "nickname"
         const val HACKMD_TOKEN = "hackmd_token"
         const val GOOGLE_TOKEN = "google_token"
+        const val OWNER = "owner"
+        const val SIGN_IN = "sign_in"
+        const val GUEST = "guest"
+        const val DISABLED = "disabled"
+        const val FORBIDDEN = "forbidden"
+        const val SIGNED_IN_USERS = "signed_in_users"
+        const val EVERYONE = "everyone"
 
 
         const val BLACK = "#000000"
