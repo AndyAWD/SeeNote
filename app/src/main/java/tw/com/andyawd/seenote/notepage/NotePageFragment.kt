@@ -69,13 +69,13 @@ class NotePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initComponent(binding)
+        initComponent()
         initObserve()
         initListener()
         initClickListener(binding)
     }
 
-    private fun initComponent(binding: FragmentNotePageBinding) {
+    private fun initComponent() {
 
     }
 

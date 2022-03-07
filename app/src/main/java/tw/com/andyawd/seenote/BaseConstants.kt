@@ -12,6 +12,10 @@ class BaseConstants {
         const val DATE_TABLE = "date_table"
         const val USER_TABLE = "user_table"
         const val TEXT_SIZE_TABLE = "text_size_table"
+        const val HACKMD_NOTE_TABLE = "hackmd_note_table"
+        const val HACKMD_USER_TABLE = "hackmd_user_table"
+        const val LAST_CHANGE_USER_TABLE = "last_change_user_table"
+        const val USER_NOTE_LIST_ITEM_TABLE = "user_note_list_item_table"
         const val TITLE = "title"
         const val CONTENT = "content"
         const val CREATE_DATE = "create_date"
@@ -56,6 +60,7 @@ class BaseConstants {
         const val FORBIDDEN = "forbidden"
         const val SIGNED_IN_USERS = "signed_in_users"
         const val EVERYONE = "everyone"
+        const val ID = "id"
 
 
         const val BLACK = "#000000"

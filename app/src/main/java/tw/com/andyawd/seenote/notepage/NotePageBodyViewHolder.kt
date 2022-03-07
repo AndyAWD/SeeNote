@@ -3,8 +3,8 @@ package tw.com.andyawd.seenote.notepage
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import tw.com.andyawd.seenote.database.Note
-import tw.com.andyawd.seenote.database.Setting
+import tw.com.andyawd.seenote.bean.Note
+import tw.com.andyawd.seenote.bean.Setting
 import tw.com.andyawd.seenote.databinding.ViewholderNotePageBinding
 
 class NotePageBodyViewHolder(private val binding: ViewholderNotePageBinding) :

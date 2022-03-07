@@ -1,11 +1,9 @@
-package tw.com.andyawd.seenote.database
+package tw.com.andyawd.seenote.bean
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import tw.com.andyawd.seenote.BaseConstants
 
+@SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
 @Entity(tableName = BaseConstants.NOTE_TABLE)
 data class Note(
     @PrimaryKey(autoGenerate = true)

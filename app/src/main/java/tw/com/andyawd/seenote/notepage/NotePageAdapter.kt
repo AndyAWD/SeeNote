@@ -2,8 +2,8 @@ package tw.com.andyawd.seenote.notepage
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import tw.com.andyawd.seenote.database.Note
-import tw.com.andyawd.seenote.database.Setting
+import tw.com.andyawd.seenote.bean.Note
+import tw.com.andyawd.seenote.bean.Setting
 
 class NotePageAdapter : ListAdapter<Note, NotePageBodyViewHolder>(NotePageDiffCallback()) {
 

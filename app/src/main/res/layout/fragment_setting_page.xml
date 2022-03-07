@@ -154,13 +154,12 @@
                         app:iconSize="@{viewModel.setting.textSize.settingPage}" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fspMbHorizontalLineColor"
+                        android:id="@+id/fspMbHackmd"
                         style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/setting_horizontal_color"
                         android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                        android:visibility="invisible"
                         app:icon="@drawable/ic_baseline_horizontal_rule_24"
                         app:iconSize="@{viewModel.setting.textSize.settingPage}" />
 

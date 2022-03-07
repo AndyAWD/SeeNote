@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote.database
+package tw.com.andyawd.seenote.bean
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

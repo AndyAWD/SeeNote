@@ -8,7 +8,12 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
-import tw.com.andyawd.seenote.database.*
+import tw.com.andyawd.seenote.bean.Color
+import tw.com.andyawd.seenote.bean.Date
+import tw.com.andyawd.seenote.bean.Note
+import tw.com.andyawd.seenote.bean.Setting
+import tw.com.andyawd.seenote.database.NoteDatabaseDao
+import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
 class WriteNoteViewModel(
     private val noteDatabase: NoteDatabaseDao,

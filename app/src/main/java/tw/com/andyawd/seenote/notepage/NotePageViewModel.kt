@@ -6,7 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import tw.com.andyawd.seenote.database.*
+import tw.com.andyawd.seenote.bean.*
+import tw.com.andyawd.seenote.database.NoteDatabaseDao
+import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
 class NotePageViewModel(
     private val noteDataSource: NoteDatabaseDao,

@@ -8,8 +8,8 @@ import androidx.databinding.BindingAdapter
 import com.google.android.material.color.MaterialColors
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
-import tw.com.andyawd.seenote.database.Note
-import tw.com.andyawd.seenote.database.Setting
+import tw.com.andyawd.seenote.bean.Note
+import tw.com.andyawd.seenote.bean.Setting
 import java.text.DateFormat
 
 @BindingAdapter("changeEditTime")

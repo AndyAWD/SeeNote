@@ -114,10 +114,6 @@ class SettingPageFragment : Fragment() {
         binding.fspMtvDate.setOnClickListener {
             goDateSetting()
         }
-
-        binding.fspMbHorizontalLineColor.setOnClickListener {
-
-        }
     }
 
     private fun goBackPage() {

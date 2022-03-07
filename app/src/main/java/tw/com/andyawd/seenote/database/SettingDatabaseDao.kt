@@ -1,6 +1,7 @@
 package tw.com.andyawd.seenote.database
 
 import androidx.room.*
+import tw.com.andyawd.seenote.bean.Setting
 
 @Dao
 interface SettingDatabaseDao {
