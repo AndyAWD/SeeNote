@@ -54,6 +54,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation "com.squareup.okhttp3:okhttp:4.9.3"
     testImplementation 'junit:junit:4.13.2'
     testImplementation "androidx.room:room-testing:2.4.1"
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

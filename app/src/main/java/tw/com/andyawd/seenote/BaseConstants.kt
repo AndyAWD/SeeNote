@@ -2,6 +2,8 @@ package tw.com.andyawd.seenote
 
 class BaseConstants {
     companion object {
+        const val API_HACKMD = "https://api.hackmd.io/v1"
+
         const val TEXT_SIZE = 80
         const val COLOR_SIZE = 120
         const val NOT_FROM_WRITE_NOTE = -1L
@@ -61,6 +63,9 @@ class BaseConstants {
         const val SIGNED_IN_USERS = "signed_in_users"
         const val EVERYONE = "everyone"
         const val ID = "id"
+        const val AUTHORIZATION = "Authorization"
+        const val BEARER = "Bearer"
+        const val ME = "me"
 
 
         const val BLACK = "#000000"

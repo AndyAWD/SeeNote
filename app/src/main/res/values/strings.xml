@@ -47,4 +47,5 @@
     <string name="edit_color">修改顏色</string>
     <string name="title_empty">標題沒有輸入</string>
     <string name="content_empty">內容沒有輸入</string>
+    <string name="hackmd_token_save">HackMD金鑰儲存</string>
 </resources>

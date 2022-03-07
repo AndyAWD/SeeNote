@@ -158,10 +158,18 @@
                         style="@style/setting_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/setting_horizontal_color"
+                        android:text="@string/hackmd_token_save"
                         android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                         app:icon="@drawable/ic_baseline_horizontal_rule_24"
-                        app:iconSize="@{viewModel.setting.textSize.settingPage}" />
+                        app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                        app:layout_constraintDimensionRatio="1:1" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/fspAcetHackmdToken"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="@{viewModel.setting.user.hackmdToken}" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fspMbSponsorSeeNote"

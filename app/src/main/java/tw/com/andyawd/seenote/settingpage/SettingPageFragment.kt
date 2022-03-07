@@ -11,12 +11,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingPageBinding
+import tw.com.andyawd.seenote.http.HttpManager
+import tw.com.andyawd.seenote.http.HttpResponseListener
 
-class SettingPageFragment : Fragment() {
+class SettingPageFragment : Fragment(), HttpResponseListener {
 
     private lateinit var viewModel: SettingPageViewModel
     private lateinit var viewModelFactory: SettingPageViewModelFactory
@@ -82,6 +85,11 @@ class SettingPageFragment : Fragment() {
             setting?.let {
                 binding.fspAcsbTextSize.progress =
                     it.textSize?.settingPage ?: BaseConstants.TEXT_SIZE
+
+                if (it.user?.hackmdToken?.isNotEmpty() == true) {
+                    binding.fspAcetHackmdToken.isEnabled = false
+                    binding.fspMbHackmd.isEnabled = false
+                }
             }
         }
     }
@@ -113,6 +121,16 @@ class SettingPageFragment : Fragment() {
 
         binding.fspMtvDate.setOnClickListener {
             goDateSetting()
+        }
+
+        binding.fspMbHackmd.setOnClickListener {
+            viewModel.hackmdTokenSave(binding.fspAcetHackmdToken.text.toString())
+        }
+
+        binding.fspMbSponsorSeeNote.setOnClickListener {
+            viewModel.setting.value?.user?.let {
+                HttpManager.INSTANCE.get(BaseConstants.ME, it.hackmdToken, this)
+            }
         }
     }
 
@@ -169,5 +187,13 @@ class SettingPageFragment : Fragment() {
 
     companion object {
 
+    }
+
+    override fun onFailure(code: String, responseBody: String) {
+        AWDLog.d("onFailure code: $code / responseBody: $responseBody")
+    }
+
+    override fun onSuccess(responseBody: String) {
+        AWDLog.d("onSuccess responseBody: $responseBody")
     }
 }

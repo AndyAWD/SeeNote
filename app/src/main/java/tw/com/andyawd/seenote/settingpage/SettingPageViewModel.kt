@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.Setting
+import tw.com.andyawd.seenote.bean.User
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
@@ -49,6 +50,15 @@ class SettingPageViewModel(
             _setting.value?.let {
                 settingDataSource.update(it)
             }
+        }
+    }
+
+    fun hackmdTokenSave(token: String) {
+        _setting.value?.let {
+            val newUser = User(hackmdToken = token)
+            val newSetting = it.copy(user = newUser)
+            _setting.value = newSetting
+            updateSetting()
         }
     }
 }
