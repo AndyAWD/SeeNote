@@ -10,15 +10,9 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L,
 
-    @ColumnInfo(name = BaseConstants.ACCOUNT)
-    var account: String = BaseConstants.EMPTY_STRING,
-
     @ColumnInfo(name = BaseConstants.NICKNAME)
     var nickname: String = BaseConstants.EMPTY_STRING,
 
     @ColumnInfo(name = BaseConstants.HACKMD_TOKEN)
     var hackmdToken: String = BaseConstants.EMPTY_STRING,
-
-    @ColumnInfo(name = BaseConstants.GOOGLE_TOKEN)
-    var googleToken: String = BaseConstants.EMPTY_STRING,
 )

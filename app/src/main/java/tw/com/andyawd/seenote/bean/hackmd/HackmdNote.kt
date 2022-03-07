@@ -1,6 +1,6 @@
 package tw.com.andyawd.seenote.bean.hackmd
 
-data class UserNote(
+data class HackmdNote(
     val content: String,
     val createdAt: Long,
     val id: String,

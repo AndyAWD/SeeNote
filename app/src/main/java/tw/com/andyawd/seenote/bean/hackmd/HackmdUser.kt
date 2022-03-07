@@ -1,7 +1,7 @@
 package tw.com.andyawd.seenote.bean.hackmd
 
-data class User(
-    val email: Any,
+data class HackmdUser(
+    val email: String,
     val id: String,
     val name: String,
     val photo: String,
