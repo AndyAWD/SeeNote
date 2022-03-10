@@ -53,4 +53,8 @@
     <string name="hackmd_token_empty">HackMD 金鑰沒有輸入</string>
     <string name="token_save">儲存金鑰</string>
     <string name="token_remove">移除金鑰</string>
+    <string name="note_list_download">下載雲端筆記</string>
+    <string name="note_list_downloading">雲端筆記下載中&#8230;</string>
+    <string name="note_list_download_done">雲端筆記下載完成</string>
+    <string name="hackmd_website">HackMD 官方網站</string>
 </resources>

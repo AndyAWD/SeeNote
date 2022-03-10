@@ -179,6 +179,7 @@
                                 style="@style/setting_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
                                 android:text="@string/setting_text_color"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:icon="@drawable/ic_baseline_text_fields_24"
@@ -321,17 +322,30 @@
                             android:layout_height="match_parent">
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbHackmdWebsite"
+                                style="@style/setting_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/hackmd_website"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_web_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbHackmdTokenSave"
                                 style="@style/setting_button"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/token_save"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                                app:icon="@drawable/ic_baseline_cloud_upload_24"
+                                app:icon="@drawable/ic_baseline_token_24"
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
                                 app:layout_constraintEnd_toStartOf="@+id/fspMbHackmdTokenRemove"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toBottomOf="@+id/fspMbHackmdWebsite" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbHackmdTokenRemove"
@@ -352,16 +366,28 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/magic_8dp"
-                                android:layout_marginBottom="@dimen/magic_8dp"
                                 android:background="@null"
                                 android:hint="@string/hackmd_token_empty"
                                 android:padding="@dimen/magic_8dp"
                                 android:text="@{viewModel.setting.user.hackmdToken}"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/fspMbDownloadNoteList"
                                 app:layout_constraintEnd_toEndOf="@+id/fspMbHackmdTokenRemove"
                                 app:layout_constraintStart_toStartOf="@+id/fspMbHackmdTokenSave"
                                 app:layout_constraintTop_toBottomOf="@+id/fspMbHackmdTokenSave" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbDownloadNoteList"
+                                style="@style/setting_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/note_list_download"
+                                app:icon="@drawable/ic_baseline_download_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/fspAcetHackmdToken" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>
 

@@ -17,6 +17,7 @@ import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingPageBinding
+import tw.com.andyawd.seenote.http.HttpManager
 import tw.com.andyawd.seenote.http.HttpResponseListener
 
 class SettingPageFragment : Fragment(), HttpResponseListener {
@@ -154,9 +155,17 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
         }
 
         binding.fspMbSponsorSeeNote.setOnClickListener {
-//            viewModel.setting.value?.user?.let {
-//                HttpManager.INSTANCE.get(BaseConstants.NOTES, it.hackmdToken, this)
-//            }
+
+        }
+
+        binding.fspMbHackmdWebsite.setOnClickListener {
+
+        }
+
+        binding.fspMbDownloadNoteList.setOnClickListener {
+            viewModel.setting.value?.user?.let {
+                HttpManager.INSTANCE.get(BaseConstants.NOTES, it.hackmdToken, this)
+            }
         }
     }
 
