@@ -40,8 +40,16 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
         val application = requireNotNull(this.activity).application
         val settingDataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
         val noteDataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
+        val hackmdDatabaseDao = SeeNoteDatabase.getInstance(application).hackmdDatabaseDao
+
         viewModelFactory =
-            SettingPageViewModelFactory(settingDataSource, noteDataSource, args.page, args.noteId)
+            SettingPageViewModelFactory(
+                settingDataSource,
+                noteDataSource,
+                hackmdDatabaseDao,
+                args.page,
+                args.noteId
+            )
         viewModel = ViewModelProvider(this, viewModelFactory)[SettingPageViewModel::class.java]
 
 
@@ -129,7 +137,7 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
 
         binding.fspMbSponsorSeeNote.setOnClickListener {
             viewModel.setting.value?.user?.let {
-                HttpManager.INSTANCE.get(BaseConstants.ME, it.hackmdToken, this)
+                HttpManager.INSTANCE.get(BaseConstants.NOTES, it.hackmdToken, this)
             }
         }
     }
@@ -195,5 +203,6 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
 
     override fun onSuccess(responseBody: String) {
         AWDLog.d("onSuccess responseBody: $responseBody")
+        viewModel.insertUserNoteList(responseBody)
     }
 }

@@ -7,12 +7,18 @@ import androidx.room.RoomDatabase
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.Setting
+import tw.com.andyawd.seenote.bean.hackmd.UserNoteListItem
 
-@Database(entities = [Note::class, Setting::class], version = 1, exportSchema = false)
+@Database(
+    entities = [Note::class, Setting::class, UserNoteListItem::class],
+    version = 3,
+    exportSchema = false
+)
 abstract class SeeNoteDatabase : RoomDatabase() {
 
     abstract val noteDatabaseDao: NoteDatabaseDao
     abstract val settingDatabaseDao: SettingDatabaseDao
+    abstract val hackmdDatabaseDao: HackmdDatabaseDao
 
     companion object {
 

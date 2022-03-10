@@ -66,6 +66,18 @@ class BaseConstants {
         const val AUTHORIZATION = "Authorization"
         const val BEARER = "Bearer"
         const val ME = "me"
+        const val CREATED_AT = "created_at"
+        const val LAST_CHANGE_USER = "last_change_user"
+        const val LAST_CHANGED_AT = "last_changed_at"
+        const val PERMALINK = "permalink"
+        const val PUBLISH_TYPE = "publish_type"
+        const val PUBLISHED_AT = "published_at"
+        const val READ_PERMISSION = "read_permission"
+        const val SHORT_ID = "short_id"
+        const val TEAM_PATH = "team_path"
+        const val USER_PATH = "user_path"
+        const val WRITE_PERMISSION = "write_permission"
+        const val NOTES = "notes"
 
 
         const val BLACK = "#000000"

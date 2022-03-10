@@ -5,16 +5,22 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.json.Json
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.Setting
 import tw.com.andyawd.seenote.bean.User
+import tw.com.andyawd.seenote.bean.hackmd.UserNoteListItem
+import tw.com.andyawd.seenote.database.HackmdDatabaseDao
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
 class SettingPageViewModel(
     private val settingDataSource: SettingDatabaseDao,
     private val noteDataSource: NoteDatabaseDao,
+    private val hackmdDatabaseDao: HackmdDatabaseDao,
     private val page: String,
     private val noteId: Long
 ) : ViewModel() {
@@ -59,6 +65,18 @@ class SettingPageViewModel(
             val newSetting = it.copy(user = newUser)
             _setting.value = newSetting
             updateSetting()
+        }
+    }
+
+    fun insertUserNoteList(responseBody: String) {
+        AWDLog.d("insertUserNoteList")
+        viewModelScope.launch {
+            AWDLog.d("viewModelScope.launch")
+            val list =
+                Json.decodeFromString(ListSerializer(UserNoteListItem.serializer()), responseBody)
+            AWDLog.d("bb: ${list.size}")
+            hackmdDatabaseDao.insert(list)
+            AWDLog.d("finish")
         }
     }
 }
