@@ -33,9 +33,12 @@ class SettingPageViewModel(
     val note: LiveData<Note?>
         get() = _note
 
+    private var _hackmdToken = MutableLiveData<String?>()
+
     init {
         viewModelScope.launch {
             _setting.value = settingDataSource.getFirst()
+            _hackmdToken.value = _setting.value?.user?.hackmdToken
 
             if (BaseConstants.WRITER_NOTE == page) {
                 _note.value = noteDataSource.get(noteId)
@@ -52,20 +55,31 @@ class SettingPageViewModel(
     }
 
     fun updateSetting() {
+        AWDLog.d("3")
         viewModelScope.launch {
             _setting.value?.let {
                 settingDataSource.update(it)
             }
+            AWDLog.d("4")
         }
     }
 
-    fun hackmdTokenSave(token: String) {
-        _setting.value?.let {
-            val newUser = User(hackmdToken = token)
-            val newSetting = it.copy(user = newUser)
-            _setting.value = newSetting
-            updateSetting()
+    fun settingHackmdToken() {
+        AWDLog.d("0")
+        _setting.value?.let { setting ->
+            AWDLog.d("1")
+            _hackmdToken.value?.let { hackmdToken ->
+                AWDLog.d("2")
+                val newUser = User(hackmdToken = hackmdToken)
+                val newSetting = setting.copy(user = newUser)
+                _setting.value = newSetting
+                updateSetting()
+            }
         }
+    }
+
+    fun changeHackmdToken(token: String) {
+        _hackmdToken.value = token
     }
 
     fun insertUserNoteList(responseBody: String) {

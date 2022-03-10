@@ -190,41 +190,11 @@ class SelectColorFragment : Fragment() {
     }
 
     private fun goBackPage() {
-        when (args.type) {
-            BaseConstants.TITLE_TEXT_COLOR,
-            BaseConstants.TITLE_BACKGROUND_COLOR -> {
-                val action =
-                    SelectColorFragmentDirections.actionSelectColorFragmentToSettingTitleFragment(
-                        viewModel.setting.value?.textSize?.settingPage
-                            ?: BaseConstants.TEXT_SIZE,
-                        args.page,
-                        args.noteId
-                    )
-                findNavController().navigate(action)
-            }
-            BaseConstants.CONTENT_TEXT_COLOR,
-            BaseConstants.CONTENT_BACKGROUND_COLOR -> {
-                val action =
-                    SelectColorFragmentDirections.actionSelectColorFragmentToSettingContentFragment(
-                        viewModel.setting.value?.textSize?.settingPage
-                            ?: BaseConstants.TEXT_SIZE,
-                        args.page,
-                        args.noteId
-                    )
-                findNavController().navigate(action)
-            }
-            BaseConstants.DATE_TEXT_COLOR,
-            BaseConstants.DATE_BACKGROUND_COLOR -> {
-                val action =
-                    SelectColorFragmentDirections.actionSelectColorFragmentToSettingDateFragment(
-                        viewModel.setting.value?.textSize?.settingPage
-                            ?: BaseConstants.TEXT_SIZE,
-                        args.page,
-                        args.noteId
-                    )
-                findNavController().navigate(action)
-            }
-        }
+        val action = SelectColorFragmentDirections.actionSelectColorFragmentToSettingPageFragment(
+            args.page,
+            args.noteId
+        )
+        findNavController().navigate(action)
     }
 
     companion object {

@@ -5,6 +5,7 @@
     <string name="write_something">寫點什麼</string>
     <string name="title">標題</string>
     <string name="content">內容</string>
+    <string name="date">日期</string>
     <string name="edit_date">%1$s 是最後編輯時間</string>
     <string name="title_demo">標題預覽</string>
     <string name="content_demo">內容預覽</string>
@@ -23,6 +24,8 @@
     <string name="preview_time">2022/5/29 12:34</string>
     <string name="sponsor_see_note">贊助看見筆記</string>
     <string name="setting_note_text_size">設定按鈕大小：%1$s</string>
+    <string name="setting_text_color">文字顏色設定</string>
+    <string name="setting_background_color">背景顏色設定</string>
     <string name="setting_title_color">標題顏色設定</string>
     <string name="setting_title_text_color">標題文字顏色設定</string>
     <string name="setting_title_text_background_color">標題背景顏色設定</string>
@@ -47,5 +50,7 @@
     <string name="edit_color">修改顏色</string>
     <string name="title_empty">標題沒有輸入</string>
     <string name="content_empty">內容沒有輸入</string>
-    <string name="hackmd_token_save">HackMD金鑰儲存</string>
+    <string name="hackmd_token_empty">HackMD 金鑰沒有輸入</string>
+    <string name="token_save">儲存金鑰</string>
+    <string name="token_remove">移除金鑰</string>
 </resources>

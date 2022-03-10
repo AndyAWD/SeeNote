@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -22,28 +23,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24" />
+            app:navigationIcon="@drawable/ripple_ic_back_title" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/fspAcsbTextSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="@dimen/magic_8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="56dp"
             android:max="800"
             android:padding="@dimen/magic_8dp"
             android:thumb="@drawable/square_primary_secondary_size40_rounded8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fspMtToolBar"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintBottom_toBottomOf="@+id/fspMtToolBar"
+            app:layout_constraintEnd_toEndOf="@+id/fspMtToolBar"
+            app:layout_constraintStart_toStartOf="@+id/fspMtToolBar"
+            app:layout_constraintTop_toTopOf="@+id/fspMtToolBar" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/magic_8dp"
             android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,132 +53,357 @@
                 android:layout_height="match_parent"
                 android:fillViewport="true">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fspMtvHorizontalLineTop"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/magic_1dp"
-                        android:background="?attr/colorPrimaryVariant"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/fspMcvColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/magic_8dp"
+                        android:layout_marginEnd="@dimen/magic_8dp"
+                        app:cardCornerRadius="@dimen/magic_8dp"
+                        app:cardUseCompatPadding="true"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" />
+                        tools:backgroundTint="@color/hexColor020_MistyRose">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fspMtvTitle"
-                        style="@style/setting_text"
-                        android:layout_width="match_parent"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingStart="@dimen/magic_8dp"
+                            android:paddingTop="@dimen/magic_8dp"
+                            android:paddingBottom="@dimen/magic_8dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/fspMtvHorizontalLineTop"
+                                style="@style/setting_horizontal_line"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/fspMtvTitle"
+                                style="@style/setting_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:text="@string/title_demo"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMtvHorizontalLineTop"
+                                app:noteTitleBackgroundColor="@{viewModel.note}"
+                                app:noteTitleTextColor="@{viewModel.note}"
+                                app:settingTitleBackgroundColor="@{viewModel.setting}"
+                                app:settingTitleTextColor="@{viewModel.setting}" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/fspMtvContent"
+                                style="@style/setting_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical|start"
+                                android:lines="1"
+                                android:text="@string/content_demo"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMtvTitle"
+                                app:noteContentBackgroundColor="@{viewModel.note}"
+                                app:noteContentTextColor="@{viewModel.note}"
+                                app:settingContentBackgroundColor="@{viewModel.setting}"
+                                app:settingContentTextColor="@{viewModel.setting}" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/fspMtvDate"
+                                style="@style/setting_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical|start"
+                                android:lines="1"
+                                android:text="@string/edit_date_demo"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMtvContent"
+                                app:noteDateBackgroundColor="@{viewModel.note}"
+                                app:noteDateTextColor="@{viewModel.note}"
+                                app:settingDateBackgroundColor="@{viewModel.setting}"
+                                app:settingDateTextColor="@{viewModel.setting}" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/fspMtvHorizontalLineBottom"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/horizontal_line_height"
+                                android:background="?attr/colorPrimaryVariant"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMtvDate" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/fspAcivTitleSetting"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbTitleTextColor"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMtvTitleSetting"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbTitleTextColor"
+                                app:srcCompat="@drawable/ic_baseline_title_24" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/fspMtvTitleSetting"
+                                style="@style/setting_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/title"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbTitleTextColor"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMbTitleTextColor"
+                                app:layout_constraintStart_toEndOf="@+id/fspAcivTitleSetting"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbTitleTextColor" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbTitleTextColor"
+                                style="@style/setting_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/setting_text_color"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_text_fields_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMbTitleBackgroundColor"
+                                app:layout_constraintStart_toEndOf="@+id/fspMtvTitleSetting"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMtvHorizontalLineBottom" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbTitleBackgroundColor"
+                                style="@style/setting_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/setting_background_color"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_article_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbTitleTextColor"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/fspMbTitleTextColor"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbTitleTextColor" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/fspAcivContentSetting"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbContentTextColor"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMtvContentSetting"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbContentTextColor"
+                                app:srcCompat="@drawable/ic_baseline_short_text_24" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/fspMtvContentSetting"
+                                style="@style/setting_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/content"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbContentTextColor"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMbContentTextColor"
+                                app:layout_constraintStart_toEndOf="@+id/fspAcivContentSetting"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbContentTextColor" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbContentTextColor"
+                                style="@style/setting_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/setting_text_color"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_text_fields_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMbContentBackgroundColor"
+                                app:layout_constraintStart_toEndOf="@+id/fspMtvContentSetting"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMbTitleTextColor" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbContentBackgroundColor"
+                                style="@style/setting_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/setting_background_color"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_article_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbContentTextColor"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/fspMbContentTextColor"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbContentTextColor" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/fspAcivDateSetting"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbDateTextColor"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMtvDateSetting"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbDateTextColor"
+                                app:srcCompat="@drawable/ic_baseline_date_range_24" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/fspMtvDateSetting"
+                                style="@style/setting_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/date"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbDateTextColor"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMbDateTextColor"
+                                app:layout_constraintStart_toEndOf="@+id/fspAcivDateSetting"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbDateTextColor" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbDateTextColor"
+                                style="@style/setting_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/setting_text_color"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_text_fields_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMbDateBackgroundColor"
+                                app:layout_constraintStart_toEndOf="@+id/fspMtvDateSetting"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMbContentTextColor" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbDateBackgroundColor"
+                                style="@style/setting_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/setting_background_color"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_article_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbDateTextColor"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/fspMbDateTextColor"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbDateTextColor" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/fspMcvHackmd"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:lines="1"
-                        android:text="@string/title_demo"
-                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                        app:noteTitleBackgroundColor="@{viewModel.note}"
-                        app:noteTitleTextColor="@{viewModel.note}"
-                        app:settingTitleBackgroundColor="@{viewModel.setting}"
-                        app:settingTitleTextColor="@{viewModel.setting}" />
+                        android:layout_marginStart="@dimen/magic_8dp"
+                        android:layout_marginEnd="@dimen/magic_8dp"
+                        app:cardCornerRadius="@dimen/magic_8dp"
+                        app:cardUseCompatPadding="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fspMcvColor"
+                        tools:backgroundTint="@color/hexColor020_MistyRose">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fspMtvContent"
-                        style="@style/setting_text"
-                        android:layout_width="match_parent"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbHackmdTokenSave"
+                                style="@style/setting_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/token_save"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_cloud_upload_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintEnd_toStartOf="@+id/fspMbHackmdTokenRemove"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbHackmdTokenRemove"
+                                style="@style/setting_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/token_remove"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_delete_forever_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintBottom_toBottomOf="@+id/fspMbHackmdTokenSave"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/fspMbHackmdTokenSave"
+                                app:layout_constraintTop_toTopOf="@+id/fspMbHackmdTokenSave" />
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/fspAcetHackmdToken"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/magic_8dp"
+                                android:layout_marginBottom="@dimen/magic_8dp"
+                                android:background="@null"
+                                android:hint="@string/hackmd_token_empty"
+                                android:padding="@dimen/magic_8dp"
+                                android:text="@{viewModel.setting.user.hackmdToken}"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/fspMbHackmdTokenRemove"
+                                app:layout_constraintStart_toStartOf="@+id/fspMbHackmdTokenSave"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMbHackmdTokenSave" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/fspMcvSponsor"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical|start"
-                        android:lines="1"
-                        android:text="@string/content_demo"
-                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                        app:noteContentBackgroundColor="@{viewModel.note}"
-                        app:noteContentTextColor="@{viewModel.note}"
-                        app:settingContentBackgroundColor="@{viewModel.setting}"
-                        app:settingContentTextColor="@{viewModel.setting}" />
+                        android:layout_marginStart="@dimen/magic_8dp"
+                        android:layout_marginEnd="@dimen/magic_8dp"
+                        app:cardCornerRadius="@dimen/magic_8dp"
+                        app:cardUseCompatPadding="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fspMcvHackmd"
+                        tools:backgroundTint="@color/hexColor020_MistyRose">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fspMtvDate"
-                        style="@style/setting_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical|start"
-                        android:lines="1"
-                        android:text="@string/edit_date_demo"
-                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                        app:noteDateBackgroundColor="@{viewModel.note}"
-                        app:noteDateTextColor="@{viewModel.note}"
-                        app:settingDateBackgroundColor="@{viewModel.setting}"
-                        app:settingDateTextColor="@{viewModel.setting}" />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/fspMtvHorizontalLineBottom"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/magic_1dp"
-                        android:background="?attr/colorPrimaryVariant" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fspMbTitleColor"
-                        style="@style/setting_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_title_color"
-                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                        app:icon="@drawable/ic_baseline_title_24"
-                        app:iconSize="@{viewModel.setting.textSize.settingPage}" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fspMbContentColor"
-                        style="@style/setting_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_content_color"
-                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                        app:icon="@drawable/ic_baseline_short_text_24"
-                        app:iconSize="@{viewModel.setting.textSize.settingPage}" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fspMbDateColor"
-                        style="@style/setting_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_date_color"
-                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                        app:icon="@drawable/ic_baseline_date_range_24"
-                        app:iconGravity="start"
-                        app:iconPadding="16dp"
-                        app:iconSize="@{viewModel.setting.textSize.settingPage}" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fspMbHackmd"
-                        style="@style/setting_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/hackmd_token_save"
-                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                        app:icon="@drawable/ic_baseline_horizontal_rule_24"
-                        app:iconSize="@{viewModel.setting.textSize.settingPage}"
-                        app:layout_constraintDimensionRatio="1:1" />
-
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/fspAcetHackmdToken"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:text="@{viewModel.setting.user.hackmdToken}" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fspMbSponsorSeeNote"
-                        style="@style/setting_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sponsor_see_note"
-                        android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                        app:icon="@drawable/ic_baseline_attach_money_24"
-                        app:iconSize="@{viewModel.setting.textSize.settingPage}" />
-                </LinearLayout>
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbSponsorSeeNote"
+                                style="@style/setting_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sponsor_see_note"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_attach_money_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

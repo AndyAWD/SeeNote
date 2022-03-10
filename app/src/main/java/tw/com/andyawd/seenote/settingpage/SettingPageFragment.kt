@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.activity.addCallback
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +17,6 @@ import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingPageBinding
-import tw.com.andyawd.seenote.http.HttpManager
 import tw.com.andyawd.seenote.http.HttpResponseListener
 
 class SettingPageFragment : Fragment(), HttpResponseListener {
@@ -94,10 +94,7 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
                 binding.fspAcsbTextSize.progress =
                     it.textSize?.settingPage ?: BaseConstants.TEXT_SIZE
 
-                if (it.user?.hackmdToken?.isNotEmpty() == true) {
-                    binding.fspAcetHackmdToken.isEnabled = false
-                    binding.fspMbHackmd.isEnabled = false
-                }
+                binding.fspAcetHackmdToken.isEnabled = it.user?.hackmdToken?.isNotEmpty() != true
             }
         }
     }
@@ -107,38 +104,59 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
             goBackPage()
         }
 
-        binding.fspMbTitleColor.setOnClickListener {
-            goTitleSetting()
-        }
-
         binding.fspMtvTitle.setOnClickListener {
-            goTitleSetting()
+            goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
         }
 
-        binding.fspMbContentColor.setOnClickListener {
-            goContentSetting()
+        binding.fspMbTitleTextColor.setOnClickListener {
+            goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
+        }
+
+        binding.fspMbTitleBackgroundColor.setOnClickListener {
+            goSelectColor(BaseConstants.TITLE_BACKGROUND_COLOR)
         }
 
         binding.fspMtvContent.setOnClickListener {
-            goContentSetting()
+            goSelectColor(BaseConstants.CONTENT_TEXT_COLOR)
         }
 
-        binding.fspMbDateColor.setOnClickListener {
-            goDateSetting()
+        binding.fspMbContentTextColor.setOnClickListener {
+            goSelectColor(BaseConstants.CONTENT_TEXT_COLOR)
+        }
+
+        binding.fspMbContentBackgroundColor.setOnClickListener {
+            goSelectColor(BaseConstants.CONTENT_BACKGROUND_COLOR)
         }
 
         binding.fspMtvDate.setOnClickListener {
-            goDateSetting()
+            goSelectColor(BaseConstants.DATE_TEXT_COLOR)
         }
 
-        binding.fspMbHackmd.setOnClickListener {
-            viewModel.hackmdTokenSave(binding.fspAcetHackmdToken.text.toString())
+        binding.fspMbDateTextColor.setOnClickListener {
+            goSelectColor(BaseConstants.DATE_TEXT_COLOR)
+        }
+
+        binding.fspMbDateBackgroundColor.setOnClickListener {
+            goSelectColor(BaseConstants.DATE_BACKGROUND_COLOR)
+        }
+
+        binding.fspMbHackmdTokenSave.setOnClickListener {
+            viewModel.settingHackmdToken()
+        }
+
+        binding.fspMbHackmdTokenRemove.setOnClickListener {
+            viewModel.changeHackmdToken(BaseConstants.EMPTY_STRING)
+            viewModel.settingHackmdToken()
+        }
+
+        binding.fspAcetHackmdToken.addTextChangedListener {
+            viewModel.changeHackmdToken(binding.fspAcetHackmdToken.text.toString())
         }
 
         binding.fspMbSponsorSeeNote.setOnClickListener {
-            viewModel.setting.value?.user?.let {
-                HttpManager.INSTANCE.get(BaseConstants.NOTES, it.hackmdToken, this)
-            }
+//            viewModel.setting.value?.user?.let {
+//                HttpManager.INSTANCE.get(BaseConstants.NOTES, it.hackmdToken, this)
+//            }
         }
     }
 
@@ -157,40 +175,15 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
         }
     }
 
-    private fun goTitleSetting() {
-        viewModel.setting.value?.textSize?.settingPage?.let {
-            val action =
-                SettingPageFragmentDirections.actionSettingPageFragmentToSettingTitleFragment(
-                    it,
-                    args.page,
-                    args.noteId
-                )
-            findNavController().navigate(action)
-        }
-    }
-
-    private fun goContentSetting() {
-        viewModel.setting.value?.textSize?.settingPage?.let {
-            val action =
-                SettingPageFragmentDirections.actionSettingPageFragmentToSettingContentFragment(
-                    it,
-                    args.page,
-                    args.noteId
-                )
-            findNavController().navigate(action)
-        }
-    }
-
-    private fun goDateSetting() {
-        viewModel.setting.value?.textSize?.settingPage?.let {
-            val action =
-                SettingPageFragmentDirections.actionSettingPageFragmentToSettingDateFragment(
-                    it,
-                    args.page,
-                    args.noteId
-                )
-            findNavController().navigate(action)
-        }
+    private fun goSelectColor(type: String) {
+        val action =
+            SettingPageFragmentDirections.actionSettingPageFragmentToSelectColorFragment(
+                viewModel.setting.value?.textSize?.selectColor ?: BaseConstants.COLOR_SIZE,
+                args.page,
+                type,
+                args.noteId
+            )
+        findNavController().navigate(action)
     }
 
     companion object {

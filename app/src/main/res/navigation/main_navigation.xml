@@ -59,27 +59,6 @@
             app:exitAnim="@anim/slide_out_left_to_right_medium"
             app:popEnterAnim="@anim/slide_in_right_to_left_medium"
             app:popExitAnim="@anim/slide_out_left_to_right_medium" />
-        <action
-            android:id="@+id/action_settingPageFragment_to_settingTitleFragment"
-            app:destination="@id/settingTitleFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
-        <action
-            android:id="@+id/action_settingPageFragment_to_settingContentFragment"
-            app:destination="@id/settingContentFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
-        <action
-            android:id="@+id/action_settingPageFragment_to_settingDateFragment"
-            app:destination="@id/settingDateFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
         <argument
             android:name="page"
             app:argType="string" />
@@ -94,6 +73,9 @@
             app:exitAnim="@anim/fade_out_medium"
             app:popEnterAnim="@anim/fade_in_medium"
             app:popExitAnim="@anim/fade_out_medium" />
+        <action
+            android:id="@+id/action_settingPageFragment_to_selectColorFragment"
+            app:destination="@id/selectColorFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectColorFragment"
@@ -109,121 +91,13 @@
         <argument
             android:name="type"
             app:argType="string" />
-        <action
-            android:id="@+id/action_selectColorFragment_to_settingTitleFragment"
-            app:destination="@id/settingTitleFragment"
-            app:enterAnim="@anim/slide_in_right_to_left_medium"
-            app:exitAnim="@anim/slide_out_left_to_right_medium"
-            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
-            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
-        <action
-            android:id="@+id/action_selectColorFragment_to_settingContentFragment"
-            app:destination="@id/settingContentFragment"
-            app:enterAnim="@anim/slide_in_right_to_left_medium"
-            app:exitAnim="@anim/slide_out_left_to_right_medium"
-            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
-            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
-        <action
-            android:id="@+id/action_selectColorFragment_to_settingDateFragment"
-            app:destination="@id/settingDateFragment"
-            app:enterAnim="@anim/slide_in_right_to_left_medium"
-            app:exitAnim="@anim/slide_out_left_to_right_medium"
-            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
-            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <argument
             android:name="noteId"
             android:defaultValue="-1L"
             app:argType="long" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingDateFragment"
-        android:name="tw.com.andyawd.seenote.settingdate.SettingDateFragment"
-        android:label="SettingDateFragment"
-        tools:layout="@layout/fragment_setting_date">
         <action
-            android:id="@+id/action_settingDateFragment_to_selectColorFragment"
-            app:destination="@id/selectColorFragment"
-            app:enterAnim="@anim/slide_in_left_to_right_medium"
-            app:exitAnim="@anim/slide_out_right_to_left_medium"
-            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
-            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
-        <action
-            android:id="@+id/action_settingDateFragment_to_settingPageFragment"
-            app:destination="@id/settingPageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
-        <argument
-            android:name="size"
-            app:argType="integer" />
-        <argument
-            android:name="page"
-            app:argType="string" />
-        <argument
-            android:name="noteId"
-            android:defaultValue="-1L"
-            app:argType="long" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingContentFragment"
-        android:name="tw.com.andyawd.seenote.settingcontent.SettingContentFragment"
-        android:label="SettingContentFragment"
-        tools:layout="@layout/fragment_setting_content">
-        <action
-            android:id="@+id/action_settingContentFragment_to_selectColorFragment"
-            app:destination="@id/selectColorFragment"
-            app:enterAnim="@anim/slide_in_left_to_right_medium"
-            app:exitAnim="@anim/slide_out_right_to_left_medium"
-            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
-            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
-        <action
-            android:id="@+id/action_settingContentFragment_to_settingPageFragment"
-            app:destination="@id/settingPageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
-        <argument
-            android:name="size"
-            app:argType="integer" />
-        <argument
-            android:name="page"
-            app:argType="string" />
-        <argument
-            android:name="noteId"
-            android:defaultValue="-1L"
-            app:argType="long" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingTitleFragment"
-        android:name="tw.com.andyawd.seenote.settingtitle.SettingTitleFragment"
-        android:label="SettingTitleFragment"
-        tools:layout="@layout/fragment_setting_title">
-        <action
-            android:id="@+id/action_settingTitleFragment_to_selectColorFragment"
-            app:destination="@id/selectColorFragment"
-            app:enterAnim="@anim/slide_in_left_to_right_medium"
-            app:exitAnim="@anim/slide_out_right_to_left_medium"
-            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
-            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
-        <argument
-            android:name="size"
-            app:argType="integer" />
-        <argument
-            android:name="page"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_settingTitleFragment_to_settingPageFragment"
-            app:destination="@id/settingPageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
-        <argument
-            android:name="noteId"
-            android:defaultValue="-1L"
-            app:argType="long" />
+            android:id="@+id/action_selectColorFragment_to_settingPageFragment"
+            app:destination="@id/settingPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/sponsorSeeNoteFragment"
