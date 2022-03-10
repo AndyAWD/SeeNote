@@ -55,17 +55,13 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/fspMcvColor"
+                        style="@style/card_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
-                        app:cardCornerRadius="@dimen/magic_8dp"
-                        app:cardUseCompatPadding="true"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -313,12 +309,9 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/fspMcvHackmd"
+                        style="@style/card_view"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
-                        app:cardCornerRadius="@dimen/magic_8dp"
-                        app:cardUseCompatPadding="true"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fspMcvColor">
@@ -374,12 +367,9 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/fspMcvSponsor"
+                        style="@style/card_view"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/magic_8dp"
-                        android:layout_marginEnd="@dimen/magic_8dp"
-                        app:cardCornerRadius="@dimen/magic_8dp"
-                        app:cardUseCompatPadding="true"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fspMcvHackmd">
