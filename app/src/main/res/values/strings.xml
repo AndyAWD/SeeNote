@@ -57,4 +57,5 @@
     <string name="note_list_downloading">雲端筆記下載中&#8230;</string>
     <string name="note_list_download_done">雲端筆記下載完成</string>
     <string name="hackmd_website">HackMD 官方網站</string>
+    <string name="how_to_get_hackmd_token">如何取得 HackMD 金鑰？</string>
 </resources>

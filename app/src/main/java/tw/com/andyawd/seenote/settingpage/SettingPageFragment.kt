@@ -1,5 +1,7 @@
 package tw.com.andyawd.seenote.settingpage
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -159,7 +161,17 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
         }
 
         binding.fspMbHackmdWebsite.setOnClickListener {
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+            intent.data = Uri.parse(BaseConstants.WEBSITE_HACKMD)
+            startActivity(intent)
+        }
 
+        binding.fspMbHowToGetToken.setOnClickListener {
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+            intent.data = Uri.parse(BaseConstants.WEBSITE_HACKMD_GET_TOKEN)
+            startActivity(intent)
         }
 
         binding.fspMbDownloadNoteList.setOnClickListener {

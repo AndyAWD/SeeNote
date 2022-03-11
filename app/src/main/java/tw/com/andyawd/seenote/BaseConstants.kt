@@ -3,6 +3,9 @@ package tw.com.andyawd.seenote
 class BaseConstants {
     companion object {
         const val API_HACKMD = "https://api.hackmd.io/v1"
+        const val WEBSITE_HACKMD = "https://hackmd.io"
+        const val WEBSITE_HACKMD_GET_TOKEN =
+            "https://hackmd.io/c/tutorials-tw/https%3A%2F%2Fhackmd.io%2F%40docs%2Fissue-revoke-api-token-zh"
 
         const val TEXT_SIZE = 80
         const val COLOR_SIZE = 120

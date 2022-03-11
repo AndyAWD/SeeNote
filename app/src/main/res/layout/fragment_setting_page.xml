@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -71,8 +70,8 @@
                             android:layout_height="match_parent"
                             android:paddingStart="@dimen/magic_8dp"
                             android:paddingTop="@dimen/magic_8dp"
-                            android:paddingBottom="@dimen/magic_8dp"
-                            tools:ignore="RtlSymmetry">
+                            android:paddingEnd="@dimen/magic_8dp"
+                            android:paddingBottom="@dimen/magic_8dp">
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/fspMtvNoteGroup"
@@ -89,17 +88,16 @@
                                 style="@style/setting_text"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/magic_4dp"
-                                android:layout_marginTop="@dimen/magic_4dp"
-                                android:layout_marginEnd="@dimen/magic_4dp"
                                 android:ellipsize="end"
                                 android:lines="1"
                                 android:text="@string/title_demo"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:layout_constraintBottom_toTopOf="@+id/fspMtvContent"
                                 app:layout_constraintEnd_toEndOf="@+id/fspMtvNoteGroup"
                                 app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="@+id/fspMtvNoteGroup"
                                 app:layout_constraintTop_toTopOf="@+id/fspMtvNoteGroup"
+                                app:layout_constraintVertical_chainStyle="packed"
                                 app:noteTitleBackgroundColor="@{viewModel.note}"
                                 app:noteTitleTextColor="@{viewModel.note}"
                                 app:settingTitleBackgroundColor="@{viewModel.setting}"
@@ -177,13 +175,14 @@
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbTitleTextColor"
                                 style="@style/setting_button"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/setting_text_color"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:icon="@drawable/ic_baseline_text_fields_24"
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintDimensionRatio="5.5:1"
                                 app:layout_constraintEnd_toStartOf="@+id/fspMbTitleBackgroundColor"
                                 app:layout_constraintStart_toEndOf="@+id/fspMtvTitleSetting"
                                 app:layout_constraintTop_toBottomOf="@+id/fspMtvNoteGroup" />
@@ -191,16 +190,18 @@
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbTitleBackgroundColor"
                                 style="@style/setting_button"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="0dp"
                                 android:text="@string/setting_background_color"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:icon="@drawable/ic_baseline_article_24"
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
                                 app:layout_constraintBottom_toBottomOf="@+id/fspMbTitleTextColor"
+                                app:layout_constraintDimensionRatio="5.5:1"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/fspMbTitleTextColor"
-                                app:layout_constraintTop_toTopOf="@+id/fspMbTitleTextColor" />
+                                app:layout_constraintTop_toBottomOf="@+id/fspMtvNoteGroup" />
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/fspAcivContentSetting"
@@ -230,12 +231,13 @@
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbContentTextColor"
                                 style="@style/setting_button"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/setting_text_color"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:icon="@drawable/ic_baseline_text_fields_24"
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintDimensionRatio="5.5:1"
                                 app:layout_constraintEnd_toStartOf="@+id/fspMbContentBackgroundColor"
                                 app:layout_constraintStart_toEndOf="@+id/fspMtvContentSetting"
                                 app:layout_constraintTop_toBottomOf="@+id/fspMbTitleTextColor" />
@@ -243,16 +245,16 @@
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbContentBackgroundColor"
                                 style="@style/setting_button"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/setting_background_color"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:icon="@drawable/ic_baseline_article_24"
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
-                                app:layout_constraintBottom_toBottomOf="@+id/fspMbContentTextColor"
+                                app:layout_constraintDimensionRatio="5.5:1"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/fspMbContentTextColor"
-                                app:layout_constraintTop_toTopOf="@+id/fspMbContentTextColor" />
+                                app:layout_constraintTop_toBottomOf="@+id/fspMbTitleTextColor" />
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/fspAcivDateSetting"
@@ -282,12 +284,13 @@
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbDateTextColor"
                                 style="@style/setting_button"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/setting_text_color"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:icon="@drawable/ic_baseline_text_fields_24"
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintDimensionRatio="5.5:1"
                                 app:layout_constraintEnd_toStartOf="@+id/fspMbDateBackgroundColor"
                                 app:layout_constraintStart_toEndOf="@+id/fspMtvDateSetting"
                                 app:layout_constraintTop_toBottomOf="@+id/fspMbContentTextColor" />
@@ -295,16 +298,17 @@
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbDateBackgroundColor"
                                 style="@style/setting_button"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/setting_background_color"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:icon="@drawable/ic_baseline_article_24"
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
                                 app:layout_constraintBottom_toBottomOf="@+id/fspMbDateTextColor"
+                                app:layout_constraintDimensionRatio="5.5:1"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/fspMbDateTextColor"
-                                app:layout_constraintTop_toTopOf="@+id/fspMbDateTextColor" />
+                                app:layout_constraintTop_toBottomOf="@+id/fspMbContentTextColor" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -335,6 +339,19 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/fspMbHowToGetToken"
+                                style="@style/setting_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/how_to_get_hackmd_token"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                app:icon="@drawable/ic_baseline_question_mark_24"
+                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMbHackmdWebsite" />
+
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbHackmdTokenSave"
                                 style="@style/setting_button"
                                 android:layout_width="0dp"
@@ -345,7 +362,7 @@
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
                                 app:layout_constraintEnd_toStartOf="@+id/fspMbHackmdTokenRemove"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/fspMbHackmdWebsite" />
+                                app:layout_constraintTop_toBottomOf="@+id/fspMbHowToGetToken" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbHackmdTokenRemove"
@@ -382,6 +399,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/note_list_download"
+                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:icon="@drawable/ic_baseline_download_24"
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
                                 app:layout_constraintBottom_toBottomOf="parent"
