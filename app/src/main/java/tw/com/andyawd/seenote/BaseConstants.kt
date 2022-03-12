@@ -81,6 +81,15 @@ class BaseConstants {
         const val USER_PATH = "user_path"
         const val WRITE_PERMISSION = "write_permission"
         const val NOTES = "notes"
+        const val DOWNLOAD = "download"
+        const val DOWNLOADING = "downloading"
+        const val DOWNLOAD_DONE = "download_done"
+        const val DOWNLOAD_FAIL = "download_fail"
+        const val UNAUTHORIZED = "Unauthorized"
+        const val HACKMD_TOKEN_FAIL = "hackmd_token_fail"
+        const val HTTP_4XX_FAIL = "HTTP_4XX_FAIL"
+        const val HTTP_5XX_FAIL = "HTTP_5XX_FAIL"
+        const val NETWORK_FAIL = "network_fail"
 
 
         const val BLACK = "#000000"

@@ -51,11 +51,16 @@
     <string name="title_empty">標題沒有輸入</string>
     <string name="content_empty">內容沒有輸入</string>
     <string name="hackmd_token_empty">HackMD 金鑰沒有輸入</string>
+    <string name="hackmd_token_file">HackMD 金鑰錯誤</string>
     <string name="token_save">儲存金鑰</string>
     <string name="token_remove">移除金鑰</string>
     <string name="note_list_download">下載雲端筆記</string>
     <string name="note_list_downloading">雲端筆記下載中&#8230;</string>
     <string name="note_list_download_done">雲端筆記下載完成</string>
+    <string name="http_4xx_file">下載失敗，無法連線</string>
+    <string name="http_5xx_file">下載失敗，伺服器故障，請稍後再試</string>
+    <string name="note_list_download_fail">下載失敗，未知的錯誤，請稍後再試</string>
     <string name="hackmd_website">HackMD 官方網站</string>
     <string name="how_to_get_hackmd_token">如何取得 HackMD 金鑰？</string>
+    <string name="network_fail">下載失敗，沒有開啟網路</string>
 </resources>

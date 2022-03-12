@@ -14,15 +14,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentSettingPageBinding
-import tw.com.andyawd.seenote.http.HttpManager
-import tw.com.andyawd.seenote.http.HttpResponseListener
 
-class SettingPageFragment : Fragment(), HttpResponseListener {
+class SettingPageFragment : Fragment() {
 
     private lateinit var viewModel: SettingPageViewModel
     private lateinit var viewModelFactory: SettingPageViewModelFactory
@@ -100,6 +97,61 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
                 binding.fspAcetHackmdToken.isEnabled = it.user?.hackmdToken?.isNotEmpty() != true
             }
         }
+
+        viewModel.hackmdDownloadStatus.observe(viewLifecycleOwner) { status ->
+            status?.let {
+                when (it) {
+                    BaseConstants.DOWNLOAD -> {
+                        binding.fspMbDownloadNoteList.text =
+                            resources.getString(R.string.note_list_download)
+                        binding.fspMbDownloadNoteList.setIconResource(R.drawable.ic_baseline_download_24)
+                        binding.fspMbDownloadNoteList.isEnabled = true
+                    }
+                    BaseConstants.DOWNLOADING -> {
+                        binding.fspMbDownloadNoteList.text =
+                            resources.getString(R.string.note_list_downloading)
+                        binding.fspMbDownloadNoteList.setIconResource(R.drawable.ic_baseline_downloading_24)
+                        binding.fspMbDownloadNoteList.isEnabled = false
+                    }
+                    BaseConstants.DOWNLOAD_DONE -> {
+                        binding.fspMbDownloadNoteList.text =
+                            resources.getString(R.string.note_list_download_done)
+                        binding.fspMbDownloadNoteList.setIconResource(R.drawable.ic_baseline_download_done_24)
+                        binding.fspMbDownloadNoteList.isEnabled = true
+                    }
+                    BaseConstants.HTTP_4XX_FAIL -> {
+                        binding.fspMbDownloadNoteList.text =
+                            resources.getString(R.string.http_4xx_file)
+                        binding.fspMbDownloadNoteList.setIconResource(R.drawable.ic_baseline_file_download_off_24)
+                        binding.fspMbDownloadNoteList.isEnabled = true
+                    }
+                    BaseConstants.HTTP_5XX_FAIL -> {
+                        binding.fspMbDownloadNoteList.text =
+                            resources.getString(R.string.http_5xx_file)
+                        binding.fspMbDownloadNoteList.setIconResource(R.drawable.ic_baseline_file_download_off_24)
+                        binding.fspMbDownloadNoteList.isEnabled = true
+                    }
+                    BaseConstants.HACKMD_TOKEN_FAIL -> {
+                        binding.fspMbDownloadNoteList.text =
+                            resources.getString(R.string.hackmd_token_file)
+                        binding.fspMbDownloadNoteList.setIconResource(R.drawable.ic_baseline_file_download_off_24)
+                        binding.fspMbDownloadNoteList.isEnabled = true
+                    }
+                    BaseConstants.NETWORK_FAIL -> {
+                        binding.fspMbDownloadNoteList.text =
+                            resources.getString(R.string.network_fail)
+                        binding.fspMbDownloadNoteList.setIconResource(R.drawable.ic_baseline_file_download_off_24)
+                        binding.fspMbDownloadNoteList.isEnabled = true
+                    }
+                    BaseConstants.DOWNLOAD_FAIL -> {
+                        binding.fspMbDownloadNoteList.text =
+                            resources.getString(R.string.note_list_download_fail)
+                        binding.fspMbDownloadNoteList.setIconResource(R.drawable.ic_baseline_file_download_off_24)
+                        binding.fspMbDownloadNoteList.isEnabled = true
+                    }
+                }
+            }
+        }
     }
 
     private fun initClickListener(binding: FragmentSettingPageBinding) {
@@ -175,9 +227,7 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
         }
 
         binding.fspMbDownloadNoteList.setOnClickListener {
-            viewModel.setting.value?.user?.let {
-                HttpManager.INSTANCE.get(BaseConstants.NOTES, it.hackmdToken, this)
-            }
+            viewModel.downloadNoteList()
         }
     }
 
@@ -209,14 +259,5 @@ class SettingPageFragment : Fragment(), HttpResponseListener {
 
     companion object {
 
-    }
-
-    override fun onFailure(code: String, responseBody: String) {
-        AWDLog.d("onFailure code: $code / responseBody: $responseBody")
-    }
-
-    override fun onSuccess(responseBody: String) {
-        AWDLog.d("onSuccess responseBody: $responseBody")
-        viewModel.insertUserNoteList(responseBody)
     }
 }
