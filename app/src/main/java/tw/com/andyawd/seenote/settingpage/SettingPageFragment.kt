@@ -179,11 +179,11 @@ class SettingPageFragment : Fragment() {
             goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
         }
 
-        binding.fspMbTitleTextColor.setOnClickListener {
+        binding.fspMtvTitleTextColor.setOnClickListener {
             goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
         }
 
-        binding.fspMbTitleBackgroundColor.setOnClickListener {
+        binding.fspMtvTitleBackgroundColor.setOnClickListener {
             goSelectColor(BaseConstants.TITLE_BACKGROUND_COLOR)
         }
 
@@ -191,11 +191,11 @@ class SettingPageFragment : Fragment() {
             goSelectColor(BaseConstants.CONTENT_TEXT_COLOR)
         }
 
-        binding.fspMbContentTextColor.setOnClickListener {
+        binding.fspMtvContentTextColor.setOnClickListener {
             goSelectColor(BaseConstants.CONTENT_TEXT_COLOR)
         }
 
-        binding.fspMbContentBackgroundColor.setOnClickListener {
+        binding.fspMtvContentBackgroundColor.setOnClickListener {
             goSelectColor(BaseConstants.CONTENT_BACKGROUND_COLOR)
         }
 
@@ -203,11 +203,11 @@ class SettingPageFragment : Fragment() {
             goSelectColor(BaseConstants.DATE_TEXT_COLOR)
         }
 
-        binding.fspMbDateTextColor.setOnClickListener {
+        binding.fspMtvDateTextColor.setOnClickListener {
             goSelectColor(BaseConstants.DATE_TEXT_COLOR)
         }
 
-        binding.fspMbDateBackgroundColor.setOnClickListener {
+        binding.fspMtvDateBackgroundColor.setOnClickListener {
             goSelectColor(BaseConstants.DATE_BACKGROUND_COLOR)
         }
 
