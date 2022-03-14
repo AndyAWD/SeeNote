@@ -94,23 +94,23 @@ class SettingPageFragment : Fragment() {
                 binding.fspAcsbTextSize.progress =
                     it.textSize?.settingPage ?: BaseConstants.TEXT_SIZE
 
-
+                if (it.user?.hackmdToken.isNullOrEmpty()) {
+                    binding.fspMbHackmdToken.text =
+                        resources.getString(R.string.token_save)
+                    binding.fspMbHackmdToken.setIconResource(R.drawable.ic_baseline_token_24)
+                    binding.fspAcetHackmdToken.isEnabled = true
+                } else {
+                    binding.fspMbHackmdToken.text =
+                        resources.getString(R.string.token_remove)
+                    binding.fspMbHackmdToken.setIconResource(R.drawable.ic_baseline_delete_forever_24)
+                    binding.fspAcetHackmdToken.isEnabled = false
+                }
             }
         }
 
         viewModel.hackmdToken.observe(viewLifecycleOwner) { token ->
             token?.let {
-                if (it.isEmpty()) {
-                    binding.fspMbHackmdToken.text =
-                        resources.getString(R.string.token_remove)
-                    binding.fspMbHackmdToken.setIconResource(R.drawable.ic_baseline_delete_forever_24)
-                    binding.fspAcetHackmdToken.isEnabled = false
-                } else {
-                    binding.fspMbHackmdToken.text =
-                        resources.getString(R.string.token_save)
-                    binding.fspMbHackmdToken.setIconResource(R.drawable.ic_baseline_token_24)
-                    binding.fspAcetHackmdToken.isEnabled = true
-                }
+
             }
         }
 
@@ -212,10 +212,10 @@ class SettingPageFragment : Fragment() {
         }
 
         binding.fspMbHackmdToken.setOnClickListener {
-            if (binding.fspAcetHackmdToken.text.isNullOrEmpty()) {
+            if (viewModel.setting.value?.user?.hackmdToken.isNullOrEmpty()) {
                 viewModel.settingHackmdToken()
             } else {
-                viewModel.changeHackmdToken(BaseConstants.EMPTY_STRING)
+                binding.fspAcetHackmdToken.setText(BaseConstants.EMPTY_STRING)
                 viewModel.settingHackmdToken()
             }
         }
