@@ -354,7 +354,7 @@
                                 app:layout_constraintTop_toBottomOf="@+id/fspMbHackmdWebsite" />
 
                             <com.google.android.material.button.MaterialButton
-                                android:id="@+id/fspMbHackmdTokenSave"
+                                android:id="@+id/fspMbHackmdToken"
                                 style="@style/setting_button"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -362,22 +362,8 @@
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:icon="@drawable/ic_baseline_token_24"
                                 app:iconSize="@{viewModel.setting.textSize.settingPage}"
-                                app:layout_constraintEnd_toStartOf="@+id/fspMbHackmdTokenRemove"
+                                app:layout_constraintEnd_toEndOf="@+id/fspMbHowToGetToken"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/fspMbHowToGetToken" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/fspMbHackmdTokenRemove"
-                                style="@style/setting_button"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/magic_8dp"
-                                android:text="@string/token_remove"
-                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                                app:icon="@drawable/ic_baseline_delete_forever_24"
-                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/fspMbHackmdTokenSave"
                                 app:layout_constraintTop_toBottomOf="@+id/fspMbHowToGetToken" />
 
                             <androidx.appcompat.widget.AppCompatEditText
@@ -391,9 +377,9 @@
                                 android:text="@{viewModel.setting.user.hackmdToken}"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
                                 app:layout_constraintBottom_toTopOf="@+id/fspMbDownloadNoteList"
-                                app:layout_constraintEnd_toEndOf="@+id/fspMbHackmdTokenRemove"
-                                app:layout_constraintStart_toStartOf="@+id/fspMbHackmdTokenSave"
-                                app:layout_constraintTop_toBottomOf="@+id/fspMbHackmdTokenSave" />
+                                app:layout_constraintEnd_toEndOf="@+id/fspMbHackmdToken"
+                                app:layout_constraintStart_toStartOf="@+id/fspMbHowToGetToken"
+                                app:layout_constraintTop_toBottomOf="@+id/fspMbHackmdToken" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/fspMbDownloadNoteList"

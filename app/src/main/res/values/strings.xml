@@ -63,4 +63,5 @@
     <string name="hackmd_website">HackMD 官方網站</string>
     <string name="how_to_get_hackmd_token">如何取得 HackMD 金鑰？</string>
     <string name="network_fail">下載失敗，沒有開啟網路</string>
+    <string name="title_color_setting">標題</string>
 </resources>

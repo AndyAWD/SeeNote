@@ -35,6 +35,8 @@ class SettingPageViewModel(
         get() = _note
 
     private var _hackmdToken = MutableLiveData<String?>()
+    val hackmdToken: LiveData<String?>
+        get() = _hackmdToken
 
     private var _hackmdDownloadStatus = MutableLiveData<String?>()
     val hackmdDownloadStatus: LiveData<String?>

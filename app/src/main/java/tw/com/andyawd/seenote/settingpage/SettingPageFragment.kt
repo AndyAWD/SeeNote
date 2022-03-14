@@ -94,7 +94,23 @@ class SettingPageFragment : Fragment() {
                 binding.fspAcsbTextSize.progress =
                     it.textSize?.settingPage ?: BaseConstants.TEXT_SIZE
 
-                binding.fspAcetHackmdToken.isEnabled = it.user?.hackmdToken?.isNotEmpty() != true
+
+            }
+        }
+
+        viewModel.hackmdToken.observe(viewLifecycleOwner) { token ->
+            token?.let {
+                if (it.isEmpty()) {
+                    binding.fspMbHackmdToken.text =
+                        resources.getString(R.string.token_remove)
+                    binding.fspMbHackmdToken.setIconResource(R.drawable.ic_baseline_delete_forever_24)
+                    binding.fspAcetHackmdToken.isEnabled = false
+                } else {
+                    binding.fspMbHackmdToken.text =
+                        resources.getString(R.string.token_save)
+                    binding.fspMbHackmdToken.setIconResource(R.drawable.ic_baseline_token_24)
+                    binding.fspAcetHackmdToken.isEnabled = true
+                }
             }
         }
 
@@ -195,13 +211,13 @@ class SettingPageFragment : Fragment() {
             goSelectColor(BaseConstants.DATE_BACKGROUND_COLOR)
         }
 
-        binding.fspMbHackmdTokenSave.setOnClickListener {
-            viewModel.settingHackmdToken()
-        }
-
-        binding.fspMbHackmdTokenRemove.setOnClickListener {
-            viewModel.changeHackmdToken(BaseConstants.EMPTY_STRING)
-            viewModel.settingHackmdToken()
+        binding.fspMbHackmdToken.setOnClickListener {
+            if (binding.fspAcetHackmdToken.text.isNullOrEmpty()) {
+                viewModel.settingHackmdToken()
+            } else {
+                viewModel.changeHackmdToken(BaseConstants.EMPTY_STRING)
+                viewModel.settingHackmdToken()
+            }
         }
 
         binding.fspAcetHackmdToken.addTextChangedListener {
