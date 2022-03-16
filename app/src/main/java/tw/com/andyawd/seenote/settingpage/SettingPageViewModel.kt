@@ -4,9 +4,9 @@ import android.app.Application
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kotlinx.serialization.builtins.ListSerializer
@@ -23,13 +23,13 @@ import tw.com.andyawd.seenote.http.HttpManager
 import tw.com.andyawd.seenote.http.HttpResponseListener
 
 class SettingPageViewModel(
-    private val application: Application,
+    application: Application,
     private val settingDataSource: SettingDatabaseDao,
     private val noteDataSource: NoteDatabaseDao,
     private val hackmdDatabaseDao: HackmdDatabaseDao,
     private val page: String,
     private val noteId: Long
-) : ViewModel() {
+) : AndroidViewModel(application) {
 
     private var _setting = MutableLiveData<Setting?>()
     val setting: LiveData<Setting?>
@@ -100,7 +100,7 @@ class SettingPageViewModel(
 
     private fun tokenClipboard(token: String) {
         val clipboardManager =
-            application.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            getApplication<Application>().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText(BaseConstants.SEE_NOTE, token)
         clipboardManager.setPrimaryClip(clipData)
     }
@@ -126,7 +126,7 @@ class SettingPageViewModel(
                 HttpManager.INSTANCE.get(
                     BaseConstants.NOTES,
                     user.hackmdToken,
-                    application,
+                    getApplication(),
                     object : HttpResponseListener {
                         override fun onFailure(status: String, responseBody: String) {
                             _hackmdDownloadStatus.postValue(status)
