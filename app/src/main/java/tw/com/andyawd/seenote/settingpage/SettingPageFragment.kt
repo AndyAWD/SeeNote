@@ -215,10 +215,9 @@ class SettingPageFragment : Fragment() {
 
         binding.fspMbHackmdToken.setOnClickListener {
             if (viewModel.setting.value?.user?.hackmdToken.isNullOrEmpty()) {
-                viewModel.settingHackmdToken()
+                viewModel.saveHackmdToken()
             } else {
-                binding.fspAcetHackmdToken.setText(BaseConstants.EMPTY_STRING)
-                viewModel.settingHackmdToken()
+                viewModel.removeHackmdToken()
             }
         }
 

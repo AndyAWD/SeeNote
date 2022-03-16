@@ -2,6 +2,7 @@ package tw.com.andyawd.seenote
 
 class BaseConstants {
     companion object {
+        const val SEE_NOTE = "see_note"
         const val API_HACKMD = "https://api.hackmd.io/v1"
         const val WEBSITE_HACKMD = "https://hackmd.io"
         const val WEBSITE_HACKMD_GET_TOKEN =

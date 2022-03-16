@@ -1,6 +1,9 @@
 package tw.com.andyawd.seenote.settingpage
 
 import android.app.Application
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -72,7 +75,7 @@ class SettingPageViewModel(
         }
     }
 
-    fun settingHackmdToken() {
+    fun saveHackmdToken() {
         _setting.value?.let { setting ->
             _hackmdToken.value?.let { hackmdToken ->
                 val newUser = User(hackmdToken = hackmdToken)
@@ -81,6 +84,25 @@ class SettingPageViewModel(
                 updateSetting()
             }
         }
+    }
+
+    fun removeHackmdToken() {
+        _setting.value?.let { setting ->
+            _hackmdToken.value?.let { hackmdToken ->
+                tokenClipboard(hackmdToken)
+                val newUser = User(hackmdToken = BaseConstants.EMPTY_STRING)
+                val newSetting = setting.copy(user = newUser)
+                _setting.value = newSetting
+                updateSetting()
+            }
+        }
+    }
+
+    private fun tokenClipboard(token: String) {
+        val clipboardManager =
+            application.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = ClipData.newPlainText(BaseConstants.SEE_NOTE, token)
+        clipboardManager.setPrimaryClip(clipData)
     }
 
     fun changeHackmdToken(token: String) {
