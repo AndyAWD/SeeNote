@@ -1,5 +1,6 @@
 package tw.com.andyawd.seenote.settingpage
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,6 +20,7 @@ import tw.com.andyawd.seenote.http.HttpManager
 import tw.com.andyawd.seenote.http.HttpResponseListener
 
 class SettingPageViewModel(
+    private val application: Application,
     private val settingDataSource: SettingDatabaseDao,
     private val noteDataSource: NoteDatabaseDao,
     private val hackmdDatabaseDao: HackmdDatabaseDao,
@@ -102,6 +104,7 @@ class SettingPageViewModel(
                 HttpManager.INSTANCE.get(
                     BaseConstants.NOTES,
                     user.hackmdToken,
+                    application,
                     object : HttpResponseListener {
                         override fun onFailure(status: String, responseBody: String) {
                             _hackmdDownloadStatus.postValue(status)

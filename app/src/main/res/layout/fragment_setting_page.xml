@@ -399,30 +399,15 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/magic_8dp"
-                                android:layout_marginBottom="@dimen/magic_8dp"
                                 android:background="@null"
                                 android:hint="@string/hackmd_token_empty"
                                 android:padding="@dimen/magic_8dp"
                                 android:text="@{viewModel.setting.user.hackmdToken}"
                                 android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                                app:layout_constraintBottom_toTopOf="@+id/fspMbDownloadNoteList"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="@+id/fspMbHackmdToken"
                                 app:layout_constraintStart_toStartOf="@+id/fspMbHowToGetToken"
                                 app:layout_constraintTop_toBottomOf="@+id/fspMbHackmdToken" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/fspMbDownloadNoteList"
-                                style="@style/setting_button"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/note_list_download"
-                                android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
-                                app:icon="@drawable/ic_baseline_download_24"
-                                app:iconSize="@{viewModel.setting.textSize.settingPage}"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/fspAcetHackmdToken" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>
 

@@ -1,11 +1,11 @@
 package tw.com.andyawd.seenote.http
 
+import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import okhttp3.*
 import tw.com.andyawd.andyawdlibrary.AWDLog
-import tw.com.andyawd.seenote.BaseApplication
 import tw.com.andyawd.seenote.BaseConstants
 import java.io.IOException
 import java.net.URLEncoder
@@ -20,8 +20,13 @@ class HttpManager {
         val httpManagerHolder = HttpManager()
     }
 
-    fun get(value: String, token: String, listener: HttpResponseListener) {
-        if (isNetworkAvailable()) {
+    fun get(
+        value: String,
+        token: String,
+        application: Application,
+        listener: HttpResponseListener
+    ) {
+        if (isNetworkAvailable(application)) {
             val okHttpClient = OkHttpClient()
             val request = Request.Builder()
                 .addHeader(BaseConstants.AUTHORIZATION, getHeaderValue(token))
@@ -81,8 +86,8 @@ class HttpManager {
     private fun getEncodeToken(token: String) =
         URLEncoder.encode(token, StandardCharsets.UTF_8.toString())
 
-    private fun isNetworkAvailable(): Boolean {
-        val connectivityManager = BaseApplication.context()
+    private fun isNetworkAvailable(application: Application): Boolean {
+        val connectivityManager = application
             .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val network = connectivityManager.activeNetwork ?: return false
         val networkActive = connectivityManager.getNetworkCapabilities(network) ?: return false
