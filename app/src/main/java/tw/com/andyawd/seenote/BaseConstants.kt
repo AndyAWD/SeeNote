@@ -7,6 +7,8 @@ class BaseConstants {
         const val WEBSITE_HACKMD = "https://hackmd.io"
         const val WEBSITE_HACKMD_GET_TOKEN =
             "https://hackmd.io/c/tutorials-tw/https%3A%2F%2Fhackmd.io%2F%40docs%2Fissue-revoke-api-token-zh"
+        const val UPDATE_NOTE = "https://hackmd.io"
+        const val CONTENT_TYPE_UTF_8 = "application/json; charset=utf-8"
 
         const val TEXT_SIZE = 80
         const val COLOR_SIZE = 120
@@ -18,6 +20,7 @@ class BaseConstants {
         const val DATE_TABLE = "date_table"
         const val USER_TABLE = "user_table"
         const val TEXT_SIZE_TABLE = "text_size_table"
+        const val NOTE_AND_USER_NOTE_LIST_ITEM_TABLE = "note_and_user_note_list_item_table"
         const val HACKMD_NOTE_TABLE = "hackmd_note_table"
         const val HACKMD_USER_TABLE = "hackmd_user_table"
         const val LAST_CHANGE_USER_TABLE = "last_change_user_table"
@@ -91,6 +94,11 @@ class BaseConstants {
         const val HTTP_4XX_FAIL = "HTTP_4XX_FAIL"
         const val HTTP_5XX_FAIL = "HTTP_5XX_FAIL"
         const val NETWORK_FAIL = "network_fail"
+        const val HACKMD_ID = "hackmd_id"
+        const val NOT_HACKMD_TOKEN = "not_hackmd_token"
+        const val SUCCESS = "success"
+        const val PRIMARY_ID = "primary_id"
+        const val NOTE_ID = "note_id"
 
 
         const val BLACK = "#000000"

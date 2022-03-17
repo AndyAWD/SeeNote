@@ -3,10 +3,8 @@ package tw.com.andyawd.seenote.bean
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.RoomWarnings
 import tw.com.andyawd.seenote.BaseConstants
 
-@SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
 @Entity(tableName = BaseConstants.SETTING_TABLE)
 data class Setting(
     @PrimaryKey(autoGenerate = true)

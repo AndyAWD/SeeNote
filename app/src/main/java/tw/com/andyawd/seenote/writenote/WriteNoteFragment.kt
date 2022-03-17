@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
@@ -43,12 +44,14 @@ class WriteNoteFragment : Fragment() {
         )
         val application = requireNotNull(this.activity).application
         val noteDataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
+        val hackmdDatabaseDao = SeeNoteDatabase.getInstance(application).hackmdDatabaseDao
         val settingDataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
         val viewModelFactory =
             WriteNoteViewModelFactory(
+                application,
                 noteDataSource,
                 settingDataSource,
-                application,
+                hackmdDatabaseDao,
                 args.noteId
             )
         viewModel =
@@ -95,6 +98,12 @@ class WriteNoteFragment : Fragment() {
             setting?.let {
                 binding.fwnAcsbTextSize.progress =
                     it.textSize?.writerNote ?: BaseConstants.TEXT_SIZE
+            }
+        }
+
+        viewModel.httpStatus.observe(viewLifecycleOwner) { status ->
+            status?.let {
+                AWDLog.d("status: $status")
             }
         }
 
@@ -296,6 +305,10 @@ class WriteNoteFragment : Fragment() {
                     return@setOnClickListener
                 }
             }
+        }
+
+        binding.fwnActvUpload.setOnClickListener {
+            viewModel.uploadHackmd()
         }
     }
 

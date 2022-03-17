@@ -1,9 +1,11 @@
 package tw.com.andyawd.seenote.bean
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import tw.com.andyawd.seenote.BaseConstants
 
-@SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
 @Entity(tableName = BaseConstants.NOTE_TABLE)
 data class Note(
     @PrimaryKey(autoGenerate = true)
@@ -17,6 +19,9 @@ data class Note(
 
     @ColumnInfo(name = BaseConstants.LABEL)
     var label: String = BaseConstants.EMPTY_STRING,
+
+    @ColumnInfo(name = BaseConstants.HACKMD_ID)
+    var hackmdId: String = BaseConstants.EMPTY_STRING,
 
     @Embedded(prefix = "date_")
     var date: Date?,

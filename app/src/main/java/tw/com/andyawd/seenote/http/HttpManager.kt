@@ -39,6 +39,29 @@ class HttpManager {
         }
     }
 
+    fun post(
+        message: RequestBody,
+        token: String,
+        url: String,
+        application: Application,
+        listener: HttpResponseListener
+    ) {
+
+        if (!isNetworkAvailable(application)) {
+            listener.onFailure(BaseConstants.NETWORK_FAIL, BaseConstants.EMPTY_STRING)
+            return
+        }
+        AWDLog.d("message: ${message.toString()}\ngetHeaderValue(token): ${getHeaderValue(token)}\nurl: $url")
+        val okHttpClient = OkHttpClient()
+        val request = Request.Builder()
+            .addHeader(BaseConstants.AUTHORIZATION, getHeaderValue(token))
+            .url(url)
+            .post(message)
+            .build()
+
+        httpResponse(okHttpClient, request, listener)
+    }
+
     private fun httpResponse(
         okHttpClient: OkHttpClient,
         request: Request,
@@ -68,15 +91,22 @@ class HttpManager {
                 val responseBody = response.body?.string().toString()
                 AWDLog.d("onResponse call: $call / responseBody: $responseBody")
 
-                if (BaseConstants.UNAUTHORIZED == responseBody) {
+                try {
+                    if (BaseConstants.UNAUTHORIZED == responseBody) {
+                        listener.onFailure(
+                            BaseConstants.HACKMD_TOKEN_FAIL,
+                            call.request().body.toString()
+                        )
+                        return
+                    }
+
+                    listener.onSuccess(responseBody)
+                } catch (e: Exception) {
                     listener.onFailure(
-                        BaseConstants.HACKMD_TOKEN_FAIL,
+                        BaseConstants.DOWNLOAD_FAIL,
                         call.request().body.toString()
                     )
-                    return
                 }
-
-                listener.onSuccess(responseBody)
             }
         })
     }

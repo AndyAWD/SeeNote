@@ -6,19 +6,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.Color
 import tw.com.andyawd.seenote.bean.Date
 import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.Setting
+import tw.com.andyawd.seenote.bean.hackmd.UserNoteListItem
+import tw.com.andyawd.seenote.database.HackmdDatabaseDao
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
+import tw.com.andyawd.seenote.http.HttpManager
+import tw.com.andyawd.seenote.http.HttpResponseListener
+import tw.com.andyawd.seenote.http.factory.CreateNoteBodyFactory
+import tw.com.andyawd.seenote.http.factory.HackmdCreateNoteUrlFactory
 
 class WriteNoteViewModel(
+    application: Application,
     private val noteDatabase: NoteDatabaseDao,
     private val settingDataSource: SettingDatabaseDao,
-    application: Application,
+    private val hackmdDatabaseDao: HackmdDatabaseDao,
     private var noteId: Long
 ) : AndroidViewModel(application) {
 
@@ -38,9 +46,14 @@ class WriteNoteViewModel(
     val speakStatus: LiveData<String?>
         get() = _speakStatus
 
+    private var _httpStatus = MutableLiveData<String?>()
+    val httpStatus: LiveData<String?>
+        get() = _httpStatus
+
     init {
         initNote()
         initSetting()
+        hackmdDatabaseDao
         _speakStatus.value = SPOKEN
     }
 
@@ -69,7 +82,6 @@ class WriteNoteViewModel(
             } else {
                 _note.value = getNoteFromDatabase(noteId)
             }
-            AWDLog.d("noteId: $noteId / _note.value: ${_note.value}")
         }
     }
 
@@ -250,6 +262,43 @@ class WriteNoteViewModel(
                 updateNote(newNote)
                 _note.value = newNote
             }
+        }
+    }
+
+    fun uploadHackmd() {
+        viewModelScope.launch {
+            if (_setting.value?.user?.hackmdToken.isNullOrEmpty()) {
+                _httpStatus.value = BaseConstants.NOT_HACKMD_TOKEN
+                return@launch
+            }
+
+            _note.value?.let { note ->
+                _setting.value?.let { setting ->
+                    val body =
+                        CreateNoteBodyFactory(note.title, note.content).createPostBody.getPostBody()
+                    val token = setting.user?.hackmdToken ?: BaseConstants.EMPTY_STRING
+                    val url = HackmdCreateNoteUrlFactory().url.getUrl()
+
+                    HttpManager.INSTANCE.post(body, token, url, getApplication(), object :
+                        HttpResponseListener {
+                        override fun onFailure(status: String, responseBody: String) {
+                            _httpStatus.postValue(status)
+                        }
+
+                        override fun onSuccess(responseBody: String) {
+                            //insertUserNoteList(responseBody)
+                            _httpStatus.postValue(BaseConstants.SUCCESS)
+                        }
+                    })
+                }
+            }
+        }
+    }
+
+    fun insertUserNoteList(responseBody: String) {
+        viewModelScope.launch {
+            val note = Json.decodeFromString(UserNoteListItem.serializer(), responseBody)
+            hackmdDatabaseDao.insert(note)
         }
     }
 

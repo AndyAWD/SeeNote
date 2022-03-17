@@ -10,6 +10,7 @@ import tw.com.andyawd.seenote.database.StringTypeConverter
 @TypeConverters(StringTypeConverter::class)
 data class UserNoteListItem(
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = BaseConstants.PRIMARY_ID)
     var primaryId: Long = 0L,
 
     @ColumnInfo(name = BaseConstants.CREATED_AT)

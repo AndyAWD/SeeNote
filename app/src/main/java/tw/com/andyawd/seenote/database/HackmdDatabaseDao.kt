@@ -10,4 +10,7 @@ interface HackmdDatabaseDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(userNoteList: List<UserNoteListItem>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(userNote: UserNoteListItem): Long
 }
