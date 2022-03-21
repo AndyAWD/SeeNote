@@ -8,8 +8,6 @@ import okhttp3.*
 import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import java.io.IOException
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 class HttpManager {
     companion object {
@@ -22,14 +20,14 @@ class HttpManager {
 
     fun get(
         value: String,
-        token: String,
+        headerValue: String,
         application: Application,
         listener: HttpResponseListener
     ) {
         if (isNetworkAvailable(application)) {
             val okHttpClient = OkHttpClient()
             val request = Request.Builder()
-                .addHeader(BaseConstants.AUTHORIZATION, getHeaderValue(token))
+                .addHeader(BaseConstants.AUTHORIZATION, headerValue)
                 .url("${BaseConstants.API_HACKMD}/$value")
                 .get()
                 .build()
@@ -40,8 +38,8 @@ class HttpManager {
     }
 
     fun post(
-        message: RequestBody,
-        token: String,
+        body: RequestBody,
+        headerValue: String,
         url: String,
         application: Application,
         listener: HttpResponseListener
@@ -51,12 +49,12 @@ class HttpManager {
             listener.onFailure(BaseConstants.NETWORK_FAIL, BaseConstants.EMPTY_STRING)
             return
         }
-        AWDLog.d("message: ${message.toString()}\ngetHeaderValue(token): ${getHeaderValue(token)}\nurl: $url")
+        AWDLog.d("message: ${body.toString()}\ngetHeaderValue(token): ${headerValue}\nurl: $url")
         val okHttpClient = OkHttpClient()
         val request = Request.Builder()
-            .addHeader(BaseConstants.AUTHORIZATION, getHeaderValue(token))
+            .addHeader(BaseConstants.AUTHORIZATION, headerValue)
             .url(url)
-            .post(message)
+            .post(body)
             .build()
 
         httpResponse(okHttpClient, request, listener)
@@ -110,11 +108,6 @@ class HttpManager {
             }
         })
     }
-
-    private fun getHeaderValue(token: String) = "${BaseConstants.BEARER} ${getEncodeToken(token)}"
-
-    private fun getEncodeToken(token: String) =
-        URLEncoder.encode(token, StandardCharsets.UTF_8.toString())
 
     private fun isNetworkAvailable(application: Application): Boolean {
         val connectivityManager = application

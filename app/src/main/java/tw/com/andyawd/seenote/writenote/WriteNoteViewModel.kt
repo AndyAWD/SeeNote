@@ -19,6 +19,7 @@ import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
 import tw.com.andyawd.seenote.http.HttpManager
 import tw.com.andyawd.seenote.http.HttpResponseListener
+import tw.com.andyawd.seenote.http.factory.BearerTokenAuthorizationFactory
 import tw.com.andyawd.seenote.http.factory.CreateNoteBodyFactory
 import tw.com.andyawd.seenote.http.factory.HackmdCreateNoteUrlFactory
 
@@ -274,22 +275,30 @@ class WriteNoteViewModel(
 
             _note.value?.let { note ->
                 _setting.value?.let { setting ->
-                    val body =
-                        CreateNoteBodyFactory(note.title, note.content).createPostBody.getPostBody()
-                    val token = setting.user?.hackmdToken ?: BaseConstants.EMPTY_STRING
-                    val url = HackmdCreateNoteUrlFactory().url.getUrl()
+                    val body = CreateNoteBodyFactory(note.content).createBody.getBody()
+                    val token = BearerTokenAuthorizationFactory(
+                        setting.user?.hackmdToken ?: BaseConstants.EMPTY_STRING
+                    ).createAuthorization.getAuthorization()
+                    val url = HackmdCreateNoteUrlFactory().createUrl.getUrl()
 
-                    HttpManager.INSTANCE.post(body, token, url, getApplication(), object :
-                        HttpResponseListener {
-                        override fun onFailure(status: String, responseBody: String) {
-                            _httpStatus.postValue(status)
-                        }
+                    if (note.hackmdId.isEmpty()) {
+                        HttpManager.INSTANCE.post(
+                            body,
+                            token,
+                            url,
+                            getApplication(),
+                            object : HttpResponseListener {
+                                override fun onFailure(status: String, responseBody: String) {
+                                    _httpStatus.postValue(status)
+                                }
 
-                        override fun onSuccess(responseBody: String) {
-                            //insertUserNoteList(responseBody)
-                            _httpStatus.postValue(BaseConstants.SUCCESS)
-                        }
-                    })
+                                override fun onSuccess(responseBody: String) {
+                                    _httpStatus.postValue(BaseConstants.SUCCESS)
+                                }
+                            })
+                    } else {
+
+                    }
                 }
             }
         }

@@ -4,7 +4,7 @@ import tw.com.andyawd.seenote.http.product.HackmdCreateNoteUrlProduct
 import tw.com.andyawd.seenote.http.product.UrlProduct
 
 class HackmdCreateNoteUrlFactory : UrlFactory {
-    override var url: UrlProduct
+    override var createUrl: UrlProduct
         get() = HackmdCreateNoteUrlProduct()
         set(value) {}
 }
