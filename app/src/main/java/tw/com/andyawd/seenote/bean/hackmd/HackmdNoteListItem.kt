@@ -5,12 +5,12 @@ import kotlinx.serialization.Serializable
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.database.StringTypeConverter
 
-@Entity(tableName = BaseConstants.USER_NOTE_LIST_ITEM_TABLE)
+@Entity(tableName = BaseConstants.HACKMD_NOTE_LIST_ITEM_TABLE)
 @Serializable
 @TypeConverters(StringTypeConverter::class)
-data class UserNoteListItem(
-    @PrimaryKey(autoGenerate = true)
+data class HackmdNoteListItem(
     @ColumnInfo(name = BaseConstants.PRIMARY_ID)
+    @PrimaryKey(autoGenerate = true)
     var primaryId: Long = 0L,
 
     @ColumnInfo(name = BaseConstants.CREATED_AT)

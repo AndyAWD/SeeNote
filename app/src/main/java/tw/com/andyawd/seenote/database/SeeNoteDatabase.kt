@@ -7,11 +7,12 @@ import androidx.room.RoomDatabase
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.Setting
-import tw.com.andyawd.seenote.bean.hackmd.UserNoteListItem
+import tw.com.andyawd.seenote.bean.hackmd.HackmdNote
+import tw.com.andyawd.seenote.bean.hackmd.HackmdNoteListItem
 
 @Database(
-    entities = [Note::class, Setting::class, UserNoteListItem::class],
-    version = 4,
+    entities = [Note::class, Setting::class, HackmdNote::class, HackmdNoteListItem::class],
+    version = 5,
     exportSchema = false
 )
 abstract class SeeNoteDatabase : RoomDatabase() {

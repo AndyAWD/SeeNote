@@ -8,6 +8,7 @@ import tw.com.andyawd.seenote.BaseConstants
 
 @Entity(tableName = BaseConstants.NOTE_TABLE)
 data class Note(
+    @ColumnInfo(name = BaseConstants.ID)
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L,
 

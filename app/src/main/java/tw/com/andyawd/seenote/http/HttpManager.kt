@@ -49,7 +49,7 @@ class HttpManager {
             listener.onFailure(BaseConstants.NETWORK_FAIL, BaseConstants.EMPTY_STRING)
             return
         }
-        AWDLog.d("message: ${body.toString()}\ngetHeaderValue(token): ${headerValue}\nurl: $url")
+        AWDLog.d("message: ${body}\ngetHeaderValue(token): ${headerValue}\nurl: $url")
         val okHttpClient = OkHttpClient()
         val request = Request.Builder()
             .addHeader(BaseConstants.AUTHORIZATION, headerValue)
@@ -59,6 +59,30 @@ class HttpManager {
 
         httpResponse(okHttpClient, request, listener)
     }
+
+    fun patch(
+        body: RequestBody,
+        headerValue: String,
+        url: String,
+        application: Application,
+        listener: HttpResponseListener
+    ) {
+
+        if (!isNetworkAvailable(application)) {
+            listener.onFailure(BaseConstants.NETWORK_FAIL, BaseConstants.EMPTY_STRING)
+            return
+        }
+        AWDLog.d("message: ${body}\ngetHeaderValue(token): ${headerValue}\nurl: $url")
+        val okHttpClient = OkHttpClient()
+        val request = Request.Builder()
+            .addHeader(BaseConstants.AUTHORIZATION, headerValue)
+            .url(url)
+            .patch(body)
+            .build()
+
+        httpResponse(okHttpClient, request, listener)
+    }
+
 
     private fun httpResponse(
         okHttpClient: OkHttpClient,

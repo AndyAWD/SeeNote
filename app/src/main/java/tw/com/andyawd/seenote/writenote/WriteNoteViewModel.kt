@@ -13,7 +13,7 @@ import tw.com.andyawd.seenote.bean.Color
 import tw.com.andyawd.seenote.bean.Date
 import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.Setting
-import tw.com.andyawd.seenote.bean.hackmd.UserNoteListItem
+import tw.com.andyawd.seenote.bean.hackmd.HackmdNote
 import tw.com.andyawd.seenote.database.HackmdDatabaseDao
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
@@ -22,6 +22,7 @@ import tw.com.andyawd.seenote.http.HttpResponseListener
 import tw.com.andyawd.seenote.http.factory.BearerTokenAuthorizationFactory
 import tw.com.andyawd.seenote.http.factory.CreateNoteBodyFactory
 import tw.com.andyawd.seenote.http.factory.HackmdCreateNoteUrlFactory
+import tw.com.andyawd.seenote.http.factory.HackmdUpdateNoteUrlFactory
 
 class WriteNoteViewModel(
     application: Application,
@@ -111,6 +112,16 @@ class WriteNoteViewModel(
             val newDate = it.date?.copy(edit = System.currentTimeMillis())
             val newNote = it.copy(content = content, date = newDate)
             it.content = content
+
+            updateNote(newNote)
+        }
+    }
+
+    private fun updateNoteHackmdId(hackmdId: String) {
+        _note.value?.let {
+            val newDate = it.date?.copy(edit = System.currentTimeMillis())
+            val newNote = it.copy(hackmdId = hackmdId, date = newDate)
+            it.hackmdId = hackmdId
 
             updateNote(newNote)
         }
@@ -279,13 +290,15 @@ class WriteNoteViewModel(
                     val token = BearerTokenAuthorizationFactory(
                         setting.user?.hackmdToken ?: BaseConstants.EMPTY_STRING
                     ).createAuthorization.getAuthorization()
-                    val url = HackmdCreateNoteUrlFactory().createUrl.getUrl()
 
+                    AWDLog.d("note.hackmdId.isEmpty(): ${note.hackmdId.isEmpty()} / note.hackmdId: ${note.hackmdId}")
                     if (note.hackmdId.isEmpty()) {
+                        AWDLog.d("if")
+                        val postUrl = HackmdCreateNoteUrlFactory().createUrl.getUrl()
                         HttpManager.INSTANCE.post(
                             body,
                             token,
-                            url,
+                            postUrl,
                             getApplication(),
                             object : HttpResponseListener {
                                 override fun onFailure(status: String, responseBody: String) {
@@ -294,10 +307,28 @@ class WriteNoteViewModel(
 
                                 override fun onSuccess(responseBody: String) {
                                     _httpStatus.postValue(BaseConstants.SUCCESS)
+                                    val a = insertUserNoteList(responseBody)
+                                    AWDLog.d("insertUserNoteList: $a")
                                 }
                             })
                     } else {
+                        AWDLog.d("else")
+                        val patchUrl = HackmdUpdateNoteUrlFactory(note.hackmdId).createUrl.getUrl()
+                        HttpManager.INSTANCE.patch(
+                            body,
+                            token,
+                            patchUrl,
+                            getApplication(),
+                            object : HttpResponseListener {
+                                override fun onFailure(status: String, responseBody: String) {
+                                    _httpStatus.postValue(status)
+                                }
 
+                                override fun onSuccess(responseBody: String) {
+                                    AWDLog.d("onSuccess: $responseBody")
+                                    _httpStatus.postValue(BaseConstants.SUCCESS)
+                                }
+                            })
                     }
                 }
             }
@@ -306,8 +337,10 @@ class WriteNoteViewModel(
 
     fun insertUserNoteList(responseBody: String) {
         viewModelScope.launch {
-            val note = Json.decodeFromString(UserNoteListItem.serializer(), responseBody)
-            hackmdDatabaseDao.insert(note)
+            val hackmdNote =
+                Json.decodeFromString(HackmdNote.serializer(), responseBody)
+            hackmdDatabaseDao.insertNote(hackmdNote)
+            updateNoteHackmdId(hackmdNote.id ?: BaseConstants.EMPTY_STRING)
         }
     }
 

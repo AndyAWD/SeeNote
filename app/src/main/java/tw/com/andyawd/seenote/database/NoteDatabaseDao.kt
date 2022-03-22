@@ -2,6 +2,7 @@ package tw.com.andyawd.seenote.database
 
 import androidx.room.*
 import tw.com.andyawd.seenote.bean.Note
+import tw.com.andyawd.seenote.bean.NoteAndHackmdNote
 
 @Dao
 interface NoteDatabaseDao {
@@ -36,6 +37,7 @@ interface NoteDatabaseDao {
     @Query("UPDATE note_table SET content =:text WHERE id = :id")
     suspend fun updateContent(id: Long, text: String): Int
 
-//    @Query("SELECT * FROM note_table")
-//    suspend fun getNoteWithHackmd(): List<NoteAndUserNoteListItem>?
+    @Transaction
+    @Query("SELECT * FROM note_table")
+    suspend fun getNoteAndHackmdNote(): List<NoteAndHackmdNote>?
 }

@@ -15,7 +15,7 @@ import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.Setting
 import tw.com.andyawd.seenote.bean.User
-import tw.com.andyawd.seenote.bean.hackmd.UserNoteListItem
+import tw.com.andyawd.seenote.bean.hackmd.HackmdNoteListItem
 import tw.com.andyawd.seenote.database.HackmdDatabaseDao
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
@@ -112,8 +112,8 @@ class SettingPageViewModel(
     fun insertUserNoteList(responseBody: String) {
         viewModelScope.launch {
             val list =
-                Json.decodeFromString(ListSerializer(UserNoteListItem.serializer()), responseBody)
-            hackmdDatabaseDao.insert(list)
+                Json.decodeFromString(ListSerializer(HackmdNoteListItem.serializer()), responseBody)
+            hackmdDatabaseDao.insertNoteList(list)
             _hackmdDownloadStatus.value = BaseConstants.DOWNLOAD_DONE
         }
     }
