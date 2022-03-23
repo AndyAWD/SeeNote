@@ -34,8 +34,13 @@
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/line_width2.xml" value="0.286" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/oval_b22222_size40.xml" value="0.286" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_6a5acd_fillet_br_tr_radius100_width2.xml" value="0.3715" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_add.xml" value="0.299" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_align_bottom.xml" value="0.299" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_align_top.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_back_title.xml" value="0.3285" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_close.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_cloud_upload.xml" value="0.299" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_delete_forever.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_edit_color.xml" value="0.2705" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_invert_colors.xml" value="0.2705" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_play_error.xml" value="0.2605" />
@@ -49,8 +54,13 @@
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/rounded_hollow_secondary_width4_radius4.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/rounded_primary_secondary_width4_radius8.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/rounded_secondary_size16_rounded8.xml" value="0.2605" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_add_primary_secondary_size40_rounded8.xml" value="0.1805" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_align_bottom_primary_secondary_size40_rounded8.xml" value="0.299" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_align_top_primary_secondary_size40_rounded8.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_back_primary_secondary_size40_rounded8.xml" value="0.3285" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_close_primary_secondary_size40_rounded8.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_cloud_upload_primary_secondary_size40_rounded8.xml" value="0.299" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_delete_forever_primary_secondary_size40_rounded8.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_edit_color_primary_secondary_size40_rounded8.xml" value="0.2705" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_invert_colors_primary_secondary_size40_rounded8.xml" value="0.2705" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/square_ic_play_error_primary_secondary_size40_rounded8.xml" value="0.2605" />
@@ -72,8 +82,9 @@
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_setting_title.xml" value="0.4" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_sponsor_see_note.xml" value="0.4" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_write_color.xml" value="0.4" />
-        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_write_note.xml" value="0.33" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_write_note.xml" value="0.12075471698113208" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/viewholder_note_page.xml" value="0.33" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/menu/toolbar_write_note.xml" value="0.4" />
         <entry key="app/src/main/res/drawable/oval_ff6599_size20.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/square_b8b8b8.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/fragment_note_page.xml" value="0.19635416666666666" />
