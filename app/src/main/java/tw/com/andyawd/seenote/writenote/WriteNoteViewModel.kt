@@ -77,7 +77,8 @@ class WriteNoteViewModel(
                         titleColor = color,
                         contentColor = color,
                         dateColor = color,
-                        labelColor = color
+                        tagColor = color,
+                        tag = mutableListOf("a測試標籤")
                     )
                 )
                 _note.value = getNoteFromDatabase(noteId)
@@ -277,6 +278,7 @@ class WriteNoteViewModel(
         }
     }
 
+
     fun uploadHackmd() {
         viewModelScope.launch {
             if (_setting.value?.user?.hackmdToken.isNullOrEmpty()) {
@@ -286,7 +288,11 @@ class WriteNoteViewModel(
 
             _note.value?.let { note ->
                 _setting.value?.let { setting ->
-                    val body = CreateNoteBodyFactory(note.content).createBody.getBody()
+                    val body = CreateNoteBodyFactory(
+                        note.title,
+                        note.tag,
+                        note.content
+                    ).createBody.getBody()
                     val token = BearerTokenAuthorizationFactory(
                         setting.user?.hackmdToken ?: BaseConstants.EMPTY_STRING
                     ).createAuthorization.getAuthorization()

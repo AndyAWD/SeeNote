@@ -1,12 +1,11 @@
 package tw.com.andyawd.seenote.bean
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import tw.com.andyawd.seenote.BaseConstants
+import tw.com.andyawd.seenote.database.StringTypeConverter
 
 @Entity(tableName = BaseConstants.NOTE_TABLE)
+@TypeConverters(StringTypeConverter::class)
 data class Note(
     @ColumnInfo(name = BaseConstants.ID)
     @PrimaryKey(autoGenerate = true)
@@ -18,8 +17,8 @@ data class Note(
     @ColumnInfo(name = BaseConstants.CONTENT)
     var content: String = BaseConstants.EMPTY_STRING,
 
-    @ColumnInfo(name = BaseConstants.LABEL)
-    var label: String = BaseConstants.EMPTY_STRING,
+    @ColumnInfo(name = BaseConstants.TAG)
+    var tag: MutableList<String>?,
 
     @ColumnInfo(name = BaseConstants.HACKMD_ID)
     var hackmdId: String = BaseConstants.EMPTY_STRING,
@@ -34,7 +33,7 @@ data class Note(
     var contentColor: Color?,
 
     @Embedded(prefix = "labelColor_")
-    var labelColor: Color?,
+    var tagColor: Color?,
 
     @Embedded(prefix = "dateColor_")
     var dateColor: Color?
