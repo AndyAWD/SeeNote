@@ -23,24 +23,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:menu="@menu/toolbar_write_note"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24" />
+            app:navigationIcon="@drawable/ripple_ic_back_title" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/fwnAcsbTextSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="@dimen/magic_8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="56dp"
             android:max="800"
             android:padding="@dimen/magic_8dp"
             android:thumb="@drawable/square_ic_search_primary_secondary_size40_rounded8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fwnMtToolbar"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintBottom_toBottomOf="@+id/fwnMtToolbar"
+            app:layout_constraintEnd_toEndOf="@+id/fwnMtToolbar"
+            app:layout_constraintStart_toStartOf="@+id/fwnMtToolbar"
+            app:layout_constraintTop_toTopOf="@+id/fwnMtToolbar" />
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/fwnClGroup"
@@ -49,7 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fwnAcsbTextSize">
+            app:layout_constraintTop_toBottomOf="@+id/fwnMtToolbar">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
