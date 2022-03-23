@@ -242,27 +242,16 @@ class WriteNoteFragment : Fragment() {
             goBackNotePage()
         }
 
-        binding.fwnMtToolbar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.tmITop -> {
-                    binding.fwnAcetNoteContent.setSelection(0)
-                    true
-                }
-                R.id.tmIBottom -> {
-                    binding.fwnAcetNoteContent.setSelection(
-                        binding.fwnAcetNoteContent.text?.length ?: 0
-                    )
-                    true
-                }
-                R.id.tmIDelete -> {
-                    viewModel.deleteNote()
-                    true
-                }
-                R.id.tmIUpload -> {
-                    true
-                }
-                else -> false
-            }
+        binding.fwnActvAlignTop.setOnClickListener {
+            binding.fwnAcetNoteContent.setSelection(0)
+        }
+
+        binding.fwnActvAlignBottom.setOnClickListener {
+            binding.fwnAcetNoteContent.text?.length ?: 0
+        }
+
+        binding.fwnActvDeleteForever.setOnClickListener {
+            viewModel.deleteNote()
         }
 
         binding.fwnActvEditColor.setOnClickListener {

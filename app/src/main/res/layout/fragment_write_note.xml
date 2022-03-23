@@ -119,16 +119,30 @@
                                 app:writeNoteButtonSize="@{viewModel.setting}" />
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/fwnActvEditColor"
+                                android:id="@+id/fwnActvAlignTop"
                                 style="@style/write_note_button"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:background="@drawable/ripple_ic_edit_color"
+                                android:background="@drawable/ripple_ic_align_top"
                                 android:clickable="true"
                                 android:focusable="true"
                                 android:text=""
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/fwnActvVoiceContent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:writeNoteButtonSize="@{viewModel.setting}" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/fwnActvAlignBottom"
+                                style="@style/write_note_button"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:background="@drawable/ripple_ic_align_bottom"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:text=""
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/fwnActvAlignTop"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:writeNoteButtonSize="@{viewModel.setting}" />
 
@@ -142,7 +156,35 @@
                                 android:focusable="true"
                                 android:text=""
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/fwnActvEditColor"
+                                app:layout_constraintStart_toEndOf="@+id/fwnActvAlignBottom"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:writeNoteButtonSize="@{viewModel.setting}" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/fwnActvDeleteForever"
+                                style="@style/write_note_button"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:background="@drawable/ripple_ic_delete_forever"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:text=""
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/fwnActvUpload"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:writeNoteButtonSize="@{viewModel.setting}" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/fwnActvEditColor"
+                                style="@style/write_note_button"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:background="@drawable/ripple_ic_edit_color"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:text=""
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/fwnActvDeleteForever"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:writeNoteButtonSize="@{viewModel.setting}" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
