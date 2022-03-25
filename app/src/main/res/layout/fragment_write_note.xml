@@ -89,6 +89,20 @@
                                 app:writeNoteButtonSize="@{viewModel.setting}" />
 
                             <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/fwnActvSaveNote"
+                                style="@style/write_note_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ripple_ic_save_note"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:text=""
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/fwnActvInvertColor"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:writeNoteButtonSize="@{viewModel.setting}" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fwnActvVoiceTitle"
                                 style="@style/write_note_button"
                                 android:layout_width="0dp"
@@ -99,7 +113,7 @@
                                 android:focusable="true"
                                 android:text=""
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/fwnActvInvertColor"
+                                app:layout_constraintStart_toEndOf="@+id/fwnActvSaveNote"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:writeNoteButtonSize="@{viewModel.setting}" />
 
