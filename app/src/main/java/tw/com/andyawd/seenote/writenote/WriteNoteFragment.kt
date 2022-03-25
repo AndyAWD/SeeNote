@@ -200,11 +200,11 @@ class WriteNoteFragment : Fragment() {
         }
 
         binding.fwnAcetNoteTitle.addTextChangedListener {
-            updateTitle()
+            editNoteTitle()
         }
 
         binding.fwnAcetNoteContent.addTextChangedListener {
-            updateContent()
+            updateNoteContent()
         }
 
         binding.fwnAcsbTextSize.setOnSeekBarChangeListener(object :
@@ -260,6 +260,10 @@ class WriteNoteFragment : Fragment() {
 
         binding.fwnActvInvertColor.setOnClickListener {
             viewModel.invertColor()
+        }
+
+        binding.fwnActvSaveNote.setOnClickListener {
+            viewModel.saveNote()
         }
 
         binding.fwnActvVoiceTitle.setOnClickListener {
@@ -330,12 +334,12 @@ class WriteNoteFragment : Fragment() {
         }
     }
 
-    private fun updateTitle() {
-        viewModel.updateNoteTitle(binding.fwnAcetNoteTitle.text.toString())
+    private fun editNoteTitle() {
+        viewModel.editNoteTitle(binding.fwnAcetNoteTitle.text.toString())
     }
 
-    private fun updateContent() {
-        viewModel.updateNoteContent(binding.fwnAcetNoteContent.text.toString())
+    private fun updateNoteContent() {
+        viewModel.editNoteContent(binding.fwnAcetNoteContent.text.toString())
     }
 
     companion object {

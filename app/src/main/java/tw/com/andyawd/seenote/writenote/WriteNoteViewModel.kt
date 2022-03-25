@@ -55,7 +55,6 @@ class WriteNoteViewModel(
     init {
         initNote()
         initSetting()
-        hackmdDatabaseDao
         _speakStatus.value = SPOKEN
     }
 
@@ -98,23 +97,25 @@ class WriteNoteViewModel(
         }
     }
 
-    fun updateNoteTitle(title: String) {
+    fun saveNote() {
         _note.value?.let {
-            val newDate = it.date?.copy(edit = System.currentTimeMillis())
-            val newNote = it.copy(title = title, date = newDate)
-            it.title = title
-
-            updateNote(newNote)
+            updateNote(it)
         }
     }
 
-    fun updateNoteContent(content: String) {
+    fun editNoteTitle(title: String) {
+        _note.value?.let {
+            val newDate = it.date?.copy(edit = System.currentTimeMillis())
+            val newNote = it.copy(title = title, date = newDate)
+            _note.value = newNote
+        }
+    }
+
+    fun editNoteContent(content: String) {
         _note.value?.let {
             val newDate = it.date?.copy(edit = System.currentTimeMillis())
             val newNote = it.copy(content = content, date = newDate)
-            it.content = content
-
-            updateNote(newNote)
+            _note.value = newNote
         }
     }
 
@@ -164,12 +165,6 @@ class WriteNoteViewModel(
             _speakStatus.value = SPOKEN
         }
     }
-
-//    fun readyPlay() {
-//        viewModelScope.launch {
-//            _speakStatus.value = READY_PLAY
-//        }
-//    }
 
     fun readyPlayTitle() {
         viewModelScope.launch {
@@ -278,7 +273,6 @@ class WriteNoteViewModel(
         }
     }
 
-
     fun uploadHackmd() {
         viewModelScope.launch {
             if (_setting.value?.user?.hackmdToken.isNullOrEmpty()) {
@@ -353,8 +347,6 @@ class WriteNoteViewModel(
     companion object {
         const val SPEAKING = "speaking"
         const val SPOKEN = "spoken"
-
-        //        const val READY_PLAY = "ready_play"
         const val READY_PLAY_TITLE = "ready_play_title"
         const val READY_PLAY_CONTENT = "ready_play_content"
         const val PLAY_ERROR = "play_error"
