@@ -268,14 +268,19 @@
                             app:layout_constraintVertical_chainStyle="packed" />
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/fwnRvTag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_marginStart="@dimen/magic_8dp"
-                            android:layout_marginTop="@dimen/magic_8dp"
                             app:layout_constraintBottom_toBottomOf="@+id/fwnAcetAddTagInput"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toEndOf="@+id/fwnAcetAddTagInput"
-                            app:layout_constraintTop_toTopOf="@+id/fwnAcetAddTagInput" />
+                            app:layout_constraintTop_toTopOf="@+id/fwnAcetAddTagInput"
+                            tools:itemCount="5"
+                            tools:layoutManager="GridLayoutManager"
+                            tools:listitem="@layout/viewholder_note_tag"
+                            tools:orientation="horizontal"
+                            tools:spanCount="1" />
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/fwnAcetNoteTitle"
@@ -306,7 +311,7 @@
                             app:settingTitleBackgroundColor="@{viewModel.setting}"
                             app:settingTitleHintTextColor="@{viewModel.setting}"
                             app:settingTitleTextColor="@{viewModel.setting}"
-                            tools:text="@tools:sample/lorem/random" />
+                            tools:text="123456789" />
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/fwnAcetNoteContent"
@@ -338,7 +343,7 @@
                             app:settingContentBackgroundColor="@{viewModel.setting}"
                             app:settingContentHintTextColor="@{viewModel.setting}"
                             app:settingContentTextColor="@{viewModel.setting}"
-                            tools:text="@tools:sample/lorem/random" />
+                            tools:text="123456789" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
             </androidx.core.widget.NestedScrollView>

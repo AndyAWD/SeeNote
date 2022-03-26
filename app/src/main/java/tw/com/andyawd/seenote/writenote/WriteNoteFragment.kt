@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
@@ -28,6 +30,7 @@ class WriteNoteFragment : Fragment() {
     private lateinit var viewModel: WriteNoteViewModel
     private lateinit var binding: FragmentWriteNoteBinding
     private lateinit var textToSpeech: TextToSpeech
+    private lateinit var adapter: NoteTagAdapter
 
     private val args: WriteNoteFragmentArgs by navArgs()
 
@@ -57,6 +60,16 @@ class WriteNoteFragment : Fragment() {
         viewModel =
             ViewModelProvider(this, viewModelFactory)[WriteNoteViewModel::class.java]
 
+        adapter = NoteTagAdapter()
+        val gridLayoutManager = GridLayoutManager(application, 1)
+        gridLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+
+        val linearLayoutManager = LinearLayoutManager(application)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+
+        binding.fwnRvTag.adapter = adapter
+        binding.fwnRvTag.layoutManager = gridLayoutManager
+
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
@@ -71,8 +84,13 @@ class WriteNoteFragment : Fragment() {
 
         initComponent()
         initObserve()
+        initRacyclerView()
         initListener(binding)
         initClickListener(binding)
+    }
+
+    private fun initRacyclerView() {
+
     }
 
     private fun initComponent() {
@@ -86,6 +104,11 @@ class WriteNoteFragment : Fragment() {
     }
 
     private fun initObserve() {
+        viewModel.tag.observe(viewLifecycleOwner) {
+            AWDLog.d("viewModel.tag: $it")
+            adapter.submitList(it)
+        }
+
         viewModel.isDatabaseDeleted.observe(viewLifecycleOwner) { isDatabaseDeleted ->
             isDatabaseDeleted?.let {
                 if (it) {
@@ -96,6 +119,7 @@ class WriteNoteFragment : Fragment() {
 
         viewModel.setting.observe(viewLifecycleOwner) { setting ->
             setting?.let {
+                adapter.changeSetting(it)
                 binding.fwnAcsbTextSize.progress =
                     it.textSize?.writerNote ?: BaseConstants.TEXT_SIZE
             }
@@ -238,6 +262,10 @@ class WriteNoteFragment : Fragment() {
     }
 
     private fun initClickListener(binding: FragmentWriteNoteBinding) {
+        adapter.setOnItemClickListener(NoteTagListener {
+            AWDLog.d("it: $it")
+        })
+
         binding.fwnMtToolbar.setNavigationOnClickListener {
             goBackNotePage()
         }
@@ -302,6 +330,10 @@ class WriteNoteFragment : Fragment() {
 
         binding.fwnActvUpload.setOnClickListener {
             viewModel.uploadHackmd()
+        }
+
+        binding.fwnActvAddTagIcon.setOnClickListener {
+            viewModel.addTag(binding.fwnAcetAddTagInput.text.toString())
         }
     }
 

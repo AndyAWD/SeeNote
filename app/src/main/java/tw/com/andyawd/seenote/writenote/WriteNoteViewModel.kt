@@ -52,6 +52,10 @@ class WriteNoteViewModel(
     val httpStatus: LiveData<String?>
         get() = _httpStatus
 
+    private var _tag = MutableLiveData<List<String>?>()
+    val tag: LiveData<List<String>?>
+        get() = _tag
+
     init {
         initNote()
         initSetting()
@@ -84,6 +88,14 @@ class WriteNoteViewModel(
             } else {
                 _note.value = getNoteFromDatabase(noteId)
             }
+
+            AWDLog.d("init")
+            _note.value?.let {
+                _tag.value = it.tag
+
+                AWDLog.d("it.tag: ${it.tag}")
+                AWDLog.d("_tag.value: ${_tag.value}")
+            }
         }
     }
 
@@ -94,6 +106,16 @@ class WriteNoteViewModel(
     private fun updateNote(note: Note) {
         viewModelScope.launch {
             noteDatabase.update(note)
+        }
+    }
+
+    fun addTag(tag: String) {
+        viewModelScope.launch {
+            note.value?.let {
+                it.tag?.add(tag)
+
+                updateNote(it)
+            }
         }
     }
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="setting"
+            type="tw.com.andyawd.seenote.bean.Setting" />
+
+        <variable
+            name="noteTagItemClickListener"
+            type="tw.com.andyawd.seenote.writenote.NoteTagListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/vwtMtvTag"
+            style="@style/setting_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@{setting.textSize.writerNoteToFloat}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/vwtMtvDelete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="股票" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/vwtMtvDelete"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/vwtMtvTag"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vwtMtvTag"
+            app:layout_constraintTop_toTopOf="@+id/vwtMtvTag"
+            app:srcCompat="@drawable/ic_baseline_cancel_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
