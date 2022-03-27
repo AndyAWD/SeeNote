@@ -267,20 +267,26 @@
                             app:layout_constraintVertical_bias="0.0"
                             app:layout_constraintVertical_chainStyle="packed" />
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/fwnRvTag"
-                            android:layout_width="wrap_content"
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_marginStart="@dimen/magic_8dp"
+                            android:gravity="center"
                             app:layout_constraintBottom_toBottomOf="@+id/fwnAcetAddTagInput"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toEndOf="@+id/fwnAcetAddTagInput"
-                            app:layout_constraintTop_toTopOf="@+id/fwnAcetAddTagInput"
-                            tools:itemCount="5"
-                            tools:layoutManager="GridLayoutManager"
-                            tools:listitem="@layout/viewholder_note_tag"
-                            tools:orientation="horizontal"
-                            tools:spanCount="1" />
+                            app:layout_constraintTop_toTopOf="@+id/fwnAcetAddTagInput">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/fwnRvTag"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:itemCount="5"
+                                tools:layoutManager="GridLayoutManager"
+                                tools:listitem="@layout/viewholder_note_tag"
+                                tools:orientation="horizontal"
+                                tools:spanCount="1" />
+                        </RelativeLayout>
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/fwnAcetNoteTitle"
