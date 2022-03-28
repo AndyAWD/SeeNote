@@ -106,7 +106,7 @@ class WriteNoteFragment : Fragment() {
     private fun initObserve() {
         viewModel.tag.observe(viewLifecycleOwner) {
             it?.let {
-                adapter.submitList(ArrayList(it))
+                adapter.submitList(it.toMutableList())
             }
         }
 
