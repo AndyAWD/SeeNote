@@ -237,23 +237,6 @@
                         android:background="@drawable/rounded_hollow_secondary_width4_radius4"
                         android:padding="@dimen/magic_2dp">
 
-                        <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/fwnAcetAddTagInput"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/magic_8dp"
-                            android:layout_marginTop="@dimen/magic_8dp"
-                            android:background="@null"
-                            android:hint="@string/input_tag"
-                            android:lines="1"
-                            android:padding="@dimen/magic_8dp"
-                            android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
-                            app:layout_constraintBottom_toTopOf="@+id/fwnAcetNoteTitle"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0"
-                            app:layout_constraintVertical_chainStyle="packed" />
-
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/fwnActvAddTagIcon"
                             android:layout_width="0dp"
@@ -262,24 +245,47 @@
                             android:background="@drawable/ripple_ic_add"
                             app:layout_constraintBottom_toBottomOf="@+id/fwnAcetAddTagInput"
                             app:layout_constraintDimensionRatio="1:1"
-                            app:layout_constraintStart_toEndOf="@+id/fwnAcetAddTagInput"
+                            app:layout_constraintEnd_toStartOf="@+id/fwnAcetAddTagInput"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/fwnAcetAddTagInput"
                             app:writeNoteButtonSize="@{viewModel.setting}" />
 
-                        <RelativeLayout
-                            android:id="@+id/fwnRlTagGrpup"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/fwnAcetAddTagInput"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/magic_8dp"
-                            android:gravity="center"
-                            app:layout_constraintBottom_toBottomOf="@+id/fwnAcetAddTagInput"
+                            android:layout_marginTop="@dimen/magic_8dp"
+                            android:layout_marginEnd="@dimen/magic_8dp"
+                            android:background="@null"
+                            android:hint="@string/input_tag"
+                            android:lines="1"
+                            android:padding="@dimen/magic_8dp"
+                            android:textSize="@{viewModel.setting.textSize.writerNoteToFloat}"
+                            app:layout_constraintBottom_toTopOf="@+id/fwnRlTagGrpup"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/fwnActvAddTagIcon"
-                            app:layout_constraintTop_toTopOf="@+id/fwnAcetAddTagInput">
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <RelativeLayout
+                            android:id="@+id/fwnRlTagGrpup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/magic_8dp"
+                            android:layout_marginTop="@dimen/magic_8dp"
+                            android:layout_marginEnd="@dimen/magic_8dp"
+                            android:gravity="center"
+                            app:layout_constraintBottom_toTopOf="@+id/fwnAcetNoteTitle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fwnAcetAddTagInput">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/fwnRvTag"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 tools:itemCount="5"
                                 tools:layoutManager="GridLayoutManager"
@@ -308,7 +314,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fwnAcetAddTagInput"
+                            app:layout_constraintTop_toBottomOf="@+id/fwnRlTagGrpup"
                             app:layout_constraintVertical_bias="0.0"
                             app:layout_constraintVertical_chainStyle="packed"
                             app:noteTitleBackgroundColor="@{viewModel.note}"
