@@ -105,8 +105,9 @@ class WriteNoteFragment : Fragment() {
 
     private fun initObserve() {
         viewModel.tag.observe(viewLifecycleOwner) {
-            AWDLog.d("viewModel.tag: $it")
-            adapter.submitList(it)
+            it?.let {
+                adapter.submitList(ArrayList(it))
+            }
         }
 
         viewModel.isDatabaseDeleted.observe(viewLifecycleOwner) { isDatabaseDeleted ->
@@ -333,7 +334,11 @@ class WriteNoteFragment : Fragment() {
         }
 
         binding.fwnActvAddTagIcon.setOnClickListener {
-            viewModel.addTag(binding.fwnAcetAddTagInput.text.toString())
+            val tagText = binding.fwnAcetAddTagInput.text.toString()
+
+            if (tagText.isNotEmpty()) {
+                viewModel.addTag(tagText)
+            }
         }
     }
 

@@ -113,8 +113,7 @@ class WriteNoteViewModel(
         viewModelScope.launch {
             note.value?.let {
                 it.tag?.add(tag)
-
-                updateNote(it)
+                _tag.value = it.tag
             }
         }
     }
