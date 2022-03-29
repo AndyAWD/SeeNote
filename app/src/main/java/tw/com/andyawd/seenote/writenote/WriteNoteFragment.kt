@@ -1,5 +1,6 @@
 package tw.com.andyawd.seenote.writenote
 
+import android.app.Application
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
@@ -22,6 +23,8 @@ import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
 import tw.com.andyawd.seenote.databinding.FragmentWriteNoteBinding
+import tw.com.andyawd.seenote.snackbar.SnackBarListener
+import tw.com.andyawd.seenote.snackbar.SnackBarManager
 import java.util.*
 
 
@@ -31,6 +34,7 @@ class WriteNoteFragment : Fragment() {
     private lateinit var binding: FragmentWriteNoteBinding
     private lateinit var textToSpeech: TextToSpeech
     private lateinit var adapter: NoteTagAdapter
+    private lateinit var application: Application
 
     private val args: WriteNoteFragmentArgs by navArgs()
 
@@ -45,7 +49,7 @@ class WriteNoteFragment : Fragment() {
             container,
             false
         )
-        val application = requireNotNull(this.activity).application
+        application = requireNotNull(this.activity).application
         val noteDataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
         val hackmdDatabaseDao = SeeNoteDatabase.getInstance(application).hackmdDatabaseDao
         val settingDataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
@@ -107,6 +111,16 @@ class WriteNoteFragment : Fragment() {
         viewModel.note.observe(viewLifecycleOwner) { note ->
             note?.tag.let {
                 adapter.submitList(it?.toMutableList())
+            }
+        }
+
+        viewModel.tag.observe(viewLifecycleOwner) { tag ->
+            tag?.let {
+                SnackBarManager.INSTANCE.alwaysShow(
+                    binding.fwnClGroup,
+                    getString(R.string.new_tag, tag),
+                    snackBarListener
+                )
             }
         }
 
@@ -263,9 +277,8 @@ class WriteNoteFragment : Fragment() {
     }
 
     private fun initClickListener(binding: FragmentWriteNoteBinding) {
-        adapter.setOnItemClickListener(NoteTagListener {
-            AWDLog.d("it: $it")
-            viewModel.deleteTag(it)
+        adapter.setOnItemClickListener(NoteTagListener { tag ->
+            viewModel.deleteTag(tag)
         })
 
         binding.fwnMtToolbar.setNavigationOnClickListener {
@@ -335,11 +348,7 @@ class WriteNoteFragment : Fragment() {
         }
 
         binding.fwnActvAddTagIcon.setOnClickListener {
-            val tagText = binding.fwnAcetAddTagInput.text.toString()
-
-            if (tagText.isNotEmpty()) {
-                viewModel.addTag(tagText)
-            }
+            viewModel.addTag(binding.fwnAcetAddTagInput.text.toString())
         }
     }
 
@@ -378,6 +387,12 @@ class WriteNoteFragment : Fragment() {
 
     private fun updateNoteContent() {
         viewModel.editNoteContent(binding.fwnAcetNoteContent.text.toString())
+    }
+
+    private val snackBarListener = object : SnackBarListener {
+        override fun onClick() {
+            viewModel.onSnackBarChecked()
+        }
     }
 
     companion object {

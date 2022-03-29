@@ -52,6 +52,10 @@ class WriteNoteViewModel(
     val httpStatus: LiveData<String?>
         get() = _httpStatus
 
+    private var _tag = MutableLiveData<String?>()
+    val tag: LiveData<String?>
+        get() = _tag
+
     init {
         initNote()
         initSetting()
@@ -108,6 +112,12 @@ class WriteNoteViewModel(
     }
 
     fun addTag(tag: String) {
+        if (tag.isEmpty()) {
+            return
+        }
+
+        _tag.value = tag
+
         _note.value?.let { note ->
             val newTagList: MutableList<String> = note.tag.toMutableList()
             newTagList.add(tag)
@@ -115,7 +125,12 @@ class WriteNoteViewModel(
             val distinctTagList = newTagList.distinct()
             val newNote = note.copy(tag = distinctTagList)
             _note.value = newNote
+            _tag.value = null
         }
+    }
+
+    fun onSnackBarChecked() {
+        _tag.value = null
     }
 
     fun saveNote() {
