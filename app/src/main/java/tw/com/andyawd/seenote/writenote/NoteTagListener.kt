@@ -1,5 +1,5 @@
 package tw.com.andyawd.seenote.writenote
 
-class NoteTagListener(val itemClickListener: (id: Long) -> Unit) {
-    fun onItemClick(tag: String) = itemClickListener(0)
+class NoteTagListener(val itemClickListener: (tag: String) -> Unit) {
+    fun onItemClick(tag: String) = itemClickListener(tag)
 }

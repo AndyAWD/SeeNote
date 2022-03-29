@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import tw.com.andyawd.seenote.bean.Setting
-import tw.com.andyawd.seenote.databinding.ViewholderNoteTagBinding
+import tw.com.andyawd.seenote.databinding.ViewholderNoteTagBodyBinding
 
-class NoteTagBodyViewHolder(private val binding: ViewholderNoteTagBinding) :
+class NoteTagBodyViewHolder(private val binding: ViewholderNoteTagBodyBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(tag: String, setting: Setting?) {
@@ -25,12 +25,14 @@ class NoteTagBodyViewHolder(private val binding: ViewholderNoteTagBinding) :
 
         binding.vwtMtvTag.text = tag
         binding.executePendingBindings()
-        binding.noteTagItemClickListener = noteTagListener
+        binding.vwtMtvDelete.setOnClickListener {
+            noteTagListener.onItemClick(tag)
+        }
     }
 
     companion object {
         fun from(parent: ViewGroup): NoteTagBodyViewHolder {
-            val binding = ViewholderNoteTagBinding.inflate(
+            val binding = ViewholderNoteTagBodyBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

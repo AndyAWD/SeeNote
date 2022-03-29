@@ -52,10 +52,6 @@ class WriteNoteViewModel(
     val httpStatus: LiveData<String?>
         get() = _httpStatus
 
-    private var _tag = MutableLiveData<List<String>?>()
-    val tag: LiveData<List<String>?>
-        get() = _tag
-
     init {
         initNote()
         initSetting()
@@ -81,20 +77,12 @@ class WriteNoteViewModel(
                         contentColor = color,
                         dateColor = color,
                         tagColor = color,
-                        tag = mutableListOf("a測試標籤")
+                        tag = mutableListOf()
                     )
                 )
                 _note.value = getNoteFromDatabase(noteId)
             } else {
                 _note.value = getNoteFromDatabase(noteId)
-            }
-
-            AWDLog.d("init")
-            _note.value?.let {
-                _tag.value = it.tag
-
-                AWDLog.d("it.tag: ${it.tag}")
-                AWDLog.d("_tag.value: ${_tag.value}")
             }
         }
     }
@@ -109,12 +97,25 @@ class WriteNoteViewModel(
         }
     }
 
-    fun addTag(tag: String) {
-        viewModelScope.launch {
-            note.value?.let {
-                it.tag?.add(tag)
-                _tag.value = it.tag
+    fun deleteTag(tag: String) {
+        _note.value?.let { note ->
+            val newTagList = arrayListOf<String>()
+            note.tag?.filterTo(newTagList) { filterTag ->
+                filterTag != tag
             }
+
+            val newNote = note.copy(tag = newTagList)
+            _note.value = newNote
+        }
+    }
+
+    fun addTag(tag: String) {
+        _note.value?.let { note ->
+            val newTagList: MutableList<String>? = note.tag
+            newTagList?.add(tag)
+
+            val newNote = note.copy(tag = newTagList)
+            _note.value = newNote
         }
     }
 

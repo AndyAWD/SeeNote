@@ -8,10 +8,6 @@
         <variable
             name="setting"
             type="tw.com.andyawd.seenote.bean.Setting" />
-
-        <variable
-            name="noteTagItemClickListener"
-            type="tw.com.andyawd.seenote.writenote.NoteTagListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

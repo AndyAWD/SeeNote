@@ -104,9 +104,9 @@ class WriteNoteFragment : Fragment() {
     }
 
     private fun initObserve() {
-        viewModel.tag.observe(viewLifecycleOwner) {
-            it?.let {
-                adapter.submitList(it.toMutableList())
+        viewModel.note.observe(viewLifecycleOwner) { note ->
+            note?.tag.let {
+                adapter.submitList(it?.toMutableList())
             }
         }
 
@@ -265,6 +265,7 @@ class WriteNoteFragment : Fragment() {
     private fun initClickListener(binding: FragmentWriteNoteBinding) {
         adapter.setOnItemClickListener(NoteTagListener {
             AWDLog.d("it: $it")
+            viewModel.deleteTag(it)
         })
 
         binding.fwnMtToolbar.setNavigationOnClickListener {
