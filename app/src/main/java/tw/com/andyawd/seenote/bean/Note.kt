@@ -18,7 +18,7 @@ data class Note(
     var content: String = BaseConstants.EMPTY_STRING,
 
     @ColumnInfo(name = BaseConstants.TAG)
-    var tag: MutableList<String>?,
+    var tag: List<String> = listOfNotNull(),
 
     @ColumnInfo(name = BaseConstants.HACKMD_ID)
     var hackmdId: String = BaseConstants.EMPTY_STRING,

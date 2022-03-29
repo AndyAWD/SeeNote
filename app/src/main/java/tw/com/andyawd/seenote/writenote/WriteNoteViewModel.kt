@@ -77,7 +77,7 @@ class WriteNoteViewModel(
                         contentColor = color,
                         dateColor = color,
                         tagColor = color,
-                        tag = mutableListOf()
+                        tag = mutableListOf("看見筆記")
                     )
                 )
                 _note.value = getNoteFromDatabase(noteId)
@@ -99,8 +99,8 @@ class WriteNoteViewModel(
 
     fun deleteTag(tag: String) {
         _note.value?.let { note ->
-            val newTagList: MutableList<String>? = note.tag
-            newTagList?.remove(tag)
+            val newTagList: MutableList<String> = note.tag.toMutableList()
+            newTagList.remove(tag)
 
             val newNote = note.copy(tag = newTagList)
             _note.value = newNote
@@ -109,10 +109,11 @@ class WriteNoteViewModel(
 
     fun addTag(tag: String) {
         _note.value?.let { note ->
-            val newTagList: MutableList<String>? = note.tag
-            newTagList?.add(tag)
+            val newTagList: MutableList<String> = note.tag.toMutableList()
+            newTagList.add(tag)
 
-            val newNote = note.copy(tag = newTagList)
+            val distinctTagList = newTagList.distinct()
+            val newNote = note.copy(tag = distinctTagList)
             _note.value = newNote
         }
     }
