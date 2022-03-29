@@ -99,10 +99,8 @@ class WriteNoteViewModel(
 
     fun deleteTag(tag: String) {
         _note.value?.let { note ->
-            val newTagList = arrayListOf<String>()
-            note.tag?.filterTo(newTagList) { filterTag ->
-                filterTag != tag
-            }
+            val newTagList: MutableList<String>? = note.tag
+            newTagList?.remove(tag)
 
             val newNote = note.copy(tag = newTagList)
             _note.value = newNote
