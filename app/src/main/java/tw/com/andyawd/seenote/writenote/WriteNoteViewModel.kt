@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
+import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.bean.Color
 import tw.com.andyawd.seenote.bean.Date
 import tw.com.andyawd.seenote.bean.Note
@@ -81,7 +82,7 @@ class WriteNoteViewModel(
                         contentColor = color,
                         dateColor = color,
                         tagColor = color,
-                        tag = mutableListOf("看見筆記")
+                        tag = mutableListOf(getApplication<Application>().getString(R.string.app_name))
                     )
                 )
                 _note.value = getNoteFromDatabase(noteId)
