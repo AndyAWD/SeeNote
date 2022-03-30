@@ -241,7 +241,7 @@
                             android:id="@+id/fwnActvAddTagIcon"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/magic_8dp"
+                            android:layout_marginStart="16dp"
                             android:background="@drawable/ripple_ic_add"
                             app:layout_constraintBottom_toBottomOf="@+id/fwnAcetAddTagInput"
                             app:layout_constraintDimensionRatio="1:1"
