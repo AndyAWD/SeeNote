@@ -69,7 +69,6 @@
     <string name="setting_text">文字設定</string>
     <string name="setting_background">背景設定</string>
     <string name="input_tag">輸入標籤</string>
-    <string name="new_tag">新增 %1$s 標籤</string>
-    <string name="remove_tag">移除 %1$s 標籤</string>
+    <string name="new_tag">新增標籤：%1$s </string>
     <string name="confirm">確定</string>
 </resources>
