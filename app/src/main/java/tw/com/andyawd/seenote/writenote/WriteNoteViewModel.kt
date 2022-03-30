@@ -111,6 +111,16 @@ class WriteNoteViewModel(
         }
     }
 
+    private fun updateNoteHackmdId(hackmdId: String) {
+        _note.value?.let {
+            val newDate = it.date?.copy(edit = System.currentTimeMillis())
+            val newNote = it.copy(hackmdId = hackmdId, date = newDate)
+            it.hackmdId = hackmdId
+
+            updateNote(newNote)
+        }
+    }
+
     fun addTag(tag: String) {
         if (tag.isEmpty()) {
             return
@@ -152,16 +162,6 @@ class WriteNoteViewModel(
             val newDate = it.date?.copy(edit = System.currentTimeMillis())
             val newNote = it.copy(content = content, date = newDate)
             _note.value = newNote
-        }
-    }
-
-    private fun updateNoteHackmdId(hackmdId: String) {
-        _note.value?.let {
-            val newDate = it.date?.copy(edit = System.currentTimeMillis())
-            val newNote = it.copy(hackmdId = hackmdId, date = newDate)
-            it.hackmdId = hackmdId
-
-            updateNote(newNote)
         }
     }
 
