@@ -121,6 +121,8 @@ class WriteNoteFragment : Fragment() {
                     getString(R.string.new_tag, tag),
                     snackBarListener
                 )
+
+                binding.fwnAcetAddTagInput.text?.clear()
             }
         }
 
