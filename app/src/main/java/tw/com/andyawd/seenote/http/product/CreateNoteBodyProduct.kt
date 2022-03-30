@@ -18,7 +18,7 @@ class CreateNoteBodyProduct(
         val tagFormat: String = if (tag.isNullOrEmpty()) {
             BaseConstants.EMPTY_STRING
         } else {
-            tag.joinToString(separator = ",") { "###### tags: `$it`" }
+            tag.joinToString(separator = "\n") { "###### tags: `$it`" }
         }
         val horizontalLine = "\n\n***"
         val contentFormat = "\n\n$content"
@@ -29,7 +29,6 @@ class CreateNoteBodyProduct(
 
         val json = Json.encodeToString(CreateNote.serializer(), createNote)
         return json.toRequestBody(mediaType)
-
     }
 
     companion object {
