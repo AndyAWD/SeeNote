@@ -33,7 +33,7 @@ class WriteNoteFragment : Fragment() {
     private lateinit var viewModel: WriteNoteViewModel
     private lateinit var binding: FragmentWriteNoteBinding
     private lateinit var textToSpeech: TextToSpeech
-    private lateinit var adapter: NoteTagAdapter
+    private lateinit var adapter: WriteTagAdapter
     private lateinit var application: Application
 
     private val args: WriteNoteFragmentArgs by navArgs()
@@ -64,7 +64,7 @@ class WriteNoteFragment : Fragment() {
         viewModel =
             ViewModelProvider(this, viewModelFactory)[WriteNoteViewModel::class.java]
 
-        adapter = NoteTagAdapter()
+        adapter = WriteTagAdapter()
         val gridLayoutManager = GridLayoutManager(application, 1)
         gridLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
@@ -279,7 +279,7 @@ class WriteNoteFragment : Fragment() {
     }
 
     private fun initClickListener(binding: FragmentWriteNoteBinding) {
-        adapter.setOnItemClickListener(NoteTagListener { tag ->
+        adapter.setOnItemClickListener(WriteTagListener { tag ->
             viewModel.deleteTag(tag)
         })
 
