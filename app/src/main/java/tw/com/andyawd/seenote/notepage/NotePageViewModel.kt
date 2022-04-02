@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import tw.com.andyawd.seenote.bean.*
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
+import tw.com.andyawd.seenote.database.StringTypeConverter
 
 class NotePageViewModel(
     private val noteDataSource: NoteDatabaseDao,
@@ -32,6 +33,10 @@ class NotePageViewModel(
     val searchText: LiveData<String?>
         get() = _searchText
 
+    private var _tag = MutableLiveData<List<String>>()
+    val tag: LiveData<List<String>>
+        get() = _tag
+
     init {
         viewModelScope.launch {
             val settingList = settingDataSource.getAll()
@@ -53,7 +58,9 @@ class NotePageViewModel(
                 _setting.value = settingDataSource.getFirst()
             }
 
-            _note.value = noteDataSource.getAll()
+//            _note.value = noteDataSource.getAll()
+            val allTagString = StringTypeConverter().toString(noteDataSource.getAllTag())
+            _tag.value = StringTypeConverter().fromString(allTagString)?.distinct()
         }
     }
 

@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
@@ -25,7 +26,9 @@ class NotePageFragment : Fragment() {
     private lateinit var viewModel: NotePageViewModel
     private lateinit var viewModelFactory: NotePageViewModelFactory
     private lateinit var binding: FragmentNotePageBinding
-    private lateinit var adapter: NotePageAdapter
+
+    //private lateinit var adapter: NotePageAdapter
+    private lateinit var tagPageAdapter: TagPageAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,8 +61,10 @@ class NotePageFragment : Fragment() {
             DividerItemDecoration(requireNotNull(this.activity), DividerItemDecoration.VERTICAL)
         xmlColor?.let { dividerItemDecoration.setDrawable(it) }
 
-        adapter = NotePageAdapter()
-        binding.fnpRvNoteList.adapter = adapter
+        //adapter = NotePageAdapter()
+        tagPageAdapter = TagPageAdapter()
+        //binding.fnpRvNoteList.adapter = adapter
+        binding.fnpRvNoteList.adapter = tagPageAdapter
         binding.fnpRvNoteList.layoutManager = GridLayoutManager(application, 1)
         //binding.fnpRvNoteList.addItemDecoration(dividerItemDecoration)
 
@@ -82,13 +87,20 @@ class NotePageFragment : Fragment() {
     private fun initObserve() {
         viewModel.setting.observe(viewLifecycleOwner) { setting ->
             setting?.let {
-                adapter.changeSetting(it)
+                //adapter.changeSetting(it)
+                tagPageAdapter.changeSetting(it)
                 binding.fnpAcsbTextSize.progress = it.textSize?.notePage ?: BaseConstants.TEXT_SIZE
             }
         }
 
+        viewModel.tag.observe(viewLifecycleOwner) { tag ->
+            tag?.let {
+                tagPageAdapter.submitList(it)
+            }
+        }
+
         viewModel.note.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+            //adapter.submitList(it)
         }
 
         viewModel.notePageDetail.observe(viewLifecycleOwner) { id ->
@@ -134,8 +146,12 @@ class NotePageFragment : Fragment() {
     }
 
     private fun initClickListener(binding: FragmentNotePageBinding) {
-        adapter.setOnItemClickListener(NotePageListener { id ->
-            viewModel.onItemClicked(id)
+//        adapter.setOnItemClickListener(NotePageListener { id ->
+//            viewModel.onItemClicked(id)
+//        })
+
+        tagPageAdapter.setOnItemClickListener(TagPageListener { tag ->
+            AWDLog.d("tag: $tag")
         })
 
         binding.fnpMtToolbar.setNavigationOnClickListener {
