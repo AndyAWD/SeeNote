@@ -31,6 +31,9 @@ interface NoteDatabaseDao {
     @Query("SELECT * FROM note_table ORDER BY id DESC LIMIT 1")
     suspend fun getFirst(): Note?
 
+    @Query("SELECT tag FROM note_table ORDER BY tag ASC")
+    suspend fun getAllTag(): List<String>
+
     @Query("UPDATE note_table SET title =:text WHERE id = :id")
     suspend fun updateTitle(id: Long, text: String): Int
 
