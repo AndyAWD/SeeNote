@@ -95,7 +95,8 @@ class NotePageFragment : Fragment() {
 
         viewModel.tag.observe(viewLifecycleOwner) { tag ->
             tag?.let {
-                tagPageAdapter.submitList(it)
+                AWDLog.d("it: $it")
+                tagPageAdapter.submitList(it.toMutableList())
             }
         }
 
@@ -115,7 +116,8 @@ class NotePageFragment : Fragment() {
                     binding.fnpAcetSearchText.text?.clear()
                 }
 
-                viewModel.queryNote()
+//                viewModel.queryNote()
+                viewModel.queryTag()
             }
         }
     }

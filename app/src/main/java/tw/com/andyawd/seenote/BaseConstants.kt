@@ -10,6 +10,7 @@ class BaseConstants {
         const val UPDATE_NOTE = "https://hackmd.io"
         const val CONTENT_TYPE_UTF_8 = "application/json; charset=utf-8"
 
+        const val INDEX_NOT_SEARCH = -1
         const val TEXT_SIZE = 80
         const val COLOR_SIZE = 120
         const val NOT_FROM_WRITE_NOTE = -1L

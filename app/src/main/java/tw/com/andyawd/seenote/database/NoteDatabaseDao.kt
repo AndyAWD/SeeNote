@@ -34,6 +34,9 @@ interface NoteDatabaseDao {
     @Query("SELECT tag FROM note_table ORDER BY tag ASC")
     suspend fun getAllTag(): List<String>
 
+    @Query("SELECT tag FROM note_table WHERE tag LIKE '%' || :text || '%' ORDER BY id ASC")
+    suspend fun getSearchTag(text: String): List<String>
+
     @Query("UPDATE note_table SET title =:text WHERE id = :id")
     suspend fun updateTitle(id: Long, text: String): Int
 

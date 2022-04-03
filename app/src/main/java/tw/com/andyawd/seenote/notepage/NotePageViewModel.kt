@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.*
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
@@ -96,6 +97,26 @@ class NotePageViewModel(
         _searchText.value?.let { text ->
             viewModelScope.launch {
                 _note.value = noteDataSource.getSearchText(text)
+            }
+        }
+    }
+
+    fun queryTag() {
+        _searchText.value?.let { text ->
+            viewModelScope.launch {
+                val searchTagString =
+                    StringTypeConverter().toString(noteDataSource.getSearchTag(text))
+                val searchTagList = StringTypeConverter().fromString(searchTagString)
+
+                val filterSearchTagList = arrayListOf<String>()
+
+                searchTagList?.distinct()?.forEach {
+                    if (BaseConstants.INDEX_NOT_SEARCH != it.indexOf(text)) {
+                        filterSearchTagList.add(it)
+                    }
+                }
+
+                _tag.value = filterSearchTagList
             }
         }
     }
