@@ -3,8 +3,9 @@ package tw.com.andyawd.seenote.notepage
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import tw.com.andyawd.seenote.bean.Setting
+import tw.com.andyawd.seenote.bean.Tag
 
-class TagPageAdapter : ListAdapter<String, TagPageBodyViewHolder>(TagPageDiffCallback()) {
+class TagPageAdapter : ListAdapter<Tag, TagPageBodyViewHolder>(TagPageDiffCallback()) {
     private var tagPageListener: TagPageListener? = null
     private var setting: Setting? = null
 

@@ -153,6 +153,10 @@ class NotePageFragment : Fragment() {
 //        })
 
         tagPageAdapter.setOnItemClickListener(TagPageListener { tag ->
+            AWDLog.d("點擊tag: $tag")
+        })
+
+        tagPageAdapter.setOnItemClickListener(TagPageListener { tag ->
             AWDLog.d("tag: $tag")
         })
 

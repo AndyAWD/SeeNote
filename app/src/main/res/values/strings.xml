@@ -43,6 +43,7 @@
     <string name="setting_date_text_color">日期文字顏色設定</string>
     <string name="setting_date_background_color">日期背景顏色設定</string>
     <string name="search_title_content">搜尋標題和內容</string>
+    <string name="search_tag">搜尋標籤</string>
     <string name="system_primary">系統預設</string>
     <string name="invert_color">顏色反轉</string>
     <string name="voice_title">朗讀標題</string>
@@ -71,4 +72,5 @@
     <string name="input_tag">輸入標籤</string>
     <string name="new_tag">新增標籤：%1$s </string>
     <string name="confirm">確定</string>
+    <string name="all_note">全部筆記</string>
 </resources>

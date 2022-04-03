@@ -28,6 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:background="@drawable/rounded_hollow_secondary_width4_radius4"
+            android:clickable="true"
+            android:focusable="true"
             android:onClick="@{()-> notePageItemClickListener.onItemClick(note)}"
             android:padding="@dimen/magic_4dp">
 

@@ -91,7 +91,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/square_l_r_width2"
-                            android:hint="@string/search_title_content"
+                            android:hint="@string/search_tag"
                             android:imeOptions="actionSearch"
                             android:inputType="text"
                             android:lines="1"
@@ -135,7 +135,7 @@
                     app:layout_constraintVertical_bias="0.0"
                     tools:itemCount="8"
                     tools:layoutManager="GridLayoutManager"
-                    tools:listitem="@layout/viewholder_note_page"
+                    tools:listitem="@layout/viewholder_tag_page"
                     tools:spanCount="1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
