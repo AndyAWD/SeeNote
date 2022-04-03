@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.Setting
-import tw.com.andyawd.seenote.databinding.ViewholderTagPageBinding
+import tw.com.andyawd.seenote.databinding.ViewholderTagPageHeaderBinding
 
-class TagPageHeaderViewHolder(private val binding: ViewholderTagPageBinding) :
+class TagPageHeaderViewHolder(private val binding: ViewholderTagPageHeaderBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(setting: Setting?, tagPageListener: TagPageListener) {
@@ -17,7 +17,7 @@ class TagPageHeaderViewHolder(private val binding: ViewholderTagPageBinding) :
 
         binding.executePendingBindings()
 
-        binding.vtpClTag.setOnClickListener {
+        binding.vtphClTag.setOnClickListener {
             tagPageListener.onItemClick(BaseConstants.EMPTY_STRING)
         }
     }
@@ -32,7 +32,7 @@ class TagPageHeaderViewHolder(private val binding: ViewholderTagPageBinding) :
 
     companion object {
         fun from(parent: ViewGroup): TagPageHeaderViewHolder {
-            val binding = ViewholderTagPageBinding.inflate(
+            val binding = ViewholderTagPageHeaderBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

@@ -123,9 +123,10 @@ class NotePageViewModel(
 
     private fun getDistinctTagList(tagList: List<Tag>): List<Tag> {
         val list = mutableListOf<Tag>()
+
         tagList.forEach { tag ->
             tag.text.split(",").map { it }.forEach {
-                list.add(Tag(it))
+                list.add(Tag(text = it))
             }
         }
 

@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import tw.com.andyawd.seenote.bean.Setting
 import tw.com.andyawd.seenote.bean.Tag
-import tw.com.andyawd.seenote.databinding.ViewholderTagPageBinding
+import tw.com.andyawd.seenote.databinding.ViewholderTagPageBodyBinding
 
-class TagPageBodyViewHolder(private val binding: ViewholderTagPageBinding) :
+class TagPageBodyViewHolder(private val binding: ViewholderTagPageBodyBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(tag: Tag, setting: Setting?, tagPageListener: TagPageListener) {
@@ -30,7 +30,7 @@ class TagPageBodyViewHolder(private val binding: ViewholderTagPageBinding) :
 
     companion object {
         fun from(parent: ViewGroup): TagPageBodyViewHolder {
-            val binding = ViewholderTagPageBinding.inflate(
+            val binding = ViewholderTagPageBodyBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

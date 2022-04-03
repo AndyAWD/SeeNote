@@ -96,7 +96,8 @@ class NotePageFragment : Fragment() {
         viewModel.tag.observe(viewLifecycleOwner) { tag ->
             tag?.let {
                 AWDLog.d("it: $it")
-                tagPageAdapter.submitList(it.toMutableList())
+                //tagPageAdapter.submitList(it.toMutableList())
+                tagPageAdapter.addHeaderAndSubmitList(it)
             }
         }
 

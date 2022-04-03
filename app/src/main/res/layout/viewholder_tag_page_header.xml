@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/vtpClTag"
+            android:id="@+id/vtphClTag"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/magic_4dp"
@@ -23,7 +23,7 @@
             android:padding="@dimen/magic_8dp">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/vtpMtvTag"
+                android:id="@+id/vtphMtvTag"
                 style="@style/setting_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
