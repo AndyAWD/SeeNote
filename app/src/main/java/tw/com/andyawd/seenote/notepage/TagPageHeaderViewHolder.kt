@@ -7,7 +7,7 @@ import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.Setting
 import tw.com.andyawd.seenote.databinding.ViewholderTagPageBinding
 
-class TagPageHeadViewHolder(private val binding: ViewholderTagPageBinding) :
+class TagPageHeaderViewHolder(private val binding: ViewholderTagPageBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(setting: Setting?, tagPageListener: TagPageListener) {
@@ -31,13 +31,13 @@ class TagPageHeadViewHolder(private val binding: ViewholderTagPageBinding) :
     }
 
     companion object {
-        fun from(parent: ViewGroup): TagPageHeadViewHolder {
+        fun from(parent: ViewGroup): TagPageHeaderViewHolder {
             val binding = ViewholderTagPageBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
-            return TagPageHeadViewHolder(binding)
+            return TagPageHeaderViewHolder(binding)
         }
     }
 }
