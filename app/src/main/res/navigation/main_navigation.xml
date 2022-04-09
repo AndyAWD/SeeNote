@@ -16,17 +16,10 @@
         <action
             android:id="@+id/action_notePageFragment_to_writeNoteFragment"
             app:destination="@id/writeNoteFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
-        <action
-            android:id="@+id/action_notePageFragment_to_settingPageFragment"
-            app:destination="@id/settingPageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
+            app:enterAnim="@anim/slide_in_right_to_left_medium"
+            app:exitAnim="@anim/slide_out_left_to_right_medium"
+            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
+            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <action
             android:id="@+id/action_notePageFragment_to_tagPageFragment"
             app:destination="@id/tagPageFragment"
@@ -46,24 +39,24 @@
         <action
             android:id="@+id/action_writeNoteFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
+            app:enterAnim="@anim/slide_in_right_to_left_medium"
+            app:exitAnim="@anim/slide_out_left_to_right_medium"
+            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
+            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <action
             android:id="@+id/action_writeNoteFragment_to_tagPageFragment"
             app:destination="@id/tagPageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
+            app:enterAnim="@anim/slide_in_left_to_right_medium"
+            app:exitAnim="@anim/slide_out_right_to_left_medium"
+            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
+            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
         <action
             android:id="@+id/action_writeNoteFragment_to_notePageFragment"
             app:destination="@id/notePageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
+            app:enterAnim="@anim/slide_in_left_to_right_medium"
+            app:exitAnim="@anim/slide_out_right_to_left_medium"
+            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
+            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
         <argument
             android:name="isFromTagPage"
             android:defaultValue="false"
@@ -89,27 +82,24 @@
         <action
             android:id="@+id/action_settingPageFragment_to_writeNoteFragment"
             app:destination="@id/writeNoteFragment"
+            app:enterAnim="@anim/slide_in_left_to_right_medium"
+            app:exitAnim="@anim/slide_out_right_to_left_medium"
+            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
+            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
+        <action
+            android:id="@+id/action_settingPageFragment_to_selectColorFragment"
+            app:destination="@id/selectColorFragment"
             app:enterAnim="@anim/fade_in_medium"
             app:exitAnim="@anim/fade_out_medium"
             app:popEnterAnim="@anim/fade_in_medium"
             app:popExitAnim="@anim/fade_out_medium" />
-        <action
-            android:id="@+id/action_settingPageFragment_to_selectColorFragment"
-            app:destination="@id/selectColorFragment" />
         <action
             android:id="@+id/action_settingPageFragment_to_tagPageFragment"
             app:destination="@id/tagPageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
-        <action
-            android:id="@+id/action_settingPageFragment_to_notePageFragment"
-            app:destination="@id/notePageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
+            app:enterAnim="@anim/slide_in_right_to_left_medium"
+            app:exitAnim="@anim/slide_out_left_to_right_medium"
+            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
+            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
         <argument
             android:name="isFromTagPage"
             android:defaultValue="false"
@@ -140,7 +130,11 @@
             app:argType="long" />
         <action
             android:id="@+id/action_selectColorFragment_to_settingPageFragment"
-            app:destination="@id/settingPageFragment" />
+            app:destination="@id/settingPageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
         <argument
             android:name="isFromTagPage"
             android:defaultValue="false"
@@ -174,16 +168,16 @@
         <action
             android:id="@+id/action_tagPageFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
+            app:enterAnim="@anim/slide_in_left_to_right_medium"
+            app:exitAnim="@anim/slide_out_right_to_left_medium"
+            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
+            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
         <action
             android:id="@+id/action_tagPageFragment_to_writeNoteFragment"
             app:destination="@id/writeNoteFragment"
-            app:enterAnim="@anim/fade_in_medium"
-            app:exitAnim="@anim/fade_out_medium"
-            app:popEnterAnim="@anim/fade_in_medium"
-            app:popExitAnim="@anim/fade_out_medium" />
+            app:enterAnim="@anim/slide_in_right_to_left_medium"
+            app:exitAnim="@anim/slide_out_left_to_right_medium"
+            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
+            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
     </fragment>
 </navigation>
