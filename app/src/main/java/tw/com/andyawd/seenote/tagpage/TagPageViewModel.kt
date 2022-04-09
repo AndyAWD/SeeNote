@@ -6,11 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.*
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
+import tw.com.andyawd.seenote.database.StringTypeConverter
 
 class TagPageViewModel(
     application: Application,
@@ -30,8 +30,8 @@ class TagPageViewModel(
     val searchText: LiveData<String?>
         get() = _searchText
 
-    private var _tag = MutableLiveData<List<Tag>?>()
-    val tag: LiveData<List<Tag>?>
+    private var _tag = MutableLiveData<List<String>?>()
+    val tag: LiveData<List<String>?>
         get() = _tag
 
     private val _tagPageDetail = MutableLiveData<Long?>()
@@ -60,23 +60,23 @@ class TagPageViewModel(
             }
 
 //            _note.value = noteDataSource.getAll()
-            AWDLog.d("noteDataSource.getAllTag(): ${noteDataSource.getAllTag()}")
-
-
-            _tag.value = getDistinctTagList(noteDataSource.getAllTag())
+            val allTagString = StringTypeConverter().toString(noteDataSource.getAllTag())
+            _tag.value = StringTypeConverter().fromString(allTagString)?.distinct()
         }
     }
 
     fun queryTag() {
         _searchText.value?.let { text ->
             viewModelScope.launch {
+                val searchTagString =
+                    StringTypeConverter().toString(noteDataSource.getSearchTag(text))
+                val searchTagList = StringTypeConverter().fromString(searchTagString)
 
-                val tagList = getDistinctTagList(noteDataSource.getAllTag())
-                val filterSearchTagList = arrayListOf<Tag>()
+                val filterSearchTagList = arrayListOf<String>()
 
-                tagList.forEach {
-                    if (BaseConstants.INDEX_NOT_SEARCH != it.text.indexOf(text)) {
-                        filterSearchTagList.add(Tag(text = it.text))
+                searchTagList?.distinct()?.forEach {
+                    if (BaseConstants.INDEX_NOT_SEARCH != it.indexOf(text)) {
+                        filterSearchTagList.add(it)
                     }
                 }
 
@@ -107,17 +107,5 @@ class TagPageViewModel(
 
     fun onTagPageNavigated() {
         _tagPageDetail.value = null
-    }
-
-    private fun getDistinctTagList(tagList: List<Tag>): List<Tag> {
-        val list = mutableListOf<Tag>()
-
-        tagList.forEach { tag ->
-            tag.text.split(",").map { it }.forEach {
-                list.add(Tag(text = it))
-            }
-        }
-
-        return list.distinct()
     }
 }

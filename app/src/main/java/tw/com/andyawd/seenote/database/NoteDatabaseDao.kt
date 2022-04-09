@@ -3,7 +3,6 @@ package tw.com.andyawd.seenote.database
 import androidx.room.*
 import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.NoteAndHackmdNote
-import tw.com.andyawd.seenote.bean.Tag
 
 @Dao
 interface NoteDatabaseDao {
@@ -36,7 +35,7 @@ interface NoteDatabaseDao {
     suspend fun getFirst(): Note?
 
     @Query("SELECT tag FROM note_table ORDER BY tag ASC")
-    suspend fun getAllTag(): List<Tag>
+    suspend fun getAllTag(): List<String>
 
     @Query("SELECT tag FROM note_table WHERE tag LIKE '%' || :text || '%' ORDER BY id ASC")
     suspend fun getSearchTag(text: String): List<String>

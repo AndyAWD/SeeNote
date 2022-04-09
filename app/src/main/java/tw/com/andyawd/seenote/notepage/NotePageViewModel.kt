@@ -8,7 +8,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
-import tw.com.andyawd.seenote.bean.*
+import tw.com.andyawd.seenote.bean.Note
+import tw.com.andyawd.seenote.bean.Setting
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
@@ -37,24 +38,7 @@ class NotePageViewModel(
 
     init {
         viewModelScope.launch {
-            val settingList = settingDataSource.getAll()
-
-            if (settingList.isEmpty()) {
-                val color = Color()
-                settingDataSource.insert(
-                    Setting(
-                        textSize = TextSize(),
-                        title = color,
-                        content = color,
-                        date = color,
-                        label = color,
-                        user = User()
-                    )
-                )
-                _setting.value = settingDataSource.getFirst()
-            } else {
-                _setting.value = settingDataSource.getFirst()
-            }
+            _setting.value = settingDataSource.getFirst()
 
             AWDLog.d("tag: $tag")
 

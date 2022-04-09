@@ -8,7 +8,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import tw.com.andyawd.seenote.bean.Setting
-import tw.com.andyawd.seenote.bean.Tag
 
 class TagPageAdapter : ListAdapter<TagDataItem, RecyclerView.ViewHolder>(TagPageDiffCallback()) {
 
@@ -25,7 +24,7 @@ class TagPageAdapter : ListAdapter<TagDataItem, RecyclerView.ViewHolder>(TagPage
         notifyDataSetChanged()
     }
 
-    fun addHeaderAndSubmitList(list: List<Tag>?) {
+    fun addHeaderAndSubmitList(list: List<String>?) {
         adapterScope.launch {
             val items = when (list) {
                 null -> listOf(TagDataItem.Header)

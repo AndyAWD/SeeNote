@@ -5,30 +5,31 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.bean.Setting
-import tw.com.andyawd.seenote.bean.Tag
 import tw.com.andyawd.seenote.databinding.ViewholderTagPageBodyBinding
 
 class TagPageBodyViewHolder(private val binding: ViewholderTagPageBodyBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(tag: Tag, setting: Setting?, tagPageListener: TagPageListener) {
+    fun bind(tag: String, setting: Setting?, tagPageListener: TagPageListener) {
         setting?.let {
             binding.setting = setting
         }
 
         AWDLog.d("tag: $tag")
-        binding.tag = tag
-        binding.clickListener = tagPageListener
+        binding.vtpbMtvTag.text = tag
+        binding.vtpbClTag.setOnClickListener {
+            tagPageListener.onItemClick(tag)
+        }
         binding.executePendingBindings()
 
 
     }
 
-    fun bind(tag: Tag, setting: Setting?) {
+    fun bind(tag: String, setting: Setting?) {
         setting?.let {
             binding.setting = setting
         }
-        binding.tag = tag
+        binding.vtpbMtvTag.text = tag
         binding.executePendingBindings()
     }
 

@@ -1,13 +1,12 @@
 package tw.com.andyawd.seenote.tagpage
 
-import tw.com.andyawd.seenote.bean.Tag
 
 sealed class TagDataItem {
     abstract val id: Long
 
-    data class Body(val tag: Tag) : TagDataItem() {
+    data class Body(val tag: String) : TagDataItem() {
         override val id: Long
-            get() = tag.id
+            get() = 1L
     }
 
     object Header : TagDataItem() {
