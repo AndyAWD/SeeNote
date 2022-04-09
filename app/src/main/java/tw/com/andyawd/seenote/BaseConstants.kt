@@ -33,6 +33,7 @@ class BaseConstants {
         const val EDIT = "edit"
         const val CREATE_NOTE = -1L
         const val EMPTY_STRING = ""
+        const val ALL_TAG = "all_tag"
         const val SETTING_SIZE = "setting_size"
         const val BUTTON_TEXT_COLOR = "button_text_color"
         const val BUTTON_BACKGROUND_COLOR = "button_background_color"
@@ -58,6 +59,7 @@ class BaseConstants {
         const val SELECT_COLOR = "select_color"
         const val SETTING_PAGE = "setting_page"
         const val WRITER_NOTE = "writer_note"
+        const val TAG_PAGE = "tag_page"
         const val ACCOUNT = "account"
         const val NICKNAME = "nickname"
         const val HACKMD_TOKEN = "hackmd_token"
@@ -100,6 +102,7 @@ class BaseConstants {
         const val PRIMARY_ID = "primary_id"
         const val NOTE_ID = "note_id"
         const val TAG = "tag"
+        const val TEMPORARY_TAG = "temporary_tag"
         const val NOTE_AND_HACKMD_NOTE = "note_and_hackmd_note"
 
 

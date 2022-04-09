@@ -30,7 +30,7 @@ class WriteNoteViewModel(
     private val noteDatabase: NoteDatabaseDao,
     private val settingDataSource: SettingDatabaseDao,
     private val hackmdDatabaseDao: HackmdDatabaseDao,
-    private var noteId: Long
+    private var noteId: Long,
 ) : AndroidViewModel(application) {
 
     private var _note = MutableLiveData<Note?>()

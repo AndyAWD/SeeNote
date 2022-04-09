@@ -1,8 +1,9 @@
-package tw.com.andyawd.seenote.notepage
+package tw.com.andyawd.seenote.tagpage
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.bean.Setting
 import tw.com.andyawd.seenote.bean.Tag
 import tw.com.andyawd.seenote.databinding.ViewholderTagPageBodyBinding
@@ -15,9 +16,12 @@ class TagPageBodyViewHolder(private val binding: ViewholderTagPageBodyBinding) :
             binding.setting = setting
         }
 
+        AWDLog.d("tag: $tag")
         binding.tag = tag
         binding.clickListener = tagPageListener
         binding.executePendingBindings()
+
+
     }
 
     fun bind(tag: Tag, setting: Setting?) {

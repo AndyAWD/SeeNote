@@ -27,7 +27,7 @@ class SettingPageViewModel(
     private val settingDataSource: SettingDatabaseDao,
     private val noteDataSource: NoteDatabaseDao,
     private val hackmdDatabaseDao: HackmdDatabaseDao,
-    private val page: String,
+    private val isFromWriteNote: Boolean,
     private val noteId: Long
 ) : AndroidViewModel(application) {
 
@@ -53,7 +53,7 @@ class SettingPageViewModel(
             _hackmdToken.value = _setting.value?.user?.hackmdToken
             _hackmdDownloadStatus.value = BaseConstants.DOWNLOAD
 
-            if (BaseConstants.WRITER_NOTE == page) {
+            if (isFromWriteNote) {
                 _note.value = noteDataSource.get(noteId)
             }
         }

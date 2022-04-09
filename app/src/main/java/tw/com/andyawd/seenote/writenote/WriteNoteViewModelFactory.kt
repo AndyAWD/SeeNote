@@ -23,7 +23,7 @@ class WriteNoteViewModelFactory(
                 noteDataSource,
                 settingDataSource,
                 hackmdDatabaseDao,
-                dataPrimaryKey
+                dataPrimaryKey,
             ) as T
         }
 

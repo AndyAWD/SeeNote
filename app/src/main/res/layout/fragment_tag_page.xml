@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="notePageViewModel"
-            type="tw.com.andyawd.seenote.notepage.NotePageViewModel" />
+            name="viewModel"
+            type="tw.com.andyawd.seenote.tagpage.TagPageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/fnpMtToolbar"
+            android:id="@+id/ftpMtToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,10 +24,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:menu="@menu/toolbar_note_page"
-            app:navigationIcon="@drawable/ripple_ic_back_title" />
+            app:navigationIcon="@drawable/ic_baseline_settings_24" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
-            android:id="@+id/fnpAcsbTextSize"
+            android:id="@+id/ftpAcsbTextSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -38,7 +38,7 @@
             android:thumb="@drawable/square_ic_search_primary_secondary_size40_rounded8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fnpMtToolbar"
+            app:layout_constraintTop_toBottomOf="@+id/ftpMtToolbar"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -49,14 +49,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fnpAcsbTextSize">
+            app:layout_constraintTop_toBottomOf="@+id/ftpAcsbTextSize">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <HorizontalScrollView
-                    android:id="@+id/hsvFnpSearch"
+                    android:id="@+id/ftpHsvSearch"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="16dp"
@@ -64,7 +64,7 @@
                     android:scrollbars="none"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fnpRvNoteList"
+                    app:layout_constraintTop_toBottomOf="@+id/ftpRvTagList"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,41 +72,41 @@
                         android:layout_height="wrap_content">
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/fnpAcivSearchIcon"
+                            android:id="@+id/ftpAcivSearchIcon"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginStart="@dimen/magic_8dp"
                             android:background="@drawable/fillet_bl_tl_radius100_width2"
                             android:padding="@dimen/magic_8dp"
                             android:src="@drawable/ic_baseline_search_24"
-                            app:layout_constraintBottom_toBottomOf="@+id/fnpAcetSearchText"
+                            app:layout_constraintBottom_toBottomOf="@+id/ftpAcetSearchText"
                             app:layout_constraintDimensionRatio="1:1"
-                            app:layout_constraintEnd_toStartOf="@+id/fnpAcetSearchText"
+                            app:layout_constraintEnd_toStartOf="@+id/ftpAcetSearchText"
                             app:layout_constraintHorizontal_chainStyle="packed"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/fnpAcetSearchText" />
+                            app:layout_constraintTop_toTopOf="@+id/ftpAcetSearchText" />
 
                         <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/fnpAcetSearchText"
+                            android:id="@+id/ftpAcetSearchText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/square_l_r_width2"
-                            android:hint="@string/search_title_content"
+                            android:hint="@string/search_tag"
                             android:imeOptions="actionSearch"
                             android:inputType="text"
                             android:lines="1"
                             android:padding="@dimen/magic_8dp"
                             android:text=""
-                            android:textSize="@{notePageViewModel.setting.textSize.notePageToFloat}"
+                            android:textSize="@{viewModel.setting.textSize.notePageToFloat}"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/fnpAcivSearchCancel"
-                            app:layout_constraintStart_toEndOf="@+id/fnpAcivSearchIcon"
+                            app:layout_constraintEnd_toStartOf="@+id/ftpAcivSearchCancel"
+                            app:layout_constraintStart_toEndOf="@+id/ftpAcivSearchIcon"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0"
                             app:layout_constraintVertical_chainStyle="packed" />
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/fnpAcivSearchCancel"
+                            android:id="@+id/ftpAcivSearchCancel"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginEnd="@dimen/magic_8dp"
@@ -114,28 +114,28 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:padding="@dimen/magic_8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/fnpAcetSearchText"
+                            app:layout_constraintBottom_toBottomOf="@+id/ftpAcetSearchText"
                             app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/fnpAcetSearchText"
-                            app:layout_constraintTop_toTopOf="@+id/fnpAcetSearchText"
+                            app:layout_constraintStart_toEndOf="@+id/ftpAcetSearchText"
+                            app:layout_constraintTop_toTopOf="@+id/ftpAcetSearchText"
                             app:srcCompat="@drawable/ic_baseline_cancel_24" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/fnpRvNoteList"
+                    android:id="@+id/ftpRvTagList"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/hsvFnpSearch"
+                    app:layout_constraintTop_toBottomOf="@+id/ftpHsvSearch"
                     app:layout_constraintVertical_bias="0.0"
                     tools:itemCount="8"
                     tools:layoutManager="GridLayoutManager"
-                    tools:listitem="@layout/viewholder_note_page"
+                    tools:listitem="@layout/viewholder_tag_page_body"
                     tools:spanCount="1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

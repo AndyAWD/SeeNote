@@ -3,26 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/notePageFragment">
+    app:startDestination="@id/tagPageFragment">
     <fragment
         android:id="@+id/notePageFragment"
         android:name="tw.com.andyawd.seenote.notepage.NotePageFragment"
         android:label="fragment_note_page"
         tools:layout="@layout/fragment_note_page">
+        <argument
+            android:name="tag"
+            android:defaultValue='""'
+            app:argType="string" />
         <action
             android:id="@+id/action_notePageFragment_to_writeNoteFragment"
             app:destination="@id/writeNoteFragment"
-            app:enterAnim="@anim/slide_in_right_to_left_medium"
-            app:exitAnim="@anim/slide_out_left_to_right_medium"
-            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
-            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
         <action
-            android:id="@+id/action_notePageFragment_to_settingNoteFragment"
+            android:id="@+id/action_notePageFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment"
-            app:enterAnim="@anim/slide_in_left_to_right_medium"
-            app:exitAnim="@anim/slide_out_right_to_left_medium"
-            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
-            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
+        <action
+            android:id="@+id/action_notePageFragment_to_tagPageFragment"
+            app:destination="@id/tagPageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
     </fragment>
     <fragment
         android:id="@+id/writeNoteFragment"
@@ -33,35 +44,44 @@
             android:name="noteId"
             app:argType="long" />
         <action
-            android:id="@+id/action_writeNoteFragment_to_notePageFragment"
-            app:destination="@id/notePageFragment"
-            app:enterAnim="@anim/slide_in_left_to_right_medium"
-            app:exitAnim="@anim/slide_out_right_to_left_medium"
-            app:popEnterAnim="@anim/slide_in_left_to_right_medium"
-            app:popExitAnim="@anim/slide_out_right_to_left_medium" />
-        <action
             android:id="@+id/action_writeNoteFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment"
             app:enterAnim="@anim/fade_in_medium"
             app:exitAnim="@anim/fade_out_medium"
             app:popEnterAnim="@anim/fade_in_medium"
             app:popExitAnim="@anim/fade_out_medium" />
+        <action
+            android:id="@+id/action_writeNoteFragment_to_tagPageFragment"
+            app:destination="@id/tagPageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
+        <action
+            android:id="@+id/action_writeNoteFragment_to_notePageFragment"
+            app:destination="@id/notePageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
+        <argument
+            android:name="isFromTagPage"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="isFromNotePage"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="tag"
+            android:defaultValue='""'
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/settingPageFragment"
         android:name="tw.com.andyawd.seenote.settingpage.SettingPageFragment"
         android:label="fragment_setting_note"
         tools:layout="@layout/fragment_setting_page">
-        <action
-            android:id="@+id/action_settingNoteFragment_to_notePageFragment"
-            app:destination="@id/notePageFragment"
-            app:enterAnim="@anim/slide_in_right_to_left_medium"
-            app:exitAnim="@anim/slide_out_left_to_right_medium"
-            app:popEnterAnim="@anim/slide_in_right_to_left_medium"
-            app:popExitAnim="@anim/slide_out_left_to_right_medium" />
-        <argument
-            android:name="page"
-            app:argType="string" />
         <argument
             android:name="noteId"
             android:defaultValue="-1L"
@@ -76,6 +96,32 @@
         <action
             android:id="@+id/action_settingPageFragment_to_selectColorFragment"
             app:destination="@id/selectColorFragment" />
+        <action
+            android:id="@+id/action_settingPageFragment_to_tagPageFragment"
+            app:destination="@id/tagPageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
+        <action
+            android:id="@+id/action_settingPageFragment_to_notePageFragment"
+            app:destination="@id/notePageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
+        <argument
+            android:name="isFromTagPage"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="isFromWriteNote"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="tag"
+            android:defaultValue='""'
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/selectColorFragment"
@@ -86,9 +132,6 @@
             android:name="size"
             app:argType="integer" />
         <argument
-            android:name="page"
-            app:argType="string" />
-        <argument
             android:name="type"
             app:argType="string" />
         <argument
@@ -98,10 +141,49 @@
         <action
             android:id="@+id/action_selectColorFragment_to_settingPageFragment"
             app:destination="@id/settingPageFragment" />
+        <argument
+            android:name="isFromTagPage"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="isFromWriteNote"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="tag"
+            android:defaultValue='""'
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/sponsorSeeNoteFragment"
         android:name="tw.com.andyawd.seenote.sponsorseenote.SponsorSeeNoteFragment"
         android:label="SponsorSeeNoteFragment"
         tools:layout="@layout/fragment_sponsor_see_note" />
+    <fragment
+        android:id="@+id/tagPageFragment"
+        android:name="tw.com.andyawd.seenote.tagpage.TagPageFragment"
+        android:label="fragment_tag_page"
+        tools:layout="@layout/fragment_tag_page">
+        <action
+            android:id="@+id/action_tagPageFragment_to_notePageFragment"
+            app:destination="@id/notePageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
+        <action
+            android:id="@+id/action_tagPageFragment_to_settingPageFragment"
+            app:destination="@id/settingPageFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
+        <action
+            android:id="@+id/action_tagPageFragment_to_writeNoteFragment"
+            app:destination="@id/writeNoteFragment"
+            app:enterAnim="@anim/fade_in_medium"
+            app:exitAnim="@anim/fade_out_medium"
+            app:popEnterAnim="@anim/fade_in_medium"
+            app:popExitAnim="@anim/fade_out_medium" />
+    </fragment>
 </navigation>

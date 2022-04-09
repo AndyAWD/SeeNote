@@ -59,7 +59,7 @@ class WriteNoteFragment : Fragment() {
                 noteDataSource,
                 settingDataSource,
                 hackmdDatabaseDao,
-                args.noteId
+                args.noteId,
             )
         viewModel =
             ViewModelProvider(this, viewModelFactory)[WriteNoteViewModel::class.java]
@@ -88,13 +88,8 @@ class WriteNoteFragment : Fragment() {
 
         initComponent()
         initObserve()
-        initRacyclerView()
         initListener(binding)
         initClickListener(binding)
-    }
-
-    private fun initRacyclerView() {
-
     }
 
     private fun initComponent() {
@@ -110,7 +105,7 @@ class WriteNoteFragment : Fragment() {
     private fun initObserve() {
         viewModel.note.observe(viewLifecycleOwner) { note ->
             note?.tag.let {
-                AWDLog.d("it.size: ${it?.size} / it: $it")
+                AWDLog.d("TagSize it.size: ${it?.size} / it: $it")
                 adapter.submitList(it?.toMutableList())
             }
         }
@@ -130,7 +125,7 @@ class WriteNoteFragment : Fragment() {
         viewModel.isDatabaseDeleted.observe(viewLifecycleOwner) { isDatabaseDeleted ->
             isDatabaseDeleted?.let {
                 if (it) {
-                    goBackNotePage()
+                    goBackPage()
                 }
             }
         }
@@ -238,7 +233,7 @@ class WriteNoteFragment : Fragment() {
     private fun initListener(binding: FragmentWriteNoteBinding) {
 
         requireActivity().onBackPressedDispatcher.addCallback {
-            goBackNotePage()
+            goBackPage()
         }
 
         binding.fwnAcetNoteTitle.addTextChangedListener {
@@ -285,7 +280,7 @@ class WriteNoteFragment : Fragment() {
         })
 
         binding.fwnMtToolbar.setNavigationOnClickListener {
-            goBackNotePage()
+            goBackPage()
         }
 
         binding.fwnActvAlignTop.setOnClickListener {
@@ -293,7 +288,7 @@ class WriteNoteFragment : Fragment() {
         }
 
         binding.fwnActvAlignBottom.setOnClickListener {
-            binding.fwnAcetNoteContent.text?.length ?: 0
+            binding.fwnAcetNoteContent.text?.length
         }
 
         binding.fwnActvDeleteForever.setOnClickListener {
@@ -367,18 +362,45 @@ class WriteNoteFragment : Fragment() {
         textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, text)
     }
 
-    private fun goBackNotePage() {
+    private fun goBackPage() {
+        closeSpeak()
+        AWDLog.d("isFromNotePage: ${args.isFromNotePage} / isFromTagPage: ${args.isFromTagPage}")
+
+        if (args.isFromNotePage) {
+            goNotePage()
+            return
+        }
+
+        if (args.isFromTagPage) {
+            goTagPage()
+            return
+        }
+    }
+
+    private fun closeSpeak() {
         viewModel.spoken()
         viewModel.shutdown()
-        val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToNotePageFragment()
+    }
+
+    private fun goNotePage() {
+        val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToNotePageFragment(
+            tag = args.tag
+        )
+        findNavController().navigate(action)
+    }
+
+    private fun goTagPage() {
+        val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToTagPageFragment()
         findNavController().navigate(action)
     }
 
     private fun goSettingPage() {
         viewModel.note.value?.let {
             val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToSettingPageFragment(
-                BaseConstants.WRITER_NOTE,
-                it.id
+                noteId = it.id,
+                isFromTagPage = false,
+                isFromWriteNote = true,
+                tag = args.tag
             )
             findNavController().navigate(action)
         }

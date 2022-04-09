@@ -15,7 +15,7 @@
 
         <variable
             name="clickListener"
-            type="tw.com.andyawd.seenote.notepage.TagPageListener" />
+            type="tw.com.andyawd.seenote.tagpage.TagPageListener" />
     </data>
 
     <HorizontalScrollView

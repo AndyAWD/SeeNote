@@ -48,6 +48,7 @@
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_stop_speak.xml" value="0.2605" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_voice_content.xml" value="0.2705" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_ic_voice_title.xml" value="0.2705" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_rounded_hollow_secondary_width4_radius4.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_rounded_primary_secondary_width4_radius8.xml" value="0.299" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/ripple_secondary_fillet_br_tr_radius100_width2.xml" value="0.286" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/drawable/rounded_hollow_secondary_rounded8.xml" value="0.2605" />
@@ -81,10 +82,16 @@
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_setting_page.xml" value="0.606156274664562" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_setting_title.xml" value="0.4" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_sponsor_see_note.xml" value="0.4" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_tag_page.xml" value="0.4" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_write_color.xml" value="0.4" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/fragment_write_note.xml" value="0.12075471698113208" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/viewholder_note_page.xml" value="0.33" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/viewholder_note_tag_body.xml" value="0.4" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/viewholder_tag_page.xml" value="0.4" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/viewholder_tag_page_body.xml" value="0.4" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/viewholder_tag_page_head.xml" value="0.4" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/viewholder_tag_page_header.xml" value="0.4" />
+        <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/layout/viewholder_write_tag.xml" value="0.4" />
         <entry key="..\:/Users/Andy/StudioProjects/SeeNote/app/src/main/res/menu/toolbar_write_note.xml" value="0.4" />
         <entry key="app/src/main/res/drawable/oval_ff6599_size20.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/square_b8b8b8.xml" value="0.18333333333333332" />

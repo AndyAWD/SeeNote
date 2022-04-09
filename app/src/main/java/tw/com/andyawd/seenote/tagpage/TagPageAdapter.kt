@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote.notepage
+package tw.com.andyawd.seenote.tagpage
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter

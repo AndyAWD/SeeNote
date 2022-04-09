@@ -12,7 +12,7 @@ class SettingPageViewModelFactory(
     private val settingDataSource: SettingDatabaseDao,
     private val noteDataSource: NoteDatabaseDao,
     private val hackmdDatabaseDao: HackmdDatabaseDao,
-    private val page: String,
+    private val isFromWriteNote: Boolean,
     private val noteId: Long
 ) : ViewModelProvider.Factory {
 
@@ -24,7 +24,7 @@ class SettingPageViewModelFactory(
                 settingDataSource,
                 noteDataSource,
                 hackmdDatabaseDao,
-                page,
+                isFromWriteNote,
                 noteId
             ) as T
         }

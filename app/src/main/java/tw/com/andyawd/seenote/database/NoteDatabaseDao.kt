@@ -26,6 +26,9 @@ interface NoteDatabaseDao {
     @Query("SELECT * FROM note_table ORDER BY id ASC")
     suspend fun getAll(): List<Note>
 
+    @Query("SELECT * FROM note_table WHERE tag LIKE '%' || :tag || '%' ORDER BY id ASC")
+    suspend fun getNoteFromTag(tag: String): List<Note>
+
     @Query("SELECT * FROM note_table WHERE title LIKE '%' || :text || '%' OR content LIKE '%' || :text || '%'  ORDER BY id ASC")
     suspend fun getSearchText(text: String): List<Note>
 

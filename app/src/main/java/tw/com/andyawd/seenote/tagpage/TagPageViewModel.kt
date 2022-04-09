@@ -1,9 +1,9 @@
-package tw.com.andyawd.seenote.notepage
+package tw.com.andyawd.seenote.tagpage
 
 import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import tw.com.andyawd.andyawdlibrary.AWDLog
@@ -12,12 +12,11 @@ import tw.com.andyawd.seenote.bean.*
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
 import tw.com.andyawd.seenote.database.SettingDatabaseDao
 
-class NotePageViewModel(
-    private val application: Application,
+class TagPageViewModel(
+    application: Application,
     private val noteDataSource: NoteDatabaseDao,
-    private val settingDataSource: SettingDatabaseDao,
-    private val tag: String,
-) : ViewModel() {
+    private val settingDataSource: SettingDatabaseDao
+) : AndroidViewModel(application) {
 
     private var _note = MutableLiveData<List<Note>>()
     val note: LiveData<List<Note>>
@@ -27,13 +26,17 @@ class NotePageViewModel(
     val setting: LiveData<Setting?>
         get() = _setting
 
-    private val _notePageDetail = MutableLiveData<Long?>()
-    val notePageDetail
-        get() = _notePageDetail
-
     private val _searchText = MutableLiveData<String?>()
     val searchText: LiveData<String?>
         get() = _searchText
+
+    private var _tag = MutableLiveData<List<Tag>?>()
+    val tag: LiveData<List<Tag>?>
+        get() = _tag
+
+    private val _tagPageDetail = MutableLiveData<Long?>()
+    val tagPageDetail
+        get() = _tagPageDetail
 
     init {
         viewModelScope.launch {
@@ -56,29 +59,29 @@ class NotePageViewModel(
                 _setting.value = settingDataSource.getFirst()
             }
 
-            AWDLog.d("tag: $tag")
+//            _note.value = noteDataSource.getAll()
+            AWDLog.d("noteDataSource.getAllTag(): ${noteDataSource.getAllTag()}")
 
-            if (BaseConstants.ALL_TAG == tag) {
-                _note.value = noteDataSource.getNoteFromTag(BaseConstants.EMPTY_STRING)
-            } else {
-                _note.value = noteDataSource.getNoteFromTag(tag)
-            }
+
+            _tag.value = getDistinctTagList(noteDataSource.getAllTag())
         }
     }
 
-    fun onItemClicked(id: Long) {
-        _notePageDetail.value = id
-    }
+    fun queryTag() {
+        _searchText.value?.let { text ->
+            viewModelScope.launch {
 
-    fun onNotePageNavigated() {
-        _notePageDetail.value = null
-    }
+                val tagList = getDistinctTagList(noteDataSource.getAllTag())
+                val filterSearchTagList = arrayListOf<Tag>()
 
-    fun changeNotePageSize(size: Int) {
-        _setting.value?.let {
-            val newTextSize = it.textSize?.copy(notePage = size)
-            val newSetting = it.copy(textSize = newTextSize)
-            _setting.value = newSetting
+                tagList.forEach {
+                    if (BaseConstants.INDEX_NOT_SEARCH != it.text.indexOf(text)) {
+                        filterSearchTagList.add(Tag(text = it.text))
+                    }
+                }
+
+                _tag.value = filterSearchTagList
+            }
         }
     }
 
@@ -94,11 +97,27 @@ class NotePageViewModel(
         _searchText.value = text
     }
 
-    fun queryNote() {
-        _searchText.value?.let { text ->
-            viewModelScope.launch {
-                _note.value = noteDataSource.getSearchText(text)
+    fun changeTagPageSize(size: Int) {
+        _setting.value?.let {
+            val newTextSize = it.textSize?.copy(notePage = size)
+            val newSetting = it.copy(textSize = newTextSize)
+            _setting.value = newSetting
+        }
+    }
+
+    fun onTagPageNavigated() {
+        _tagPageDetail.value = null
+    }
+
+    private fun getDistinctTagList(tagList: List<Tag>): List<Tag> {
+        val list = mutableListOf<Tag>()
+
+        tagList.forEach { tag ->
+            tag.text.split(",").map { it }.forEach {
+                list.add(Tag(text = it))
             }
         }
+
+        return list.distinct()
     }
 }

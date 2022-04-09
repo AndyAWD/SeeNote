@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.Setting
@@ -14,7 +15,8 @@ import tw.com.andyawd.seenote.database.SettingDatabaseDao
 class SelectColorViewModel(
     private val settingDataSource: SettingDatabaseDao,
     private val noteDataSource: NoteDatabaseDao,
-    private val page: String,
+    private val isFromWriteNote: Boolean,
+    private val isFromTagPage: Boolean,
     private val type: String,
     private val noteId: Long
 ) : ViewModel() {
@@ -35,7 +37,7 @@ class SelectColorViewModel(
         viewModelScope.launch {
             _setting.value = settingDataSource.getFirst()
 
-            if (BaseConstants.WRITER_NOTE == page) {
+            if (isFromWriteNote) {
                 _note.value = noteDataSource.get(noteId)
             }
         }
@@ -60,50 +62,9 @@ class SelectColorViewModel(
     }
 
     fun updateSelectColor(color: String) {
+        AWDLog.d("updateSelectColor: $color / isFromWriteNote: $isFromWriteNote / isFromTagPage: $isFromTagPage")
         viewModelScope.launch {
-            if (BaseConstants.NOTE_PAGE == page) {
-                _setting.value?.let {
-                    val newSetting: Setting
-                    when (type) {
-                        BaseConstants.TITLE_TEXT_COLOR -> {
-                            val newColor = it.title?.copy(textColor = color)
-                            newSetting = it.copy(title = newColor)
-                            _setting.value = newSetting
-                        }
-                        BaseConstants.TITLE_BACKGROUND_COLOR -> {
-                            val newColor = it.title?.copy(backgroundColor = color)
-                            newSetting = it.copy(title = newColor)
-                            _setting.value = newSetting
-                        }
-                        BaseConstants.CONTENT_TEXT_COLOR -> {
-                            val newColor = it.content?.copy(textColor = color)
-                            newSetting = it.copy(content = newColor)
-                            _setting.value = newSetting
-                        }
-                        BaseConstants.CONTENT_BACKGROUND_COLOR -> {
-                            val newColor = it.content?.copy(backgroundColor = color)
-                            newSetting = it.copy(content = newColor)
-                            _setting.value = newSetting
-                        }
-                        BaseConstants.DATE_TEXT_COLOR -> {
-                            val newColor = it.date?.copy(textColor = color)
-                            newSetting = it.copy(date = newColor)
-                            _setting.value = newSetting
-                        }
-                        BaseConstants.DATE_BACKGROUND_COLOR -> {
-                            val newColor = it.date?.copy(backgroundColor = color)
-                            newSetting = it.copy(date = newColor)
-                            _setting.value = newSetting
-                        }
-                        else -> {
-                            newSetting = it.copy()
-                            _setting.value = newSetting
-                        }
-                    }
-                }
-
-                updateSettingColor()
-            } else {
+            if (isFromWriteNote) {
                 _note.value?.let {
                     val newNote: Note
                     when (type) {
@@ -145,6 +106,52 @@ class SelectColorViewModel(
                 }
 
                 updateNoteColor()
+                return@launch
+            }
+
+            if (isFromTagPage) {
+                _setting.value?.let {
+                    val newSetting: Setting
+                    when (type) {
+                        BaseConstants.TITLE_TEXT_COLOR -> {
+                            val newColor = it.title?.copy(textColor = color)
+                            newSetting = it.copy(title = newColor)
+                            _setting.value = newSetting
+                        }
+                        BaseConstants.TITLE_BACKGROUND_COLOR -> {
+                            val newColor = it.title?.copy(backgroundColor = color)
+                            newSetting = it.copy(title = newColor)
+                            _setting.value = newSetting
+                        }
+                        BaseConstants.CONTENT_TEXT_COLOR -> {
+                            val newColor = it.content?.copy(textColor = color)
+                            newSetting = it.copy(content = newColor)
+                            _setting.value = newSetting
+                        }
+                        BaseConstants.CONTENT_BACKGROUND_COLOR -> {
+                            val newColor = it.content?.copy(backgroundColor = color)
+                            newSetting = it.copy(content = newColor)
+                            _setting.value = newSetting
+                        }
+                        BaseConstants.DATE_TEXT_COLOR -> {
+                            val newColor = it.date?.copy(textColor = color)
+                            newSetting = it.copy(date = newColor)
+                            _setting.value = newSetting
+                        }
+                        BaseConstants.DATE_BACKGROUND_COLOR -> {
+                            val newColor = it.date?.copy(backgroundColor = color)
+                            newSetting = it.copy(date = newColor)
+                            _setting.value = newSetting
+                        }
+                        else -> {
+                            newSetting = it.copy()
+                            _setting.value = newSetting
+                        }
+                    }
+                }
+
+                updateSettingColor()
+                return@launch
             }
         }
     }

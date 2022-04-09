@@ -37,14 +37,15 @@ class SelectColorFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val settingDataSource = SeeNoteDatabase.getInstance(application).settingDatabaseDao
         val noteDataSource = SeeNoteDatabase.getInstance(application).noteDatabaseDao
-        viewModelFactory =
-            SelectColorViewModelFactory(
-                settingDataSource,
-                noteDataSource,
-                args.page,
-                args.type,
-                args.noteId
-            )
+        viewModelFactory = SelectColorViewModelFactory(
+            settingDataSource,
+            noteDataSource,
+            args.isFromWriteNote,
+            args.isFromTagPage,
+            args.type,
+            args.noteId
+        )
+
         viewModel = ViewModelProvider(this, viewModelFactory)[SelectColorViewModel::class.java]
 
         binding.viewModel = viewModel
@@ -191,8 +192,10 @@ class SelectColorFragment : Fragment() {
 
     private fun goBackPage() {
         val action = SelectColorFragmentDirections.actionSelectColorFragmentToSettingPageFragment(
-            args.page,
-            args.noteId
+            noteId = args.noteId,
+            isFromTagPage = args.isFromTagPage,
+            isFromWriteNote = args.isFromWriteNote,
+            tag = args.tag
         )
         findNavController().navigate(action)
     }

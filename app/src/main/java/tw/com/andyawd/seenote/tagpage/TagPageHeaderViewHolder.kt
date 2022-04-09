@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote.notepage
+package tw.com.andyawd.seenote.tagpage
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,7 +18,7 @@ class TagPageHeaderViewHolder(private val binding: ViewholderTagPageHeaderBindin
         binding.executePendingBindings()
 
         binding.vtphClTag.setOnClickListener {
-            tagPageListener.onItemClick(BaseConstants.EMPTY_STRING)
+            tagPageListener.onItemClick(BaseConstants.ALL_TAG)
         }
     }
 

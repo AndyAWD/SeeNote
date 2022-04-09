@@ -1,4 +1,4 @@
-package tw.com.andyawd.seenote.notepage
+package tw.com.andyawd.seenote.tagpage
 
 import tw.com.andyawd.seenote.bean.Tag
 

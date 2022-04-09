@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
@@ -49,7 +50,7 @@ class SettingPageFragment : Fragment() {
                 settingDataSource,
                 noteDataSource,
                 hackmdDatabaseDao,
-                args.page,
+                args.isFromWriteNote,
                 args.noteId
             )
         viewModel = ViewModelProvider(this, viewModelFactory)[SettingPageViewModel::class.java]
@@ -249,28 +250,43 @@ class SettingPageFragment : Fragment() {
     }
 
     private fun goBackPage() {
-        when (args.page) {
-            BaseConstants.NOTE_PAGE -> {
-                val action =
-                    SettingPageFragmentDirections.actionSettingNoteFragmentToNotePageFragment()
-                findNavController().navigate(action)
-            }
-            BaseConstants.WRITER_NOTE -> {
-                val action =
-                    SettingPageFragmentDirections.actionSettingPageFragmentToWriteNoteFragment(args.noteId)
-                findNavController().navigate(action)
-            }
+        AWDLog.d("isFromTagPage: ${args.isFromTagPage} / isFromWriteNote: ${args.isFromWriteNote}")
+
+        if (args.isFromWriteNote) {
+            goWriteNote()
+            return
+        }
+
+        if (args.isFromTagPage) {
+            goTagPage()
+            return
         }
     }
 
+    private fun goWriteNote() {
+        val action = SettingPageFragmentDirections.actionSettingPageFragmentToWriteNoteFragment(
+            noteId = args.noteId,
+            isFromTagPage = args.isFromTagPage,
+            isFromNotePage = args.isFromWriteNote,
+            tag = args.tag
+        )
+        findNavController().navigate(action)
+    }
+
+    private fun goTagPage() {
+        val action = SettingPageFragmentDirections.actionSettingPageFragmentToTagPageFragment()
+        findNavController().navigate(action)
+    }
+
     private fun goSelectColor(type: String) {
-        val action =
-            SettingPageFragmentDirections.actionSettingPageFragmentToSelectColorFragment(
-                viewModel.setting.value?.textSize?.selectColor ?: BaseConstants.COLOR_SIZE,
-                args.page,
-                type,
-                args.noteId
-            )
+        val action = SettingPageFragmentDirections.actionSettingPageFragmentToSelectColorFragment(
+            size = viewModel.setting.value?.textSize?.selectColor ?: BaseConstants.COLOR_SIZE,
+            type = type,
+            noteId = args.noteId,
+            isFromTagPage = args.isFromTagPage,
+            isFromWriteNote = args.isFromWriteNote,
+            tag = args.tag
+        )
         findNavController().navigate(action)
     }
 
