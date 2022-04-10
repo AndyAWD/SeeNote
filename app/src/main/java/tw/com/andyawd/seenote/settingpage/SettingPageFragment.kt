@@ -178,6 +178,18 @@ class SettingPageFragment : Fragment() {
             goBackPage()
         }
 
+        binding.fspMtvTag.setOnClickListener {
+            goSelectColor(BaseConstants.TAG_TEXT_COLOR)
+        }
+
+        binding.fspMtvTagTextColor.setOnClickListener {
+            goSelectColor(BaseConstants.TAG_TEXT_COLOR)
+        }
+
+        binding.fspMtvTagBackgroundColor.setOnClickListener {
+            goSelectColor(BaseConstants.TAG_BACKGROUND_COLOR)
+        }
+
         binding.fspMtvTitle.setOnClickListener {
             goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
         }

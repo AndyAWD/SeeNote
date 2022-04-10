@@ -2,12 +2,14 @@ package tw.com.andyawd.seenote.writenote
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import tw.com.andyawd.seenote.bean.Note
 import tw.com.andyawd.seenote.bean.Setting
 
 class WriteTagAdapter : ListAdapter<String, WriteTagViewHolder>(WriteTagDiffCallBack()) {
 
     private var writeTagListener: WriteTagListener? = null
     private var setting: Setting? = null
+    private var note: Note? = null
 
     fun setOnItemClickListener(listener: WriteTagListener) {
         this.writeTagListener = listener
@@ -15,6 +17,11 @@ class WriteTagAdapter : ListAdapter<String, WriteTagViewHolder>(WriteTagDiffCall
 
     fun changeSetting(setting: Setting) {
         this.setting = setting
+        notifyDataSetChanged()
+    }
+
+    fun changeNote(note: Note) {
+        this.note = note
         notifyDataSetChanged()
     }
 
@@ -26,9 +33,9 @@ class WriteTagAdapter : ListAdapter<String, WriteTagViewHolder>(WriteTagDiffCall
         val item = getItem(position)
 
         if (writeTagListener == null) {
-            holder.bind(item, setting)
+            holder.bind(item, note, setting)
         } else {
-            holder.bind(item, setting, writeTagListener!!)
+            holder.bind(item, note, setting, writeTagListener!!)
         }
     }
 }

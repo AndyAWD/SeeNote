@@ -104,9 +104,14 @@ class WriteNoteFragment : Fragment() {
 
     private fun initObserve() {
         viewModel.note.observe(viewLifecycleOwner) { note ->
-            note?.tag.let {
-                AWDLog.d("TagSize it.size: ${it?.size} / it: $it")
-                adapter.submitList(it?.toMutableList())
+//            note?.tag.let {
+//                AWDLog.d("TagSize it.size: ${it?.size} / it: $it")
+//                adapter.submitList(it?.toMutableList())
+//            }
+
+            note?.let {
+                adapter.changeNote(note)
+                adapter.submitList(it.tag.toMutableList())
             }
         }
 

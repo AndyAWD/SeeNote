@@ -86,6 +86,24 @@
                                 app:layout_constraintTop_toTopOf="parent">
 
                                 <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/fspMtvTag"
+                                    style="@style/setting_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:lines="1"
+                                    android:text="@string/tag_demo"
+                                    android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                    app:layout_constraintBottom_toTopOf="@+id/fspMtvTitle"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/fspClNoteGroup"
+                                    app:noteTagBackgroundColor="@{viewModel.note}"
+                                    app:noteTagTextColor="@{viewModel.note}"
+                                    app:settingTagBackgroundColor="@{viewModel.setting}"
+                                    app:settingTagTextColor="@{viewModel.setting}" />
+
+                                <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/fspMtvTitle"
                                     style="@style/setting_text"
                                     android:layout_width="0dp"
@@ -97,7 +115,7 @@
                                     app:layout_constraintBottom_toTopOf="@+id/fspMtvContent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="@+id/fspClNoteGroup"
+                                    app:layout_constraintTop_toBottomOf="@+id/fspMtvTag"
                                     app:noteTitleBackgroundColor="@{viewModel.note}"
                                     app:noteTitleTextColor="@{viewModel.note}"
                                     app:settingTitleBackgroundColor="@{viewModel.setting}"
@@ -155,6 +173,66 @@
                                 app:layout_constraintTop_toBottomOf="@+id/fspClNoteGroup">
 
                                 <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/fspAcivTagSetting"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:gravity="center"
+                                    android:padding="@dimen/magic_4dp"
+                                    app:layout_constraintBottom_toBottomOf="@+id/fspMtvTagTextColor"
+                                    app:layout_constraintDimensionRatio="1:1"
+                                    app:layout_constraintEnd_toStartOf="@+id/fspMtvTagSetting"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/fspMtvTagTextColor"
+                                    app:srcCompat="@drawable/ic_baseline_tag_24" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/fspMtvTagSetting"
+                                    style="@style/setting_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:gravity="center"
+                                    android:text="@string/tag_color"
+                                    android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                    app:layout_constraintBottom_toBottomOf="@+id/fspMtvTagTextColor"
+                                    app:layout_constraintEnd_toStartOf="@+id/fspMtvTagTextColor"
+                                    app:layout_constraintStart_toEndOf="@+id/fspAcivTagSetting"
+                                    app:layout_constraintTop_toTopOf="@+id/fspMtvTagTextColor" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/fspMtvTagTextColor"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/magic_8dp"
+                                    android:layout_marginTop="@dimen/magic_8dp"
+                                    android:layout_marginEnd="@dimen/magic_8dp"
+                                    android:background="@drawable/ripple_rounded_primary_radius8"
+                                    android:gravity="center"
+                                    android:padding="@dimen/magic_8dp"
+                                    android:text="@string/setting_text"
+                                    android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                    app:layout_constraintBottom_toTopOf="@+id/fspMtvTitleTextColor"
+                                    app:layout_constraintEnd_toStartOf="@+id/fspMtvTagBackgroundColor"
+                                    app:layout_constraintStart_toEndOf="@+id/fspMtvTagSetting"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/fspMtvTagBackgroundColor"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/magic_8dp"
+                                    android:background="@drawable/ripple_rounded_primary_radius8"
+                                    android:gravity="center"
+                                    android:padding="@dimen/magic_8dp"
+                                    android:text="@string/setting_background"
+                                    android:textSize="@{viewModel.setting.textSize.settingPageToFloat}"
+                                    app:layout_constraintBottom_toBottomOf="@+id/fspMtvTagTextColor"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/fspMtvTagTextColor"
+                                    app:layout_constraintTop_toTopOf="@+id/fspMtvTagTextColor" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/fspAcivTitleSetting"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
@@ -197,7 +275,7 @@
                                     app:layout_constraintBottom_toTopOf="@+id/fspMtvContentTextColor"
                                     app:layout_constraintEnd_toStartOf="@+id/fspMtvTitleBackgroundColor"
                                     app:layout_constraintStart_toEndOf="@+id/fspMtvTitleSetting"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                                    app:layout_constraintTop_toBottomOf="@+id/fspMtvTagTextColor" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/fspMtvTitleBackgroundColor"

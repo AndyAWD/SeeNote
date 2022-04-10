@@ -6,24 +6,37 @@
     <data>
 
         <variable
+            name="note"
+            type="tw.com.andyawd.seenote.bean.Note" />
+
+        <variable
             name="setting"
             type="tw.com.andyawd.seenote.bean.Setting" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/magic_8dp"
+        android:layout_marginEnd="@dimen/magic_8dp"
+        android:background="@drawable/ripple_rounded_hollow_secondary_width4_radius4"
+        android:padding="@dimen/magic_4dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/vwtMtvTag"
             style="@style/setting_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/magic_8dp"
             android:textSize="@{setting.textSize.writerNoteToFloat}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/vwtMtvDelete"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:noteTagBackgroundColor="@{note}"
+            app:noteTagTextColor="@{note}"
+            app:settingTagBackgroundColor="@{setting}"
+            app:settingTagTextColor="@{setting}"
             tools:text="股票" />
 
         <androidx.appcompat.widget.AppCompatImageView

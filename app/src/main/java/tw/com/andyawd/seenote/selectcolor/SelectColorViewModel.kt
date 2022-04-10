@@ -68,6 +68,16 @@ class SelectColorViewModel(
                 _note.value?.let {
                     val newNote: Note
                     when (type) {
+                        BaseConstants.TAG_TEXT_COLOR -> {
+                            val newColor = it.tagColor?.copy(textColor = color)
+                            newNote = it.copy(tagColor = newColor)
+                            _note.value = newNote
+                        }
+                        BaseConstants.TAG_BACKGROUND_COLOR -> {
+                            val newColor = it.tagColor?.copy(backgroundColor = color)
+                            newNote = it.copy(tagColor = newColor)
+                            _note.value = newNote
+                        }
                         BaseConstants.TITLE_TEXT_COLOR -> {
                             val newColor = it.titleColor?.copy(textColor = color)
                             newNote = it.copy(titleColor = newColor)
@@ -113,6 +123,16 @@ class SelectColorViewModel(
                 _setting.value?.let {
                     val newSetting: Setting
                     when (type) {
+                        BaseConstants.TAG_TEXT_COLOR -> {
+                            val newColor = it.label?.copy(textColor = color)
+                            newSetting = it.copy(label = newColor)
+                            _setting.value = newSetting
+                        }
+                        BaseConstants.TAG_BACKGROUND_COLOR -> {
+                            val newColor = it.label?.copy(backgroundColor = color)
+                            newSetting = it.copy(label = newColor)
+                            _setting.value = newSetting
+                        }
                         BaseConstants.TITLE_TEXT_COLOR -> {
                             val newColor = it.title?.copy(textColor = color)
                             newSetting = it.copy(title = newColor)

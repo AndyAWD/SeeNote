@@ -9,6 +9,7 @@
     <string name="edit_date">%1$s 是最後編輯時間</string>
     <string name="title_demo">標題預覽</string>
     <string name="content_demo">內容預覽</string>
+    <string name="tag_demo">標籤預覽</string>
     <string name="edit_date_demo">2022/2/1 12:34 是最後編輯時間</string>
     <string name="no_title">無標題</string>
     <string name="no_content">無內容</string>
@@ -64,6 +65,7 @@
     <string name="hackmd_website">HackMD 官方網站</string>
     <string name="how_to_get_hackmd_token">如何取得 HackMD 金鑰？</string>
     <string name="network_fail">下載失敗，沒有開啟網路</string>
+    <string name="tag_color">標籤顏色</string>
     <string name="title_color">標題顏色</string>
     <string name="content_color">內容顏色</string>
     <string name="date_color">日期顏色</string>

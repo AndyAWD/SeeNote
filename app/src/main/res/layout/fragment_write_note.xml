@@ -268,7 +268,13 @@
                             app:layout_constraintStart_toEndOf="@+id/fwnActvAddTagIcon"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0"
-                            app:layout_constraintVertical_chainStyle="packed" />
+                            app:layout_constraintVertical_chainStyle="packed"
+                            app:noteTagBackgroundColor="@{viewModel.note}"
+                            app:noteTagHintTextColor="@{viewModel.note}"
+                            app:noteTagTextColor="@{viewModel.note}"
+                            app:settingTagBackgroundColor="@{viewModel.setting}"
+                            app:settingTagHintTextColor="@{viewModel.setting}"
+                            app:settingTagTextColor="@{viewModel.setting}" />
 
                         <RelativeLayout
                             android:id="@+id/fwnRlTagGrpup"

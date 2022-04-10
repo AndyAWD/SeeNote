@@ -33,6 +33,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:settingTagBackgroundColor="@{setting}"
+                app:settingTagTextColor="@{setting}"
                 tools:text="@string/all_note" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
