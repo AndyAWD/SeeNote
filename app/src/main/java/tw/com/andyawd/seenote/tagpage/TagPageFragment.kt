@@ -76,10 +76,7 @@ class TagPageFragment : Fragment() {
         }
 
         viewModel.tag.observe(viewLifecycleOwner) { tag ->
-            tag?.let {
-                AWDLog.d("it: $it")
-                adapter.addHeaderAndSubmitList(it)
-            }
+            adapter.addHeaderAndSubmitList(tag)
         }
 
         viewModel.searchText.observe(viewLifecycleOwner) { text ->

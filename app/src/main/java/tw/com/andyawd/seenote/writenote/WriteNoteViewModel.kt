@@ -104,8 +104,8 @@ class WriteNoteViewModel(
 
     fun deleteTag(tag: String) {
         _note.value?.let { note ->
-            val newTagList: MutableList<String> = note.tag.toMutableList()
-            newTagList.remove(tag)
+            val newTagList: MutableList<String>? = note.tag?.toMutableList()
+            newTagList?.remove(tag)
 
             val newNote = note.copy(tag = newTagList)
             _note.value = newNote
@@ -130,10 +130,10 @@ class WriteNoteViewModel(
         _tag.value = tag
 
         _note.value?.let { note ->
-            val newTagList: MutableList<String> = note.tag.toMutableList()
-            newTagList.add(tag)
+            val newTagList: MutableList<String>? = note.tag?.toMutableList()
+            newTagList?.add(tag)
 
-            val distinctTagList = newTagList.distinct()
+            val distinctTagList = newTagList?.distinct()
             val newNote = note.copy(tag = distinctTagList)
             _note.value = newNote
             _tag.value = null

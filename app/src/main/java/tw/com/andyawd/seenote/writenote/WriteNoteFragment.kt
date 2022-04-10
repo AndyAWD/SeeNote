@@ -111,7 +111,7 @@ class WriteNoteFragment : Fragment() {
 
             note?.let {
                 adapter.changeNote(note)
-                adapter.submitList(it.tag.toMutableList())
+                adapter.submitList(it.tag?.toMutableList())
             }
         }
 
