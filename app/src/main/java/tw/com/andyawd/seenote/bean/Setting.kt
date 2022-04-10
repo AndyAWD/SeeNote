@@ -22,8 +22,8 @@ data class Setting(
     @Embedded(prefix = "date_")
     var date: Color?,
 
-    @Embedded(prefix = "label_")
-    var label: Color?,
+    @Embedded(prefix = "tag_")
+    var tag: Color?,
 
     @Embedded(prefix = "user_")
     var user: User?

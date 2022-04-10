@@ -32,7 +32,7 @@ data class Note(
     @Embedded(prefix = "contentColor_")
     var contentColor: Color?,
 
-    @Embedded(prefix = "labelColor_")
+    @Embedded(prefix = "tagColor_")
     var tagColor: Color?,
 
     @Embedded(prefix = "dateColor_")

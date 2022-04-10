@@ -102,7 +102,7 @@ fun TextView.changeDateTextColor(note: Note?, setting: Setting?) {
 @BindingAdapter("noteTagTextColor", "settingTagTextColor", requireAll = false)
 fun TextView.changeTagTextColor(note: Note?, setting: Setting?) {
     val noteTextColor = note?.tagColor?.textColor
-    val settingTextColor = setting?.label?.textColor
+    val settingTextColor = setting?.tag?.textColor
 
     if (noteTextColor.isNullOrEmpty() && settingTextColor.isNullOrEmpty()) {
         MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)
@@ -186,7 +186,7 @@ fun TextView.changeDateBackgroundColor(note: Note?, setting: Setting?) {
 @BindingAdapter("noteTagBackgroundColor", "settingTagBackgroundColor", requireAll = false)
 fun TextView.changeTagBackgroundColor(note: Note?, setting: Setting?) {
     val noteBackgroundColor = note?.tagColor?.backgroundColor
-    val settingBackgroundColor = setting?.label?.backgroundColor
+    val settingBackgroundColor = setting?.tag?.backgroundColor
 
     if (noteBackgroundColor.isNullOrEmpty() && settingBackgroundColor.isNullOrEmpty()) {
         MaterialColors.getColor(context, R.attr.colorOnSecondary, Color.BLACK)
@@ -249,7 +249,7 @@ fun TextView.changeContentHintTextColor(note: Note?, setting: Setting?) {
 @BindingAdapter("noteTagHintTextColor", "settingTagHintTextColor", requireAll = false)
 fun TextView.changeTagHintTextColor(note: Note?, setting: Setting?) {
     val noteBackgroundColor = note?.tagColor?.textColor
-    val settingBackgroundColor = setting?.label?.textColor
+    val settingBackgroundColor = setting?.tag?.textColor
 
     if (noteBackgroundColor.isNullOrEmpty() && settingBackgroundColor.isNullOrEmpty()) {
         MaterialColors.getColor(context, R.attr.colorOnPrimary, Color.BLACK)

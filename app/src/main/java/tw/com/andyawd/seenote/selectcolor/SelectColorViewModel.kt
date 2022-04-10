@@ -124,13 +124,13 @@ class SelectColorViewModel(
                     val newSetting: Setting
                     when (type) {
                         BaseConstants.TAG_TEXT_COLOR -> {
-                            val newColor = it.label?.copy(textColor = color)
-                            newSetting = it.copy(label = newColor)
+                            val newColor = it.tag?.copy(textColor = color)
+                            newSetting = it.copy(tag = newColor)
                             _setting.value = newSetting
                         }
                         BaseConstants.TAG_BACKGROUND_COLOR -> {
-                            val newColor = it.label?.copy(backgroundColor = color)
-                            newSetting = it.copy(label = newColor)
+                            val newColor = it.tag?.copy(backgroundColor = color)
+                            newSetting = it.copy(tag = newColor)
                             _setting.value = newSetting
                         }
                         BaseConstants.TITLE_TEXT_COLOR -> {

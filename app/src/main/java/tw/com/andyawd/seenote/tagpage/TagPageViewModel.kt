@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.bean.*
 import tw.com.andyawd.seenote.database.NoteDatabaseDao
@@ -50,7 +51,7 @@ class TagPageViewModel(
                         title = color,
                         content = color,
                         date = color,
-                        label = color,
+                        tag = color,
                         user = User()
                     )
                 )
@@ -62,6 +63,7 @@ class TagPageViewModel(
 //            _note.value = noteDataSource.getAll()
             val allTagString = StringTypeConverter().toString(noteDataSource.getAllTag())
             _tag.value = StringTypeConverter().fromString(allTagString)?.distinct()
+            AWDLog.d("_tag.value: ${_tag.value}")
         }
     }
 
