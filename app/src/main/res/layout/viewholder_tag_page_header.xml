@@ -18,9 +18,9 @@
             android:id="@+id/vtphClTag"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/magic_4dp"
+            android:layout_margin="@dimen/magic_8dp"
             android:background="@drawable/ripple_rounded_hollow_secondary_width4_radius4"
-            android:padding="@dimen/magic_8dp">
+            android:padding="@dimen/magic_4dp">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/vtphMtvTag"
