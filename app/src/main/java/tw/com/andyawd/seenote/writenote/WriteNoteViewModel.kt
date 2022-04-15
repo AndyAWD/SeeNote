@@ -57,6 +57,18 @@ class WriteNoteViewModel(
     val tag: LiveData<String?>
         get() = _tag
 
+    private val _tagPageDetail = MutableLiveData<String?>()
+    val tagPageDetail
+        get() = _tagPageDetail
+
+    private val _settingPageDetail = MutableLiveData<String?>()
+    val settingPageDetail
+        get() = _settingPageDetail
+
+    private val _notePageDetail = MutableLiveData<String?>()
+    val notePageDetail
+        get() = _notePageDetail
+
     init {
         initNote()
         initSetting()
@@ -379,6 +391,30 @@ class WriteNoteViewModel(
             hackmdDatabaseDao.insertNote(hackmdNote)
             updateNoteHackmdId(hackmdNote.id ?: BaseConstants.EMPTY_STRING)
         }
+    }
+
+    fun onTagPageItemClicked(tag: String) {
+        _tagPageDetail.value = tag
+    }
+
+    fun onTagPageNavigated() {
+        _tagPageDetail.value = null
+    }
+
+    fun onSettingPageClicked(setting: String) {
+        _settingPageDetail.value = setting
+    }
+
+    fun onSettingPageNavigated() {
+        _settingPageDetail.value = null
+    }
+
+    fun onNotePageClicked(note: String) {
+        _notePageDetail.value = note
+    }
+
+    fun onNotePageNavigated() {
+        _notePageDetail.value = null
     }
 
     companion object {

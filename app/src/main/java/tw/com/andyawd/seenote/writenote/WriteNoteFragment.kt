@@ -233,6 +233,24 @@ class WriteNoteFragment : Fragment() {
                 }
             }
         }
+
+        viewModel.tagPageDetail.observe(viewLifecycleOwner) { tag ->
+            tag?.let {
+                goBackPage()
+            }
+        }
+
+        viewModel.notePageDetail.observe(viewLifecycleOwner) { note ->
+            note?.let {
+                goBackPage()
+            }
+        }
+
+        viewModel.settingPageDetail.observe(viewLifecycleOwner) { setting ->
+            setting?.let {
+                goSettingPage()
+            }
+        }
     }
 
     private fun initListener(binding: FragmentWriteNoteBinding) {
@@ -301,7 +319,7 @@ class WriteNoteFragment : Fragment() {
         }
 
         binding.fwnActvEditColor.setOnClickListener {
-            goSettingPage()
+            viewModel.onSettingPageClicked(BaseConstants.SETTING_PAGE)
         }
 
         binding.fwnActvInvertColor.setOnClickListener {
@@ -392,11 +410,13 @@ class WriteNoteFragment : Fragment() {
             tag = args.tag
         )
         findNavController().navigate(action)
+        viewModel.onNotePageNavigated()
     }
 
     private fun goTagPage() {
         val action = WriteNoteFragmentDirections.actionWriteNoteFragmentToTagPageFragment()
         findNavController().navigate(action)
+        viewModel.onTagPageNavigated()
     }
 
     private fun goSettingPage() {
@@ -409,6 +429,7 @@ class WriteNoteFragment : Fragment() {
             )
             findNavController().navigate(action)
         }
+        viewModel.onSettingPageNavigated()
     }
 
     private fun editNoteTitle() {
