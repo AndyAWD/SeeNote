@@ -15,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
@@ -96,13 +95,6 @@ class NotePageFragment : Fragment() {
             adapter.submitList(it)
         }
 
-        viewModel.notePageDetail.observe(viewLifecycleOwner) { id ->
-            id?.let {
-                AWDLog.d("args.tag: ${args.tag}")
-                goWriteNote(id, args.tag)
-            }
-        }
-
         viewModel.searchText.observe(viewLifecycleOwner) { text ->
             text?.let {
                 if (text.isEmpty()) {
@@ -112,11 +104,23 @@ class NotePageFragment : Fragment() {
                 viewModel.queryNote()
             }
         }
+
+        viewModel.notePageDetail.observe(viewLifecycleOwner) { id ->
+            id?.let {
+                goWriteNote(id, args.tag)
+            }
+        }
+
+        viewModel.tagPageDetail.observe(viewLifecycleOwner) { tag ->
+            tag?.let {
+                goTagNote()
+            }
+        }
     }
 
     private fun initListener() {
         requireActivity().onBackPressedDispatcher.addCallback {
-            goTagNote()
+            viewModel.onTagPageClicked(BaseConstants.TAG_PAGE)
         }
 
         binding.fnpAcsbTextSize.setOnSeekBarChangeListener(object :
@@ -145,18 +149,11 @@ class NotePageFragment : Fragment() {
         })
 
         binding.fnpMtToolbar.setNavigationOnClickListener {
-            goTagNote()
+            viewModel.onTagPageClicked(BaseConstants.TAG_PAGE)
         }
 
-        binding.fnpMtToolbar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.tnpIWriteNote -> {
-                    AWDLog.d("args.tag: ${args.tag}")
-                    goWriteNote(BaseConstants.CREATE_NOTE, args.tag)
-                    true
-                }
-                else -> false
-            }
+        binding.fnpMtvWriteNote.setOnClickListener {
+            viewModel.onItemClicked(BaseConstants.CREATE_NOTE)
         }
 
         binding.fnpAcivSearchCancel.setOnClickListener {
@@ -165,7 +162,6 @@ class NotePageFragment : Fragment() {
     }
 
     private fun goWriteNote(id: Long, tag: String) {
-        AWDLog.d("goWriteNote id: $id / tag: $tag")
         val action = NotePageFragmentDirections.actionNotePageFragmentToWriteNoteFragment(
             noteId = id,
             isFromTagPage = false,
@@ -179,7 +175,7 @@ class NotePageFragment : Fragment() {
     private fun goTagNote() {
         val action = NotePageFragmentDirections.actionNotePageFragmentToTagPageFragment()
         findNavController().navigate(action)
-        viewModel.onNotePageNavigated()
+        viewModel.onTagPageNavigated()
     }
 
     companion object {

@@ -28,13 +28,17 @@ class NotePageViewModel(
     val setting: LiveData<Setting?>
         get() = _setting
 
+    private val _searchText = MutableLiveData<String?>()
+    val searchText: LiveData<String?>
+        get() = _searchText
+
     private val _notePageDetail = MutableLiveData<Long?>()
     val notePageDetail
         get() = _notePageDetail
 
-    private val _searchText = MutableLiveData<String?>()
-    val searchText: LiveData<String?>
-        get() = _searchText
+    private val _tagPageDetail = MutableLiveData<String?>()
+    val tagPageDetail
+        get() = _tagPageDetail
 
     init {
         viewModelScope.launch {
@@ -56,6 +60,14 @@ class NotePageViewModel(
 
     fun onNotePageNavigated() {
         _notePageDetail.value = null
+    }
+
+    fun onTagPageClicked(tag: String) {
+        _tagPageDetail.value = tag
+    }
+
+    fun onTagPageNavigated() {
+        _tagPageDetail.value = null
     }
 
     fun changeNotePageSize(size: Int) {

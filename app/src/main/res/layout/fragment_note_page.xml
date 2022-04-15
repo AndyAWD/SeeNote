@@ -25,22 +25,32 @@
             app:layout_constraintVertical_bias="0.0"
             app:navigationIcon="@drawable/ripple_ic_back_title" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fnpMtvWriteNote"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/magic_8dp"
+            android:background="@drawable/ripple_ic_add"
+            app:layout_constraintBottom_toBottomOf="@+id/fnpMtToolbar"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@+id/fnpMtToolbar"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/fnpMtToolbar"
+            app:layout_constraintTop_toTopOf="@+id/fnpMtToolbar" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/fnpAcsbTextSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="64dp"
             android:layout_marginEnd="16dp"
             android:max="600"
             android:padding="@dimen/magic_8dp"
             android:thumb="@drawable/square_ic_search_primary_secondary_size40_rounded8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fnpMtToolbar"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintBottom_toBottomOf="@+id/fnpMtToolbar"
+            app:layout_constraintEnd_toStartOf="@+id/fnpMtvWriteNote"
+            app:layout_constraintStart_toStartOf="@+id/fnpMtToolbar"
+            app:layout_constraintTop_toTopOf="@+id/fnpMtToolbar" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
@@ -49,7 +59,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fnpAcsbTextSize">
+            app:layout_constraintTop_toBottomOf="@+id/fnpMtToolbar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
