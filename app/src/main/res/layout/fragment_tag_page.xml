@@ -20,27 +20,38 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:menu="@menu/toolbar_note_page"
-            app:navigationIcon="@drawable/ic_baseline_settings_24" />
+            app:navigationIcon="@drawable/ripple_ic_setting" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ftpMtvWriteNote"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/magic_8dp"
+            android:background="@drawable/ripple_ic_add"
+            app:layout_constraintBottom_toBottomOf="@+id/ftpMtToolbar"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@+id/ftpMtToolbar"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/ftpMtToolbar"
+            app:layout_constraintTop_toTopOf="@+id/ftpMtToolbar" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/ftpAcsbTextSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="64dp"
             android:layout_marginEnd="16dp"
             android:max="600"
             android:padding="@dimen/magic_8dp"
             android:thumb="@drawable/square_ic_search_primary_secondary_size40_rounded8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ftpMtToolbar"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintBottom_toBottomOf="@+id/ftpMtToolbar"
+            app:layout_constraintEnd_toStartOf="@+id/ftpMtvWriteNote"
+            app:layout_constraintStart_toStartOf="@+id/ftpMtToolbar"
+            app:layout_constraintTop_toTopOf="@+id/ftpMtToolbar" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
@@ -49,7 +60,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ftpAcsbTextSize">
+            app:layout_constraintTop_toBottomOf="@+id/ftpMtToolbar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

@@ -29,7 +29,7 @@
             android:id="@+id/fwnAcsbTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="56dp"
+            android:layout_marginStart="64dp"
             android:max="800"
             android:padding="@dimen/magic_8dp"
             android:thumb="@drawable/square_ic_search_primary_secondary_size40_rounded8"

@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import tw.com.andyawd.andyawdlibrary.AWDLog
 import tw.com.andyawd.seenote.BaseConstants
 import tw.com.andyawd.seenote.R
 import tw.com.andyawd.seenote.database.SeeNoteDatabase
@@ -88,6 +87,24 @@ class TagPageFragment : Fragment() {
                 viewModel.queryTag()
             }
         }
+
+        viewModel.tagPageDetail.observe(viewLifecycleOwner) { tag ->
+            tag?.let {
+                goNotePage(tag)
+            }
+        }
+
+        viewModel.settingPageDetail.observe(viewLifecycleOwner) { setting ->
+            setting?.let {
+                goSettingPage()
+            }
+        }
+
+        viewModel.writeNoteDetail.observe(viewLifecycleOwner) { write ->
+            write?.let {
+                goWriteNote()
+            }
+        }
     }
 
     private fun initListener(binding: FragmentTagPageBinding) {
@@ -118,22 +135,15 @@ class TagPageFragment : Fragment() {
     private fun initClickListener(binding: FragmentTagPageBinding) {
 
         adapter.setOnItemClickListener(TagPageListener { tag ->
-            AWDLog.d("tag: $tag")
-            goNotePage(tag)
+            viewModel.onTagPageItemClicked(tag)
         })
 
         binding.ftpMtToolbar.setNavigationOnClickListener {
-            goSettingPage()
+            viewModel.onSettingPageClicked(BaseConstants.SETTING_PAGE)
         }
 
-        binding.ftpMtToolbar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.tnpIWriteNote -> {
-                    goWriteNote()
-                    true
-                }
-                else -> false
-            }
+        binding.ftpMtvWriteNote.setOnClickListener {
+            viewModel.onWriteNoteClicked(BaseConstants.WRITER_NOTE)
         }
 
         binding.ftpAcivSearchCancel.setOnClickListener {
@@ -142,17 +152,15 @@ class TagPageFragment : Fragment() {
     }
 
     private fun goSettingPage() {
-        val action =
-            TagPageFragmentDirections.actionTagPageFragmentToSettingPageFragment(
-                isFromTagPage = true,
-                isFromWriteNote = false
-            )
+        val action = TagPageFragmentDirections.actionTagPageFragmentToSettingPageFragment(
+            isFromTagPage = true,
+            isFromWriteNote = false
+        )
         findNavController().navigate(action)
-        viewModel.onTagPageNavigated()
+        viewModel.onSettingPageNavigated()
     }
 
     private fun goNotePage(tag: String) {
-        AWDLog.d("goNotePage tag: $tag")
         val action = TagPageFragmentDirections.actionTagPageFragmentToNotePageFragment(
             tag = tag
         )
@@ -167,7 +175,7 @@ class TagPageFragment : Fragment() {
             isFromNotePage = false
         )
         findNavController().navigate(action)
-        viewModel.onTagPageNavigated()
+        viewModel.onWriteNoteNavigated()
     }
 
     companion object {

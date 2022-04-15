@@ -34,9 +34,17 @@ class TagPageViewModel(
     val tag: LiveData<List<String>?>
         get() = _tag
 
-    private val _tagPageDetail = MutableLiveData<Long?>()
+    private val _tagPageDetail = MutableLiveData<String?>()
     val tagPageDetail
         get() = _tagPageDetail
+
+    private val _settingPageDetail = MutableLiveData<String?>()
+    val settingPageDetail
+        get() = _settingPageDetail
+
+    private val _writeNoteDetail = MutableLiveData<String?>()
+    val writeNoteDetail
+        get() = _writeNoteDetail
 
     init {
         viewModelScope.launch {
@@ -109,7 +117,27 @@ class TagPageViewModel(
         }
     }
 
+    fun onTagPageItemClicked(tag: String) {
+        _tagPageDetail.value = tag
+    }
+
     fun onTagPageNavigated() {
         _tagPageDetail.value = null
+    }
+
+    fun onSettingPageClicked(setting: String) {
+        _settingPageDetail.value = setting
+    }
+
+    fun onSettingPageNavigated() {
+        _settingPageDetail.value = null
+    }
+
+    fun onWriteNoteClicked(write: String) {
+        _writeNoteDetail.value = write
+    }
+
+    fun onWriteNoteNavigated() {
+        _writeNoteDetail.value = null
     }
 }

@@ -23,8 +23,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:menu="@menu/toolbar_note_page"
             app:navigationIcon="@drawable/ripple_ic_back_title" />
+
 
         <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/fnpAcsbTextSize"
