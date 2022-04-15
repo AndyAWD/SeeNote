@@ -33,6 +33,10 @@ class SelectColorViewModel(
     val isUpdateFinish: LiveData<Boolean>
         get() = _isUpdateFinish
 
+    private val _settingPageDetail = MutableLiveData<String?>()
+    val settingPageDetail
+        get() = _settingPageDetail
+
     init {
         viewModelScope.launch {
             _setting.value = settingDataSource.getFirst()
@@ -196,5 +200,13 @@ class SelectColorViewModel(
 
     private fun onUpdateFinish() {
         _isUpdateFinish.value = true
+    }
+
+    fun onSettingPageClicked(setting: String) {
+        _settingPageDetail.value = setting
+    }
+
+    fun onSettingPageNavigated() {
+        _settingPageDetail.value = null
     }
 }

@@ -71,7 +71,7 @@ class SelectColorFragment : Fragment() {
         viewModel.isUpdateFinish.observe(viewLifecycleOwner) { isUpdateFinish ->
             isUpdateFinish?.let {
                 if (it) {
-                    goBackPage()
+                    viewModel.onSettingPageClicked(BaseConstants.SETTING_PAGE)
                 }
             }
         }
@@ -82,15 +82,21 @@ class SelectColorFragment : Fragment() {
                     it.textSize?.selectColor ?: BaseConstants.TEXT_SIZE
             }
         }
+
+        viewModel.settingPageDetail.observe(viewLifecycleOwner) { setting ->
+            setting?.let {
+                goBackPage()
+            }
+        }
     }
 
     private fun initListener(binding: FragmentSelectColorBinding) {
         requireActivity().onBackPressedDispatcher.addCallback {
-            goBackPage()
+            viewModel.onSettingPageClicked(BaseConstants.SETTING_PAGE)
         }
 
         binding.fscMtToolBar.setNavigationOnClickListener {
-            goBackPage()
+            viewModel.onSettingPageClicked(BaseConstants.SETTING_PAGE)
         }
 
         binding.fscAcsbTextSize.setOnSeekBarChangeListener(object :
@@ -198,6 +204,7 @@ class SelectColorFragment : Fragment() {
             tag = args.tag
         )
         findNavController().navigate(action)
+        viewModel.onSettingPageNavigated()
     }
 
     companion object {
