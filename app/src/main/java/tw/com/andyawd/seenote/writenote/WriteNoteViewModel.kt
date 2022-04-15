@@ -252,6 +252,8 @@ class WriteNoteViewModel(
     fun invertColor() {
         _note.value?.let { note ->
             _setting.value?.let { setting ->
+                var noteTagTextColor = note.tagColor?.textColor
+                var noteTagBackgroundColor = note.tagColor?.backgroundColor
                 var noteTitleTextColor = note.titleColor?.textColor
                 var noteTitleBackgroundColor = note.titleColor?.backgroundColor
                 var noteContentTextColor = note.contentColor?.textColor
@@ -259,6 +261,9 @@ class WriteNoteViewModel(
                 var noteDateTextColor = note.dateColor?.textColor
                 var noteDateBackgroundColor = note.dateColor?.backgroundColor
 
+                val settingTagTextColor = setting.tag?.textColor ?: BaseConstants.EMPTY_STRING
+                val settingTagBackgroundColor =
+                    setting.tag?.backgroundColor ?: BaseConstants.EMPTY_STRING
                 val settingTitleTextColor = setting.title?.textColor ?: BaseConstants.EMPTY_STRING
                 val settingTitleBackgroundColor =
                     setting.title?.backgroundColor ?: BaseConstants.EMPTY_STRING
@@ -269,6 +274,19 @@ class WriteNoteViewModel(
                 val settingDateTextColor = setting.date?.textColor ?: BaseConstants.EMPTY_STRING
                 val settingDateBackgroundColor =
                     setting.date?.backgroundColor ?: BaseConstants.EMPTY_STRING
+
+                if (noteTagTextColor.isNullOrEmpty()) {
+                    noteTagTextColor = settingTagTextColor
+                }
+
+                if (noteTagBackgroundColor.isNullOrEmpty()) {
+                    noteTagBackgroundColor = settingTagBackgroundColor
+                }
+
+                val newTagColor = note.tagColor?.copy(
+                    textColor = noteTagBackgroundColor,
+                    backgroundColor = noteTagTextColor
+                )
 
                 if (noteTitleTextColor.isNullOrEmpty()) {
                     noteTitleTextColor = settingTitleTextColor
@@ -304,13 +322,13 @@ class WriteNoteViewModel(
                     noteDateBackgroundColor = settingDateBackgroundColor
                 }
 
-
                 val newDateColor = note.dateColor?.copy(
                     textColor = noteDateBackgroundColor,
                     backgroundColor = noteDateTextColor
                 )
 
                 val newNote = note.copy(
+                    tagColor = newTagColor,
                     titleColor = newTitleColor,
                     contentColor = newBackgroundColor,
                     dateColor = newDateColor
