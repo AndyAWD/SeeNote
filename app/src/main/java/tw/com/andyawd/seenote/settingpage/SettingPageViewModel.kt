@@ -47,6 +47,18 @@ class SettingPageViewModel(
     val hackmdDownloadStatus: LiveData<String?>
         get() = _hackmdDownloadStatus
 
+    private val _writeNoteDetail = MutableLiveData<String?>()
+    val writeNoteDetail
+        get() = _writeNoteDetail
+
+    private val _tagPageDetail = MutableLiveData<String?>()
+    val tagPageDetail
+        get() = _tagPageDetail
+
+    private val _selectColorDetail = MutableLiveData<String?>()
+    val selectColorDetail
+        get() = _selectColorDetail
+
     init {
         viewModelScope.launch {
             _setting.value = settingDataSource.getFirst()
@@ -138,5 +150,29 @@ class SettingPageViewModel(
                     })
             }
         }
+    }
+
+    fun onTagPageClicked(tag: String) {
+        _tagPageDetail.value = tag
+    }
+
+    fun onTagPageNavigated() {
+        _tagPageDetail.value = null
+    }
+
+    fun onWriteNoteClicked(write: String) {
+        _writeNoteDetail.value = write
+    }
+
+    fun onWriteNoteNavigated() {
+        _writeNoteDetail.value = null
+    }
+
+    fun onSelectColorClicked(type: String) {
+        _selectColorDetail.value = type
+    }
+
+    fun onSelectColorNavigated() {
+        _selectColorDetail.value = null
     }
 }

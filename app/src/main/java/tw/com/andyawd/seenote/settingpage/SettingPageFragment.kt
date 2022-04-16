@@ -117,6 +117,24 @@ class SettingPageFragment : Fragment() {
             }
         }
 
+        viewModel.tagPageDetail.observe(viewLifecycleOwner) { tag ->
+            tag?.let {
+                goTagPage()
+            }
+        }
+
+        viewModel.writeNoteDetail.observe(viewLifecycleOwner) { write ->
+            write?.let {
+                goWriteNote()
+            }
+        }
+
+        viewModel.selectColorDetail.observe(viewLifecycleOwner) { type ->
+            type?.let {
+                goSelectColor(type)
+            }
+        }
+
 //        viewModel.hackmdDownloadStatus.observe(viewLifecycleOwner) { status ->
 //            status?.let {
 //                when (it) {
@@ -179,51 +197,63 @@ class SettingPageFragment : Fragment() {
         }
 
         binding.fspMtvTag.setOnClickListener {
-            goSelectColor(BaseConstants.TAG_TEXT_COLOR)
+//            goSelectColor(BaseConstants.TAG_TEXT_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.TAG_TEXT_COLOR)
         }
 
         binding.fspMtvTagTextColor.setOnClickListener {
-            goSelectColor(BaseConstants.TAG_TEXT_COLOR)
+//            goSelectColor(BaseConstants.TAG_TEXT_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.TAG_TEXT_COLOR)
         }
 
         binding.fspMtvTagBackgroundColor.setOnClickListener {
-            goSelectColor(BaseConstants.TAG_BACKGROUND_COLOR)
+//            goSelectColor(BaseConstants.TAG_BACKGROUND_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.TAG_BACKGROUND_COLOR)
         }
 
         binding.fspMtvTitle.setOnClickListener {
-            goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
+//            goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.TITLE_TEXT_COLOR)
         }
 
         binding.fspMtvTitleTextColor.setOnClickListener {
-            goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
+//            goSelectColor(BaseConstants.TITLE_TEXT_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.TITLE_TEXT_COLOR)
         }
 
         binding.fspMtvTitleBackgroundColor.setOnClickListener {
-            goSelectColor(BaseConstants.TITLE_BACKGROUND_COLOR)
+//            goSelectColor(BaseConstants.TITLE_BACKGROUND_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.TITLE_BACKGROUND_COLOR)
         }
 
         binding.fspMtvContent.setOnClickListener {
-            goSelectColor(BaseConstants.CONTENT_TEXT_COLOR)
+//            goSelectColor(BaseConstants.CONTENT_TEXT_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.CONTENT_TEXT_COLOR)
         }
 
         binding.fspMtvContentTextColor.setOnClickListener {
-            goSelectColor(BaseConstants.CONTENT_TEXT_COLOR)
+//            goSelectColor(BaseConstants.CONTENT_TEXT_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.CONTENT_TEXT_COLOR)
         }
 
         binding.fspMtvContentBackgroundColor.setOnClickListener {
-            goSelectColor(BaseConstants.CONTENT_BACKGROUND_COLOR)
+//            goSelectColor(BaseConstants.CONTENT_BACKGROUND_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.CONTENT_BACKGROUND_COLOR)
         }
 
         binding.fspMtvDate.setOnClickListener {
-            goSelectColor(BaseConstants.DATE_TEXT_COLOR)
+//            goSelectColor(BaseConstants.DATE_TEXT_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.DATE_TEXT_COLOR)
         }
 
         binding.fspMtvDateTextColor.setOnClickListener {
-            goSelectColor(BaseConstants.DATE_TEXT_COLOR)
+//            goSelectColor(BaseConstants.DATE_TEXT_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.DATE_TEXT_COLOR)
         }
 
         binding.fspMtvDateBackgroundColor.setOnClickListener {
-            goSelectColor(BaseConstants.DATE_BACKGROUND_COLOR)
+//            goSelectColor(BaseConstants.DATE_BACKGROUND_COLOR)
+            viewModel.onSelectColorClicked(BaseConstants.DATE_BACKGROUND_COLOR)
         }
 
         binding.fspMbHackmdToken.setOnClickListener {
@@ -265,12 +295,14 @@ class SettingPageFragment : Fragment() {
         AWDLog.d("isFromTagPage: ${args.isFromTagPage} / isFromWriteNote: ${args.isFromWriteNote}")
 
         if (args.isFromWriteNote) {
-            goWriteNote()
+            AWDLog.d("args.isFromWriteNote")
+            viewModel.onWriteNoteClicked(BaseConstants.WRITER_NOTE)
             return
         }
 
         if (args.isFromTagPage) {
-            goTagPage()
+            AWDLog.d("args.isFromTagPage")
+            viewModel.onTagPageClicked(BaseConstants.TAG_PAGE)
             return
         }
     }
@@ -283,11 +315,13 @@ class SettingPageFragment : Fragment() {
             tag = args.tag
         )
         findNavController().navigate(action)
+        viewModel.onWriteNoteNavigated()
     }
 
     private fun goTagPage() {
         val action = SettingPageFragmentDirections.actionSettingPageFragmentToTagPageFragment()
         findNavController().navigate(action)
+        viewModel.onTagPageNavigated()
     }
 
     private fun goSelectColor(type: String) {
@@ -300,6 +334,7 @@ class SettingPageFragment : Fragment() {
             tag = args.tag
         )
         findNavController().navigate(action)
+        viewModel.onSelectColorNavigated()
     }
 
     companion object {
